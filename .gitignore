@@ -1,0 +1,9 @@
+.vs*
+*.o
+*.exe
+*.obj
+*.dll
+*.pdf
+
+Debug/
+Release/
