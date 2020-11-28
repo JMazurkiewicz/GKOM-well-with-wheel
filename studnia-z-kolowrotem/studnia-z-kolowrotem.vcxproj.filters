@@ -9,38 +9,95 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
+    <Filter Include="Assets">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\LibraryExceptions">
+      <UniqueIdentifier>{d85386e6-a7ac-4e0c-ac9e-2272d40bebc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\LibraryExceptions">
+      <UniqueIdentifier>{27ce10f0-4539-4762-8481-8285a6b631d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System">
+      <UniqueIdentifier>{d420e9a8-d826-44f6-a7cd-8d78bf80d64d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\System">
+      <UniqueIdentifier>{77cf3eb7-ea8d-4cc2-9eb5-bcd36f35af27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{83b304a1-0487-4ac1-a797-be2a5094e469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics">
+      <UniqueIdentifier>{b6608e11-4aba-41a9-a80c-424fe1ff7184}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\gl_05.cpp">
+    <ClCompile Include="src\LibraryExceptions\GlfwException.cpp">
+      <Filter>Source Files\LibraryExceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LibraryExceptions\SoilException.cpp">
+      <Filter>Source Files\LibraryExceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LibraryExceptions\ShaderException.cpp">
+      <Filter>Source Files\LibraryExceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Window.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Image.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Shader.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\shprogram.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Graphics\MipmapTexture.cpp">
+      <Filter>Source Files\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\shprogram.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\LibraryExceptions\GlfwException.h">
+      <Filter>Header Files\LibraryExceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LibraryExceptions\LibraryException.h">
+      <Filter>Header Files\LibraryExceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LibraryExceptions\SoilException.h">
+      <Filter>Header Files\LibraryExceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LibraryExceptions\ShaderException.h">
+      <Filter>Header Files\LibraryExceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Window.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Image.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Shader.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\MipmapTexture.h">
+      <Filter>Header Files\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="gl_05.frag">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="gl_05.vert">
-      <Filter>Resource Files</Filter>
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="gl_05.frag">
+      <Filter>Assets</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="iipw.png">
-      <Filter>Resource Files</Filter>
+      <Filter>Assets</Filter>
     </Image>
     <Image Include="weiti.png">
-      <Filter>Resource Files</Filter>
+      <Filter>Assets</Filter>
     </Image>
   </ItemGroup>
 </Project>

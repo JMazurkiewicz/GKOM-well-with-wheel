@@ -86,9 +86,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src;$(SolutionDir)\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,11 +146,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\gl_05.cpp" />
-    <ClCompile Include="src\shprogram.cpp" />
+    <ClCompile Include="src\Graphics\MipmapTexture.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Graphics\Image.cpp" />
+    <ClCompile Include="src\Graphics\Shader.cpp" />
+    <ClCompile Include="src\LibraryExceptions\GlfwException.cpp" />
+    <ClCompile Include="src\LibraryExceptions\ShaderException.cpp" />
+    <ClCompile Include="src\LibraryExceptions\SoilException.cpp" />
+    <ClCompile Include="src\System\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\shprogram.h" />
+    <ClInclude Include="src\Graphics\Image.h" />
+    <ClInclude Include="src\Graphics\MipmapTexture.h" />
+    <ClInclude Include="src\Graphics\Shader.h" />
+    <ClInclude Include="src\LibraryExceptions\GlfwException.h" />
+    <ClInclude Include="src\LibraryExceptions\LibraryException.h" />
+    <ClInclude Include="src\LibraryExceptions\ShaderException.h" />
+    <ClInclude Include="src\LibraryExceptions\SoilException.h" />
+    <ClInclude Include="src\System\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="gl_05.frag" />
