@@ -147,23 +147,42 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Graphics\MipmapTexture.cpp" />
-    <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Graphics\Image.cpp" />
     <ClCompile Include="src\Graphics\Shader.cpp" />
-    <ClCompile Include="src\LibraryExceptions\GlfwException.cpp" />
     <ClCompile Include="src\LibraryExceptions\ShaderException.cpp" />
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp" />
+    <ClCompile Include="src\ModelGeneration\BrickGlModelGenerator.cpp" />
+    <ClCompile Include="src\ModelGeneration\WellGlModelGenerator.cpp" />
+    <ClCompile Include="src\Model\BrickGlModel.cpp" />
+    <ClCompile Include="src\Model\WellGlModel.cpp" />
+    <ClCompile Include="src\Model\WellModel.cpp" />
+    <ClCompile Include="src\Startup\Application.cpp" />
+    <ClCompile Include="src\Startup\Main.cpp" />
+    <ClCompile Include="src\Startup\MainWindow.cpp" />
+    <ClCompile Include="src\System\FpsLogger.cpp" />
     <ClCompile Include="src\System\Window.cpp" />
+    <ClCompile Include="src\View\BrickGlView.cpp" />
+    <ClCompile Include="src\View\WellGlView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Graphics\Image.h" />
     <ClInclude Include="src\Graphics\MipmapTexture.h" />
     <ClInclude Include="src\Graphics\Shader.h" />
-    <ClInclude Include="src\LibraryExceptions\GlfwException.h" />
     <ClInclude Include="src\LibraryExceptions\LibraryException.h" />
     <ClInclude Include="src\LibraryExceptions\ShaderException.h" />
     <ClInclude Include="src\LibraryExceptions\SoilException.h" />
+    <ClInclude Include="src\ModelGeneration\BrickGlModelGenerator.h" />
+    <ClInclude Include="src\ModelGeneration\WellGlModelGenerator.h" />
+    <ClInclude Include="src\Model\BrickGlModel.h" />
+    <ClInclude Include="src\Model\WellGlModel.h" />
+    <ClInclude Include="src\Model\WellModel.h" />
+    <ClInclude Include="src\Startup\Application.h" />
+    <ClInclude Include="src\Startup\MainWindow.h" />
+    <ClInclude Include="src\System\FpsLogger.h" />
+    <ClInclude Include="src\System\Numbers.h" />
     <ClInclude Include="src\System\Window.h" />
+    <ClInclude Include="src\View\BrickGlView.h" />
+    <ClInclude Include="src\View\WellGlView.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="gl_05.frag" />

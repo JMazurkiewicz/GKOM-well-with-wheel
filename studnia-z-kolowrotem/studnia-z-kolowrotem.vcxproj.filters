@@ -31,11 +31,32 @@
     <Filter Include="Header Files\Graphics">
       <UniqueIdentifier>{b6608e11-4aba-41a9-a80c-424fe1ff7184}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Model">
+      <UniqueIdentifier>{3094743e-a7cf-4c2d-8fe3-7ba22170d9e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model">
+      <UniqueIdentifier>{103af79b-975a-4360-a806-afface47646f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\View">
+      <UniqueIdentifier>{08bcf648-5011-4662-b44a-bfbecf03c25b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\View">
+      <UniqueIdentifier>{d26ef3ea-52f5-4448-8ac3-001714d714e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Startup">
+      <UniqueIdentifier>{b9b5aa2f-4605-488f-af35-fe396ca8b036}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Startup">
+      <UniqueIdentifier>{8b417cb7-c684-4037-ae5f-455f7307ffd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ModelGeneration">
+      <UniqueIdentifier>{462ff2dd-bd0b-44aa-983b-cc669fe1207c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ModelGeneration">
+      <UniqueIdentifier>{332c3fb3-055d-4b35-b9f7-d4d478d6a091}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\LibraryExceptions\GlfwException.cpp">
-      <Filter>Source Files\LibraryExceptions</Filter>
-    </ClCompile>
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp">
       <Filter>Source Files\LibraryExceptions</Filter>
     </ClCompile>
@@ -51,17 +72,44 @@
     <ClCompile Include="src\Graphics\Shader.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="src\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Graphics\MipmapTexture.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="src\Model\WellModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\View\WellGlView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Startup\Application.cpp">
+      <Filter>Source Files\Startup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Startup\Main.cpp">
+      <Filter>Source Files\Startup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Model\BrickGlModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\View\BrickGlView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Startup\MainWindow.cpp">
+      <Filter>Source Files\Startup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\FpsLogger.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\WellGlModelGenerator.cpp">
+      <Filter>Source Files\ModelGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Model\WellGlModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\BrickGlModelGenerator.cpp">
+      <Filter>Source Files\ModelGeneration</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\LibraryExceptions\GlfwException.h">
-      <Filter>Header Files\LibraryExceptions</Filter>
-    </ClInclude>
     <ClInclude Include="src\LibraryExceptions\LibraryException.h">
       <Filter>Header Files\LibraryExceptions</Filter>
     </ClInclude>
@@ -82,6 +130,39 @@
     </ClInclude>
     <ClInclude Include="src\Graphics\MipmapTexture.h">
       <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Model\WellModel.h">
+      <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\View\WellGlView.h">
+      <Filter>Header Files\View</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Startup\Application.h">
+      <Filter>Header Files\Startup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Model\BrickGlModel.h">
+      <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\View\BrickGlView.h">
+      <Filter>Header Files\View</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Startup\MainWindow.h">
+      <Filter>Header Files\Startup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\FpsLogger.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\WellGlModelGenerator.h">
+      <Filter>Header Files\ModelGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Model\WellGlModel.h">
+      <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\BrickGlModelGenerator.h">
+      <Filter>Header Files\ModelGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Numbers.h">
+      <Filter>Header Files\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

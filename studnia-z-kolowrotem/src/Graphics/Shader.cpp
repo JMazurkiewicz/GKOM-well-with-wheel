@@ -40,7 +40,11 @@ GLuint Shader::getProgramId() const noexcept {
 
 std::string Shader::loadShaderCode(const std::filesystem::path& shaderPath) {
 	std::ifstream file{shaderPath};
-	file.exceptions(std::ios::failbit | std::ios::badbit);
+	if(!file.is_open()) {
+		throw std::ios_base::failure{"std::ifstream failed to open \"" + shaderPath.string() + "\" file"};
+	} else {
+		file.exceptions(std::ios::failbit | std::ios::badbit);
+	}
 
 	std::string content;
 	const std::uintmax_t fileSize = std::filesystem::file_size(shaderPath);

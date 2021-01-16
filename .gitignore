@@ -4,6 +4,7 @@
 *.obj
 *.dll
 *.pdf
+*.log
 
 Debug/
 Release/

@@ -1,13 +1,21 @@
 #include "Window.h"
 
+#include <stdexcept>
+
 Window::Window(int width, int height, const char* title, Style style) : handle{nullptr} {
+	glfwWindowHint(GLFW_SAMPLES, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	const bool resizable = (style & RESIZABLE);
 	glfwWindowHint(GLFW_RESIZABLE, resizable);
 
 	handle = glfwCreateWindow(width, height, title, nullptr, nullptr);
+	if(handle == nullptr) {
+		throw std::runtime_error{"Failed to open glfw window."};
+	}
+
 	glfwMakeContextCurrent(handle);
 }
 
