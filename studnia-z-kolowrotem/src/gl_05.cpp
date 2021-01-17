@@ -1,6 +1,7 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include "shprogram.h"
+#include "Controller/Camera.h"
 #include <GLFW/glfw3.h>
 #include <SOIL.h>
 #include <iostream>
@@ -11,44 +12,10 @@ using namespace std;
 
 const GLuint WIDTH = 800, HEIGHT = 600;
 
-float lastX = WIDTH / 2.0f;
-float lastY = HEIGHT / 2.0f;
-float yaw = -90.0f;
-float pitch = 0.0f;
-bool firstMouse = true;
-
-const float cameraSpeed = 0.05f;
-const float sensitivity = 0.3f;
-
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
 float deltaTime = 0.0f;	// time between current frame and last frame
 float lastFrame = 0.0f;
 
-
-void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
-{
-	cout << key << endl;
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-		glfwSetWindowShouldClose(window, GL_TRUE);
-
-	if (key == GLFW_KEY_W)
-		cameraPos += cameraSpeed * cameraFront;
-	if (key == GLFW_KEY_S)
-		cameraPos -= cameraSpeed * cameraFront;
-	if (key == GLFW_KEY_A)
-		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-	if (key == GLFW_KEY_D)
-		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-	if (key == GLFW_KEY_SPACE)
-		cameraPos += cameraUp * cameraSpeed;
-	if (key == GLFW_KEY_LEFT_CONTROL)
-		cameraPos -= cameraUp * cameraSpeed;
-}
 
 GLuint LoadMipmapTexture(GLuint texId, const char* fname)
 {
@@ -103,10 +70,10 @@ int main()
 		if (window == nullptr)
 			throw exception("GLFW window not created");
 		glfwMakeContextCurrent(window);
-		glfwSetKeyCallback(window, key_callback);
+		glfwSetKeyCallback(window, Camera::key_callback);
 
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-		glfwSetCursorPosCallback(window, mouse_callback);
+		glfwSetCursorPosCallback(window, Camera::mouse_callback);
 
 		glewExperimental = GL_TRUE;
 		if (glewInit() != GLEW_OK)
@@ -179,6 +146,10 @@ int main()
 		GLuint texture0 = LoadMipmapTexture(GL_TEXTURE0, "iipw.png");
 		GLuint texture1 = LoadMipmapTexture(GL_TEXTURE1, "weiti.png");
 
+		// initialize all camera variables
+		Camera::init();
+		glm::mat4 finalmat;
+
 		// main event loop
 		while (!glfwWindowShouldClose(window))
 		{
@@ -209,29 +180,14 @@ int main()
 			// Draw our first triangle
 			theProgram.Use();
 
-		//---// //---// //---// //---//
+			finalmat = Camera::update();
 
-			// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-			glm::mat4 Projection = glm::perspective(glm::radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
 
-			// Or, for an ortho camera :
-			//glm::mat4 Projection = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,0.0f,100.0f); // In world coordinates
-
-			// Camera matrix
-			glm::mat4 View = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-
-			// Model matrix : an identity matrix (model will be at the origin)
-			glm::mat4 Model = glm::mat4(1.0f);
-			// Our ModelViewProjection : multiplication of our 3 matrices
-			glm::mat4 mvp = Projection * View * Model;
-
-			GLuint MatrixID = glGetUniformLocation(theProgram.get_programID(), "MVP");
 
 			// Send our transformation to the currently bound shader, in the "MVP" uniform
 			// This is done in the main loop since each model will have a different MVP matrix (At least for the M part)
-			glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &mvp[0][0]);
-
-		//---// //---// //---// //---//
+			GLuint MatrixID = glGetUniformLocation(theProgram.get_programID(), "MVP");
+			glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &finalmat[0][0]);
 
 			glBindVertexArray(VAO);
 			glDrawElements(GL_TRIANGLES, _countof(indices), GL_UNSIGNED_INT, 0);
@@ -251,38 +207,4 @@ int main()
 	glfwTerminate();
 
 	return 0;
-}
-
-void mouse_callback(GLFWwindow* window, double xpos, double ypos)
-{
-	if (firstMouse)
-	{
-		lastX = xpos;
-		lastY = ypos;
-		firstMouse = false;
-	}
-
-	float xoffset = xpos - lastX;
-	float yoffset = lastY - ypos;
-	lastX = xpos;
-	lastY = ypos;
-
-	xoffset *= sensitivity;
-	yoffset *= sensitivity;
-
-	yaw += xoffset;
-	pitch += yoffset;
-
-	if (pitch > 89.0f)
-		pitch = 89.0f;
-	if (pitch < -89.0f)
-		pitch = -89.0f;
-
-	glm::vec3 direction;
-	direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-	direction.y = sin(glm::radians(pitch));
-	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-	cameraFront = glm::normalize(direction);
-
-	cout << yaw << endl;
 }
