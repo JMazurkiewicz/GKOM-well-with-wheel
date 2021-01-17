@@ -5,8 +5,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-class Camera
-{
+class Camera {
 public:
     static void init();
     static void mouseCallback(GLFWwindow* window, double xpos, double ypos);
@@ -36,9 +35,4 @@ private:
     static bool keyPressedD;
     static bool keyPressedSpace;
     static bool keyPressedCtrl;
-
-    static glm::mat4 Projection;
-    static glm::mat4 View;
-    static glm::mat4 Model;
-    static glm::mat4 mvp;
 };

@@ -1,9 +1,7 @@
-#include "Camera.h"
+#include "Camera.h"]
 
-#include <iostream>
-
-#define WIDTH 800
-#define HEIGHT 600
+constexpr auto WIDTH = 800;
+constexpr auto HEIGHT = 600;
 
 float Camera::lastX;
 float Camera::lastY;
@@ -23,91 +21,77 @@ bool Camera::keyPressedS;
 bool Camera::keyPressedD;
 bool Camera::keyPressedSpace;
 bool Camera::keyPressedCtrl;
-glm::mat4 Camera::Projection;
-glm::mat4 Camera::View;
-glm::mat4 Camera::Model;
-glm::mat4 Camera::mvp;
 
-void Camera::init()
-{
-    lastX = 800 / 2.0f;
-    lastY = 600 / 2.0f;
-    yaw = -90.0f;
-    pitch = 0.0f;
-    firstMouse = true;
+void Camera::init() {
+	lastX = 800 / 2.0f;
+	lastY = 600 / 2.0f;
+	yaw = -90.0f;
+	pitch = 0.0f;
+	firstMouse = true;
 
-    cameraPos = glm::vec3(0.0f, minHeight, 3.0f);
-    cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-    cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+	cameraPos = glm::vec3(0.0f, minHeight, 3.0f);
+	cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+	cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
-    keyPressedW = false;
-    keyPressedA = false;
-    keyPressedS = false;
-    keyPressedD = false;
-    keyPressedSpace = false;
-    keyPressedCtrl = false;
+	keyPressedW = false;
+	keyPressedA = false;
+	keyPressedS = false;
+	keyPressedD = false;
+	keyPressedSpace = false;
+	keyPressedCtrl = false;
 
 
 }
 
-void Camera::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
-{
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+void Camera::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode) {
+	if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
 
-	if (key == GLFW_KEY_W)
-	{
-		if (action == GLFW_RELEASE)
+	if(key == GLFW_KEY_W) {
+		if(action == GLFW_RELEASE)
 			keyPressedW = false;
 		else
 			keyPressedW = true;
 	}
-	
-	if (key == GLFW_KEY_S)
-	{
-		if (action == GLFW_RELEASE)
+
+	if(key == GLFW_KEY_S) {
+		if(action == GLFW_RELEASE)
 			keyPressedS = false;
 		else
 			keyPressedS = true;
 	}
 
-	if (key == GLFW_KEY_A)
-	{
-		if (action == GLFW_RELEASE)
+	if(key == GLFW_KEY_A) {
+		if(action == GLFW_RELEASE)
 			keyPressedA = false;
 		else
 			keyPressedA = true;
 	}
 
-	if (key == GLFW_KEY_D)
-	{
-		if (action == GLFW_RELEASE)
+	if(key == GLFW_KEY_D) {
+		if(action == GLFW_RELEASE)
 			keyPressedD = false;
 		else
 			keyPressedD = true;
 	}
 
-	if (key == GLFW_KEY_SPACE)
-	{
-		if (action == GLFW_RELEASE)
+	if(key == GLFW_KEY_SPACE) {
+		if(action == GLFW_RELEASE)
 			keyPressedSpace = false;
 		else
 			keyPressedSpace = true;
 	}
 
-	if (key == GLFW_KEY_LEFT_CONTROL)
-	{
-		if (action == GLFW_RELEASE)
+	if(key == GLFW_KEY_LEFT_CONTROL) {
+		if(action == GLFW_RELEASE)
 			keyPressedCtrl = false;
 		else
 			keyPressedCtrl = true;
 	}
 }
 
-void Camera::mouseCallback(GLFWwindow* window, double xpos, double ypos)
-{
-    if (firstMouse)
-	{
+void Camera::mouseCallback(GLFWwindow* window, double xpos, double ypos) {
+	if(firstMouse) {
 		lastX = xpos;
 		lastY = ypos;
 		firstMouse = false;
@@ -124,9 +108,9 @@ void Camera::mouseCallback(GLFWwindow* window, double xpos, double ypos)
 	yaw += xoffset;
 	pitch += yoffset;
 
-	if (pitch > 89.0f)
+	if(pitch > 89.0f)
 		pitch = 89.0f;
-	if (pitch < -89.0f)
+	if(pitch < -89.0f)
 		pitch = -89.0f;
 
 	glm::vec3 direction;
@@ -136,43 +120,36 @@ void Camera::mouseCallback(GLFWwindow* window, double xpos, double ypos)
 	cameraFront = glm::normalize(direction);
 }
 
-glm::mat4 Camera::update()
-{
-	if (keyPressedW == true)
+glm::mat4 Camera::update() {
+	if(keyPressedW)
 		cameraPos += cameraSpeed * cameraFront;
 
-	if (keyPressedS == true)
+	if(keyPressedS)
 		cameraPos -= cameraSpeed * cameraFront;
 
-	if (keyPressedA == true)
+	if(keyPressedA)
 		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
 
-	if (keyPressedD == true)
+	if(keyPressedD)
 		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
 
-	if (keyPressedSpace == true)
+	if(keyPressedSpace)
 		cameraPos += cameraUp * cameraSpeed;
 
-	if (keyPressedCtrl == true)
+	if(keyPressedCtrl)
 		cameraPos -= cameraUp * cameraSpeed;
 
 
-	if (cameraPos.y > maxHeight)
+	if(cameraPos.y > maxHeight)
 		cameraPos.y = maxHeight;
 
-	else if (cameraPos.y < minHeight)
+	else if(cameraPos.y < minHeight)
 		cameraPos.y = minHeight;
 
 
-    Projection = glm::perspective(glm::radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
-	View = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-    Model = glm::mat4(1.0f);
-    mvp = Projection * View * Model;
+	const glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
+	const glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+	const glm::mat4 model = glm::mat4(1.0f);
 
-	std::cout << cameraPos.x << ", " << cameraPos.y << ", " << cameraPos.z << '\n';
-
-	return mvp;
+	return projection * view * model;;
 }
-
-// GLuint MatrixID = glGetUniformLocation(theProgram.get_programID(), "MVP");
-// glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &mvp[0][0]);

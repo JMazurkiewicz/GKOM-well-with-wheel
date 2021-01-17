@@ -21,6 +21,7 @@ Scene::~Scene() {
 void Scene::start() {
 	do {
 		fpsLogger.log();
+		glClearColor(0.529, 0.807, 0.921, 0.9);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		view.draw();
