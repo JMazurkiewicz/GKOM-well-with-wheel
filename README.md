@@ -1,5 +1,9 @@
 # Studnia z kołowrotkiem
 
+## Algorytm generowania studni
+
+[LINK](docs/model-generator.md)
+
 ## Zdjęcie planowanej studni
 
 ![Studnia](docs/pics/studnia.png)

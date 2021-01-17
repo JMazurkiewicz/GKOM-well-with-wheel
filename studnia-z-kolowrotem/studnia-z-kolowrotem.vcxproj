@@ -86,9 +86,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src;$(SolutionDir)\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -106,6 +107,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -122,6 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,6 +139,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,11 +149,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\gl_05.cpp" />
-    <ClCompile Include="src\shprogram.cpp" />
+    <ClCompile Include="src\Graphics\MipmapTexture.cpp" />
+    <ClCompile Include="src\Graphics\Image.cpp" />
+    <ClCompile Include="src\Graphics\Shader.cpp" />
+    <ClCompile Include="src\LibraryExceptions\ShaderException.cpp" />
+    <ClCompile Include="src\LibraryExceptions\SoilException.cpp" />
+    <ClCompile Include="src\ModelGeneration\BrickGlModelGenerator.cpp" />
+    <ClCompile Include="src\ModelGeneration\WellGlModelGenerator.cpp" />
+    <ClCompile Include="src\Model\BrickGlModel.cpp" />
+    <ClCompile Include="src\Model\WellGlModel.cpp" />
+    <ClCompile Include="src\Model\WellModel.cpp" />
+    <ClCompile Include="src\Startup\Scene.cpp" />
+    <ClCompile Include="src\Startup\Main.cpp" />
+    <ClCompile Include="src\Startup\MainWindow.cpp" />
+    <ClCompile Include="src\System\FpsLogger.cpp" />
+    <ClCompile Include="src\System\Window.cpp" />
+    <ClCompile Include="src\View\BrickGlView.cpp" />
+    <ClCompile Include="src\View\WellGlView.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\shprogram.h" />
+    <ClInclude Include="src\Graphics\Image.h" />
+    <ClInclude Include="src\Graphics\MipmapTexture.h" />
+    <ClInclude Include="src\Graphics\Shader.h" />
+    <ClInclude Include="src\LibraryExceptions\LibraryException.h" />
+    <ClInclude Include="src\LibraryExceptions\ShaderException.h" />
+    <ClInclude Include="src\LibraryExceptions\SoilException.h" />
+    <ClInclude Include="src\ModelGeneration\BrickGlModelGenerator.h" />
+    <ClInclude Include="src\ModelGeneration\WellGlModelGenerator.h" />
+    <ClInclude Include="src\Model\BrickGlModel.h" />
+    <ClInclude Include="src\Model\WellGlModel.h" />
+    <ClInclude Include="src\Model\WellModel.h" />
+    <ClInclude Include="src\Startup\Scene.h" />
+    <ClInclude Include="src\Startup\MainWindow.h" />
+    <ClInclude Include="src\System\FpsLogger.h" />
+    <ClInclude Include="src\System\Window.h" />
+    <ClInclude Include="src\View\BrickGlView.h" />
+    <ClInclude Include="src\View\WellGlView.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="gl_05.frag" />
