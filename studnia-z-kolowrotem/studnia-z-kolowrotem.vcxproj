@@ -145,10 +145,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Controller\Camera.cpp" />
     <ClCompile Include="src\gl_05.cpp" />
     <ClCompile Include="src\shprogram.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Controller\Camera.h" />
     <ClInclude Include="src\shprogram.h" />
   </ItemGroup>
   <ItemGroup>
