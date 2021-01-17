@@ -5,6 +5,9 @@
 #include <glm/glm.hpp>
 #include <iostream>
 
+/**
+ * @brief OpenGL compatible brick model.
+ */
 class BrickGlModel {
 public:
 	using VertexArray = std::array<glm::vec3, 8>;
@@ -33,7 +36,7 @@ public:
 
 	const VertexArray& getVertexArray() const;
 
-	friend std::ostream& operator<<(std::ostream & stream, const BrickGlModel& model);
+	friend std::ostream& operator<<(std::ostream& stream, const BrickGlModel& model);
 
 private:
 	friend class BrickGlModelGenerator;

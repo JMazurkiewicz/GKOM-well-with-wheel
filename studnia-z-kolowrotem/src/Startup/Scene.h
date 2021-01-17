@@ -1,24 +1,24 @@
 #pragma once
 
-#include <fstream>
 #include "MainWindow.h"
 #include "Model/WellGlModel.h"
 #include "System/FpsLogger.h"
 #include "View/WellGlView.h"
 
-class Application {
+class Scene {
 public:
-	Application(MainWindow& window);
-	~Application();
+	Scene(MainWindow& window);
+	~Scene();
 
-	Application(const Application&) = delete;
-	Application& operator=(const Application&) = delete;
+	Scene(const Scene&) = delete;
+	Scene& operator=(const Scene&) = delete;
 
-	void run();
+	void start();
 
 private:
 	void prepare();
-	void prepareWellGlModel();
+	void prepareModels();
+	void printInfo() const;
 
 	bool shouldClose() const;
 

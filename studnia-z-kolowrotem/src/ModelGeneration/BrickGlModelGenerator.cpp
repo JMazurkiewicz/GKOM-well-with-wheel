@@ -2,8 +2,8 @@
 
 #include <cassert>
 #include <cmath>
+#include <glm/ext.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include "System/Numbers.h"
 
 BrickGlModelGenerator::BrickGlModelGenerator(const WellModel& model)
 	: brickHeight(model.getBrickHeight()), brickWidth(model.getBrickWidth()),
@@ -34,7 +34,7 @@ BrickGlModel BrickGlModelGenerator::generate() {
 }
 
 float BrickGlModelGenerator::calculateBrickLength(const WellModel& model) {
-	const float innerAngle = 2*Num::PI / model.getSideCount();
+	const float innerAngle = glm::two_pi<float>() / model.getSideCount();
 	return model.getInnerRadius() * std::sqrt(1 - 2*std::cos(innerAngle));
 }
 

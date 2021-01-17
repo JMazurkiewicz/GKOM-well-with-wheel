@@ -1,8 +1,12 @@
 #pragma once
 
 #include "BrickGlModel.h"
+#include <ostream>
 #include <vector>
 
+/**
+ * @brief OpenGL compatible well model.
+ */
 class WellGlModel {
 public:
 	WellGlModel() = default;
@@ -12,6 +16,8 @@ public:
 	WellGlModel& operator=(WellGlModel&&) = default;
 
 	void addBrick(BrickGlModel&& glModel);
+
+	friend std::ostream& operator<<(std::ostream& stream, const WellGlModel& model);
 
 private:
 	friend class WellGlView;

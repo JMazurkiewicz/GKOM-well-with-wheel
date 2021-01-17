@@ -3,33 +3,8 @@
 #include <algorithm>
 #include <cmath>
 
-namespace {
-	inline constexpr float DEFAULT_INNER_RADIUS = 10.0f;
-	inline constexpr float DEFAULT_BRICK_WIDTH = 2.0f;
-	inline constexpr float DEFAULT_BRICK_HEIGHT = 3.0f;
-	inline constexpr float DEFAULT_LAYER_ROTATION_ANGLE = 15.0f;
-
-	inline constexpr unsigned DEFAULT_SIDE_COUNT = 18;
-	inline constexpr unsigned DEFAULT_LAYER_COUNT = 10;
-
-	inline constexpr float INNER_RADIUS_LOWER_BOUND = 5.0f;
-	inline constexpr float INNER_RADIUS_UPPER_BOUND = 200.0f;
-
-	inline constexpr float BRICK_WIDTH_LOWER_BOUND = 2.0f;
-	inline constexpr float BRICK_WIDTH_UPPER_BOUND = 5.0f;
-
-	inline constexpr float BRICK_HEIGHT_LOWER_BOUND = 2.0f;
-	inline constexpr float BRICK_HEIGHT_UPPER_BOUND = 5.0f;
-
-	inline constexpr unsigned SIDE_COUNT_LOWER_BOUND = 4;
-	inline constexpr unsigned SIDE_COUNT_UPPER_BOUND = 32;
-
-	inline constexpr unsigned LAYER_COUNT_LOWER_BOUND = 4;
-	inline constexpr unsigned LAYER_COUNT_UPPER_BOUND = 32;
-}
-
 WellModel::WellModel():
-	basePoint{0, 0, 0},
+	basePoint{0.0f, 0.0f, 0.0f},
 	innerRadius{DEFAULT_INNER_RADIUS},
 	brickWidth{DEFAULT_BRICK_WIDTH},
 	brickHeight{DEFAULT_BRICK_HEIGHT},
@@ -41,7 +16,7 @@ glm::vec3 WellModel::getBasePoint() const {
 	return basePoint;
 }
 
-void WellModel::setBasePoint(const glm::f32vec3& newBasePoint) {
+void WellModel::setBasePoint(const glm::vec3& newBasePoint) {
 	basePoint = newBasePoint;
 }
 

@@ -107,6 +107,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -123,6 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,6 +139,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,7 +159,7 @@
     <ClCompile Include="src\Model\BrickGlModel.cpp" />
     <ClCompile Include="src\Model\WellGlModel.cpp" />
     <ClCompile Include="src\Model\WellModel.cpp" />
-    <ClCompile Include="src\Startup\Application.cpp" />
+    <ClCompile Include="src\Startup\Scene.cpp" />
     <ClCompile Include="src\Startup\Main.cpp" />
     <ClCompile Include="src\Startup\MainWindow.cpp" />
     <ClCompile Include="src\System\FpsLogger.cpp" />
@@ -176,10 +179,9 @@
     <ClInclude Include="src\Model\BrickGlModel.h" />
     <ClInclude Include="src\Model\WellGlModel.h" />
     <ClInclude Include="src\Model\WellModel.h" />
-    <ClInclude Include="src\Startup\Application.h" />
+    <ClInclude Include="src\Startup\Scene.h" />
     <ClInclude Include="src\Startup\MainWindow.h" />
     <ClInclude Include="src\System\FpsLogger.h" />
-    <ClInclude Include="src\System\Numbers.h" />
     <ClInclude Include="src\System\Window.h" />
     <ClInclude Include="src\View\BrickGlView.h" />
     <ClInclude Include="src\View\WellGlView.h" />

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <GL/glew.h>
 #include <memory>
 
 class BrickGlModel;
@@ -10,13 +11,17 @@ public:
 	explicit BrickGlView(const BrickGlModel& model);
 	~BrickGlView();
 
-	BrickGlView(BrickGlView&&) = default;
-	BrickGlView& operator=(BrickGlView&&) = default;
+	BrickGlView(const BrickGlView&) = delete;
+	BrickGlView& operator=(const BrickGlView&) = delete;
 
 	void setModel(const BrickGlModel& newModel);
 	void draw() const;
 
+	friend std::ostream& operator<<(std::ostream& stream, const BrickGlView& view);
+
 private:
-	struct State;
-	std::unique_ptr<State> state;
+	const BrickGlModel* model;
+
+	GLuint buffer;
+	GLuint elementBuffer;
 };
