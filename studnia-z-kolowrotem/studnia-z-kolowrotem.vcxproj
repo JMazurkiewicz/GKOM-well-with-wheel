@@ -155,11 +155,13 @@
     <ClCompile Include="src\Graphics\Shader.cpp" />
     <ClCompile Include="src\LibraryExceptions\ShaderException.cpp" />
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp" />
-    <ClCompile Include="src\ModelGeneration\BracketGlModelGenerator.cpp" />
+    <ClCompile Include="src\ModelGeneration\CylinderGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\EnvironmentGlModelGenerator.cpp" />
+    <ClCompile Include="src\ModelGeneration\GeneratorBase.cpp" />
+    <ClCompile Include="src\ModelGeneration\SmoothShapeGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGlModelGenerator.cpp" />
-    <ClCompile Include="src\Model\EnvironmentGlModel.cpp" />
     <ClCompile Include="src\Model\EnvironmentModel.cpp" />
+    <ClCompile Include="src\Model\GlModel.cpp" />
     <ClCompile Include="src\Model\WellGlModel.cpp" />
     <ClCompile Include="src\Model\WellModel.cpp" />
     <ClCompile Include="src\Startup\Scene.cpp" />
@@ -167,6 +169,7 @@
     <ClCompile Include="src\Startup\MainWindow.cpp" />
     <ClCompile Include="src\System\Window.cpp" />
     <ClCompile Include="src\View\EnvironmentGlView.cpp" />
+    <ClCompile Include="src\View\GlView.cpp" />
     <ClCompile Include="src\View\WellGlView.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -177,17 +180,22 @@
     <ClInclude Include="src\LibraryExceptions\LibraryException.h" />
     <ClInclude Include="src\LibraryExceptions\ShaderException.h" />
     <ClInclude Include="src\LibraryExceptions\SoilException.h" />
-    <ClInclude Include="src\ModelGeneration\BracketGlModelGenerator.h" />
+    <ClInclude Include="src\ModelGeneration\CylinderGenerator.h" />
     <ClInclude Include="src\ModelGeneration\EnvironmentGlModelGenerator.h" />
+    <ClInclude Include="src\ModelGeneration\GeneratorBase.h" />
+    <ClInclude Include="src\ModelGeneration\PlaneGenerator.h" />
+    <ClInclude Include="src\ModelGeneration\SmoothShapeGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGlModelGenerator.h" />
     <ClInclude Include="src\Model\EnvironmentGlModel.h" />
     <ClInclude Include="src\Model\EnvironmentModel.h" />
+    <ClInclude Include="src\Model\GlModel.h" />
     <ClInclude Include="src\Model\WellGlModel.h" />
     <ClInclude Include="src\Model\WellModel.h" />
     <ClInclude Include="src\Startup\Scene.h" />
     <ClInclude Include="src\Startup\MainWindow.h" />
     <ClInclude Include="src\System\Window.h" />
     <ClInclude Include="src\View\EnvironmentGlView.h" />
+    <ClInclude Include="src\View\GlView.h" />
     <ClInclude Include="src\View\WellGlView.h" />
   </ItemGroup>
   <ItemGroup>

@@ -56,7 +56,3 @@ void WellGlView::draw() {
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(2);
 }
-
-std::ostream& operator<<(std::ostream& stream, const WellGlView& view) {
-	return stream << "[well-gl-view:" << &view << "]";
-}

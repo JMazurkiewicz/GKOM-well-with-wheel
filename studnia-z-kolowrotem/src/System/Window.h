@@ -12,6 +12,7 @@ public:
 	};
 
 	explicit Window(int width, int height, const char* title, Style style = NONE);
+	~Window();
 	
 	Window(const Window&) = delete;
 	Window& operator=(const Window&) = delete;
@@ -19,8 +20,6 @@ public:
 	int getWidth() const noexcept;
 	int getHeight() const noexcept;
 	GLFWwindow* getHandle() const;
-
-	~Window();
 
 	bool shouldClose() const;
 	void swapBuffers();

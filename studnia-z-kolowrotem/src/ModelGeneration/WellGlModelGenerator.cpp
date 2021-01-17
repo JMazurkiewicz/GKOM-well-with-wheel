@@ -4,7 +4,7 @@
 #include <glm/ext.hpp>
 
 WellGlModelGenerator::WellGlModelGenerator(const WellModel& basicModel)
-	: basicModel{basicModel}, bracketGenerator{basicModel}, sampleRate{DEFAULT_SAMPLE_RATE} {
+	: basicModel{basicModel}, sampleRate{DEFAULT_SAMPLE_RATE} {
 	setupVariables();
 }
 
@@ -20,7 +20,7 @@ WellGlModel WellGlModelGenerator::generate() {
 }
 
 void WellGlModelGenerator::setupVariables() {
-	bracketGenerator.setSampleRate(sampleRate);
+	cylinderGenerator.setSampleRate(sampleRate);
 
 	innerAngle = glm::radians(360.0f / sampleRate);
 	lowerInnerOffset = 0;
@@ -29,7 +29,7 @@ void WellGlModelGenerator::setupVariables() {
 	higherOuterOffset = higherInnerOffset + sampleRate;
 
 	leftBracketOffset = higherOuterOffset + sampleRate;
-	rightBracketOffset = leftBracketOffset + bracketGenerator.getModelOffset();
+	rightBracketOffset = leftBracketOffset + cylinderGenerator.getVertexCount();
 }
 
 void WellGlModelGenerator::createVertices() {
@@ -89,55 +89,27 @@ void WellGlModelGenerator::connectOuterVertices() {
 		indices.push_back(index + lowerInnerOffset);
 		indices.push_back(next + higherInnerOffset);
 		indices.push_back(next + lowerInnerOffset);
-
 		calculateNormals(index + lowerInnerOffset, next + higherInnerOffset, next + lowerInnerOffset);
 	
 		indices.push_back(index + lowerInnerOffset);
 		indices.push_back(next + higherInnerOffset);
 		indices.push_back(index + higherInnerOffset);
-
 		calculateNormals(index + lowerInnerOffset, next + higherInnerOffset, index + higherInnerOffset);
 	}
 }
 
 void WellGlModelGenerator::connectInnerVertices() {
-
-	bool tryOnce = true;
 	for(unsigned index = 0; index < sampleRate; ++index) {
 		const unsigned next = nextIndex(index);
-
-		
 
 		indices.push_back(index + lowerOuterOffset);
 		indices.push_back(next + higherOuterOffset);
 		indices.push_back(next + lowerOuterOffset);
-
 		calculateNormals(index + lowerOuterOffset, next + higherOuterOffset, next + lowerOuterOffset);
-
-		/*if (tryOnce) {
-			std::cout << vertices[index + lowerOuterOffset].x << "  " << vertices[index + lowerOuterOffset].y << "  " << vertices[index + lowerOuterOffset].z << std::endl;
-
-			std::cout << vertices[next + higherOuterOffset].x << "  " << vertices[next + higherOuterOffset].y << "  " << vertices[next + higherOuterOffset].z << std::endl;
-
-			std::cout << vertices[next + lowerOuterOffset].x << "  " << vertices[next + lowerOuterOffset].y << "  " << vertices[next + lowerOuterOffset].z << std::endl;
-
-			
-
-			std::cout << edge1.x << "  " << edge1.y << "  " << edge1.z << std::endl;
-
-			std::cout << edge2.x << "  " << edge2.y << "  " << edge2.z << std::endl;
-
-			normals.push_back(glm::normalize(glm::cross(edge1, edge2)));
-
-			std::cout << normals[0].x << "  " << normals[0].y << "  " << normals[0].z << std::endl;
-
-			tryOnce = false;
-		}*/
 
 		indices.push_back(index + lowerOuterOffset);
 		indices.push_back(next + higherOuterOffset);
 		indices.push_back(index + higherOuterOffset);
-
 		calculateNormals(index + lowerOuterOffset, next + higherOuterOffset, index + higherOuterOffset);
 	}
 }
@@ -170,8 +142,11 @@ unsigned WellGlModelGenerator::nextIndex(unsigned index) const {
 
 
 void WellGlModelGenerator::createBrackets() {
+	cylinderGenerator.setRadius(basicModel.getBracketRadius());
+	cylinderGenerator.setHeight(basicModel.getHeight() + basicModel.getBracketHeight());
+
 	const glm::vec3 translation{
-		basicModel.getInnerRadius() - basicModel.getBracketRadius() / 2.0,
+		basicModel.getInnerRadius() - basicModel.getBracketRadius(),
 		0.0f, 0.0
 	};
 	createBracketModel(-translation, leftBracketOffset);
@@ -179,10 +154,10 @@ void WellGlModelGenerator::createBrackets() {
 }
 
 void WellGlModelGenerator::createBracketModel(const glm::vec3& translation, unsigned modelOffset) {
-	bracketGenerator.setModelOffset(modelOffset);
-	bracketGenerator.setFinalTranslationVector(translation);
+	cylinderGenerator.setArrayOffset(modelOffset);
+	cylinderGenerator.setTransformation(glm::translate(translation));
 
-	auto [newVertices, newIndices] = bracketGenerator.generate();
+	auto [newVertices, newIndices] = cylinderGenerator.generateModel();
 
 	vertices.insert(vertices.end(), newVertices.begin(), newVertices.end());
 	indices.insert(indices.end(), newIndices.begin(), newIndices.end());

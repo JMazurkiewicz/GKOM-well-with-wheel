@@ -1,6 +1,6 @@
 #pragma once
 
-#include "BracketGlModelGenerator.h"
+#include "CylinderGenerator.h"
 #include "Model/WellGlModel.h"
 #include "Model/WellModel.h"
 
@@ -42,7 +42,7 @@ private:
 	void createBracketModel(const glm::vec3& translation, unsigned modelOffset);
 
 	const WellModel& basicModel;
-	BracketGlModelGeneator bracketGenerator;
+	CylinderGenerator cylinderGenerator;
 
 	unsigned sampleRate;
 	WellGlModel::Vertices vertices;

@@ -7,6 +7,7 @@ class MipmapTexture {
 public:
 	MipmapTexture();
 	explicit MipmapTexture(GLuint id, const Image& image);
+	~MipmapTexture();
 
 	explicit MipmapTexture(GLuint id, const std::string& path);
 	explicit MipmapTexture(GLuint id, const char* path);

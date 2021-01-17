@@ -82,19 +82,28 @@
     <ClCompile Include="src\Controler\Camera.cpp">
       <Filter>Sources\Controler</Filter>
     </ClCompile>
-    <ClCompile Include="src\ModelGeneration\BracketGlModelGenerator.cpp">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClCompile>
     <ClCompile Include="src\Model\EnvironmentModel.cpp">
-      <Filter>Sources\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Model\EnvironmentGlModel.cpp">
       <Filter>Sources\Model</Filter>
     </ClCompile>
     <ClCompile Include="src\View\EnvironmentGlView.cpp">
       <Filter>Sources\View</Filter>
     </ClCompile>
     <ClCompile Include="src\ModelGeneration\EnvironmentGlModelGenerator.cpp">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\CylinderGenerator.cpp">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Model\GlModel.cpp">
+      <Filter>Sources\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\View\GlView.cpp">
+      <Filter>Sources\View</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\GeneratorBase.cpp">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\SmoothShapeGenerator.cpp">
       <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
   </ItemGroup>
@@ -141,9 +150,6 @@
     <ClInclude Include="src\Controler\Camera.h">
       <Filter>Sources\Controler</Filter>
     </ClInclude>
-    <ClInclude Include="src\ModelGeneration\BracketGlModelGenerator.h">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClInclude>
     <ClInclude Include="src\Model\EnvironmentModel.h">
       <Filter>Sources\Model</Filter>
     </ClInclude>
@@ -155,6 +161,24 @@
     </ClInclude>
     <ClInclude Include="src\View\EnvironmentGlView.h">
       <Filter>Sources\View</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\CylinderGenerator.h">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\View\GlView.h">
+      <Filter>Sources\View</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Model\GlModel.h">
+      <Filter>Sources\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\PlaneGenerator.h">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\GeneratorBase.h">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\SmoothShapeGenerator.h">
+      <Filter>Sources\ModelGeneration</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

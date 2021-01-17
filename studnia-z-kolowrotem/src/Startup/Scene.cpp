@@ -13,37 +13,8 @@ namespace this_thread = std::this_thread;
 using namespace std::chrono_literals;
 
 Scene::Scene(MainWindow& window)
-	: window{window}, mainShader{"assets/shaders/gl_05.vert", "assets/shaders/gl_05.frag"}, vao{0} {
-	prepare();
-}
-
-Scene::~Scene() {
-	glDeleteVertexArrays(1, &vao);
-}
-
-void Scene::start() {
-	glm::mat4 look{1};
-	
-	do {
-		clear();
-
-		glBindVertexArray(vao);
-		drawObjects();
-		updateCamera();
-
-		GLuint lookLoc = glGetUniformLocation(mainShader.getProgramId(), "model");
-		glUniformMatrix4fv(lookLoc, 1, GL_FALSE, glm::value_ptr(look));
-		
-		mainShader.useProgram();
-		glBindVertexArray(0);
-
-		window.swapBuffers();
-		this_thread::sleep_for(10ms); // @todo fix framerate
-		glfwPollEvents();
-	} while(!shouldClose());
-}
-
-void Scene::prepare() {
+: window{window}, mainShader{"assets/shaders/gl_05.vert", "assets/shaders/gl_05.frag"}, vao{0}
+{	
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 
@@ -54,14 +25,39 @@ void Scene::prepare() {
 	glBindVertexArray(0);
 }
 
+Scene::~Scene() {
+	glDeleteVertexArrays(1, &vao);
+}
+
+void Scene::start() {
+	//glm::mat4 look{1};
+	
+	do {
+		clear();
+
+		glBindVertexArray(vao);
+		drawObjects();
+		updateCamera();
+
+		//GLuint lookLoc = glGetUniformLocation(mainShader.getProgramId(), "model");
+		//glUniformMatrix4fv(lookLoc, 1, GL_FALSE, glm::value_ptr(look));
+		
+		mainShader.useProgram();
+		glBindVertexArray(0);
+
+		window.swapBuffers();
+		this_thread::sleep_for(10ms);
+		glfwPollEvents();
+	} while(!shouldClose());
+}
+
 void Scene::prepareWellModels() {
 	WellModel basicModel{};
 	WellGlModelGenerator glModelGenerator{basicModel};
-	glModelGenerator.setSampleRate(8);
+	glModelGenerator.setSampleRate(64);
 
 	model = glModelGenerator.generate();
 	view.setModel(model);
-	std::cout << model << '\n' << view << '\n';
 }
 
 void Scene::prepareEnvironmentModel() {
@@ -79,7 +75,7 @@ void Scene::clear() {
 void Scene::updateCamera() {
 	glm::mat4 cameraMatrix = Camera::update();
 	GLuint MatrixID = glGetUniformLocation(mainShader.getProgramId(), "MVP");
-	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &cameraMatrix[0][0]);
+	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, glm::value_ptr(cameraMatrix));
 }
 
 void Scene::drawObjects() {

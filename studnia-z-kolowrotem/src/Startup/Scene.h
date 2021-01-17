@@ -4,12 +4,12 @@
 #include "MainWindow.h"
 #include "Model/EnvironmentGlModel.h"
 #include "Model/WellGlModel.h"
-#include "View/EnvironmentGlView.h"
+#include "View/GlView.h"
 #include "View/WellGlView.h"
 
 class Scene {
 public:
-	Scene(MainWindow& window);
+	explicit Scene(MainWindow& window);
 	~Scene();
 
 	Scene(const Scene&) = delete;
@@ -18,7 +18,6 @@ public:
 	void start();
 
 private:
-	void prepare();
 	void prepareWellModels();
 	void prepareEnvironmentModel();
 
@@ -34,7 +33,7 @@ private:
 	GLuint vao;
 
 	EnvironmentGlModel environmentModel;
-	EnvironmentGlView environmentView;
+	GlView environmentView;
 
 	WellGlModel model;
 	WellGlView view;

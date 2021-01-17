@@ -17,8 +17,6 @@ public:
 	void setModel(const WellGlModel& newModel);
 	void draw();
 
-	friend std::ostream& operator<<(std::ostream& stream, const WellGlView& view);
-
 private:
 	GLuint vbo;
 	GLuint ebo;

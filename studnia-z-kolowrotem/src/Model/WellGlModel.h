@@ -25,8 +25,6 @@ public:
 	const Indices& getIndices() const;
 	const Normals& getNormals() const;
 
-	friend std::ostream& operator<<(std::ostream& stream, const WellGlModel& model);
-
 private:
 	Vertices vertices;
 	Indices indices;

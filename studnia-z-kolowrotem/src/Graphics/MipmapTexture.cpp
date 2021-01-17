@@ -14,6 +14,10 @@ MipmapTexture::MipmapTexture(GLuint id, const Image& image) : MipmapTexture() {
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
+MipmapTexture::~MipmapTexture() {
+	glDeleteTextures(1, &handle);
+}
+
 MipmapTexture::MipmapTexture(GLuint id, const std::string& path)
 	: MipmapTexture(id, Image{path}) { }
 

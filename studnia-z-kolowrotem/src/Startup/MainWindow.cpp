@@ -7,6 +7,6 @@ namespace {
 }
 
 MainWindow::MainWindow() : Window(WIDTH, HEIGHT, TITLE) {
-	glViewport(0, 0, WIDTH, HEIGHT);
+	glViewport(0, 0, getWidth(), getHeight());
 	glfwSetInputMode(getHandle(), GLFW_STICKY_KEYS, GL_TRUE);
 }

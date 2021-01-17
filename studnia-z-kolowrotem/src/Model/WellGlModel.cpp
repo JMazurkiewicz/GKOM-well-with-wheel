@@ -14,7 +14,3 @@ const WellGlModel::Indices& WellGlModel::getIndices() const {
 const WellGlModel::Normals& WellGlModel::getNormals() const {
 	return normals;
 }
-
-std::ostream& operator<<(std::ostream& stream, const WellGlModel& model) {
-	return stream << "[well-gl-model:" << &model << ']';
-}
