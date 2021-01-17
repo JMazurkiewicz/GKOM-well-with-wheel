@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Controler\Camera.cpp" />
     <ClCompile Include="src\Graphics\MipmapTexture.cpp" />
     <ClCompile Include="src\Graphics\Image.cpp" />
     <ClCompile Include="src\Graphics\Shader.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="src\View\WellGlView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Controler\Camera.h" />
     <ClInclude Include="src\Graphics\Image.h" />
     <ClInclude Include="src\Graphics\MipmapTexture.h" />
     <ClInclude Include="src\Graphics\Shader.h" />

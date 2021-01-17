@@ -35,6 +35,9 @@
     <Filter Include="Sources\View">
       <UniqueIdentifier>{d26ef3ea-52f5-4448-8ac3-001714d714e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Controler">
+      <UniqueIdentifier>{adf09924-b150-4454-a6f9-1207bdcfac5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp">
@@ -88,6 +91,9 @@
     <ClCompile Include="src\Startup\Scene.cpp">
       <Filter>Sources\Startup</Filter>
     </ClCompile>
+    <ClCompile Include="src\Controler\Camera.cpp">
+      <Filter>Sources\Controler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\View\WellGlView.h">
@@ -140,6 +146,9 @@
     </ClInclude>
     <ClInclude Include="src\Startup\Scene.h">
       <Filter>Sources\Startup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Controler\Camera.h">
+      <Filter>Sources\Controler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

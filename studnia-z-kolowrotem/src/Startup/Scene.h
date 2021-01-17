@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Graphics/Shader.h"
 #include "MainWindow.h"
 #include "Model/WellGlModel.h"
 #include "System/FpsLogger.h"
@@ -18,11 +19,15 @@ public:
 private:
 	void prepare();
 	void prepareModels();
+	void prepareCamera();
 	void printInfo() const;
+
+	void updateCamera();
 
 	bool shouldClose() const;
 
 	MainWindow& window;
+	Shader mainShader;
 
 	GLuint vao;
 	FpsLogger fpsLogger;
