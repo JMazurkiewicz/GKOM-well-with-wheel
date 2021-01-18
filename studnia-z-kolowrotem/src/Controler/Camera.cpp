@@ -3,15 +3,15 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 
-constexpr auto WIDTH = 800;
-constexpr auto HEIGHT = 600;
+float Camera::width;
+float Camera::height;
 
 float Camera::lastX;
 float Camera::lastY;
 float Camera::yaw;
 float Camera::pitch;
 bool Camera::firstMouse;
-const float Camera::cameraSpeed = 0.001f;
+const float Camera::cameraSpeed = 0.1f;
 const float Camera::sensitivity = 0.3f;
 const float Camera::minHeight = 0.2f;
 const float Camera::maxHeight = 5.0f;
@@ -29,6 +29,9 @@ void Camera::init(Window& window) {
 	glfwSetKeyCallback(window.getHandle(), Camera::keyCallback);
 	glfwSetInputMode(window.getHandle(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetCursorPosCallback(window.getHandle(), Camera::mouseCallback);
+
+	width = window.getWidth();
+	height = window.getHeight();
 
 	lastX = 800 / 2.0f;
 	lastY = 600 / 2.0f;
@@ -149,7 +152,7 @@ glm::mat4 Camera::update() {
 		cameraPos.y = minHeight;
 
 
-	const glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
+	const glm::mat4 projection = glm::perspective(glm::radians(45.0f), width/height, 0.1f, 100.0f);
 	const glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 	const glm::mat4 model = glm::mat4(1.0f);
 

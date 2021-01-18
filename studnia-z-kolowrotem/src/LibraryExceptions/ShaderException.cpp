@@ -35,7 +35,7 @@ std::string ShaderException::getShaderInfoLog(GLuint shaderId) {
 	GLint logLength = 0;
 	glGetShaderiv(shaderId, GL_INFO_LOG_LENGTH, &logLength);
 	if(logLength == 0) {
-		return "no error";
+		return "no info available";
 	}
 
 	std::vector<char> log(logLength);
@@ -47,7 +47,7 @@ std::string ShaderException::getProgramInfoLog(GLuint programId) {
 	GLint logLength = 0;
 	glGetShaderiv(programId, GL_INFO_LOG_LENGTH, &logLength);
 	if(logLength == 0) {
-		return "no error";
+		return "no info available";
 	}
 
 	std::vector<char> log(logLength);

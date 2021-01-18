@@ -33,7 +33,7 @@ void WellGlModelGenerator::createVertices() {
 	createHigherOuterVertices();
 	connectOuterVertices();
 	connectInnerVertices();
-	//connectTopVertices();
+	connectTopVertices();
 }
 
 void WellGlModelGenerator::createLowerInnerVertices() {

@@ -7,13 +7,12 @@ layout (location = 2) in vec2 texCoord;
 out vec3 vecColor;
 out vec2 TexCoord;
   
-uniform mat4 transform;
+uniform mat4 model;
 uniform mat4 MVP;
-
 
 void main()
 {
-    gl_Position = MVP * transform * vec4(position, 1.0f);
+    gl_Position = MVP * model * vec4(position, 1.0f);
     vecColor = color;
     TexCoord = texCoord;
-} 
+}

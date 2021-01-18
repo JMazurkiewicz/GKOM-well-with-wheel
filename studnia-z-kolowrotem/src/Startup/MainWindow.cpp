@@ -1,8 +1,8 @@
 #include "MainWindow.h"
 
 namespace {
-	constexpr int WIDTH = 800;
-	constexpr int HEIGHT = 600;
+	constexpr int WIDTH = 1000;
+	constexpr int HEIGHT = 1000;
 	constexpr char TITLE[] = "Studnia z kolowrotkiem";
 }
 

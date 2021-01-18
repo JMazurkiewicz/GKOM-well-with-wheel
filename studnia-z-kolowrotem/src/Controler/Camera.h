@@ -13,6 +13,9 @@ private:
     static void mouseCallback(GLFWwindow* window, double xpos, double ypos);
     static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
     
+    static float width;
+    static float height;
+
     static float lastX;
     static float lastY;
     static float yaw;

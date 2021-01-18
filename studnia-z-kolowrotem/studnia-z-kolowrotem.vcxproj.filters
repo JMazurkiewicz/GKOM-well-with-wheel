@@ -23,9 +23,6 @@
     <Filter Include="Sources\LibraryExceptions">
       <UniqueIdentifier>{27ce10f0-4539-4762-8481-8285a6b631d6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\ModelGeneration">
-      <UniqueIdentifier>{332c3fb3-055d-4b35-b9f7-d4d478d6a091}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sources\Startup">
       <UniqueIdentifier>{8b417cb7-c684-4037-ae5f-455f7307ffd2}</UniqueIdentifier>
     </Filter>
@@ -37,6 +34,9 @@
     </Filter>
     <Filter Include="Sources\Controler">
       <UniqueIdentifier>{adf09924-b150-4454-a6f9-1207bdcfac5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\ModelGeneration">
+      <UniqueIdentifier>{332c3fb3-055d-4b35-b9f7-d4d478d6a091}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -67,12 +67,6 @@
     <ClCompile Include="src\Startup\Main.cpp">
       <Filter>Sources\Startup</Filter>
     </ClCompile>
-    <ClCompile Include="src\Model\BrickGlModel.cpp">
-      <Filter>Sources\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="src\View\BrickGlView.cpp">
-      <Filter>Sources\View</Filter>
-    </ClCompile>
     <ClCompile Include="src\Startup\MainWindow.cpp">
       <Filter>Sources\Startup</Filter>
     </ClCompile>
@@ -81,9 +75,6 @@
     </ClCompile>
     <ClCompile Include="src\Model\WellGlModel.cpp">
       <Filter>Sources\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ModelGeneration\BrickGlModelGenerator.cpp">
-      <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
     <ClCompile Include="src\Startup\Scene.cpp">
       <Filter>Sources\Startup</Filter>
@@ -96,23 +87,14 @@
     <ClInclude Include="src\View\WellGlView.h">
       <Filter>Sources\View</Filter>
     </ClInclude>
-    <ClInclude Include="src\View\BrickGlView.h">
-      <Filter>Sources\View</Filter>
-    </ClInclude>
     <ClInclude Include="src\System\Window.h">
       <Filter>Sources\System</Filter>
     </ClInclude>
     <ClInclude Include="src\Startup\MainWindow.h">
       <Filter>Sources\Startup</Filter>
     </ClInclude>
-    <ClInclude Include="src\ModelGeneration\BrickGlModelGenerator.h">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClInclude>
     <ClInclude Include="src\ModelGeneration\WellGlModelGenerator.h">
       <Filter>Sources\ModelGeneration</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Model\BrickGlModel.h">
-      <Filter>Sources\Model</Filter>
     </ClInclude>
     <ClInclude Include="src\Model\WellGlModel.h">
       <Filter>Sources\Model</Filter>
@@ -146,19 +128,19 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="gl_05.vert">
-      <Filter>Assets\Shaders</Filter>
-    </None>
-    <None Include="gl_05.frag">
-      <Filter>Assets\Shaders</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="weiti.png">
       <Filter>Assets\Textures</Filter>
     </Image>
     <Image Include="iipw.png">
       <Filter>Assets\Textures</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\shaders\gl_05.frag">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="assets\shaders\gl_05.vert">
+      <Filter>Assets\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

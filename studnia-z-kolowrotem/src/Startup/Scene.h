@@ -20,8 +20,8 @@ private:
 	void prepareModels();
 
 	void clear();
-	void drawObjects();
 	void updateCamera();
+	void drawObjects();
 
 	bool shouldClose() const;
 

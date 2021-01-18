@@ -17,7 +17,7 @@ WellGlView::~WellGlView() {
 }
 
 void WellGlView::setModel(const WellGlModel& newModel) {
-	model = &newModel; // @todo Konieczne?
+	model = &newModel;
 
 	using Vertices = WellGlModel::Vertices;
 	const Vertices& vertices = model->getVertices();

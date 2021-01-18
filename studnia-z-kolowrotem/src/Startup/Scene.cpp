@@ -11,7 +11,7 @@ namespace this_thread = std::this_thread;
 using namespace std::chrono_literals;
 
 Scene::Scene(MainWindow& window)
-	: window{window}, mainShader{"gl_05.vert", "gl_05.frag"}, vao{0} {
+	: window{window}, mainShader{"assets/shaders/gl_05.vert", "assets/shaders/gl_05.frag"}, vao{0} {
 	prepare();
 }
 
@@ -20,10 +20,22 @@ Scene::~Scene() {
 }
 
 void Scene::start() {
+	glm::mat4 look{
+	1		
+	};
+	
 	do {
 		clear();
+
+		glBindVertexArray(vao);
 		drawObjects();
 		updateCamera();
+
+		GLuint lookLoc = glGetUniformLocation(mainShader.getProgramId(), "model");
+		glUniformMatrix4fv(lookLoc, 1, GL_FALSE, glm::value_ptr(look));
+		
+		mainShader.useProgram();
+		glBindVertexArray(0);
 
 		window.swapBuffers();
 		this_thread::sleep_for(10ms); // @todo fix framerate
@@ -45,6 +57,7 @@ void Scene::prepareModels() {
 	WellModel basicModel{};
 	basicModel.setInnerRadius(0.2f);
 	basicModel.setOuterRadius(0.8f);
+	basicModel.setHeight(0.8f);
 
 	WellGlModelGenerator glModelGenerator{basicModel};
 	glModelGenerator.setSampleRate(16);
@@ -59,16 +72,14 @@ void Scene::clear() {
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void Scene::drawObjects() {
-	glBindVertexArray(vao);
-	view.draw();
-	glBindVertexArray(0);
-}
-
 void Scene::updateCamera() {
 	glm::mat4 cameraMatrix = Camera::update();
 	GLuint MatrixID = glGetUniformLocation(mainShader.getProgramId(), "MVP");
-	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, glm::value_ptr(cameraMatrix));
+	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &cameraMatrix[0][0]);
+}
+
+void Scene::drawObjects() {
+	view.draw();
 }
 
 bool Scene::shouldClose() const {

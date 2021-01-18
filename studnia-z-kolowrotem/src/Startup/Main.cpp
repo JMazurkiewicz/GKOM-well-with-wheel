@@ -1,10 +1,8 @@
-#include "Scene.h"
-#include <filesystem>
 #include <iostream>
+#include "LibraryExceptions/ShaderException.h"
 #include "MainWindow.h"
+#include "Scene.h"
 #include <typeinfo>
-
-namespace filesystem = std::filesystem;
 
 namespace {
 	void handleUnexpectedException(const std::exception& e) {
@@ -16,6 +14,13 @@ namespace {
 		}
 
 		std::cerr << "  exception type name: \"" << typeid(e).name() << "\"\n";
+	}
+
+	void handleShaderException(const ShaderException& e) {
+		std::cerr << "Unexpected shader exception:\n"
+			"  what(): \"" << e.what() << "\"\n"
+			"  id: " << e.getAssociatedId() << "\n"
+			"  situation: " << e.getSituation() << '\n';
 	}
 
 	void glfwErrorCallback(int errorCode, const char* description) {
@@ -43,12 +48,12 @@ int main() {
 			return EXIT_FAILURE;
 		}
 
-		std::cerr << "program info:\n"
-			"  current path: " << filesystem::current_path() << '\n';
-
 		Scene scene{window};
 		scene.start();
 
+	} catch(const ShaderException& e) {
+		handleShaderException(e);
+		return EXIT_FAILURE;
 	} catch(const std::exception& e) {
 		handleUnexpectedException(e);
 		return EXIT_FAILURE;

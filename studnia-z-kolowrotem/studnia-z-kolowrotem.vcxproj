@@ -181,12 +181,12 @@
     <ClInclude Include="src\View\WellGlView.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="gl_05.frag" />
-    <None Include="gl_05.vert" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="iipw.png" />
     <Image Include="weiti.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\shaders\gl_05.frag" />
+    <None Include="assets\shaders\gl_05.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
