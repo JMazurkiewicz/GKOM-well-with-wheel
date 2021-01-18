@@ -55,7 +55,7 @@ void Scene::prepare() {
 
 void Scene::prepareModels() {
 	WellModel basicModel{};
-	basicModel.setInnerRadius(0.2f);
+	basicModel.setInnerRadius(0.6f);
 	basicModel.setOuterRadius(0.8f);
 	basicModel.setHeight(0.8f);
 

@@ -5,7 +5,9 @@
 #include <iostream>
 
 WellGlModelGenerator::WellGlModelGenerator(const WellModel& basicModel)
-	: basicModel{basicModel}, sampleRate{DEFAULT_SAMPLE_RATE} { }
+	: basicModel{basicModel}, sampleRate{DEFAULT_SAMPLE_RATE} {
+	setupVariables();
+}
 
 void WellGlModelGenerator::setSampleRate(unsigned newSampleRate) {
 	sampleRate = newSampleRate;
@@ -47,19 +49,20 @@ void WellGlModelGenerator::createLowerOuterVertices() {
 }
 
 void WellGlModelGenerator::createHigherInnerVertices() {
-	glm::vec3 start{basicModel.getInnerRadius(), 0.0f, basicModel.getHeight()};
+	glm::vec3 start{basicModel.getInnerRadius(), basicModel.getHeight(), 0.0f};
 	createCircleFrom(start);
 }
 
 void WellGlModelGenerator::createHigherOuterVertices() {
-	glm::vec3 start{basicModel.getOuterRadius(), 0.0f, basicModel.getHeight()};
+	glm::vec3 start{basicModel.getOuterRadius(), basicModel.getHeight(), 0.0f};
+	createCircleFrom(start);
 }
 
 void WellGlModelGenerator::createCircleFrom(const glm::vec3& start) {
 	glm::vec3 pattern  = start;
 	for(unsigned i = 0; i < sampleRate; ++i) {
 		vertices.push_back(pattern);
-		pattern = glm::rotateZ(pattern, innerAngle);
+		pattern = glm::rotateY(pattern, innerAngle);
 	}
 }
 
@@ -68,12 +71,12 @@ void WellGlModelGenerator::connectOuterVertices() {
 		const unsigned next = nextIndex(index);
 		
 		indices.push_back(index + lowerInnerOffset);
-		indices.push_back(next + lowerInnerOffset);
 		indices.push_back(next + higherInnerOffset);
+		indices.push_back(next + lowerInnerOffset);
 	
 		indices.push_back(index + lowerInnerOffset);
-		indices.push_back(index + higherInnerOffset);
 		indices.push_back(next + higherInnerOffset);
+		indices.push_back(index + higherInnerOffset);
 	}
 }
 
@@ -82,12 +85,12 @@ void WellGlModelGenerator::connectInnerVertices() {
 		const unsigned next = nextIndex(index);
 
 		indices.push_back(index + lowerOuterOffset);
-		indices.push_back(next + lowerOuterOffset);
 		indices.push_back(next + higherOuterOffset);
+		indices.push_back(next + lowerOuterOffset);
 
 		indices.push_back(index + lowerOuterOffset);
-		indices.push_back(index + higherOuterOffset);
 		indices.push_back(next + higherOuterOffset);
+		indices.push_back(index + higherOuterOffset);
 	}
 }
 
