@@ -3,7 +3,6 @@
 #include "Graphics/Shader.h"
 #include "MainWindow.h"
 #include "Model/WellGlModel.h"
-#include "System/FpsLogger.h"
 #include "View/WellGlView.h"
 
 class Scene {
@@ -19,9 +18,9 @@ public:
 private:
 	void prepare();
 	void prepareModels();
-	void prepareCamera();
-	void printInfo() const;
 
+	void clear();
+	void drawObjects();
 	void updateCamera();
 
 	bool shouldClose() const;
@@ -30,7 +29,6 @@ private:
 	Shader mainShader;
 
 	GLuint vao;
-	FpsLogger fpsLogger;
 
 	WellGlModel model;
 	WellGlView view;

@@ -1,18 +1,18 @@
 #pragma once
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+
 #include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include "System/Window.h"
 
 class Camera {
 public:
-    static void init();
-    static void mouseCallback(GLFWwindow* window, double xpos, double ypos);
-    static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
+    static void init(Window& window);
     static glm::mat4 update();
 
 private:
+    static void mouseCallback(GLFWwindow* window, double xpos, double ypos);
+    static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
+    
     static float lastX;
     static float lastY;
     static float yaw;

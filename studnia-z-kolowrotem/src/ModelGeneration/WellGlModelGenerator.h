@@ -1,45 +1,47 @@
 #pragma once
 
-#include "BrickGlModelGenerator.h"
 #include "Model/WellGlModel.h"
 #include "Model/WellModel.h"
 
 /**
- * @brief Class used to generate OpenGl model from raw model.
+ * @brief Class used to generate well OpenGl model from basic model.
  */
 class WellGlModelGenerator {
 public:
-	explicit WellGlModelGenerator(const WellModel& rawModel);
+	static constexpr unsigned DEFAULT_SAMPLE_RATE = 64;
+
+	explicit WellGlModelGenerator(const WellModel& basicModel);
 	WellGlModelGenerator(const WellGlModelGenerator&) = delete;
 	WellGlModelGenerator& operator=(const WellGlModelGenerator&) = delete;
+
+	void setSampleRate(unsigned newSampleRate);
 
 	[[nodiscard]] WellGlModel generate();
 
 private:
-	void prepare();
+	void setupVariables();
 
-	void generateNewLayer();
+	void createVertices();
+	void createLowerInnerVertices();
+	void createLowerOuterVertices();
+	void createHigherInnerVertices();
+	void createHigherOuterVertices();
+	void createCircleFrom(const glm::vec3& start);
 
-	void calculateNewVectors();
-	void calculateLayerBasePoint();
-	void calculateStart();
-	void calculateCreator();
-	 
-	void rotateVectors();
-	void rotateStart(const glm::mat4& transformation);
-	void rotateCreator(const glm::mat4& transformation);
+	void connectOuterVertices();
+	void connectInnerVertices();
+	void connectTopVertices();
+	unsigned nextIndex(unsigned index) const;
 
-	const WellModel& rawModel;
-	const float innerAngle;
+	const WellModel& basicModel;
 
-	WellGlModel glModel;
+	unsigned sampleRate;
+	WellGlModel::Vertices vertices;
+	WellGlModel::Indices indices;
 
-	float layerAngle;
-	unsigned layerIndex;
-
-	glm::vec3 layerBasePoint;
-	glm::vec3 creator;
-	glm::vec3 start;
-
-	BrickGlModelGenerator brickModelGenerator;
+	float innerAngle;
+	unsigned lowerInnerOffset;
+	unsigned lowerOuterOffset;
+	unsigned higherInnerOffset;
+	unsigned higherOuterOffset;
 };

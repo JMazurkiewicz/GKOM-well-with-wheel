@@ -1,5 +1,8 @@
 #include "Camera.h"
 
+#include <glm/gtc/matrix_transform.hpp>
+#include <iostream>
+
 constexpr auto WIDTH = 800;
 constexpr auto HEIGHT = 600;
 
@@ -22,7 +25,11 @@ bool Camera::keyPressedD;
 bool Camera::keyPressedSpace;
 bool Camera::keyPressedCtrl;
 
-void Camera::init() {
+void Camera::init(Window& window) {
+	glfwSetKeyCallback(window.getHandle(), Camera::keyCallback);
+	glfwSetInputMode(window.getHandle(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetCursorPosCallback(window.getHandle(), Camera::mouseCallback);
+
 	lastX = 800 / 2.0f;
 	lastY = 600 / 2.0f;
 	yaw = -90.0f;
@@ -39,14 +46,9 @@ void Camera::init() {
 	keyPressedD = false;
 	keyPressedSpace = false;
 	keyPressedCtrl = false;
-
-
 }
 
 void Camera::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode) {
-	if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-		glfwSetWindowShouldClose(window, GL_TRUE);
-
 	if(key == GLFW_KEY_W) {
 		if(action == GLFW_RELEASE)
 			keyPressedW = false;
@@ -151,5 +153,7 @@ glm::mat4 Camera::update() {
 	const glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 	const glm::mat4 model = glm::mat4(1.0f);
 
-	return projection * view * model;;
+	std::cout << '{' << cameraPos.x << ", " << cameraPos.y << ", " << cameraPos.z << "} .. {" << yaw << ", " << pitch << "}\n";
+
+	return projection * view * model;
 }

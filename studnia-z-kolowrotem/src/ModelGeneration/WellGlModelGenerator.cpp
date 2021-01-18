@@ -2,81 +2,113 @@
 
 #include <cmath>
 #include <glm/ext.hpp>
+#include <iostream>
 
-WellGlModelGenerator::WellGlModelGenerator(const WellModel& rawModel)
-	: rawModel{rawModel}, innerAngle{360.0f / rawModel.getSideCount()},
-	  brickModelGenerator{rawModel}
-{
-	prepare();
-}
+WellGlModelGenerator::WellGlModelGenerator(const WellModel& basicModel)
+	: basicModel{basicModel}, sampleRate{DEFAULT_SAMPLE_RATE} { }
 
-void WellGlModelGenerator::prepare() {
-	layerAngle = 0.0f;
-	layerIndex = 0;
-
-	layerBasePoint = { };
-	creator = { };
-	start = { };
+void WellGlModelGenerator::setSampleRate(unsigned newSampleRate) {
+	sampleRate = newSampleRate;
 }
 
 WellGlModel WellGlModelGenerator::generate() {
-	prepare();
-
-	while(layerIndex < rawModel.getLayerCount()) {
-		generateNewLayer();
-
-		layerAngle = std::fmod(layerAngle + glm::radians(rawModel.getLayerRotationAngle()), glm::two_pi<float>());
-		++layerIndex; 
-	}
-
-	return std::move(glModel);
+	basicModel.validateModel();
+	setupVariables();
+	createVertices();
+	return WellGlModel{std::move(vertices), std::move(indices)};
 }
 
-void WellGlModelGenerator::generateNewLayer() {
-	calculateNewVectors();
-	
-	for(unsigned brickIndex = 0; brickIndex < rawModel.getSideCount(); ++brickIndex) {
-		brickModelGenerator.setCreator(creator);
-		brickModelGenerator.setStart(start);
+void WellGlModelGenerator::setupVariables() {
+	innerAngle = glm::radians(360.0f / sampleRate);
+	lowerInnerOffset = 0;
+	lowerOuterOffset = sampleRate;
+	higherInnerOffset = sampleRate * 2;
+	higherOuterOffset = sampleRate * 3;
+}
+
+void WellGlModelGenerator::createVertices() {
+	createLowerInnerVertices();
+	createLowerOuterVertices();
+	createHigherInnerVertices();
+	createHigherOuterVertices();
+	connectOuterVertices();
+	connectInnerVertices();
+	//connectTopVertices();
+}
+
+void WellGlModelGenerator::createLowerInnerVertices() {
+	glm::vec3 start{basicModel.getInnerRadius(), 0.0f, 0.0f};
+	createCircleFrom(start);
+}
+
+void WellGlModelGenerator::createLowerOuterVertices() {
+	glm::vec3 start{basicModel.getOuterRadius(), 0.0f, 0.0f};
+	createCircleFrom(start);
+}
+
+void WellGlModelGenerator::createHigherInnerVertices() {
+	glm::vec3 start{basicModel.getInnerRadius(), 0.0f, basicModel.getHeight()};
+	createCircleFrom(start);
+}
+
+void WellGlModelGenerator::createHigherOuterVertices() {
+	glm::vec3 start{basicModel.getOuterRadius(), 0.0f, basicModel.getHeight()};
+}
+
+void WellGlModelGenerator::createCircleFrom(const glm::vec3& start) {
+	glm::vec3 pattern  = start;
+	for(unsigned i = 0; i < sampleRate; ++i) {
+		vertices.push_back(pattern);
+		pattern = glm::rotateZ(pattern, innerAngle);
+	}
+}
+
+void WellGlModelGenerator::connectOuterVertices() {
+	for(unsigned index = 0; index < sampleRate; ++index) {
+		const unsigned next = nextIndex(index);
 		
-		glModel.addBrick(brickModelGenerator.generate());
-		rotateVectors();
+		indices.push_back(index + lowerInnerOffset);
+		indices.push_back(next + lowerInnerOffset);
+		indices.push_back(next + higherInnerOffset);
+	
+		indices.push_back(index + lowerInnerOffset);
+		indices.push_back(index + higherInnerOffset);
+		indices.push_back(next + higherInnerOffset);
 	}
 }
 
-void WellGlModelGenerator::calculateNewVectors() {
-	calculateLayerBasePoint();
-	calculateStart();
-	calculateCreator();
+void WellGlModelGenerator::connectInnerVertices() {
+	for(unsigned index = 0; index < sampleRate; ++index) {
+		const unsigned next = nextIndex(index);
+
+		indices.push_back(index + lowerOuterOffset);
+		indices.push_back(next + lowerOuterOffset);
+		indices.push_back(next + higherOuterOffset);
+
+		indices.push_back(index + lowerOuterOffset);
+		indices.push_back(index + higherOuterOffset);
+		indices.push_back(next + higherOuterOffset);
+	}
 }
 
-void WellGlModelGenerator::calculateLayerBasePoint() {
-	const glm::vec3 basePoint = rawModel.getBasePoint();
-	layerBasePoint = basePoint + glm::vec3{0, 0, basePoint.z + layerIndex * rawModel.getBrickHeight()};
+void WellGlModelGenerator::connectTopVertices() {
+	for(unsigned index = 0; index < sampleRate; ++index) {
+		const unsigned next = nextIndex(index);
+
+		indices.push_back(index + higherInnerOffset);
+		indices.push_back(index + higherOuterOffset);
+		indices.push_back(next + higherOuterOffset);
+
+		indices.push_back(index + higherInnerOffset);
+		indices.push_back(next + higherInnerOffset);
+		indices.push_back(next + higherOuterOffset);
+	}
 }
 
-void WellGlModelGenerator::calculateStart() {
-	start =
-		layerBasePoint +
-		rawModel.getInnerRadius() * glm::vec3{std::cos(layerAngle), std::sin(layerAngle), 0};
-}
-
-void WellGlModelGenerator::calculateCreator() {
-	creator = glm::rotateZ(start - layerBasePoint, innerAngle / 2);
-}
-
-void WellGlModelGenerator::rotateVectors() {
-	glm::mat4 transformation{1};
-	transformation = glm::rotate(transformation, innerAngle, glm::vec3{0, 0, 1});
-
-	rotateStart(transformation);
-	rotateCreator(transformation);
-}
-
-void WellGlModelGenerator::rotateStart(const glm::mat4& transformation) {
-	start = glm::vec3{transformation * glm::vec4{start, 1.0f}};
-}
-
-void WellGlModelGenerator::rotateCreator(const glm::mat4& transformation) {
-	creator = glm::vec3{transformation * glm::vec4{start, 1.0f}};
+unsigned WellGlModelGenerator::nextIndex(unsigned index) const {
+	++index;
+	if(index % sampleRate == 0) {
+		index = 0;
+	}
+	return index;
 }

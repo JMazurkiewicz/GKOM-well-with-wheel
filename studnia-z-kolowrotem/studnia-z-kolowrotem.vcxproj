@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -155,17 +155,13 @@
     <ClCompile Include="src\Graphics\Shader.cpp" />
     <ClCompile Include="src\LibraryExceptions\ShaderException.cpp" />
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp" />
-    <ClCompile Include="src\ModelGeneration\BrickGlModelGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGlModelGenerator.cpp" />
-    <ClCompile Include="src\Model\BrickGlModel.cpp" />
     <ClCompile Include="src\Model\WellGlModel.cpp" />
     <ClCompile Include="src\Model\WellModel.cpp" />
     <ClCompile Include="src\Startup\Scene.cpp" />
     <ClCompile Include="src\Startup\Main.cpp" />
     <ClCompile Include="src\Startup\MainWindow.cpp" />
-    <ClCompile Include="src\System\FpsLogger.cpp" />
     <ClCompile Include="src\System\Window.cpp" />
-    <ClCompile Include="src\View\BrickGlView.cpp" />
     <ClCompile Include="src\View\WellGlView.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -176,16 +172,12 @@
     <ClInclude Include="src\LibraryExceptions\LibraryException.h" />
     <ClInclude Include="src\LibraryExceptions\ShaderException.h" />
     <ClInclude Include="src\LibraryExceptions\SoilException.h" />
-    <ClInclude Include="src\ModelGeneration\BrickGlModelGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGlModelGenerator.h" />
-    <ClInclude Include="src\Model\BrickGlModel.h" />
     <ClInclude Include="src\Model\WellGlModel.h" />
     <ClInclude Include="src\Model\WellModel.h" />
     <ClInclude Include="src\Startup\Scene.h" />
     <ClInclude Include="src\Startup\MainWindow.h" />
-    <ClInclude Include="src\System\FpsLogger.h" />
     <ClInclude Include="src\System\Window.h" />
-    <ClInclude Include="src\View\BrickGlView.h" />
     <ClInclude Include="src\View\WellGlView.h" />
   </ItemGroup>
   <ItemGroup>

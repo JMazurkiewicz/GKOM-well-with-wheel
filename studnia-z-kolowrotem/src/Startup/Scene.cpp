@@ -1,6 +1,8 @@
 #include "Scene.h"
 
 #include "Controler/Camera.h"
+#include <glm/ext.hpp>
+#include <iostream>
 #include "ModelGeneration/WellGlModelGenerator.h"
 #include "Model/WellModel.h"
 #include <thread>
@@ -9,8 +11,7 @@ namespace this_thread = std::this_thread;
 using namespace std::chrono_literals;
 
 Scene::Scene(MainWindow& window)
-	: window{window}, mainShader{"gl_05.vert", "gl_05.frag"},
-	vao{0}, fpsLogger{"fps.log"} {
+	: window{window}, mainShader{"gl_05.vert", "gl_05.frag"}, vao{0} {
 	prepare();
 }
 
@@ -20,11 +21,8 @@ Scene::~Scene() {
 
 void Scene::start() {
 	do {
-		fpsLogger.log();
-		glClearColor(0.529, 0.807, 0.921, 0.9);
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		view.draw();
+		clear();
+		drawObjects();
 		updateCamera();
 
 		window.swapBuffers();
@@ -37,35 +35,34 @@ void Scene::prepare() {
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 
-	Camera::init();
+	Camera::init(window);
 
 	prepareModels();
-	prepareCamera();
-	printInfo();
+	glBindVertexArray(0);
 }
 
 void Scene::prepareModels() {
-	WellModel rawModel;
+	WellModel basicModel{};
+	basicModel.setInnerRadius(0.2f);
+	basicModel.setOuterRadius(0.8f);
 
-	rawModel.setLayerCount(1);
-	rawModel.setSideCount(4);
-	assert(rawModel.getLayerCount() == 1);
-	assert(rawModel.getSideCount() == 4);
+	WellGlModelGenerator glModelGenerator{basicModel};
+	glModelGenerator.setSampleRate(16);
 
-	WellGlModelGenerator modelGenerator{rawModel};
-	model = modelGenerator.generate();
+	model = glModelGenerator.generate();
 	view.setModel(model);
+	std::cout << model << '\n' << view << '\n';
 }
 
-void Scene::prepareCamera() {
-	glfwSetKeyCallback(window.getHandle(), Camera::keyCallback);
-	glfwSetInputMode(window.getHandle(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-	glfwSetCursorPosCallback(window.getHandle(), Camera::mouseCallback);
+void Scene::clear() {
+	glClearColor(0.529, 0.807, 0.921, 0.9);
+	glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void Scene::printInfo() const {
-	std::cout << model << '\n'
-		<< view << '\n';
+void Scene::drawObjects() {
+	glBindVertexArray(vao);
+	view.draw();
+	glBindVertexArray(0);
 }
 
 void Scene::updateCamera() {

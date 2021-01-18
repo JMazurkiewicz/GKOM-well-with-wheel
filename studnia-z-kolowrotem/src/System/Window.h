@@ -16,9 +16,9 @@ public:
 	Window(const Window&) = delete;
 	Window& operator=(const Window&) = delete;
 
-	GLFWwindow* getHandle() const {
-		return handle;
-	}
+	int getWidth() const noexcept;
+	int getHeight() const noexcept;
+	GLFWwindow* getHandle() const;
 
 	~Window();
 
@@ -26,5 +26,7 @@ public:
 	void swapBuffers();
 
 private:
+	int width;
+	int height;
 	GLFWwindow* handle;
 };

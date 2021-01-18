@@ -1,13 +1,16 @@
 #include "WellGlModel.h"
 
-void WellGlModel::addBrick(BrickGlModel&& glModel) {
-	bricks.push_back(std::move(glModel));
+WellGlModel::WellGlModel(Vertices&& vertices, Indices&& indices)
+	: vertices{std::move(vertices)}, indices{std::move(indices)} { }
+
+const WellGlModel::Vertices& WellGlModel::getVertices() const {
+	return vertices;
+}
+
+const WellGlModel::Indices& WellGlModel::getIndices() const {
+	return indices;
 }
 
 std::ostream& operator<<(std::ostream& stream, const WellGlModel& model) {
-	stream << "[well-model:" << &model << "]:\n";
-	for(const BrickGlModel& brick : model.bricks) {
-		stream << brick;
-	}
-	return stream;
+	return stream << "[well-gl-model:" << &model << ']';
 }

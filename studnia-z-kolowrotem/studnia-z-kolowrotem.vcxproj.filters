@@ -76,9 +76,6 @@
     <ClCompile Include="src\Startup\MainWindow.cpp">
       <Filter>Sources\Startup</Filter>
     </ClCompile>
-    <ClCompile Include="src\System\FpsLogger.cpp">
-      <Filter>Sources\System</Filter>
-    </ClCompile>
     <ClCompile Include="src\ModelGeneration\WellGlModelGenerator.cpp">
       <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
@@ -101,9 +98,6 @@
     </ClInclude>
     <ClInclude Include="src\View\BrickGlView.h">
       <Filter>Sources\View</Filter>
-    </ClInclude>
-    <ClInclude Include="src\System\FpsLogger.h">
-      <Filter>Sources\System</Filter>
     </ClInclude>
     <ClInclude Include="src\System\Window.h">
       <Filter>Sources\System</Filter>
