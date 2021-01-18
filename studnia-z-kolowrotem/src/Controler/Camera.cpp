@@ -29,8 +29,8 @@ void Camera::init(Window& window) {
 	glfwSetInputMode(window.getHandle(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetCursorPosCallback(window.getHandle(), Camera::mouseCallback);
 
-	width = window.getWidth();
-	height = window.getHeight();
+	width = static_cast<float>(window.getWidth());
+	height = static_cast<float>(window.getHeight());
 
 	lastX = 800 / 2.0f;
 	lastY = 600 / 2.0f;
