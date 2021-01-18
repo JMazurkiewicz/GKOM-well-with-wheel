@@ -1,4 +1,4 @@
-#include "Camera.h"]
+#include "Camera.h"
 
 constexpr auto WIDTH = 800;
 constexpr auto HEIGHT = 600;
@@ -92,15 +92,15 @@ void Camera::keyCallback(GLFWwindow* window, int key, int scancode, int action, 
 
 void Camera::mouseCallback(GLFWwindow* window, double xpos, double ypos) {
 	if(firstMouse) {
-		lastX = xpos;
-		lastY = ypos;
+		lastX = static_cast<float>(xpos);
+		lastY = static_cast<float>(ypos);
 		firstMouse = false;
 	}
 
-	float xoffset = xpos - lastX;
-	float yoffset = lastY - ypos;
-	lastX = xpos;
-	lastY = ypos;
+	float xoffset = static_cast<float>(xpos) - lastX;
+	float yoffset = lastY - static_cast<float>(ypos);
+	lastX = static_cast<float>(xpos);
+	lastY = static_cast<float>(ypos);
 
 	xoffset *= sensitivity;
 	yoffset *= sensitivity;
