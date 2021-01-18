@@ -82,6 +82,9 @@
     <ClCompile Include="src\Controler\Camera.cpp">
       <Filter>Sources\Controler</Filter>
     </ClCompile>
+    <ClCompile Include="src\ModelGeneration\BracketGlModelGenerator.cpp">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\View\WellGlView.h">
@@ -125,6 +128,9 @@
     </ClInclude>
     <ClInclude Include="src\Controler\Camera.h">
       <Filter>Sources\Controler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\BracketGlModelGenerator.h">
+      <Filter>Sources\ModelGeneration</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

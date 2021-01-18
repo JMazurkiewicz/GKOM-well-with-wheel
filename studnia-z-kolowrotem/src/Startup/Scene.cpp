@@ -55,13 +55,8 @@ void Scene::prepare() {
 
 void Scene::prepareModels() {
 	WellModel basicModel{};
-	basicModel.setInnerRadius(0.6f);
-	basicModel.setOuterRadius(0.8f);
-	basicModel.setHeight(0.8f);
-
 	WellGlModelGenerator glModelGenerator{basicModel};
-	glModelGenerator.setSampleRate(16);
-
+	glModelGenerator.setSampleRate(64);
 	model = glModelGenerator.generate();
 	view.setModel(model);
 	std::cout << model << '\n' << view << '\n';

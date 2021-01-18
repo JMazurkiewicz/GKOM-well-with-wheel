@@ -1,5 +1,6 @@
 #pragma once
 
+#include "BracketGlModelGenerator.h"
 #include "Model/WellGlModel.h"
 #include "Model/WellModel.h"
 
@@ -8,6 +9,9 @@
  */
 class WellGlModelGenerator {
 public:
+	using Vertices = WellGlModel::Vertices;
+	using Indices = WellGlModel::Indices;
+
 	static constexpr unsigned DEFAULT_SAMPLE_RATE = 64;
 
 	explicit WellGlModelGenerator(const WellModel& basicModel);
@@ -33,15 +37,22 @@ private:
 	void connectTopVertices();
 	unsigned nextIndex(unsigned index) const;
 
+	void createBrackets();
+	void createBracketModel(const glm::vec3& translation, unsigned modelOffset);
+
 	const WellModel& basicModel;
+	BracketGlModelGeneator bracketGenerator;
 
 	unsigned sampleRate;
-	WellGlModel::Vertices vertices;
-	WellGlModel::Indices indices;
+	Vertices vertices;
+	Indices indices;
 
 	float innerAngle;
 	unsigned lowerInnerOffset;
 	unsigned lowerOuterOffset;
 	unsigned higherInnerOffset;
 	unsigned higherOuterOffset;
+
+	unsigned leftBracketOffset;
+	unsigned rightBracketOffset;
 };

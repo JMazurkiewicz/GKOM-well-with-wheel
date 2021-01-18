@@ -7,9 +7,12 @@
  */
 class WellModel {
 public:
-	static constexpr float DEFAULT_INNER_RADIUS = 3.0f;
-	static constexpr float DEFAULT_OUTER_RADIUS = 8.0f;
-	static constexpr float DEFAULT_HEIGHT = 4.0f;
+	static constexpr float DEFAULT_INNER_RADIUS = 0.6f;
+	static constexpr float DEFAULT_OUTER_RADIUS = 0.8f;
+	static constexpr float DEFAULT_HEIGHT = 0.8f;
+
+	static constexpr float DEFAULT_BRACKET_RADIUS = 0.1f;
+	static constexpr float DEFAULT_BRACKET_HEIGHT = 0.5f;
 
 	WellModel();
 
@@ -25,10 +28,19 @@ public:
 	float getHeight() const noexcept;
 	void setHeight(float newHeight);
 
+	float getBracketRadius() const noexcept;
+	void setBracketRadius(float newBracketRadius);
+
+	float getBracketHeight() const noexcept;
+	void setBrackedHeight(float newBracketHeight);
+
 	void validateModel() const;
 
 private:
 	float innerRadius;
 	float outerRadius;
 	float height;
+
+	float bracketRadius;
+	float bracketHeight;
 };

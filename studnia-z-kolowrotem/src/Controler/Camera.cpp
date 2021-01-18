@@ -1,7 +1,6 @@
 #include "Camera.h"
 
 #include <glm/gtc/matrix_transform.hpp>
-#include <iostream>
 
 float Camera::width;
 float Camera::height;
@@ -155,8 +154,6 @@ glm::mat4 Camera::update() {
 	const glm::mat4 projection = glm::perspective(glm::radians(45.0f), width/height, 0.1f, 100.0f);
 	const glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 	const glm::mat4 model = glm::mat4(1.0f);
-
-	std::cout << '{' << cameraPos.x << ", " << cameraPos.y << ", " << cameraPos.z << "} .. {" << yaw << ", " << pitch << "}\n";
 
 	return projection * view * model;
 }

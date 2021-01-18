@@ -155,6 +155,7 @@
     <ClCompile Include="src\Graphics\Shader.cpp" />
     <ClCompile Include="src\LibraryExceptions\ShaderException.cpp" />
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp" />
+    <ClCompile Include="src\ModelGeneration\BracketGlModelGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGlModelGenerator.cpp" />
     <ClCompile Include="src\Model\WellGlModel.cpp" />
     <ClCompile Include="src\Model\WellModel.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="src\LibraryExceptions\LibraryException.h" />
     <ClInclude Include="src\LibraryExceptions\ShaderException.h" />
     <ClInclude Include="src\LibraryExceptions\SoilException.h" />
+    <ClInclude Include="src\ModelGeneration\BracketGlModelGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGlModelGenerator.h" />
     <ClInclude Include="src\Model\WellGlModel.h" />
     <ClInclude Include="src\Model\WellModel.h" />

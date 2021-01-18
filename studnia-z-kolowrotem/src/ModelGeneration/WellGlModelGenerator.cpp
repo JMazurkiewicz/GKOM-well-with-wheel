@@ -2,10 +2,9 @@
 
 #include <cmath>
 #include <glm/ext.hpp>
-#include <iostream>
 
 WellGlModelGenerator::WellGlModelGenerator(const WellModel& basicModel)
-	: basicModel{basicModel}, sampleRate{DEFAULT_SAMPLE_RATE} {
+	: basicModel{basicModel}, bracketGenerator{basicModel}, sampleRate{DEFAULT_SAMPLE_RATE} {
 	setupVariables();
 }
 
@@ -21,11 +20,16 @@ WellGlModel WellGlModelGenerator::generate() {
 }
 
 void WellGlModelGenerator::setupVariables() {
+	bracketGenerator.setSampleRate(sampleRate);
+
 	innerAngle = glm::radians(360.0f / sampleRate);
 	lowerInnerOffset = 0;
-	lowerOuterOffset = sampleRate;
-	higherInnerOffset = sampleRate * 2;
-	higherOuterOffset = sampleRate * 3;
+	lowerOuterOffset = lowerInnerOffset + sampleRate;
+	higherInnerOffset = lowerOuterOffset + sampleRate;
+	higherOuterOffset = higherInnerOffset + sampleRate;
+
+	leftBracketOffset = higherOuterOffset + sampleRate;
+	rightBracketOffset = leftBracketOffset + bracketGenerator.getModelOffset();
 }
 
 void WellGlModelGenerator::createVertices() {
@@ -36,6 +40,7 @@ void WellGlModelGenerator::createVertices() {
 	connectOuterVertices();
 	connectInnerVertices();
 	connectTopVertices();
+	createBrackets();
 }
 
 void WellGlModelGenerator::createLowerInnerVertices() {
@@ -110,8 +115,28 @@ void WellGlModelGenerator::connectTopVertices() {
 
 unsigned WellGlModelGenerator::nextIndex(unsigned index) const {
 	++index;
-	if(index % sampleRate == 0) {
+	if(index == sampleRate) {
 		index = 0;
 	}
 	return index;
+}
+
+
+void WellGlModelGenerator::createBrackets() {
+	const glm::vec3 translation{
+		basicModel.getInnerRadius() - basicModel.getBracketRadius() / 2.0,
+		0.0f, 0.0
+	};
+	createBracketModel(-translation, leftBracketOffset);
+	createBracketModel(translation, rightBracketOffset);
+}
+
+void WellGlModelGenerator::createBracketModel(const glm::vec3& translation, unsigned modelOffset) {
+	bracketGenerator.setModelOffset(modelOffset);
+	bracketGenerator.setFinalTranslationVector(translation);
+
+	auto [newVertices, newIndices] = bracketGenerator.generate();
+
+	vertices.insert(vertices.end(), newVertices.begin(), newVertices.end());
+	indices.insert(indices.end(), newIndices.begin(), newIndices.end());
 }
