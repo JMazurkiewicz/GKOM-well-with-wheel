@@ -3,6 +3,8 @@
 #include "Controler/Camera.h"
 #include <glm/ext.hpp>
 #include <iostream>
+#include "Model/EnvironmentModel.h"
+#include "ModelGeneration/EnvironmentGlModelGenerator.h"
 #include "ModelGeneration/WellGlModelGenerator.h"
 #include "Model/WellModel.h"
 #include <thread>
@@ -20,9 +22,7 @@ Scene::~Scene() {
 }
 
 void Scene::start() {
-	glm::mat4 look{
-	1		
-	};
+	glm::mat4 look{1};
 	
 	do {
 		clear();
@@ -49,17 +49,25 @@ void Scene::prepare() {
 
 	Camera::init(window);
 
-	prepareModels();
+	prepareWellModels();
+	prepareEnvironmentModel();
 	glBindVertexArray(0);
 }
 
-void Scene::prepareModels() {
+void Scene::prepareWellModels() {
 	WellModel basicModel{};
 	WellGlModelGenerator glModelGenerator{basicModel};
 	glModelGenerator.setSampleRate(64);
 	model = glModelGenerator.generate();
 	view.setModel(model);
 	std::cout << model << '\n' << view << '\n';
+}
+
+void Scene::prepareEnvironmentModel() {
+	EnvironmentModel basicModel;
+	EnvironmentGlModelGenerator generator{basicModel};
+	environmentModel = generator.generate();
+	environmentView.setModel(environmentModel);
 }
 
 void Scene::clear() {
@@ -74,6 +82,7 @@ void Scene::updateCamera() {
 }
 
 void Scene::drawObjects() {
+	environmentView.draw();
 	view.draw();
 }
 
