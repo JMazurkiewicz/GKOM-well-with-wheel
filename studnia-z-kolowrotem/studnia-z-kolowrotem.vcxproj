@@ -155,10 +155,11 @@
     <ClCompile Include="src\Graphics\Shader.cpp" />
     <ClCompile Include="src\LibraryExceptions\ShaderException.cpp" />
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp" />
+    <ClCompile Include="src\ModelGeneration\CompoundModelGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\CuboidGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\CylinderGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\EnvironmentGlModelGenerator.cpp" />
-    <ClCompile Include="src\ModelGeneration\GeneratorBase.cpp" />
+    <ClCompile Include="src\ModelGeneration\ModelGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\SmoothShapeGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGlModelGenerator.cpp" />
     <ClCompile Include="src\Model\EnvironmentModel.cpp" />
@@ -180,10 +181,11 @@
     <ClInclude Include="src\LibraryExceptions\LibraryException.h" />
     <ClInclude Include="src\LibraryExceptions\ShaderException.h" />
     <ClInclude Include="src\LibraryExceptions\SoilException.h" />
+    <ClInclude Include="src\ModelGeneration\CompoundModelGenerator.h" />
     <ClInclude Include="src\ModelGeneration\CuboidGenerator.h" />
     <ClInclude Include="src\ModelGeneration\CylinderGenerator.h" />
     <ClInclude Include="src\ModelGeneration\EnvironmentGlModelGenerator.h" />
-    <ClInclude Include="src\ModelGeneration\GeneratorBase.h" />
+    <ClInclude Include="src\ModelGeneration\ModelGenerator.h" />
     <ClInclude Include="src\ModelGeneration\PlaneGenerator.h" />
     <ClInclude Include="src\ModelGeneration\SmoothShapeGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGlModelGenerator.h" />

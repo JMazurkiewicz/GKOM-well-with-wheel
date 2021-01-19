@@ -5,17 +5,17 @@
 #include <tuple>
 #include <vector>
 
-class GeneratorBase {
+class ModelGenerator {
 public:
 	using Vertices = std::vector<glm::vec3>;
 	using Indices = std::vector<unsigned>;
 	using Model = std::tuple<Vertices, Indices>;
 
-	GeneratorBase();
-	GeneratorBase(const GeneratorBase&) = delete;
-	GeneratorBase& operator=(const GeneratorBase&) = delete;
+	ModelGenerator();
+	ModelGenerator(const ModelGenerator&) = delete;
+	ModelGenerator& operator=(const ModelGenerator&) = delete;
 
-	virtual ~GeneratorBase() = default;
+	virtual ~ModelGenerator() = default;
 
 	void setArrayOffset(unsigned newArrayOffset);
 	void setTransformation(const glm::mat4& newTransformation);

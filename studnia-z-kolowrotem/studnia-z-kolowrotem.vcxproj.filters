@@ -97,13 +97,14 @@
     <ClCompile Include="src\View\GlView.cpp">
       <Filter>Sources\View</Filter>
     </ClCompile>
-    <ClCompile Include="src\ModelGeneration\GeneratorBase.cpp">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClCompile>
     <ClCompile Include="src\ModelGeneration\SmoothShapeGenerator.cpp">
       <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
     <ClCompile Include="src\ModelGeneration\CuboidGenerator.cpp">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\CompoundModelGenerator.cpp" />
+    <ClCompile Include="src\ModelGeneration\ModelGenerator.cpp">
       <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
   </ItemGroup>
@@ -171,13 +172,16 @@
     <ClInclude Include="src\ModelGeneration\PlaneGenerator.h">
       <Filter>Sources\ModelGeneration</Filter>
     </ClInclude>
-    <ClInclude Include="src\ModelGeneration\GeneratorBase.h">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClInclude>
     <ClInclude Include="src\ModelGeneration\SmoothShapeGenerator.h">
       <Filter>Sources\ModelGeneration</Filter>
     </ClInclude>
     <ClInclude Include="src\ModelGeneration\CuboidGenerator.h">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\CompoundModelGenerator.h">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\ModelGenerator.h">
       <Filter>Sources\ModelGeneration</Filter>
     </ClInclude>
   </ItemGroup>

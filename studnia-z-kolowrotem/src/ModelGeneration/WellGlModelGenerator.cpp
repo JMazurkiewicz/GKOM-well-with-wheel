@@ -20,7 +20,7 @@ WellGlModel WellGlModelGenerator::generate() {
 }
 
 void WellGlModelGenerator::setupVariables() {
-	cylinderGenerator.setSampleRate(sampleRate);
+	leftBracketGenerator.setSampleRate(sampleRate);
 
 	innerAngle = glm::radians(360.0f / sampleRate);
 	lowerInnerOffset = 0;
@@ -29,8 +29,8 @@ void WellGlModelGenerator::setupVariables() {
 	higherOuterOffset = higherInnerOffset + sampleRate;
 
 	leftBracketOffset = higherOuterOffset + sampleRate;
-	rightBracketOffset = leftBracketOffset + cylinderGenerator.getVertexCount();
-	logOffset = rightBracketOffset + cylinderGenerator.getVertexCount();
+	rightBracketOffset = leftBracketOffset + leftBracketGenerator.getVertexCount();
+	logOffset = rightBracketOffset + leftBracketGenerator.getVertexCount();
 }
 
 void WellGlModelGenerator::createVertices() {
@@ -41,8 +41,14 @@ void WellGlModelGenerator::createVertices() {
 	connectOuterVertices();
 	connectInnerVertices();
 	connectTopVertices();
-	createBrackets();
-	createLog();
+	
+	prepareLeftBracketGenerator();
+	prepareRightBracketGenerator();
+	prepareLog();
+	compoundGenerator.setArrayOffset(leftBracketOffset);
+	auto [v, i] = compoundGenerator.generateModel();
+	vertices.insert(vertices.end(), v.begin(), v.end());
+	indices.insert(indices.end(), i.begin(), i.end());
 }
 
 void WellGlModelGenerator::createLowerInnerVertices() {
@@ -142,37 +148,36 @@ unsigned WellGlModelGenerator::nextIndex(unsigned index) const {
 	return index;
 }
 
+void WellGlModelGenerator::prepareLeftBracketGenerator() {
+	leftBracketGenerator.setRadius(basicModel.getBracketRadius());
+	leftBracketGenerator.setHeight(basicModel.getHeight() + basicModel.getBracketHeight());
+	leftBracketGenerator.setSampleRate(sampleRate);
 
-void WellGlModelGenerator::createBrackets() {
-	cylinderGenerator.setRadius(basicModel.getBracketRadius());
-	cylinderGenerator.setHeight(basicModel.getHeight() + basicModel.getBracketHeight());
+	const glm::vec3 translation = {
+		-(basicModel.getInnerRadius() - basicModel.getBracketRadius()),
+		0.0f, 0.0
+	};
+	leftBracketGenerator.setTransformation(glm::translate(translation));
+	compoundGenerator.addGenerator(&leftBracketGenerator);
+}
 
-	const glm::vec3 translation{
+void WellGlModelGenerator::prepareRightBracketGenerator() {
+	rightBracketGenerator.setRadius(basicModel.getBracketRadius());
+	rightBracketGenerator.setHeight(basicModel.getHeight() + basicModel.getBracketHeight());
+	rightBracketGenerator.setSampleRate(sampleRate);
+
+	const glm::vec3 translation = {
 		basicModel.getInnerRadius() - basicModel.getBracketRadius(),
 		0.0f, 0.0
 	};
-	createBracketModel(-translation, leftBracketOffset);
-	createBracketModel(translation, rightBracketOffset);
+	rightBracketGenerator.setTransformation(glm::translate(translation));
+	compoundGenerator.addGenerator(&rightBracketGenerator);
 }
 
-void WellGlModelGenerator::createBracketModel(const glm::vec3& translation, unsigned modelOffset) {
-	cylinderGenerator.setArrayOffset(modelOffset);
-	cylinderGenerator.setTransformation(glm::translate(translation));
-
-	auto [newVertices, newIndices] = cylinderGenerator.generateModel();
-
-	vertices.insert(vertices.end(), newVertices.begin(), newVertices.end());
-	indices.insert(indices.end(), newIndices.begin(), newIndices.end());
-}
-
-void WellGlModelGenerator::createLog() {
-	cuboidGenerator.setArrayOffset(logOffset);
-	cuboidGenerator.setWidth(basicModel.getInnerRadius() * 2.0f);
-	cuboidGenerator.setHeight(0.2f);
-	cuboidGenerator.setLength(basicModel.getBracketRadius() * 2.0f);
-	cuboidGenerator.setTransformation(glm::translate(glm::vec3{0.0f, basicModel.getBracketHeight() + basicModel.getHeight(), 0.0f}));
-
-	auto [newVertices, newIndices] = cuboidGenerator.generateModel();
-	vertices.insert(vertices.end(), newVertices.begin(), newVertices.end());
-	indices.insert(indices.end(), newIndices.begin(), newIndices.end());
+void WellGlModelGenerator::prepareLog() {
+	logGenerator.setWidth(basicModel.getInnerRadius() * 2.0f);
+	logGenerator.setHeight(0.2f);
+	logGenerator.setLength(basicModel.getBracketRadius() * 2.0f);
+	logGenerator.setTransformation(glm::translate(glm::vec3{0.0f, basicModel.getBracketHeight() + basicModel.getHeight(), 0.0f}));
+	compoundGenerator.addGenerator(&logGenerator);
 }

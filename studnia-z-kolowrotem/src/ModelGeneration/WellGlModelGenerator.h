@@ -1,5 +1,6 @@
 #pragma once
 
+#include "CompoundModelGenerator.h"
 #include "CuboidGenerator.h"
 #include "CylinderGenerator.h"
 #include "Model/WellGlModel.h"
@@ -8,7 +9,7 @@
 /**
  * @brief Class used to generate well OpenGl model from basic model.
  */
-class WellGlModelGenerator {
+class WellGlModelGenerator final {
 public:
 	using Vertices = WellGlModel::Vertices;
 	using Indices = WellGlModel::Indices;
@@ -39,14 +40,21 @@ private:
 	void connectTopVertices();
 	unsigned nextIndex(unsigned index) const;
 
+	void prepareLeftBracketGenerator();
+	void prepareRightBracketGenerator();
+	void prepareLog();
+
 	void createBrackets();
 	void createBracketModel(const glm::vec3& translation, unsigned modelOffset);
 
 	void createLog();
 
 	const WellModel& basicModel;
-	CylinderGenerator cylinderGenerator;
-	CuboidGenerator cuboidGenerator;
+	CompoundModelGenerator compoundGenerator;
+
+	CylinderGenerator leftBracketGenerator;
+	CylinderGenerator rightBracketGenerator;
+	CuboidGenerator logGenerator;
 
 	unsigned sampleRate;
 	WellGlModel::Vertices vertices;
