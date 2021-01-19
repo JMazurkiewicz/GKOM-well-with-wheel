@@ -30,6 +30,7 @@ void WellGlModelGenerator::setupVariables() {
 
 	leftBracketOffset = higherOuterOffset + sampleRate;
 	rightBracketOffset = leftBracketOffset + cylinderGenerator.getVertexCount();
+	logOffset = rightBracketOffset + cylinderGenerator.getVertexCount();
 }
 
 void WellGlModelGenerator::createVertices() {
@@ -41,6 +42,7 @@ void WellGlModelGenerator::createVertices() {
 	connectInnerVertices();
 	connectTopVertices();
 	createBrackets();
+	createLog();
 }
 
 void WellGlModelGenerator::createLowerInnerVertices() {
@@ -159,6 +161,18 @@ void WellGlModelGenerator::createBracketModel(const glm::vec3& translation, unsi
 
 	auto [newVertices, newIndices] = cylinderGenerator.generateModel();
 
+	vertices.insert(vertices.end(), newVertices.begin(), newVertices.end());
+	indices.insert(indices.end(), newIndices.begin(), newIndices.end());
+}
+
+void WellGlModelGenerator::createLog() {
+	cuboidGenerator.setArrayOffset(logOffset);
+	cuboidGenerator.setWidth(basicModel.getInnerRadius() * 2.0f);
+	cuboidGenerator.setHeight(0.2f);
+	cuboidGenerator.setLength(basicModel.getBracketRadius() * 2.0f);
+	cuboidGenerator.setTransformation(glm::translate(glm::vec3{0.0f, basicModel.getBracketHeight() + basicModel.getHeight(), 0.0f}));
+
+	auto [newVertices, newIndices] = cuboidGenerator.generateModel();
 	vertices.insert(vertices.end(), newVertices.begin(), newVertices.end());
 	indices.insert(indices.end(), newIndices.begin(), newIndices.end());
 }

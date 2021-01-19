@@ -85,9 +85,6 @@
     <ClCompile Include="src\Model\EnvironmentModel.cpp">
       <Filter>Sources\Model</Filter>
     </ClCompile>
-    <ClCompile Include="src\View\EnvironmentGlView.cpp">
-      <Filter>Sources\View</Filter>
-    </ClCompile>
     <ClCompile Include="src\ModelGeneration\EnvironmentGlModelGenerator.cpp">
       <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
@@ -104,6 +101,9 @@
       <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
     <ClCompile Include="src\ModelGeneration\SmoothShapeGenerator.cpp">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\CuboidGenerator.cpp">
       <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
   </ItemGroup>
@@ -159,9 +159,6 @@
     <ClInclude Include="src\Model\EnvironmentGlModel.h">
       <Filter>Sources\Model</Filter>
     </ClInclude>
-    <ClInclude Include="src\View\EnvironmentGlView.h">
-      <Filter>Sources\View</Filter>
-    </ClInclude>
     <ClInclude Include="src\ModelGeneration\CylinderGenerator.h">
       <Filter>Sources\ModelGeneration</Filter>
     </ClInclude>
@@ -178,6 +175,9 @@
       <Filter>Sources\ModelGeneration</Filter>
     </ClInclude>
     <ClInclude Include="src\ModelGeneration\SmoothShapeGenerator.h">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\CuboidGenerator.h">
       <Filter>Sources\ModelGeneration</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,9 +4,6 @@
 
 class CylinderGenerator : public SmoothShapeGenerator {
 public:
-	static constexpr float DEFAULT_RADIUS = 1.0f;
-	static constexpr float DEFAULT_HEIGHT = 1.0f;
-
 	CylinderGenerator();
 	CylinderGenerator(const CylinderGenerator&) = delete;
 	CylinderGenerator& operator=(const CylinderGenerator&) = delete;

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "CuboidGenerator.h"
 #include "CylinderGenerator.h"
 #include "Model/WellGlModel.h"
 #include "Model/WellModel.h"
@@ -41,8 +42,11 @@ private:
 	void createBrackets();
 	void createBracketModel(const glm::vec3& translation, unsigned modelOffset);
 
+	void createLog();
+
 	const WellModel& basicModel;
 	CylinderGenerator cylinderGenerator;
+	CuboidGenerator cuboidGenerator;
 
 	unsigned sampleRate;
 	WellGlModel::Vertices vertices;
@@ -57,4 +61,5 @@ private:
 
 	unsigned leftBracketOffset;
 	unsigned rightBracketOffset;
+	unsigned logOffset;
 };

@@ -155,6 +155,7 @@
     <ClCompile Include="src\Graphics\Shader.cpp" />
     <ClCompile Include="src\LibraryExceptions\ShaderException.cpp" />
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp" />
+    <ClCompile Include="src\ModelGeneration\CuboidGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\CylinderGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\EnvironmentGlModelGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\GeneratorBase.cpp" />
@@ -168,7 +169,6 @@
     <ClCompile Include="src\Startup\Main.cpp" />
     <ClCompile Include="src\Startup\MainWindow.cpp" />
     <ClCompile Include="src\System\Window.cpp" />
-    <ClCompile Include="src\View\EnvironmentGlView.cpp" />
     <ClCompile Include="src\View\GlView.cpp" />
     <ClCompile Include="src\View\WellGlView.cpp" />
   </ItemGroup>
@@ -180,6 +180,7 @@
     <ClInclude Include="src\LibraryExceptions\LibraryException.h" />
     <ClInclude Include="src\LibraryExceptions\ShaderException.h" />
     <ClInclude Include="src\LibraryExceptions\SoilException.h" />
+    <ClInclude Include="src\ModelGeneration\CuboidGenerator.h" />
     <ClInclude Include="src\ModelGeneration\CylinderGenerator.h" />
     <ClInclude Include="src\ModelGeneration\EnvironmentGlModelGenerator.h" />
     <ClInclude Include="src\ModelGeneration\GeneratorBase.h" />
@@ -194,7 +195,6 @@
     <ClInclude Include="src\Startup\Scene.h" />
     <ClInclude Include="src\Startup\MainWindow.h" />
     <ClInclude Include="src\System\Window.h" />
-    <ClInclude Include="src\View\EnvironmentGlView.h" />
     <ClInclude Include="src\View\GlView.h" />
     <ClInclude Include="src\View\WellGlView.h" />
   </ItemGroup>

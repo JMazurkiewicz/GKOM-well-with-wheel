@@ -3,7 +3,7 @@
 #include <glm/ext.hpp>
 
 CylinderGenerator::CylinderGenerator()
-    : radius{DEFAULT_RADIUS}, height{DEFAULT_HEIGHT} { }
+    : radius{1.0f}, height{1.0f} { }
 
 void CylinderGenerator::setRadius(float newRadius) {
     radius = newRadius;
