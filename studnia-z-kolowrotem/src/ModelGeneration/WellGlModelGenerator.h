@@ -31,6 +31,7 @@ private:
 	void createHigherInnerVertices();
 	void createHigherOuterVertices();
 	void createCircleFrom(const glm::vec3& start);
+	void calculateNormals(unsigned index1, unsigned index2, unsigned index3);
 
 	void connectOuterVertices();
 	void connectInnerVertices();
@@ -44,8 +45,9 @@ private:
 	BracketGlModelGeneator bracketGenerator;
 
 	unsigned sampleRate;
-	Vertices vertices;
-	Indices indices;
+	WellGlModel::Vertices vertices;
+	WellGlModel::Indices indices;
+	WellGlModel::Normals normals;
 
 	float innerAngle;
 	unsigned lowerInnerOffset;

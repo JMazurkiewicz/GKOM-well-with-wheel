@@ -57,7 +57,8 @@ void Scene::prepare() {
 void Scene::prepareWellModels() {
 	WellModel basicModel{};
 	WellGlModelGenerator glModelGenerator{basicModel};
-	glModelGenerator.setSampleRate(64);
+	glModelGenerator.setSampleRate(8);
+
 	model = glModelGenerator.generate();
 	view.setModel(model);
 	std::cout << model << '\n' << view << '\n';
@@ -71,8 +72,8 @@ void Scene::prepareEnvironmentModel() {
 }
 
 void Scene::clear() {
-	glClearColor(0.529f, 0.807f, 0.921f, 0.9f);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(0.529, 0.807, 0.921, 0.9);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void Scene::updateCamera() {
