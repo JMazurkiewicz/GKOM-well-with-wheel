@@ -26,8 +26,8 @@ bool Camera::keyPressedCtrl;
 
 void Camera::init(Window& window) {
 	glfwSetKeyCallback(window.getHandle(), Camera::keyCallback);
-	glfwSetInputMode(window.getHandle(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetCursorPosCallback(window.getHandle(), Camera::mouseCallback);
+	glfwSetInputMode(window.getHandle(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	width = static_cast<float>(window.getWidth());
 	height = static_cast<float>(window.getHeight());
@@ -51,46 +51,32 @@ void Camera::init(Window& window) {
 }
 
 void Camera::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode) {
-	if(key == GLFW_KEY_W) {
-		if(action == GLFW_RELEASE)
-			keyPressedW = false;
-		else
-			keyPressedW = true;
-	}
+	const bool isNotReleased = action != GLFW_RELEASE;
 
-	if(key == GLFW_KEY_S) {
-		if(action == GLFW_RELEASE)
-			keyPressedS = false;
-		else
-			keyPressedS = true;
-	}
+	switch(key) {
+	case GLFW_KEY_W:
+		keyPressedW = isNotReleased;
+		break;
 
-	if(key == GLFW_KEY_A) {
-		if(action == GLFW_RELEASE)
-			keyPressedA = false;
-		else
-			keyPressedA = true;
-	}
+	case GLFW_KEY_S:
+		keyPressedS = isNotReleased;
+		break;
 
-	if(key == GLFW_KEY_D) {
-		if(action == GLFW_RELEASE)
-			keyPressedD = false;
-		else
-			keyPressedD = true;
-	}
+	case GLFW_KEY_A:
+		keyPressedA = isNotReleased;
+		break;
 
-	if(key == GLFW_KEY_SPACE) {
-		if(action == GLFW_RELEASE)
-			keyPressedSpace = false;
-		else
-			keyPressedSpace = true;
-	}
+	case GLFW_KEY_D:
+		keyPressedD = isNotReleased;
+		break;
 
-	if(key == GLFW_KEY_LEFT_CONTROL) {
-		if(action == GLFW_RELEASE)
-			keyPressedCtrl = false;
-		else
-			keyPressedCtrl = true;
+	case GLFW_KEY_SPACE:
+		keyPressedSpace = isNotReleased;
+		break;
+
+	case GLFW_KEY_LEFT_CONTROL:
+		keyPressedCtrl = isNotReleased;
+		break;
 	}
 }
 
