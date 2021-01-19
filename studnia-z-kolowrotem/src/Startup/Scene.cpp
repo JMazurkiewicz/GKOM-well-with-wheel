@@ -60,7 +60,7 @@ void Scene::prepareModels() {
 	basicModel.setHeight(0.8f);
 
 	WellGlModelGenerator glModelGenerator{basicModel};
-	glModelGenerator.setSampleRate(16);
+	glModelGenerator.setSampleRate(8);
 
 	model = glModelGenerator.generate();
 	view.setModel(model);
@@ -69,7 +69,7 @@ void Scene::prepareModels() {
 
 void Scene::clear() {
 	glClearColor(0.529, 0.807, 0.921, 0.9);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void Scene::updateCamera() {

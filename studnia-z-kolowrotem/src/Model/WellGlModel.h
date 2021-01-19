@@ -11,9 +11,10 @@ class WellGlModel {
 public:
 	using Vertices = std::vector<glm::vec3>;
 	using Indices = std::vector<unsigned>;
+	using Normals = std::vector<glm::vec3>;
 
 	WellGlModel() = default;
-	explicit WellGlModel(Vertices&& vertices, Indices&& indices);
+	explicit WellGlModel(Vertices&& vertices, Indices&& indices, Normals&& normals);
 
 	WellGlModel(const WellGlModel&) = delete;
 	WellGlModel& operator=(const WellGlModel&) = delete;
@@ -22,10 +23,12 @@ public:
 
 	const Vertices& getVertices() const;
 	const Indices& getIndices() const;
+	const Normals& getNormals() const;
 
 	friend std::ostream& operator<<(std::ostream& stream, const WellGlModel& model);
 
 private:
 	Vertices vertices;
 	Indices indices;
+	Normals normals;
 };
