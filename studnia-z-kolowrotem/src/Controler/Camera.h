@@ -7,6 +7,9 @@
 class Camera {
 public:
     static void init(Window& window);
+    static const glm::mat4& getProjectionMatrix();
+    static const glm::mat4& getViewMatrix();
+    static const glm::mat4& getModelMatrix();
     static glm::mat4 update();
 
 private:
@@ -15,6 +18,10 @@ private:
     
     static float width;
     static float height;
+
+    static glm::mat4 projectionMatrix;
+    static glm::mat4 viewMatrix;
+    static glm::mat4 modelMatrix;
 
     static float lastX;
     static float lastY;

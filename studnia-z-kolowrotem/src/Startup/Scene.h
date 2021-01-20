@@ -22,7 +22,12 @@ private:
 	void prepareEnvironmentModel();
 
 	void clear();
-	void updateCamera();
+	void setupCamera();
+	void updateCamera(
+		GLuint MatrixID, 
+		GLuint ModelMatrixID, 
+		GLuint ViewMatrixID
+	);
 	void drawObjects();
 
 	bool shouldClose() const;
