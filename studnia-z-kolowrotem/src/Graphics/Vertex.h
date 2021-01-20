@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 #include <type_traits>
 
-struct Vertex {
+struct alignas(float) Vertex {
 	Vertex();
 	Vertex(const glm::vec3& position);
 
