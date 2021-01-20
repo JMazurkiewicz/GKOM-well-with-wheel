@@ -153,12 +153,14 @@
     <ClCompile Include="src\Graphics\MipmapTexture.cpp" />
     <ClCompile Include="src\Graphics\Image.cpp" />
     <ClCompile Include="src\Graphics\Shader.cpp" />
+    <ClCompile Include="src\Graphics\Vertex.cpp" />
     <ClCompile Include="src\LibraryExceptions\ShaderException.cpp" />
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp" />
     <ClCompile Include="src\ModelGeneration\CompoundModelGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\CuboidGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\CylinderGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\EnvironmentGlModelGenerator.cpp" />
+    <ClCompile Include="src\ModelGeneration\HollowCylinderGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\ModelGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\SmoothShapeGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGlModelGenerator.cpp" />
@@ -178,6 +180,7 @@
     <ClInclude Include="src\Graphics\Image.h" />
     <ClInclude Include="src\Graphics\MipmapTexture.h" />
     <ClInclude Include="src\Graphics\Shader.h" />
+    <ClInclude Include="src\Graphics\Vertex.h" />
     <ClInclude Include="src\LibraryExceptions\LibraryException.h" />
     <ClInclude Include="src\LibraryExceptions\ShaderException.h" />
     <ClInclude Include="src\LibraryExceptions\SoilException.h" />
@@ -185,6 +188,7 @@
     <ClInclude Include="src\ModelGeneration\CuboidGenerator.h" />
     <ClInclude Include="src\ModelGeneration\CylinderGenerator.h" />
     <ClInclude Include="src\ModelGeneration\EnvironmentGlModelGenerator.h" />
+    <ClInclude Include="src\ModelGeneration\HollowCylinderGenerator.h" />
     <ClInclude Include="src\ModelGeneration\ModelGenerator.h" />
     <ClInclude Include="src\ModelGeneration\PlaneGenerator.h" />
     <ClInclude Include="src\ModelGeneration\SmoothShapeGenerator.h" />

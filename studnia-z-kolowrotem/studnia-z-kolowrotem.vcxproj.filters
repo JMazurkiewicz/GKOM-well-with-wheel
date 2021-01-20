@@ -103,9 +103,17 @@
     <ClCompile Include="src\ModelGeneration\CuboidGenerator.cpp">
       <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
-    <ClCompile Include="src\ModelGeneration\CompoundModelGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\ModelGenerator.cpp">
       <Filter>Sources\ModelGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\CompoundModelGenerator.cpp">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\HollowCylinderGenerator.cpp">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Vertex.cpp">
+      <Filter>Sources\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +191,12 @@
     </ClInclude>
     <ClInclude Include="src\ModelGeneration\ModelGenerator.h">
       <Filter>Sources\ModelGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\HollowCylinderGenerator.h">
+      <Filter>Sources\ModelGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Vertex.h">
+      <Filter>Sources\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

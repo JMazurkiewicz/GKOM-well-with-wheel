@@ -1,13 +1,13 @@
 #pragma once
 
-#include <glm/glm.hpp>
+#include "Graphics/Vertex.h"
 #include "Model/GlModel.h"
 #include <tuple>
 #include <vector>
 
 class ModelGenerator {
 public:
-	using Vertices = std::vector<glm::vec3>;
+	using Vertices = std::vector<Vertex>;
 	using Indices = std::vector<unsigned>;
 	using Model = std::tuple<Vertices, Indices>;
 

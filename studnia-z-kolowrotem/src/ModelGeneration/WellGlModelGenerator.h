@@ -44,11 +44,6 @@ private:
 	void prepareRightBracketGenerator();
 	void prepareLog();
 
-	void createBrackets();
-	void createBracketModel(const glm::vec3& translation, unsigned modelOffset);
-
-	void createLog();
-
 	const WellModel& basicModel;
 	CompoundModelGenerator compoundGenerator;
 
@@ -57,9 +52,8 @@ private:
 	CuboidGenerator logGenerator;
 
 	unsigned sampleRate;
-	WellGlModel::Vertices vertices;
-	WellGlModel::Indices indices;
-	WellGlModel::Normals normals;
+	ModelGenerator::Vertices vertices;
+	ModelGenerator::Indices indices;
 
 	float innerAngle;
 	unsigned lowerInnerOffset;

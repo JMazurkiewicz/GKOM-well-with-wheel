@@ -16,7 +16,7 @@ WellGlModel WellGlModelGenerator::generate() {
 	basicModel.validateModel();
 	setupVariables();
 	createVertices();
-	return WellGlModel{std::move(vertices), std::move(indices), std::move(normals)};
+	return WellGlModel{std::move(vertices), std::move(indices)};
 }
 
 void WellGlModelGenerator::setupVariables() {
@@ -83,11 +83,10 @@ void WellGlModelGenerator::calculateNormals(unsigned index1, unsigned index2, un
 	glm::vec3 edge1;
 	glm::vec3 edge2;
 
-	edge1 = vertices[index2] - vertices[index1];
-	edge2 = vertices[index3] - vertices[index1];
+	edge1 = vertices[index2].position - vertices[index1].position;
+	edge2 = vertices[index3].position - vertices[index1].position;
 
-
-	normals.push_back(glm::normalize(glm::cross(edge1, edge2)));
+	vertices[0].normal = glm::normalize(glm::cross(edge1, edge2));
 }
 
 void WellGlModelGenerator::connectOuterVertices() {

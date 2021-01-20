@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ModelGeneration/ModelGenerator.h"
 #include <glm/glm.hpp>
 #include <ostream>
 #include <vector>
@@ -9,12 +10,11 @@
  */
 class WellGlModel {
 public:
-	using Vertices = std::vector<glm::vec3>;
-	using Indices = std::vector<unsigned>;
-	using Normals = std::vector<glm::vec3>;
+	using Vertices = ModelGenerator::Vertices;
+	using Indices = ModelGenerator::Indices;
 
 	WellGlModel() = default;
-	explicit WellGlModel(Vertices&& vertices, Indices&& indices, Normals&& normals);
+	explicit WellGlModel(Vertices&& vertices, Indices&& indices);
 
 	WellGlModel(const WellGlModel&) = delete;
 	WellGlModel& operator=(const WellGlModel&) = delete;
@@ -23,10 +23,8 @@ public:
 
 	const Vertices& getVertices() const;
 	const Indices& getIndices() const;
-	const Normals& getNormals() const;
 
 private:
 	Vertices vertices;
 	Indices indices;
-	Normals normals;
 };

@@ -20,7 +20,6 @@ public:
 private:
 	GLuint vbo;
 	GLuint ebo;
-	GLuint nbo;
 
 	const WellGlModel* model;
 };

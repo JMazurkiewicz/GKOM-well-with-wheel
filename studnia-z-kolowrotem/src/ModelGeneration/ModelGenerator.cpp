@@ -18,8 +18,9 @@ ModelGenerator::Model ModelGenerator::generateModel() {
 }
 
 void ModelGenerator::applyTransformation() {
-	for(glm::vec3& vec : vertices) {
-		vec = glm::vec3{transformation * glm::vec4{vec, 1.0f}};
+	for(Vertex& vec : vertices) {
+		glm::vec3& position = vec.position;
+		position = glm::vec3{transformation * glm::vec4{position, 1.0f}};
 	}
 }
 

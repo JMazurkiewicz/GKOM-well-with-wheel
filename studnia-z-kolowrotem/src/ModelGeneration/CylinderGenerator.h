@@ -16,9 +16,10 @@ public:
 
 	[[nodiscard]] unsigned getVertexCount() const override;
 
-private:
+protected:
 	void constructModel() override;
 
+private:
 	void createLowerCircle();
 	void createUpperCircle();
 	void createCircle(const glm::vec3& start);
