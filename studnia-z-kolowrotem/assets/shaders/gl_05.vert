@@ -1,19 +1,35 @@
 #version 330 core
 
 layout (location = 0) in vec3 position;
-layout (location = 1) in vec3 color;
+layout (location = 1) in vec3 indices;
 layout (location = 2) in vec3 normal;
-layout (location = 3) in vec2 texCoord;
 
-out vec3 vecColor;
-out vec2 TexCoord;
+out vec3 PositionWorld;
+out vec3 VecColor;
+out vec3 NormalC;
+out vec3 EyeDirCamera;
+out vec3 LightDirCamera;
   
-uniform mat4 model;
 uniform mat4 MVP;
+uniform mat4 V;
+uniform mat4 M;
+//uniform vec3 LightPosWorld;
 
 void main()
 {
-    gl_Position = MVP * model * vec4(position, 1.0f);
-    vecColor = position;
-    TexCoord = texCoord;
+    vec3 LightPosWorld = vec3(3,3,3);
+
+    gl_Position = MVP * vec4(position , 1.0f);
+
+    PositionWorld = (M * vec4(position,1)).xyz;
+    
+    vec3 PositionCamera = ( V * M * vec4(position,1)).xyz;
+	EyeDirCamera = vec3(0,0,0) - PositionCamera;
+    
+    vec3 LightPosCamera = ( V * vec4(LightPosWorld,1)).xyz;
+    LightDirCamera = LightPosCamera + EyeDirCamera;
+
+    NormalC = ( V * M * vec4(normal,0)).xyz;
+
+    VecColor = position;
 }

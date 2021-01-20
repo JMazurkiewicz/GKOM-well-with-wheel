@@ -80,6 +80,8 @@ void WellGlModelGenerator::calculateNormals(unsigned index1, unsigned index2, un
 
 
 	normals.push_back(glm::normalize(glm::cross(edge1, edge2)));
+	normals.push_back(glm::normalize(glm::cross(edge1, edge2)));
+	normals.push_back(glm::normalize(glm::cross(edge1, edge2)));
 }
 
 void WellGlModelGenerator::connectOuterVertices() {
@@ -113,26 +115,6 @@ void WellGlModelGenerator::connectInnerVertices() {
 		indices.push_back(next + lowerOuterOffset);
 
 		calculateNormals(index + lowerOuterOffset, next + higherOuterOffset, next + lowerOuterOffset);
-
-		/*if (tryOnce) {
-			std::cout << vertices[index + lowerOuterOffset].x << "  " << vertices[index + lowerOuterOffset].y << "  " << vertices[index + lowerOuterOffset].z << std::endl;
-
-			std::cout << vertices[next + higherOuterOffset].x << "  " << vertices[next + higherOuterOffset].y << "  " << vertices[next + higherOuterOffset].z << std::endl;
-
-			std::cout << vertices[next + lowerOuterOffset].x << "  " << vertices[next + lowerOuterOffset].y << "  " << vertices[next + lowerOuterOffset].z << std::endl;
-
-			
-
-			std::cout << edge1.x << "  " << edge1.y << "  " << edge1.z << std::endl;
-
-			std::cout << edge2.x << "  " << edge2.y << "  " << edge2.z << std::endl;
-
-			normals.push_back(glm::normalize(glm::cross(edge1, edge2)));
-
-			std::cout << normals[0].x << "  " << normals[0].y << "  " << normals[0].z << std::endl;
-
-			tryOnce = false;
-		}*/
 
 		indices.push_back(index + lowerOuterOffset);
 		indices.push_back(next + higherOuterOffset);

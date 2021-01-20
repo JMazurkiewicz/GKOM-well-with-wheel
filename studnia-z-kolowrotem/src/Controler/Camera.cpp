@@ -5,6 +5,10 @@
 float Camera::width;
 float Camera::height;
 
+glm::mat4 Camera::projectionMatrix;
+glm::mat4 Camera::viewMatrix;
+glm::mat4 Camera::modelMatrix;
+
 float Camera::lastX;
 float Camera::lastY;
 float Camera::yaw;
@@ -48,6 +52,18 @@ void Camera::init(Window& window) {
 	keyPressedD = false;
 	keyPressedSpace = false;
 	keyPressedCtrl = false;
+}
+
+const glm::mat4& Camera::getProjectionMatrix() {
+	return projectionMatrix;
+}
+
+const glm::mat4& Camera::getViewMatrix() {
+	return viewMatrix;
+}
+
+const glm::mat4& Camera::getModelMatrix() {
+	return modelMatrix;
 }
 
 void Camera::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode) {
@@ -137,9 +153,9 @@ glm::mat4 Camera::update() {
 		cameraPos.y = minHeight;
 
 
-	const glm::mat4 projection = glm::perspective(glm::radians(45.0f), width/height, 0.1f, 100.0f);
-	const glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-	const glm::mat4 model = glm::mat4(1.0f);
+	projectionMatrix = glm::perspective(glm::radians(45.0f), width/height, 0.1f, 100.0f);
+	viewMatrix = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+	modelMatrix = glm::mat4(1.0f);
 
-	return projection * view * model;
+	return projectionMatrix * viewMatrix * modelMatrix;
 }

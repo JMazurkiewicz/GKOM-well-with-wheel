@@ -23,16 +23,21 @@ Scene::~Scene() {
 
 void Scene::start() {
 	glm::mat4 look{1};
+
+	GLuint MatrixID = glGetUniformLocation(mainShader.getProgramId(), "MVP");
+	GLuint ViewMatrixID = glGetUniformLocation(mainShader.getProgramId(), "V");
+	GLuint ModelMatrixID = glGetUniformLocation(mainShader.getProgramId(), "M");
 	
 	do {
 		clear();
 
 		glBindVertexArray(vao);
 		drawObjects();
-		updateCamera();
-
-		GLuint lookLoc = glGetUniformLocation(mainShader.getProgramId(), "model");
-		glUniformMatrix4fv(lookLoc, 1, GL_FALSE, glm::value_ptr(look));
+		updateCamera(
+			MatrixID, 
+			ViewMatrixID, 
+			ModelMatrixID
+		);
 		
 		mainShader.useProgram();
 		glBindVertexArray(0);
@@ -76,10 +81,25 @@ void Scene::clear() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Scene::updateCamera() {
+void Scene::setupCamera() {
+}
+
+void Scene::updateCamera(
+	GLuint MatrixID, 
+	GLuint ModelMatrixID, 
+	GLuint ViewMatrixID
+) {
+	glm::mat4 projectionMatrix = Camera::getProjectionMatrix();
+	glm::mat4 viewMatrix = Camera::getViewMatrix();
+	glm::mat4 modelMatrix = Camera::getModelMatrix();
 	glm::mat4 cameraMatrix = Camera::update();
-	GLuint MatrixID = glGetUniformLocation(mainShader.getProgramId(), "MVP");
+
+	//GLuint MatrixID = glGetUniformLocation(mainShader.getProgramId(), "MVP");
+	//glUniformMatrix4fv(MatrixID, 1, GL_FALSE, glm::value_ptr(cameraMatrix));
+
 	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &cameraMatrix[0][0]);
+	glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &modelMatrix[0][0]);
+	glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &viewMatrix[0][0]);
 }
 
 void Scene::drawObjects() {
