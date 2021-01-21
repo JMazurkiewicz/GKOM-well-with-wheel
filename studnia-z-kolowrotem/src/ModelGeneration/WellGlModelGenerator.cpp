@@ -3,6 +3,7 @@
 #include <cmath>
 #include <iostream>
 #include <glm/ext.hpp>
+#include <iostream>
 
 WellGlModelGenerator::WellGlModelGenerator(const WellModel& basicModel)
 	: basicModel{basicModel}, sampleRate{DEFAULT_SAMPLE_RATE} { }

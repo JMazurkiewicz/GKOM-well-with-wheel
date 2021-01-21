@@ -59,7 +59,7 @@ void Scene::start() {
 void Scene::prepareWellModels() {
 	WellModel basicModel{};
 	WellGlModelGenerator glModelGenerator{basicModel};
-	glModelGenerator.setSampleRate(64);
+	glModelGenerator.setSampleRate(4);
 
 	model = glModelGenerator.generate();
 	view.setModel(model);

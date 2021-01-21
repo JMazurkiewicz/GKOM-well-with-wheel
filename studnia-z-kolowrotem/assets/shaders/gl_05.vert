@@ -1,8 +1,9 @@
 #version 330 core
 
 layout (location = 0) in vec3 position;
-layout (location = 1) in vec3 indices;
+layout (location = 1) in vec3 color;
 layout (location = 2) in vec3 normal;
+layout (location = 3) in vec2 texture;
 
 out vec3 PositionWorld;
 out vec3 VecColor;
@@ -17,7 +18,7 @@ uniform mat4 M;
 
 void main()
 {
-    vec3 LightPosWorld = vec3(3,3,3);
+    vec3 LightPosWorld = vec3(2,2,2);
 
     gl_Position = MVP * vec4(position , 1.0f);
 

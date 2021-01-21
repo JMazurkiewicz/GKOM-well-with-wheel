@@ -7,12 +7,15 @@ in vec3 LightDirCamera;
 
 out vec3 color;
 
+uniform mat4 MVP;
+uniform mat4 V;
+uniform mat4 M;
 
 void main()
 {
 	vec3 LightColor = vec3(1,1,1);
 	float LightPower = 50.0f;
-    vec3 LightPosWorld = vec3(3,3,3);
+    vec3 LightPosWorld = vec3(4,4,4);
 	
 	vec3 MaterialDiffuseColor = VecColor;
 	vec3 MaterialAmbientColor = vec3(0.1,0.1,0.1) * MaterialDiffuseColor;
