@@ -6,6 +6,9 @@ Vertex::Vertex()
 Vertex::Vertex(const glm::vec3& position)
 	: position{position}, color{}, normal{}, texture{} { }
 
+Vertex::Vertex(float x, float y, float z)
+	: position{x, y, z}, color{}, normal{}, texture{} { }
+
 std::ostream& operator<<(std::ostream& stream, const glm::vec3& vec) {
 	return stream << "[" << vec.x << ", " << vec.y << ", " << vec.z << "]";
 }

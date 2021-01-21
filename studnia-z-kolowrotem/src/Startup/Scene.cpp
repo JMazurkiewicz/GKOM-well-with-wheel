@@ -13,15 +13,11 @@ namespace this_thread = std::this_thread;
 using namespace std::chrono_literals;
 
 Scene::Scene(MainWindow& window)
-: window{window}, mainShader{"assets/shaders/gl_05.vert", "assets/shaders/gl_05.frag"}, vao{0}
+: window{window}, vao{0}, mainShader{"assets/shaders/gl_05.vert", "assets/shaders/gl_05.frag"}
 {	
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
-
 	Camera::init(window);
-
-	prepareWellModels();
-	prepareEnvironmentModel();
 	glBindVertexArray(0);
 }
 
@@ -30,8 +26,6 @@ Scene::~Scene() {
 }
 
 void Scene::start() {
-	glm::mat4 look{1};
-
 	GLuint MatrixID = glGetUniformLocation(mainShader.getProgramId(), "MVP");
 	GLuint ViewMatrixID = glGetUniformLocation(mainShader.getProgramId(), "V");
 	GLuint ModelMatrixID = glGetUniformLocation(mainShader.getProgramId(), "M");
@@ -40,12 +34,8 @@ void Scene::start() {
 		clear();
 
 		glBindVertexArray(vao);
-		drawObjects();
-		updateCamera(
-			MatrixID, 
-			ViewMatrixID, 
-			ModelMatrixID
-		);
+		update();
+		updateCamera(MatrixID, ViewMatrixID, ModelMatrixID);
 		
 		mainShader.useProgram();
 		glBindVertexArray(0);
@@ -54,22 +44,6 @@ void Scene::start() {
 		this_thread::sleep_for(10ms);
 		glfwPollEvents();
 	} while(!shouldClose());
-}
-
-void Scene::prepareWellModels() {
-	WellModel basicModel{};
-	WellGlModelGenerator glModelGenerator{basicModel};
-	glModelGenerator.setSampleRate(4);
-
-	model = glModelGenerator.generate();
-	view.setModel(model);
-}
-
-void Scene::prepareEnvironmentModel() {
-	EnvironmentModel basicModel;
-	EnvironmentGlModelGenerator generator{basicModel};
-	environmentModel = generator.generate();
-	environmentView.setModel(environmentModel);
 }
 
 void Scene::clear() {
@@ -98,9 +72,9 @@ void Scene::updateCamera(
 	glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &viewMatrix[0][0]);
 }
 
-void Scene::drawObjects() {
-	environmentView.draw();
-	view.draw();
+void Scene::update() {
+	environment.update();
+	well.update();
 }
 
 bool Scene::shouldClose() const {

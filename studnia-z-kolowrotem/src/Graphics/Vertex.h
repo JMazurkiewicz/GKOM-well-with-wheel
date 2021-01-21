@@ -7,6 +7,7 @@
 struct alignas(float) Vertex {
 	Vertex();
 	Vertex(const glm::vec3& position);
+	Vertex(float x, float y, float z);
 
 	glm::vec3 position;
 	glm::vec3 color;

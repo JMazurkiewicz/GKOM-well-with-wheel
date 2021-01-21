@@ -2,10 +2,8 @@
 
 #include "Graphics/Shader.h"
 #include "MainWindow.h"
-#include "Model/EnvironmentGlModel.h"
-#include "Model/WellGlModel.h"
-#include "View/GlView.h"
-#include "View/WellGlView.h"
+#include "Environment.h"
+#include "Well.h"
 
 class Scene {
 public:
@@ -18,9 +16,6 @@ public:
 	void start();
 
 private:
-	void prepareWellModels();
-	void prepareEnvironmentModel();
-
 	void clear();
 	void setupCamera();
 	void updateCamera(
@@ -28,18 +23,15 @@ private:
 		GLuint ModelMatrixID, 
 		GLuint ViewMatrixID
 	);
-	void drawObjects();
+	void update();
 
 	bool shouldClose() const;
 
 	MainWindow& window;
-	Shader mainShader;
-
 	GLuint vao;
 
-	EnvironmentGlModel environmentModel;
-	GlView environmentView;
+	Shader mainShader;
 
-	WellGlModel model;
-	WellGlView view;
+	Well well;
+	Environment environment;
 };

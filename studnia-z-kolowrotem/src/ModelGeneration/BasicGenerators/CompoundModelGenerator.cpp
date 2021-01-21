@@ -13,6 +13,7 @@ unsigned CompoundModelGenerator::getVertexCount() const {
 }
 
 void CompoundModelGenerator::constructModel() {
+	prepareGenerators();
 	unsigned offset = 0;
 
 	for(ModelGenerator* generator : generators) {

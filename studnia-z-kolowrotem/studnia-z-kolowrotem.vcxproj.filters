@@ -124,6 +124,15 @@
     <ClCompile Include="src\ModelGeneration\BasicGenerators\PrimitiveGenerator.cpp">
       <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
     </ClCompile>
+    <ClCompile Include="src\ModelGeneration\WellGeneration\WoodenStandGenerator.cpp">
+      <Filter>Sources\ModelGeneration\WellGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Startup\Well.cpp">
+      <Filter>Sources\Startup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Startup\Environment.cpp">
+      <Filter>Sources\Startup</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\View\WellGlView.h">
@@ -174,9 +183,6 @@
     <ClInclude Include="src\ModelGeneration\EnvironmentGlModelGenerator.h">
       <Filter>Sources\ModelGeneration</Filter>
     </ClInclude>
-    <ClInclude Include="src\Model\EnvironmentGlModel.h">
-      <Filter>Sources\Model</Filter>
-    </ClInclude>
     <ClInclude Include="src\View\GlView.h">
       <Filter>Sources\View</Filter>
     </ClInclude>
@@ -209,6 +215,15 @@
     </ClInclude>
     <ClInclude Include="src\ModelGeneration\BasicGenerators\PrimitiveGenerator.h">
       <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\WellGeneration\WoodenStandGenerator.h">
+      <Filter>Sources\ModelGeneration\WellGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Startup\Well.h">
+      <Filter>Sources\Startup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Startup\Environment.h">
+      <Filter>Sources\Startup</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,11 @@
 #pragma once
 
-#include <glm/glm.hpp>
+#include <Graphics/Vertex.h>
 #include <vector>
 
 class GlModel {
 public:
-	using Vertices = std::vector<glm::vec3>;
+	using Vertices = std::vector<Vertex>;
 	using Indices = std::vector<unsigned>;
 
 	GlModel() = default;

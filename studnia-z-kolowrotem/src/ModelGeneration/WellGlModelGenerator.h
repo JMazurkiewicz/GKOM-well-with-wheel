@@ -25,16 +25,11 @@ public:
 private:
 	void prepareGenerators();
 	void prepareWellBaseGenerator();
-	void prepareLeftBracketGenerator();
-	void prepareRightBracketGenerator();
-	void prepareLog();
 
 	const WellModel& basicModel;
 
 	HollowCylinderGenerator wellBaseGenerator;
-	CylinderGenerator leftBracketGenerator;
-	CylinderGenerator rightBracketGenerator;
-	CuboidGenerator logGenerator;
+	
 
 	unsigned sampleRate;
 };

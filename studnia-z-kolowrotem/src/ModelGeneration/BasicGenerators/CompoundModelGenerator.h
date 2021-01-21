@@ -13,6 +13,9 @@ public:
 
 	[[nodiscard]] unsigned getVertexCount() const;
 
+protected:
+	virtual void prepareGenerators() = 0;
+
 private:
 	void constructModel() override final;
 	void finishModel() override final;

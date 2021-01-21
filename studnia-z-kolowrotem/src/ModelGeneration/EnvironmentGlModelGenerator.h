@@ -1,19 +1,19 @@
 #pragma once
 
-#include "Model/EnvironmentGlModel.h"
+#include "Model/GlModel.h"
 
 class EnvironmentModel;
 
 class EnvironmentGlModelGenerator {
 public:
-	using Vertices = EnvironmentGlModel::Vertices;
-	using Indices = EnvironmentGlModel::Indices;
+	using Vertices = GlModel::Vertices;
+	using Indices = GlModel::Indices;
 
 	explicit EnvironmentGlModelGenerator(const EnvironmentModel& basicModel);
 	EnvironmentGlModelGenerator(const EnvironmentGlModelGenerator&) = delete;
 	EnvironmentGlModelGenerator& operator=(const EnvironmentGlModelGenerator&) = delete;
 
-	[[nodiscard]] EnvironmentGlModel generate();
+	[[nodiscard]] GlModel generate();
 
 private:
 	const EnvironmentModel& basicModel;
