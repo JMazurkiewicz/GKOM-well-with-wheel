@@ -1,15 +1,13 @@
 #pragma once
 
 #include "Graphics/Vertex.h"
-#include "Model/GlModel.h"
-#include <tuple>
 #include <vector>
 
 class ModelGenerator {
 public:
 	using Vertices = std::vector<Vertex>;
 	using Indices = std::vector<unsigned>;
-	using Model = std::tuple<Vertices, Indices>;
+	using Model = std::pair<Vertices, Indices>;
 
 	ModelGenerator();
 	ModelGenerator(const ModelGenerator&) = delete;
@@ -19,20 +17,19 @@ public:
 
 	void setArrayOffset(unsigned newArrayOffset);
 	void setTransformation(const glm::mat4& newTransformation);
-	void updateNormals();
 
 	[[nodiscard]] virtual unsigned getVertexCount() const = 0;
 	[[nodiscard]] Model generateModel();
 
 protected:
+	virtual void finishModel() = 0;
 	virtual void constructModel() = 0;
+	
 	void adjustArrayOffset();
+	void applyTransformation();
 
 	Vertices vertices;
 	Indices indices;
-
-private:
-	void applyTransformation();
 
 	unsigned arrayOffset;
 	glm::mat4 transformation;

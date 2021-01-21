@@ -5,7 +5,7 @@
 
 class CompoundModelGenerator : public ModelGenerator {
 public:
-	CompoundModelGenerator();
+	CompoundModelGenerator() = default;
 	CompoundModelGenerator(const CompoundModelGenerator&) = delete;
 	CompoundModelGenerator& operator=(const CompoundModelGenerator&) = delete;
 
@@ -15,7 +15,7 @@ public:
 
 private:
 	void constructModel() override final;
+	void finishModel() override final;
 
-	unsigned offset;
 	std::vector<ModelGenerator*> generators;
 };

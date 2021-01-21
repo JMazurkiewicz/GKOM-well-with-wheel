@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ModelGeneration/ModelGenerator.h"
+#include "ModelGeneration/BasicGenerators/ModelGenerator.h"
 #include <glm/glm.hpp>
 #include <ostream>
 #include <vector>

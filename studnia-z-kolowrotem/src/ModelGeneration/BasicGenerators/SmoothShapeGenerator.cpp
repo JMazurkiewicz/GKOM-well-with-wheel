@@ -1,7 +1,7 @@
 #include "SmoothShapeGenerator.h"
 
 SmoothShapeGenerator::SmoothShapeGenerator()
-    : ModelGenerator(), sampleRate{DEFAULT_SAMPLE_RATE} { }
+    : PrimitiveGenerator(), sampleRate{DEFAULT_SAMPLE_RATE} { }
 
 void SmoothShapeGenerator::setSampleRate(unsigned newSampleRate) {
     sampleRate = newSampleRate;

@@ -14,11 +14,8 @@ void WellGlModelGenerator::setSampleRate(unsigned newSampleRate) {
 
 WellGlModel WellGlModelGenerator::generate() {
 	prepareGenerators();
-	ModelGenerator::Model model = generateModel();
-	for(auto&& x : std::get<0>(model)) {
-		std::cout << x << '\n';
-	}
-	return WellGlModel{std::move(std::get<0>(model)), std::move(std::get<1>(model))};
+	auto[vertices, indices] = generateModel();
+	return WellGlModel{std::move(vertices), std::move(indices)};
 }
 
 void WellGlModelGenerator::prepareGenerators() {

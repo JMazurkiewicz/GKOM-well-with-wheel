@@ -41,6 +41,9 @@
     <Filter Include="Sources\ModelGeneration\WellGeneration">
       <UniqueIdentifier>{083ffd2d-e100-4e50-83ae-b65e04850201}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\ModelGeneration\BasicGenerators">
+      <UniqueIdentifier>{279e228f-c79c-4ce0-8efb-4b028f08dd71}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp">
@@ -91,32 +94,35 @@
     <ClCompile Include="src\ModelGeneration\EnvironmentGlModelGenerator.cpp">
       <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
-    <ClCompile Include="src\ModelGeneration\CylinderGenerator.cpp">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClCompile>
     <ClCompile Include="src\Model\GlModel.cpp">
       <Filter>Sources\Model</Filter>
     </ClCompile>
     <ClCompile Include="src\View\GlView.cpp">
       <Filter>Sources\View</Filter>
     </ClCompile>
-    <ClCompile Include="src\ModelGeneration\SmoothShapeGenerator.cpp">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ModelGeneration\CuboidGenerator.cpp">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ModelGeneration\ModelGenerator.cpp">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ModelGeneration\HollowCylinderGenerator.cpp">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClCompile>
     <ClCompile Include="src\Graphics\Vertex.cpp">
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="src\ModelGeneration\CompoundModelGenerator.cpp">
-      <Filter>Sources\ModelGeneration</Filter>
+    <ClCompile Include="src\ModelGeneration\BasicGenerators\CompoundModelGenerator.cpp">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\BasicGenerators\CuboidGenerator.cpp">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\BasicGenerators\CylinderGenerator.cpp">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\BasicGenerators\HollowCylinderGenerator.cpp">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\BasicGenerators\ModelGenerator.cpp">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\BasicGenerators\SmoothShapeGenerator.cpp">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\BasicGenerators\PrimitiveGenerator.cpp">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -171,35 +177,38 @@
     <ClInclude Include="src\Model\EnvironmentGlModel.h">
       <Filter>Sources\Model</Filter>
     </ClInclude>
-    <ClInclude Include="src\ModelGeneration\CylinderGenerator.h">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClInclude>
     <ClInclude Include="src\View\GlView.h">
       <Filter>Sources\View</Filter>
     </ClInclude>
     <ClInclude Include="src\Model\GlModel.h">
       <Filter>Sources\Model</Filter>
     </ClInclude>
-    <ClInclude Include="src\ModelGeneration\SmoothShapeGenerator.h">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ModelGeneration\CuboidGenerator.h">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ModelGeneration\CompoundModelGenerator.h">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ModelGeneration\ModelGenerator.h">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ModelGeneration\HollowCylinderGenerator.h">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClInclude>
     <ClInclude Include="src\Graphics\Vertex.h">
       <Filter>Sources\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.h">
       <Filter>Sources\ModelGeneration\WellGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\BasicGenerators\CompoundModelGenerator.h">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\BasicGenerators\CuboidGenerator.h">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\BasicGenerators\CylinderGenerator.h">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\BasicGenerators\HollowCylinderGenerator.h">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\BasicGenerators\ModelGenerator.h">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\BasicGenerators\SmoothShapeGenerator.h">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\BasicGenerators\PrimitiveGenerator.h">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

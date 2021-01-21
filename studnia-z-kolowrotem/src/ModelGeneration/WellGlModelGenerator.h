@@ -1,9 +1,9 @@
 #pragma once
 
-#include "CompoundModelGenerator.h"
-#include "CuboidGenerator.h"
-#include "CylinderGenerator.h"
-#include "HollowCylinderGenerator.h"
+#include "BasicGenerators/CompoundModelGenerator.h"
+#include "BasicGenerators/CuboidGenerator.h"
+#include "BasicGenerators/CylinderGenerator.h"
+#include "BasicGenerators/HollowCylinderGenerator.h"
 #include "Model/WellGlModel.h"
 #include "Model/WellModel.h"
 

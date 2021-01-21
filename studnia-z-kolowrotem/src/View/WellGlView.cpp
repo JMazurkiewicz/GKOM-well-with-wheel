@@ -30,15 +30,6 @@ void WellGlView::setModel(const WellGlModel& newModel) {
 	const Indices& indices = model->getIndices();
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(Indices::value_type), indices.data(), GL_STATIC_DRAW);
-
-
-
-	for (auto&& v : model->getVertices()) {
-
-		std::cout << v.normal.x << "  " << v.normal.y << "  " << v.normal.z << std::endl << std::endl;
-	}
-
-	std::cout << model->getVertices()[32].normal.x << "  " << model->getVertices()[32].normal.x << "  " << model->getVertices()[32].normal.x << std::endl << std::endl;
 }
 
 void WellGlView::draw() {

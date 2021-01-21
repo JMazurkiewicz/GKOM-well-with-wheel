@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ModelGenerator.h"
+#include "PrimitiveGenerator.h"
 
-class SmoothShapeGenerator : public ModelGenerator {
+class SmoothShapeGenerator : public PrimitiveGenerator {
 public:
 	static constexpr unsigned DEFAULT_SAMPLE_RATE = 64;
 

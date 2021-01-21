@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ModelGenerator.h"
+#include "PrimitiveGenerator.h"
 
-class CuboidGenerator : public ModelGenerator {
+class CuboidGenerator : public PrimitiveGenerator {
 public:
 	CuboidGenerator();
 	CuboidGenerator(const CuboidGenerator&) = delete;
