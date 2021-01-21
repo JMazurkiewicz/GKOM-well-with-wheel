@@ -25,13 +25,13 @@ public:
 
 protected:
 	virtual void constructModel() = 0;
+	void adjustArrayOffset();
 
 	Vertices vertices;
 	Indices indices;
 
 private:
 	void applyTransformation();
-	void adjustArrayOffset();
 
 	unsigned arrayOffset;
 	glm::mat4 transformation;

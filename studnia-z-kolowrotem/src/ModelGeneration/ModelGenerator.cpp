@@ -3,7 +3,7 @@
 ModelGenerator::ModelGenerator() : arrayOffset{0}, transformation{1.0f} { }
 
 void ModelGenerator::setArrayOffset(unsigned newArrayOffset) {
-	arrayOffset = newArrayOffset;
+	arrayOffset += newArrayOffset;
 }
 
 void ModelGenerator::setTransformation(const glm::mat4& newTransformation) {

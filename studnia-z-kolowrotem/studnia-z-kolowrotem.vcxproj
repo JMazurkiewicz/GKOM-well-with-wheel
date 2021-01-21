@@ -190,8 +190,8 @@
     <ClInclude Include="src\ModelGeneration\EnvironmentGlModelGenerator.h" />
     <ClInclude Include="src\ModelGeneration\HollowCylinderGenerator.h" />
     <ClInclude Include="src\ModelGeneration\ModelGenerator.h" />
-    <ClInclude Include="src\ModelGeneration\PlaneGenerator.h" />
     <ClInclude Include="src\ModelGeneration\SmoothShapeGenerator.h" />
+    <ClInclude Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGlModelGenerator.h" />
     <ClInclude Include="src\Model\EnvironmentGlModel.h" />
     <ClInclude Include="src\Model\EnvironmentModel.h" />

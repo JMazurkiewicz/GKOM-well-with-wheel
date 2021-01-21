@@ -17,5 +17,4 @@ protected:
 
 private:
 	unsigned sampleRate;
-
 };

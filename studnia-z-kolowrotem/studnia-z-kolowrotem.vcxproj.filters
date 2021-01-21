@@ -38,6 +38,9 @@
     <Filter Include="Sources\ModelGeneration">
       <UniqueIdentifier>{332c3fb3-055d-4b35-b9f7-d4d478d6a091}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\ModelGeneration\WellGeneration">
+      <UniqueIdentifier>{083ffd2d-e100-4e50-83ae-b65e04850201}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp">
@@ -106,14 +109,14 @@
     <ClCompile Include="src\ModelGeneration\ModelGenerator.cpp">
       <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
-    <ClCompile Include="src\ModelGeneration\CompoundModelGenerator.cpp">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClCompile>
     <ClCompile Include="src\ModelGeneration\HollowCylinderGenerator.cpp">
       <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
     <ClCompile Include="src\Graphics\Vertex.cpp">
       <Filter>Sources\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\CompoundModelGenerator.cpp">
+      <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -177,9 +180,6 @@
     <ClInclude Include="src\Model\GlModel.h">
       <Filter>Sources\Model</Filter>
     </ClInclude>
-    <ClInclude Include="src\ModelGeneration\PlaneGenerator.h">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClInclude>
     <ClInclude Include="src\ModelGeneration\SmoothShapeGenerator.h">
       <Filter>Sources\ModelGeneration</Filter>
     </ClInclude>
@@ -197,6 +197,9 @@
     </ClInclude>
     <ClInclude Include="src\Graphics\Vertex.h">
       <Filter>Sources\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.h">
+      <Filter>Sources\ModelGeneration\WellGeneration</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
