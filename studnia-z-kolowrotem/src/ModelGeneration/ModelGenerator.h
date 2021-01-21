@@ -19,6 +19,7 @@ public:
 
 	void setArrayOffset(unsigned newArrayOffset);
 	void setTransformation(const glm::mat4& newTransformation);
+	void updateNormals();
 
 	[[nodiscard]] virtual unsigned getVertexCount() const = 0;
 	[[nodiscard]] Model generateModel();

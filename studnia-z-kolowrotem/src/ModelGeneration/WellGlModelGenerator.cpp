@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <glm/ext.hpp>
+#include <iostream>
 
 WellGlModelGenerator::WellGlModelGenerator(const WellModel& basicModel)
 	: basicModel{basicModel}, sampleRate{DEFAULT_SAMPLE_RATE} {
@@ -47,6 +48,7 @@ void WellGlModelGenerator::createVertices() {
 	prepareLog();
 	compoundGenerator.setArrayOffset(leftBracketOffset);
 	auto [v, i] = compoundGenerator.generateModel();
+	compoundGenerator.updateNormals();
 	vertices.insert(vertices.end(), v.begin(), v.end());
 	indices.insert(indices.end(), i.begin(), i.end());
 }
