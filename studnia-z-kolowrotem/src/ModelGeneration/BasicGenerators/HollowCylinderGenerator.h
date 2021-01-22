@@ -20,6 +20,7 @@ private:
 	[[nodiscard]] unsigned getInnerCylinderOffset() const;
 
 	void constructModel() override;
+	void adjustInnerIndices();
 	void connectTop();
 	unsigned nextIndex(unsigned index) const;
 

@@ -3,10 +3,6 @@
 #include "Controler/Camera.h"
 #include <glm/ext.hpp>
 #include <iostream>
-#include "Model/EnvironmentModel.h"
-#include "ModelGeneration/EnvironmentGlModelGenerator.h"
-#include "ModelGeneration/WellGlModelGenerator.h"
-#include "Model/WellModel.h"
 #include <thread>
 
 namespace this_thread = std::this_thread;

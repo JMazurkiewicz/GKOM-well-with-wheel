@@ -2,6 +2,7 @@
 
 #include "Model/GlModel.h"
 #include "Model/WellModel.h"
+#include "ModelGeneration/WellGeneration/WellBaseGenerator.h"
 #include "ModelGeneration/WellGeneration/WoodenStandGenerator.h"
 #include "View/GlView.h"
 
@@ -15,10 +16,14 @@ public:
 
 private:
 	void create();
+	void createBase();
 	void createWoodenStand();
 
 	WellModel basicModel;
 
 	GlModel woodenStandModel;
 	GlView woodenStandView;
+
+	GlModel baseModel;
+	GlView baseView;
 };

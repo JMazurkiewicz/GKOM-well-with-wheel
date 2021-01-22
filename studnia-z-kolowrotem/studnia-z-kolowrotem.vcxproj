@@ -164,8 +164,8 @@
     <ClCompile Include="src\ModelGeneration\BasicGenerators\PrimitiveGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\BasicGenerators\SmoothShapeGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\EnvironmentGlModelGenerator.cpp" />
+    <ClCompile Include="src\ModelGeneration\WellGeneration\WellBaseGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGeneration\WoodenStandGenerator.cpp" />
-    <ClCompile Include="src\ModelGeneration\WellGlModelGenerator.cpp" />
     <ClCompile Include="src\Model\EnvironmentModel.cpp" />
     <ClCompile Include="src\Model\GlModel.cpp" />
     <ClCompile Include="src\Model\WellGlModel.cpp" />
@@ -184,6 +184,7 @@
     <ClInclude Include="src\Graphics\Image.h" />
     <ClInclude Include="src\Graphics\MipmapTexture.h" />
     <ClInclude Include="src\Graphics\Shader.h" />
+    <ClInclude Include="src\Graphics\IndexGroup.h" />
     <ClInclude Include="src\Graphics\Vertex.h" />
     <ClInclude Include="src\LibraryExceptions\LibraryException.h" />
     <ClInclude Include="src\LibraryExceptions\ShaderException.h" />
@@ -196,9 +197,9 @@
     <ClInclude Include="src\ModelGeneration\BasicGenerators\PrimitiveGenerator.h" />
     <ClInclude Include="src\ModelGeneration\BasicGenerators\SmoothShapeGenerator.h" />
     <ClInclude Include="src\ModelGeneration\EnvironmentGlModelGenerator.h" />
+    <ClInclude Include="src\ModelGeneration\WellGeneration\WellBaseGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGeneration\WoodenStandGenerator.h" />
-    <ClInclude Include="src\ModelGeneration\WellGlModelGenerator.h" />
     <ClInclude Include="src\Model\EnvironmentModel.h" />
     <ClInclude Include="src\Model\GlModel.h" />
     <ClInclude Include="src\Model\WellGlModel.h" />

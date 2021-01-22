@@ -12,7 +12,7 @@ void HollowCylinderGenerator::setOuterRadius(float newOuterRadius) {
 }
 
 unsigned HollowCylinderGenerator::getVertexCount() const {
-    return 2 * CylinderGenerator::getVertexCount();
+    return 4 * getSampleRate();
 }
 
 unsigned HollowCylinderGenerator::getOuterCyilnderOffset() const {
@@ -20,18 +20,27 @@ unsigned HollowCylinderGenerator::getOuterCyilnderOffset() const {
 }
 
 unsigned HollowCylinderGenerator::getInnerCylinderOffset() const {
-    return CylinderGenerator::getVertexCount();
+    return 2 * getSampleRate();
 }
 
+#include <iostream>
 void HollowCylinderGenerator::constructModel() {
     setRadius(outerRadius);
     CylinderGenerator::constructModel();
 
     setRadius(innerRadius);
-    setArrayOffset(getInnerCylinderOffset());
     CylinderGenerator::constructModel();
+    adjustInnerIndices();
 
     connectTop();
+}
+
+void HollowCylinderGenerator::adjustInnerIndices() {
+    const unsigned innerIndicesOffset = 3 * getInnerCylinderOffset();
+
+    for(unsigned index = innerIndicesOffset; index < indices.size(); ++index) {
+        indices[index] += getInnerCylinderOffset();
+    }
 }
 
 void HollowCylinderGenerator::connectTop() {

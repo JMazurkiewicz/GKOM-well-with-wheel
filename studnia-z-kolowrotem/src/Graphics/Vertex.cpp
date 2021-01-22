@@ -15,8 +15,8 @@ std::ostream& operator<<(std::ostream& stream, const glm::vec3& vec) {
 
 std::ostream& operator<<(std::ostream& stream, const Vertex& vertex) {
 	return stream
-		<< "{\"position\": [" << vertex.position << "], \"color\": ["
-		<< vertex.color << "], \"normal\": ["
-		<< vertex.normal << "], \"texture\": ["
+		<< "{\"position\": " << vertex.position << ", \"color\": "
+		<< vertex.color << ", \"normal\": "
+		<< vertex.normal << ", \"texture\": ["
 		<< vertex.texture.x << ", " << vertex.texture.y << "]}";
 }

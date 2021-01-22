@@ -76,9 +76,6 @@
     <ClCompile Include="src\Startup\MainWindow.cpp">
       <Filter>Sources\Startup</Filter>
     </ClCompile>
-    <ClCompile Include="src\ModelGeneration\WellGlModelGenerator.cpp">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClCompile>
     <ClCompile Include="src\Model\WellGlModel.cpp">
       <Filter>Sources\Model</Filter>
     </ClCompile>
@@ -133,6 +130,9 @@
     <ClCompile Include="src\Startup\Environment.cpp">
       <Filter>Sources\Startup</Filter>
     </ClCompile>
+    <ClCompile Include="src\ModelGeneration\WellGeneration\WellBaseGenerator.cpp">
+      <Filter>Sources\ModelGeneration\WellGeneration</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\View\WellGlView.h">
@@ -143,9 +143,6 @@
     </ClInclude>
     <ClInclude Include="src\Startup\MainWindow.h">
       <Filter>Sources\Startup</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ModelGeneration\WellGlModelGenerator.h">
-      <Filter>Sources\ModelGeneration</Filter>
     </ClInclude>
     <ClInclude Include="src\Model\WellGlModel.h">
       <Filter>Sources\Model</Filter>
@@ -224,6 +221,12 @@
     </ClInclude>
     <ClInclude Include="src\Startup\Environment.h">
       <Filter>Sources\Startup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\WellGeneration\WellBaseGenerator.h">
+      <Filter>Sources\ModelGeneration\WellGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\IndexGroup.h">
+      <Filter>Sources\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
