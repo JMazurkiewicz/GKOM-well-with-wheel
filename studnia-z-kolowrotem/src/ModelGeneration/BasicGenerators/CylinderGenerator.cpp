@@ -55,13 +55,19 @@ void CylinderGenerator::connectSides() {
     for(unsigned index = 0; index < getSampleRate(); ++index) {
         const unsigned next = nextIndex(index);
 
-        indices.push_back(index);
-        indices.push_back(next);
-        indices.push_back(next + getSampleRate());
+        const IndexGroup firstTriangle{
+            index,
+            next,
+            next + getSampleRate()
+        };
+        indices.push_back(firstTriangle);
 
-        indices.push_back(index);
-        indices.push_back(index + getSampleRate());
-        indices.push_back(next + getSampleRate());
+        const IndexGroup secondTriangle{
+            index,
+            index + getSampleRate(),
+            next + getSampleRate()
+        };
+        indices.push_back(secondTriangle);
     }
 }
 

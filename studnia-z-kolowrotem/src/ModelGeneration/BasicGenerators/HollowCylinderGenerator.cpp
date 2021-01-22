@@ -36,10 +36,8 @@ void HollowCylinderGenerator::constructModel() {
 }
 
 void HollowCylinderGenerator::adjustInnerIndices() {
-    const unsigned innerIndicesOffset = 3 * getInnerCylinderOffset();
-
-    for(unsigned index = innerIndicesOffset; index < indices.size(); ++index) {
-        indices[index] += getInnerCylinderOffset();
+    for(unsigned index = getInnerCylinderOffset(); index < indices.size(); ++index) {
+        indices[index].advance(getInnerCylinderOffset());
     }
 }
 
@@ -47,13 +45,19 @@ void HollowCylinderGenerator::connectTop() {
     for(unsigned index = 0; index < CylinderGenerator::getVertexCount(); ++index) {
         const unsigned next = nextIndex(index);
 
-        indices.push_back(index + getOuterCyilnderOffset());
-        indices.push_back(index + getInnerCylinderOffset());
-        indices.push_back(next + getInnerCylinderOffset());
+        const IndexGroup firstTriangle{
+            index + getOuterCyilnderOffset(),
+            index + getInnerCylinderOffset(),
+            next + getInnerCylinderOffset()
+        };
+        indices.push_back(firstTriangle);
 
-        indices.push_back(index + getOuterCyilnderOffset());
-        indices.push_back(next + getOuterCyilnderOffset());
-        indices.push_back(next + getInnerCylinderOffset());
+        const IndexGroup secondTriangle{
+            index + getOuterCyilnderOffset(),
+            next + getOuterCyilnderOffset(),
+            next + getInnerCylinderOffset()
+        };
+        indices.push_back(secondTriangle);
     }
 }
 

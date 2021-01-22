@@ -42,12 +42,16 @@ void CuboidGenerator::constructVertices() {
 }
 
 void CuboidGenerator::connectVertices() {
-	indices = {
-		0, 1, 2, 0, 3, 2,
-		0, 1, 5, 0, 4, 5,
-		0, 3, 7, 0, 4, 7,
-		2, 3, 7, 2, 6, 7,
-		1, 2, 6, 1, 5, 6,
-		4, 5, 6, 4, 7, 6
-	};
+	indices.push_back({0, 1, 2});
+	indices.push_back({0, 3, 2});
+	indices.push_back({0, 1, 5});
+	indices.push_back({0, 4, 5});
+	indices.push_back({0, 3, 7});
+	indices.push_back({0, 4, 7});
+	indices.push_back({2, 3, 7});
+	indices.push_back({2, 6, 7});
+	indices.push_back({1, 2, 6});
+	indices.push_back({1, 5, 6});
+	indices.push_back({4, 5, 6});
+	indices.push_back({4, 7, 6});
 }

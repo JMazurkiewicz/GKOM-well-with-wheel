@@ -1,12 +1,13 @@
 #pragma once
 
 #include <Graphics/Vertex.h>
+#include <Graphics/IndexGroup.h>
 #include <vector>
 
 class GlModel {
 public:
 	using Vertices = std::vector<Vertex>;
-	using Indices = std::vector<unsigned>;
+	using Indices = std::vector<IndexGroup>;
 
 	GlModel() = default;
 	explicit GlModel(Vertices&& vertices, Indices&& indices);

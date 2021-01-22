@@ -12,6 +12,7 @@ GlModel EnvironmentGlModelGenerator::generate() {
 	vertices.emplace_back(+size, 0.0f, +size);
 	vertices.emplace_back(+size, 0.0f, -size);
 
-	indices = {0, 2, 1, 0, 3, 2};
+	indices.push_back({0, 2, 1});
+	indices.push_back({0, 3, 2});
 	return GlModel{std::move(vertices), std::move(indices)};
 }

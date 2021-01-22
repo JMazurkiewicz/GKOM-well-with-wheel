@@ -1,12 +1,13 @@
 #pragma once
 
+#include "Graphics/IndexGroup.h"
 #include "Graphics/Vertex.h"
 #include <vector>
 
 class ModelGenerator {
 public:
 	using Vertices = std::vector<Vertex>;
-	using Indices = std::vector<unsigned>;
+	using Indices = std::vector<IndexGroup>;
 	using Model = std::pair<Vertices, Indices>;
 
 	ModelGenerator();

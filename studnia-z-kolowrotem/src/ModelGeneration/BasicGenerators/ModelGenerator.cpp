@@ -1,7 +1,5 @@
 #include "ModelGenerator.h"
 
-#include <iostream>
-
 ModelGenerator::ModelGenerator() : arrayOffset{0}, transformation{1.0f} { }
 
 void ModelGenerator::setArrayOffset(unsigned newArrayOffset) {
@@ -26,7 +24,7 @@ void ModelGenerator::applyTransformation() {
 }
 
 void ModelGenerator::adjustArrayOffset() {
-	for(unsigned& index : indices) {
-		index += arrayOffset;
+	for(IndexGroup& index : indices) {
+		index.advance(arrayOffset);
 	}
 }
