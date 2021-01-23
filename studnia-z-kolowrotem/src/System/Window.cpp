@@ -1,5 +1,7 @@
 #include "Window.h"
 
+#include "Controler/KeyboardListener.h"
+#include "Controler/MouseListener.h"
 #include <stdexcept>
 
 #pragma warning(disable:26812)
@@ -42,4 +44,10 @@ bool Window::shouldClose() const {
 
 void Window::swapBuffers() {
 	glfwSwapBuffers(handle);
+}
+
+void Window::registerCallbacks() {
+	glfwSetKeyCallback(getHandle(), KeyboardListener::callback);
+	glfwSetKeyCallback(getHandle(), MouseListener::callback);
+	glfwSetInputMode(getHandle(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }

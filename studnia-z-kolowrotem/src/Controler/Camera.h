@@ -2,10 +2,13 @@
 
 #include <GL/glew.h>
 #include <glm/glm.hpp>
-#include "System/Window.h"
+#include "MouseListener.h"
+#include "KeyboardListener.h"
 
-class Camera {
+class Camera : public MouseListener, public KeyboardListener {
 public:
+    Camera() = default;
+
     static void init(Window& window);
     static const glm::mat4& getProjectionMatrix();
     static const glm::mat4& getViewMatrix();

@@ -142,6 +142,15 @@
     <ClCompile Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.cpp">
       <Filter>Sources\ModelGeneration\WellGeneration</Filter>
     </ClCompile>
+    <ClCompile Include="src\Controler\ActionListener.cpp">
+      <Filter>Sources\Controler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Controler\KeyboardListener.cpp">
+      <Filter>Sources\Controler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Controler\MouseListener.cpp">
+      <Filter>Sources\Controler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\System\Window.h">
@@ -245,6 +254,15 @@
     </ClInclude>
     <ClInclude Include="src\Model\RoofModel.h">
       <Filter>Sources\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Controler\ActionListener.h">
+      <Filter>Sources\Controler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Controler\MouseListener.h">
+      <Filter>Sources\Controler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Controler\KeyboardListener.h">
+      <Filter>Sources\Controler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -149,7 +149,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Controler\ActionListener.cpp" />
     <ClCompile Include="src\Controler\Camera.cpp" />
+    <ClCompile Include="src\Controler\KeyboardListener.cpp" />
+    <ClCompile Include="src\Controler\MouseListener.cpp" />
     <ClCompile Include="src\Graphics\MipmapTexture.cpp" />
     <ClCompile Include="src\Graphics\Image.cpp" />
     <ClCompile Include="src\Graphics\Shader.cpp" />
@@ -183,7 +186,10 @@
     <ClCompile Include="src\View\GlView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Controler\ActionListener.h" />
     <ClInclude Include="src\Controler\Camera.h" />
+    <ClInclude Include="src\Controler\KeyboardListener.h" />
+    <ClInclude Include="src\Controler\MouseListener.h" />
     <ClInclude Include="src\Graphics\Image.h" />
     <ClInclude Include="src\Graphics\MipmapTexture.h" />
     <ClInclude Include="src\Graphics\Shader.h" />
