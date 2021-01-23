@@ -30,7 +30,7 @@ void CuboidGenerator::constructVertices() {
 	const float halfZ = length / 2.0f;
 
 	vertices = {
-		glm::vec3{halfX, 0.0f, -halfZ},
+		glm::vec3{halfX, 0.0f, -halfZ},//Vertex{{halfX, 0.0f, -halfZ},{},{},{1,0}},
 		glm::vec3{-halfX, 0.0f, -halfZ},
 		glm::vec3{-halfX, 0.0f, halfZ},
 		glm::vec3{halfX, 0.0f, halfZ},

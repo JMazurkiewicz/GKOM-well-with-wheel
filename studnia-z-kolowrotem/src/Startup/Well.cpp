@@ -10,8 +10,16 @@ Well::Well() {
 }
 
 void Well::update() {
+	Texture texture;
+
+	texture.loadTexture("abc.DDS");
 	baseView.draw();
+
+	texture.loadTexture("yas.DDS");
 	woodenStandView.draw();
+
+
+	texture.loadTexture("texture.DDS");
 	spinningWheelView.draw();
 	roofView.draw();
 }
