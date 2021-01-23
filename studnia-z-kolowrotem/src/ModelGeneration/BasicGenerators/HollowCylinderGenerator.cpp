@@ -12,7 +12,7 @@ void HollowCylinderGenerator::setOuterRadius(float newOuterRadius) {
 }
 
 unsigned HollowCylinderGenerator::getVertexCount() const {
-    return 4 * getSampleRate();
+    return 2 * CylinderGenerator::getVertexCount();
 }
 
 unsigned HollowCylinderGenerator::getOuterCyilnderOffset() const {
@@ -20,10 +20,9 @@ unsigned HollowCylinderGenerator::getOuterCyilnderOffset() const {
 }
 
 unsigned HollowCylinderGenerator::getInnerCylinderOffset() const {
-    return 2 * getSampleRate();
+    return CylinderGenerator::getVertexCount();
 }
 
-#include <iostream>
 void HollowCylinderGenerator::constructModel() {
     setRadius(outerRadius);
     CylinderGenerator::constructModel();
@@ -42,20 +41,20 @@ void HollowCylinderGenerator::adjustInnerIndices() {
 }
 
 void HollowCylinderGenerator::connectTop() {
-    for(unsigned index = 0; index < CylinderGenerator::getVertexCount(); ++index) {
+    for(unsigned index = 0; index < getSampleRate(); ++index) {
         const unsigned next = nextIndex(index);
 
         const IndexGroup firstTriangle{
-            index + getOuterCyilnderOffset(),
-            index + getInnerCylinderOffset(),
-            next + getInnerCylinderOffset()
+            index + getOuterCyilnderOffset() + getUpperCircleOffset(),
+            index + getInnerCylinderOffset() + getUpperCircleOffset(),
+            next + getInnerCylinderOffset() + getUpperCircleOffset()
         };
         indices.push_back(firstTriangle);
 
         const IndexGroup secondTriangle{
-            index + getOuterCyilnderOffset(),
-            next + getOuterCyilnderOffset(),
-            next + getInnerCylinderOffset()
+            index + getOuterCyilnderOffset() + getUpperCircleOffset(),
+            next + getOuterCyilnderOffset() + getUpperCircleOffset(),
+            next + getInnerCylinderOffset() + getUpperCircleOffset()
         };
         indices.push_back(secondTriangle);
     }
@@ -63,7 +62,7 @@ void HollowCylinderGenerator::connectTop() {
 
 unsigned HollowCylinderGenerator::nextIndex(unsigned index) const {
     ++index;
-    if(index == CylinderGenerator::getVertexCount()) {
+    if(index == getSampleRate()) {
         index = 0;
     }
     return index;

@@ -4,9 +4,7 @@
 
 class PrimitiveGenerator : public ModelGenerator {
 public:
-	PrimitiveGenerator() = default;
-	PrimitiveGenerator(const PrimitiveGenerator&) = delete;
-	PrimitiveGenerator operator=(const PrimitiveGenerator&) = delete;
+	using ModelGenerator::ModelGenerator;
 
 	void setColor(const glm::vec3& newColor);
 

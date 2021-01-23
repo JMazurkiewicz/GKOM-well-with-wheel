@@ -13,16 +13,16 @@ void CylinderGenerator::setHeight(float newHeight) {
     height = newHeight;
 }
 
+unsigned CylinderGenerator::getVertexCount() const {
+    return 2 * getSampleRate();
+}
+
 unsigned CylinderGenerator::getLowerCircleOffset() const {
     return 0;
 }
 
 unsigned CylinderGenerator::getUpperCircleOffset() const {
     return getSampleRate();
-}
-
-unsigned CylinderGenerator::getVertexCount() const {
-    return 2 * getSampleRate();
 }
 
 void CylinderGenerator::constructModel() {

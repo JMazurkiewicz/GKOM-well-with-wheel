@@ -13,6 +13,8 @@ public:
 	ModelGenerator();
 	ModelGenerator(const ModelGenerator&) = delete;
 	ModelGenerator& operator=(const ModelGenerator&) = delete;
+	ModelGenerator(ModelGenerator&&) noexcept = default;
+	ModelGenerator& operator=(ModelGenerator&&) noexcept = default;
 
 	virtual ~ModelGenerator() = default;
 

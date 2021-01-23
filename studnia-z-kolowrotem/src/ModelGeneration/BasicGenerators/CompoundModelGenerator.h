@@ -5,9 +5,7 @@
 
 class CompoundModelGenerator : public ModelGenerator {
 public:
-	CompoundModelGenerator() = default;
-	CompoundModelGenerator(const CompoundModelGenerator&) = delete;
-	CompoundModelGenerator& operator=(const CompoundModelGenerator&) = delete;
+	using ModelGenerator::ModelGenerator;
 
 	void addGenerator(ModelGenerator* generator);
 

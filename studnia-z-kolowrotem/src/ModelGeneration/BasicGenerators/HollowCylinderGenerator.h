@@ -5,8 +5,7 @@
 class HollowCylinderGenerator : public CylinderGenerator {
 public:
 	HollowCylinderGenerator();
-	HollowCylinderGenerator(const HollowCylinderGenerator&) = delete;
-	HollowCylinderGenerator& operator=(const HollowCylinderGenerator&) = delete;
+	using CylinderGenerator::CylinderGenerator;
 
 	void setInnerRadius(float newInnerRadius);
 	void setOuterRadius(float newOuterRadius);

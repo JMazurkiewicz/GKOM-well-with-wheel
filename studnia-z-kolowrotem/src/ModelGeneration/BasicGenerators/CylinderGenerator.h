@@ -5,18 +5,17 @@
 class CylinderGenerator : public SmoothShapeGenerator {
 public:
 	CylinderGenerator();
-	CylinderGenerator(const CylinderGenerator&) = delete;
-	CylinderGenerator& operator=(const CylinderGenerator&) = delete;
+	using SmoothShapeGenerator::SmoothShapeGenerator;
 
 	void setRadius(float newRadius);
 	void setHeight(float newHeight);
 
-	[[nodiscard]] unsigned getLowerCircleOffset() const;
-	[[nodiscard]] unsigned getUpperCircleOffset() const;
-
 	[[nodiscard]] unsigned getVertexCount() const override;
 
 protected:
+	[[nodiscard]] unsigned getLowerCircleOffset() const;
+	[[nodiscard]] unsigned getUpperCircleOffset() const;
+
 	void constructModel() override;
 
 private:

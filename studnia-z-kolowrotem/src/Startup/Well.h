@@ -2,8 +2,7 @@
 
 #include "Model/GlModel.h"
 #include "Model/WellModel.h"
-#include "ModelGeneration/WellGeneration/WellBaseGenerator.h"
-#include "ModelGeneration/WellGeneration/WoodenStandGenerator.h"
+#include "Model/WheelModel.h"
 #include "View/GlView.h"
 
 class Well {
@@ -18,12 +17,17 @@ private:
 	void create();
 	void createBase();
 	void createWoodenStand();
+	void createSpinningWheel();
 
 	WellModel basicModel;
+	WheelModel basicWheelModel;
 
 	GlModel woodenStandModel;
 	GlView woodenStandView;
 
 	GlModel baseModel;
 	GlView baseView;
+
+	GlModel spinningWheelModel;
+	GlView spinningWheelView;
 };

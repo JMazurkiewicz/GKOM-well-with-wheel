@@ -7,8 +7,7 @@ public:
 	static constexpr unsigned DEFAULT_SAMPLE_RATE = 64;
 
 	SmoothShapeGenerator();
-	SmoothShapeGenerator(const SmoothShapeGenerator&) = delete;
-	SmoothShapeGenerator& operator=(const SmoothShapeGenerator&) = delete;
+	using PrimitiveGenerator::PrimitiveGenerator;
 
 	void setSampleRate(unsigned newSampleRate);
 

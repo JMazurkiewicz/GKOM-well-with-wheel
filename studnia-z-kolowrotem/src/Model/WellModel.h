@@ -14,8 +14,7 @@ public:
 	static constexpr float DEFAULT_BRACKET_RADIUS = 0.1f;
 	static constexpr float DEFAULT_BRACKET_HEIGHT = 0.5f;
 
-	WellModel();
-
+	WellModel() = default;
 	WellModel(const WellModel&) = delete;
 	WellModel& operator=(const WellModel&) = delete;
 
@@ -37,10 +36,10 @@ public:
 	void validateModel() const;
 
 private:
-	float innerRadius;
-	float outerRadius;
-	float height;
+	float innerRadius = DEFAULT_INNER_RADIUS;
+	float outerRadius = DEFAULT_OUTER_RADIUS;
+	float height = DEFAULT_HEIGHT;
 
-	float bracketRadius;
-	float bracketHeight;
+	float bracketRadius = DEFAULT_BRACKET_RADIUS;
+	float bracketHeight = DEFAULT_BRACKET_HEIGHT;
 };

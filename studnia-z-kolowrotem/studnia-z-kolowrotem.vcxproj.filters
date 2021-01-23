@@ -44,6 +44,9 @@
     <Filter Include="Sources\ModelGeneration\BasicGenerators">
       <UniqueIdentifier>{279e228f-c79c-4ce0-8efb-4b028f08dd71}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\ModelGeneration\CompoundGenerators">
+      <UniqueIdentifier>{70abe15d-5389-4d9a-9d81-2b91076b2fde}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp">
@@ -67,17 +70,11 @@
     <ClCompile Include="src\Model\WellModel.cpp">
       <Filter>Sources\Model</Filter>
     </ClCompile>
-    <ClCompile Include="src\View\WellGlView.cpp">
-      <Filter>Sources\View</Filter>
-    </ClCompile>
     <ClCompile Include="src\Startup\Main.cpp">
       <Filter>Sources\Startup</Filter>
     </ClCompile>
     <ClCompile Include="src\Startup\MainWindow.cpp">
       <Filter>Sources\Startup</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Model\WellGlModel.cpp">
-      <Filter>Sources\Model</Filter>
     </ClCompile>
     <ClCompile Include="src\Startup\Scene.cpp">
       <Filter>Sources\Startup</Filter>
@@ -133,19 +130,22 @@
     <ClCompile Include="src\ModelGeneration\WellGeneration\WellBaseGenerator.cpp">
       <Filter>Sources\ModelGeneration\WellGeneration</Filter>
     </ClCompile>
+    <ClCompile Include="src\ModelGeneration\BasicGenerators\ClosedCylinderGenerator.cpp">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\WellGeneration\SpinningWheelGenerator.cpp">
+      <Filter>Sources\ModelGeneration\WellGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Model\WheelModel.cpp">
+      <Filter>Sources\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\View\WellGlView.h">
-      <Filter>Sources\View</Filter>
-    </ClInclude>
     <ClInclude Include="src\System\Window.h">
       <Filter>Sources\System</Filter>
     </ClInclude>
     <ClInclude Include="src\Startup\MainWindow.h">
       <Filter>Sources\Startup</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Model\WellGlModel.h">
-      <Filter>Sources\Model</Filter>
     </ClInclude>
     <ClInclude Include="src\Model\WellModel.h">
       <Filter>Sources\Model</Filter>
@@ -227,6 +227,15 @@
     </ClInclude>
     <ClInclude Include="src\Graphics\IndexGroup.h">
       <Filter>Sources\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\BasicGenerators\ClosedCylinderGenerator.h">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\WellGeneration\SpinningWheelGenerator.h">
+      <Filter>Sources\ModelGeneration\WellGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Model\WheelModel.h">
+      <Filter>Sources\Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

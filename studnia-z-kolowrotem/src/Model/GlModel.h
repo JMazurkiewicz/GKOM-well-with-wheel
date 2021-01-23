@@ -20,6 +20,8 @@ public:
 	const Vertices& getVertices() const noexcept;
 	const Indices& getIndices() const noexcept;
 
+	void transform(const glm::mat4& transformation);
+
 protected:
 	Vertices vertices;
 	Indices indices;

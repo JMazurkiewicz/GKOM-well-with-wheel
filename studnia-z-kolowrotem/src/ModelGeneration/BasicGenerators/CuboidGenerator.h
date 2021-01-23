@@ -5,8 +5,7 @@
 class CuboidGenerator : public PrimitiveGenerator {
 public:
 	CuboidGenerator();
-	CuboidGenerator(const CuboidGenerator&) = delete;
-	CuboidGenerator& operator=(const CuboidGenerator&) = delete;
+	using PrimitiveGenerator::PrimitiveGenerator;
 
 	void setLength(float newLength);
 	void setWidth(float newWidth);
