@@ -63,7 +63,7 @@ void SpinningWheelGenerator::prepareHoldingCylinderGenerator() {
 
 	const float height = 2.0f * (basicWellModel.getInnerRadius() - basicWellModel.getBracketRadius());
 	holdingCylinderGenerator.setHeight(height);
-	holdingCylinderGenerator.setRadius(1.01 * basicModel.getMiddleElementRadius());
+	holdingCylinderGenerator.setRadius(1.01f * basicModel.getMiddleElementRadius());
 	holdingCylinderGenerator.setTransformation(glm::translate(glm::vec3{0.0f, -height, 0.0f}));
 	addGenerator(&holdingCylinderGenerator);
 }
@@ -71,7 +71,7 @@ void SpinningWheelGenerator::prepareHoldingCylinderGenerator() {
 void SpinningWheelGenerator::prepareTransformation() {
 	const auto rotation = glm::rotate(-glm::half_pi<float>(), glm::vec3{0.0f, 0.0f, 1.0f});
 
-	const glm::vec3 translationVector{basicWellModel.getInnerRadius(), basicWellModel.getWheelHeight(), 0};
+	const glm::vec3 translationVector{basicWellModel.getInnerRadius(), basicWellModel.getWheelHeight(), 0.0f};
 	const auto translation = glm::translate(translationVector);
 	
 	setTransformation(translation * rotation);

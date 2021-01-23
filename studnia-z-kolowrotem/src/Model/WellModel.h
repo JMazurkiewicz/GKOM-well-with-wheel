@@ -1,10 +1,7 @@
 #pragma once
 
-#include <glm/glm.hpp>
+#include <stdexcept>
 
-/**
- * @brief Basic well model.
- */
 class WellModel {
 public:
 	static constexpr float DEFAULT_INNER_RADIUS = 0.6f;
@@ -14,8 +11,9 @@ public:
 
 	static constexpr float DEFAULT_BRACKET_RADIUS = 0.1f;
 	static constexpr float DEFAULT_BRACKET_HEIGHT = 0.8f;
+	static constexpr float DEFAULT_LOG_HEIGHT = 0.2f;
 
-	WellModel() = default;
+	constexpr WellModel() = default;
 	WellModel(const WellModel&) = delete;
 	WellModel& operator=(const WellModel&) = delete;
 
@@ -37,6 +35,18 @@ public:
 	float getBracketHeight() const noexcept;
 	void setBrackedHeight(float newBracketHeight);
 
+	constexpr float getLogHeight() const noexcept {
+		return logHeight;
+	}
+
+	constexpr void setLogHeight(float newLogHeight) {
+		if(newLogHeight <= 0.0f) {
+			throw std::invalid_argument{"Class: log height must be greater than 0"};
+		} else {
+			logHeight = newLogHeight;
+		}
+	}
+
 	void validateModel() const;
 
 private:
@@ -47,4 +57,5 @@ private:
 
 	float bracketRadius = DEFAULT_BRACKET_RADIUS;
 	float bracketHeight = DEFAULT_BRACKET_HEIGHT;
+	float logHeight = DEFAULT_LOG_HEIGHT;
 };

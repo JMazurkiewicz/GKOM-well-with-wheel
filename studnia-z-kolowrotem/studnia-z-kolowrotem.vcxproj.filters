@@ -44,9 +44,6 @@
     <Filter Include="Sources\ModelGeneration\BasicGenerators">
       <UniqueIdentifier>{279e228f-c79c-4ce0-8efb-4b028f08dd71}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\ModelGeneration\CompoundGenerators">
-      <UniqueIdentifier>{70abe15d-5389-4d9a-9d81-2b91076b2fde}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp">
@@ -141,6 +138,9 @@
     </ClCompile>
     <ClCompile Include="src\Graphics\Texture.cpp">
       <Filter>Sources\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.cpp">
+      <Filter>Sources\ModelGeneration\WellGeneration</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +242,9 @@
     </ClInclude>
     <ClInclude Include="src\Graphics\Texture.h">
       <Filter>Sources\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Model\RoofModel.h">
+      <Filter>Sources\Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

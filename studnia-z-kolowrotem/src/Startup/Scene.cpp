@@ -44,7 +44,7 @@ void Scene::start() {
 }
 
 void Scene::clear() {
-	glClearColor(0.529, 0.807, 0.921, 0.9);
+	glClearColor(0.529f, 0.807f, 0.921f, 0.9f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
