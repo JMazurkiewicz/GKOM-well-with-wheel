@@ -3,8 +3,8 @@
 class WheelModel {
 public:
 	static constexpr float DEFAULT_MIDDLE_ELEMENT_RADIUS = 0.02f;
-	static constexpr float DEFAULT_INNER_RADIUS = 0.1f;
-	static constexpr float DEFAULT_OUTER_RADIUS = 0.12f;
+	static constexpr float DEFAULT_INNER_RADIUS = 0.17f;
+	static constexpr float DEFAULT_OUTER_RADIUS = 0.15f;
 	static constexpr float DEFAULT_HEIGHT = 0.1f;
 	static constexpr float DEFAULT_CONNECTOR_HEIGHT = 0.08f;
 

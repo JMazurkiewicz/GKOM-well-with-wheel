@@ -9,10 +9,11 @@ class WellModel {
 public:
 	static constexpr float DEFAULT_INNER_RADIUS = 0.6f;
 	static constexpr float DEFAULT_OUTER_RADIUS = 0.8f;
-	static constexpr float DEFAULT_HEIGHT = 0.8f;
+	static constexpr float DEFAULT_HEIGHT = 0.5f;
+	static constexpr float DEFAULT_WHEEL_HEIGHT = 1.0f;
 
 	static constexpr float DEFAULT_BRACKET_RADIUS = 0.1f;
-	static constexpr float DEFAULT_BRACKET_HEIGHT = 0.5f;
+	static constexpr float DEFAULT_BRACKET_HEIGHT = 0.8f;
 
 	WellModel() = default;
 	WellModel(const WellModel&) = delete;
@@ -27,6 +28,9 @@ public:
 	float getHeight() const noexcept;
 	void setHeight(float newHeight);
 
+	float getWheelHeight() const noexcept;
+	void setWheelHeight(float newWheelHeight);
+
 	float getBracketRadius() const noexcept;
 	void setBracketRadius(float newBracketRadius);
 
@@ -39,6 +43,7 @@ private:
 	float innerRadius = DEFAULT_INNER_RADIUS;
 	float outerRadius = DEFAULT_OUTER_RADIUS;
 	float height = DEFAULT_HEIGHT;
+	float wheelHeight = DEFAULT_WHEEL_HEIGHT;
 
 	float bracketRadius = DEFAULT_BRACKET_RADIUS;
 	float bracketHeight = DEFAULT_BRACKET_HEIGHT;

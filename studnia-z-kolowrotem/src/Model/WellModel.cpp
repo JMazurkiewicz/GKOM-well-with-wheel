@@ -30,6 +30,14 @@ void WellModel::setHeight(float newHeight) {
 	}
 }
 
+float WellModel::getWheelHeight() const noexcept {
+	return wheelHeight;
+}
+
+void WellModel::setWheelHeight(float newWheelHeight) {
+	wheelHeight = newWheelHeight;
+}
+
 float WellModel::getBracketRadius() const noexcept {
 	return bracketRadius;
 }

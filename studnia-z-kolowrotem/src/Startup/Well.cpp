@@ -36,7 +36,7 @@ void Well::createWoodenStand() {
 }
 
 void Well::createSpinningWheel() {
-	SpinningWheelGenerator generator{basicWheelModel};
+	SpinningWheelGenerator generator{basicModel, basicWheelModel};
 	auto [vertices, indices] = generator.generateModel();
 	spinningWheelModel = GlModel{std::move(vertices), std::move(indices)};
 	spinningWheelView.setModel(spinningWheelModel);
