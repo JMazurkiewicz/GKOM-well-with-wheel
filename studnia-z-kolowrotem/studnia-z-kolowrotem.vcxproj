@@ -153,6 +153,7 @@
     <ClCompile Include="src\Controler\Camera.cpp" />
     <ClCompile Include="src\Controler\KeyboardListener.cpp" />
     <ClCompile Include="src\Controler\MouseListener.cpp" />
+    <ClCompile Include="src\Controler\WheelControler.cpp" />
     <ClCompile Include="src\Graphics\MipmapTexture.cpp" />
     <ClCompile Include="src\Graphics\Image.cpp" />
     <ClCompile Include="src\Graphics\Shader.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="src\Controler\Camera.h" />
     <ClInclude Include="src\Controler\KeyboardListener.h" />
     <ClInclude Include="src\Controler\MouseListener.h" />
+    <ClInclude Include="src\Controler\WheelControler.h" />
     <ClInclude Include="src\Graphics\Image.h" />
     <ClInclude Include="src\Graphics\MipmapTexture.h" />
     <ClInclude Include="src\Graphics\Shader.h" />

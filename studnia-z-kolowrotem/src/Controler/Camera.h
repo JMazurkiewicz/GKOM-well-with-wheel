@@ -15,9 +15,9 @@ public:
     glm::mat4 update();
 
 protected:
-    void onMove(double x, double y) override;
-    void onPress(int key) override;
-    void onRelease(int key) override;
+    void onCursorMove(double x, double y) override;
+    void onKeyPress(int key) override;
+    void onKeyRelease(int key) override;
 
 private:
     int width;

@@ -5,11 +5,14 @@
 #include "ModelGeneration/WellGeneration/WellRoofGenerator.h"
 #include "ModelGeneration/WellGeneration/WoodenStandGenerator.h"
 
-Well::Well() {
+Well::Well(Window& window) {
 	create();
+	wheelControler.listenOn(window);
 }
 
 void Well::update() {
+	wheelControler.update();
+
 	baseView.draw();
 	woodenStandView.draw();
 	spinningWheelView.draw();
@@ -43,6 +46,7 @@ void Well::createSpinningWheel() {
 	auto [vertices, indices] = generator.generateModel();
 	spinningWheelModel = GlModel{std::move(vertices), std::move(indices)};
 	spinningWheelView.setModel(spinningWheelModel);
+	wheelControler.setModel(spinningWheelModel);
 }
 
 void Well::createRoof() {

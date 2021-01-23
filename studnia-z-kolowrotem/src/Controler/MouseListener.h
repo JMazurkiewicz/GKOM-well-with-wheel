@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ActionListener.h"
+#include <mutex>
 #include <set>
 
 class MouseListener : public virtual ActionListener {
@@ -11,7 +12,8 @@ public:
 	static void callback(GLFWwindow* window, double xpos, double ypos);
 
 protected:
-	virtual void onMove(double x, double y) = 0;
+	virtual void onCursorMove(double x, double y) = 0;
 
 	static std::set<MouseListener*> listeners;
+	static std::mutex mutex;
 };

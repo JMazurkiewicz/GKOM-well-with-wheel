@@ -20,7 +20,7 @@ const glm::mat4& Camera::getModelMatrix() {
 	return modelMatrix;
 }
 
-void Camera::onPress(int key) {
+void Camera::onKeyPress(int key) {
 	switch(key) {
 	case GLFW_KEY_W:
 		keyPressedW = true;
@@ -48,7 +48,7 @@ void Camera::onPress(int key) {
 	}
 }
 
-void Camera::onRelease(int key) {
+void Camera::onKeyRelease(int key) {
 	switch(key) {
 	case GLFW_KEY_W:
 		keyPressedW = false;
@@ -76,7 +76,7 @@ void Camera::onRelease(int key) {
 	}
 }
 
-void Camera::onMove(double x, double y) {
+void Camera::onCursorMove(double x, double y) {
 	if(firstMove) {
 		lastX = static_cast<float>(x);
 		lastY = static_cast<float>(y);

@@ -10,7 +10,8 @@ using namespace std::chrono_literals;
 
 Scene::Scene(MainWindow& window)
 : window{window}, vao{0}, camera{window},
-mainShader{"assets/shaders/gl_05.vert", "assets/shaders/gl_05.frag"}
+mainShader{"assets/shaders/gl_05.vert", "assets/shaders/gl_05.frag"},
+well{window}
 {	
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);

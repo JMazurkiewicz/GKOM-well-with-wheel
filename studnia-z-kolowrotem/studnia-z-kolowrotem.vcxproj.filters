@@ -151,6 +151,9 @@
     <ClCompile Include="src\Controler\MouseListener.cpp">
       <Filter>Sources\Controler</Filter>
     </ClCompile>
+    <ClCompile Include="src\Controler\WheelControler.cpp">
+      <Filter>Sources\Controler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\System\Window.h">
@@ -262,6 +265,9 @@
       <Filter>Sources\Controler</Filter>
     </ClInclude>
     <ClInclude Include="src\Controler\KeyboardListener.h">
+      <Filter>Sources\Controler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Controler\WheelControler.h">
       <Filter>Sources\Controler</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,7 @@
 #include "MouseListener.h"
 
 std::set<MouseListener*> MouseListener::listeners;
+std::mutex MouseListener::mutex;
 
 MouseListener::MouseListener() {
 	listeners.insert(this);
@@ -11,9 +12,10 @@ MouseListener::~MouseListener() {
 }
 
 void MouseListener::callback(GLFWwindow* window, double x, double y) {
+	std::lock_guard guard{mutex};
 	for(MouseListener* listener : listeners) {
 		if(listener->isListeningOn(window)) {
-			listener->onMove(x, y);
+			listener->onCursorMove(x, y);
 		}
 	}
 }

@@ -1,14 +1,16 @@
 #pragma once
 
+#include "Controler/WheelControler.h"
 #include "Model/GlModel.h"
 #include "Model/RoofModel.h"
 #include "Model/WellModel.h"
 #include "Model/WheelModel.h"
+#include "System/Window.h"
 #include "View/GlView.h"
 
 class Well {
 public:
-	Well();
+	explicit Well(Window& window);
 	Well(const Well&) = delete;
 	Well& operator=(const Well&) = delete;
 
@@ -33,6 +35,7 @@ private:
 
 	GlModel spinningWheelModel;
 	GlView spinningWheelView;
+	WheelControler wheelControler;
 
 	GlModel roofModel;
 	GlView roofView;

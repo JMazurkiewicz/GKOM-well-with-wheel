@@ -1,5 +1,6 @@
 #include "KeyboardListener.h"
 
+std::mutex KeyboardListener::mutex;
 std::set<KeyboardListener*> KeyboardListener::listeners;
 
 KeyboardListener::KeyboardListener() {
@@ -22,17 +23,19 @@ void KeyboardListener::callback(GLFWwindow* window, int key, int scanCode, int a
 }
 
 void KeyboardListener::callOnPress(GLFWwindow* window, int key) {
+	std::lock_guard guard{mutex};
 	for(KeyboardListener* listener : listeners) {
 		if(listener->isListeningOn(window)) {
-			listener->onPress(key);
+			listener->onKeyPress(key);
 		}
 	}
 }
 
 void KeyboardListener::callOnRelease(GLFWwindow* window, int key) {
+	std::lock_guard guard{mutex};
 	for(KeyboardListener* listener : listeners) {
 		if(listener->isListeningOn(window)) {
-			listener->onRelease(key);
+			listener->onKeyRelease(key);
 		}
 	}
 }
