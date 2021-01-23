@@ -4,6 +4,7 @@
 #include "Model/GlModel.h"
 #include "ModelGeneration/EnvironmentGlModelGenerator.h"
 #include "View/GlView.h"
+#include "Graphics/Texture.h"
 
 class Environment {
 public:

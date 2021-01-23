@@ -4,6 +4,7 @@
 #include "Model/WellModel.h"
 #include "Model/WheelModel.h"
 #include "View/GlView.h"
+#include "Graphics/Texture.h"
 
 class Well {
 public:

@@ -16,10 +16,6 @@ GlView::~GlView() {
 
 void GlView::setModel(const GlModel& newModel) {	
 	model = &newModel;
-
-	Texture texture;
-
-	GLuint TexHandler = texture.loadTexture("abc.DDS");
 	
 	using Vertices = GlModel::Vertices;
 	const Vertices& vertices = model->getVertices();
