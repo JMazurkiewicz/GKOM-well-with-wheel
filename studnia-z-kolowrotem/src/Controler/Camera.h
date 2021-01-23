@@ -7,45 +7,46 @@
 
 class Camera : public MouseListener, public KeyboardListener {
 public:
-    Camera() = default;
+    explicit Camera(Window& window);
 
-    static void init(Window& window);
-    static const glm::mat4& getProjectionMatrix();
-    static const glm::mat4& getViewMatrix();
-    static const glm::mat4& getModelMatrix();
-    static glm::mat4 update();
+    const glm::mat4& getProjectionMatrix();
+    const glm::mat4& getViewMatrix();
+    const glm::mat4& getModelMatrix();
+    glm::mat4 update();
+
+protected:
+    void onMove(double x, double y) override;
+    void onPress(int key) override;
+    void onRelease(int key) override;
 
 private:
-    static void mouseCallback(GLFWwindow* window, double xpos, double ypos);
-    static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
-    
-    static float width;
-    static float height;
+    int width;
+    int height;
 
-    static glm::mat4 projectionMatrix;
-    static glm::mat4 viewMatrix;
-    static glm::mat4 modelMatrix;
+    glm::mat4 projectionMatrix;
+    glm::mat4 viewMatrix;
+    glm::mat4 modelMatrix;
 
-    static float lastX;
-    static float lastY;
-    static float yaw;
-    static float pitch;
-    static bool firstMouse;
+    float lastX = 800 / 2.0f;
+    float lastY = 600 / 2.0f;
+    float yaw = -90.0f;
+    float pitch = 0.0f;
+    bool firstMove = true;
 
-    static const float cameraSpeed;
-    static const float sensitivity;
+    const float cameraSpeed = 0.1f;
+    const float sensitivity = 0.3f;
 
-    static const float minHeight;
-    static const float maxHeight;
+    const float minHeight = 0.2f;
+    const float maxHeight = 5.0f;
 
-    static glm::vec3 cameraPos;
-    static glm::vec3 cameraFront;
-    static glm::vec3 cameraUp;
+    glm::vec3 cameraPos = glm::vec3(0.0f, minHeight, 3.0f);
+    glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+    glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
-    static bool keyPressedW;
-    static bool keyPressedA;
-    static bool keyPressedS;
-    static bool keyPressedD;
-    static bool keyPressedSpace;
-    static bool keyPressedCtrl;
+    bool keyPressedW = false;
+    bool keyPressedA = false;
+    bool keyPressedS = false;
+    bool keyPressedD = false;
+    bool keyPressedSpace = false;
+    bool keyPressedCtrl = false;
 };

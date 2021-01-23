@@ -19,6 +19,7 @@ Window::Window(int width, int height, const char* title, Style style) : width{wi
 		throw std::runtime_error{"Window: failed to open glfw window"};
 	}
 
+	registerCallbacks();
 	glfwMakeContextCurrent(handle);
 }
 
@@ -48,6 +49,6 @@ void Window::swapBuffers() {
 
 void Window::registerCallbacks() {
 	glfwSetKeyCallback(getHandle(), KeyboardListener::callback);
-	glfwSetKeyCallback(getHandle(), MouseListener::callback);
+	glfwSetCursorPosCallback(getHandle(), MouseListener::callback);
 	glfwSetInputMode(getHandle(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
