@@ -25,6 +25,7 @@ void Scene::start() {
 	GLuint MatrixID = glGetUniformLocation(mainShader.getProgramId(), "MVP");
 	GLuint ViewMatrixID = glGetUniformLocation(mainShader.getProgramId(), "V");
 	GLuint ModelMatrixID = glGetUniformLocation(mainShader.getProgramId(), "M");
+	GLuint TextureID = glGetUniformLocation(mainShader.getProgramId(), "TextureSampler");
 	
 	do {
 		clear();

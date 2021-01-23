@@ -29,6 +29,7 @@ void CylinderGenerator::constructModel() {
     createLowerCircle();
     createUpperCircle();
     connectSides();
+    createTexCoords();
 }
 
 void CylinderGenerator::createLowerCircle() {
@@ -68,6 +69,23 @@ void CylinderGenerator::connectSides() {
             next + getSampleRate()
         };
         indices.push_back(secondTriangle);
+    }
+}
+
+void CylinderGenerator::createTexCoords() {
+
+    float left = 0;
+    float right = 2.0f/getSampleRate();
+
+    for (unsigned index = 0; index < getSampleRate(); ++index) {
+        const unsigned next = nextIndex(index);
+        vertices[index].texture = glm::vec2(right, 0);
+        vertices[index + getSampleRate()].texture = glm::vec2(right, 1);
+        vertices[next].texture = glm::vec2(left, 1);
+        vertices[next + getSampleRate()].texture = glm::vec2(left, 1);
+
+        right += 2.0f / getSampleRate();
+        left += 2.0f / getSampleRate();
     }
 }
 

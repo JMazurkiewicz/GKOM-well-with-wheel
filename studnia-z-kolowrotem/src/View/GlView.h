@@ -2,6 +2,7 @@
 
 #include <GL/glew.h>
 #include "Model/GlModel.h"
+#include "Graphics/Texture.h"
 
 class GlView {
 public:

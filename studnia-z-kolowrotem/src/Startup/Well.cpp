@@ -16,6 +16,7 @@ void Well::create() {
 
 void Well::createBase() {
 	WellBaseGenerator generator{basicModel};
+	generator.setSampleRate(64);
 	auto [vertices, indices] = generator.generateModel();
 	baseModel = GlModel{std::move(vertices), std::move(indices)};
 	baseView.setModel(baseModel);

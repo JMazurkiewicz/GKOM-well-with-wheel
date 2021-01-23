@@ -10,6 +10,7 @@ out vec3 VecColor;
 out vec3 NormalC;
 out vec3 EyeDirCamera;
 out vec3 LightDirCamera;
+out vec2 UV;
   
 uniform mat4 MVP;
 uniform mat4 V;
@@ -33,4 +34,6 @@ void main()
     NormalC = ( V * M * vec4(normal,0)).xyz;
 
     VecColor = position;
+
+    UV = texture;
 }

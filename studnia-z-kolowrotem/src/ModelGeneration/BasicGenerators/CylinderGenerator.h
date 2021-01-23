@@ -25,6 +25,7 @@ private:
 	void createCircle(const glm::vec3& start);
 
 	void connectSides();
+	void createTexCoords();
 	unsigned nextIndex(unsigned index) const;
 
 	float radius;
