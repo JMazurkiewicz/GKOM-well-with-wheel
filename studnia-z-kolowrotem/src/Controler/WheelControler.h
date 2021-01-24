@@ -1,14 +1,17 @@
 #pragma once
 
 #include "KeyboardListener.h"
-#include "Model/GlModel.h"
+#include "GlModel/GlModel.h"
+#include "View/GlView.h"
 
 class WheelControler : public KeyboardListener {
 public:
-	static constexpr float SPEED = 0.5f;
+	static constexpr float SPEED = 5.0f / 1000.0f;
 
 	void setModel(GlModel& wheelModel);
-	void update();
+	void setView(GlView& wheelView);
+
+	void update(float time);
 
 protected:
 	virtual void onKeyPress(int key) override;
@@ -17,7 +20,8 @@ protected:
 private:
 	bool canUpdate() const;
 
-	GlModel* model;
+	GlModel* model = nullptr;
+	GlView* view = nullptr;
 
 	bool expandKeyPressed = false;
 	bool collapseKeyPressed = false;

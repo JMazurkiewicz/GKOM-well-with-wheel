@@ -12,19 +12,15 @@ public:
 	>;
 	using TimePoint = Clock::time_point;
 
-	using Milliseconds = std::chrono::duration<float, std::milli>;
-	using Seconds = std::chrono::duration<float>;
+	using Duration = std::chrono::duration<float, std::milli>;
 
-	constexpr Stopwatch();
+	Stopwatch();
 	Stopwatch(const Stopwatch&) = delete;
 	Stopwatch& operator=(const Stopwatch&) = delete;
 
 	void reset();
-	Milliseconds getElapsedMilliseconds();
-	Seconds getElapsedSeconds();
+	Duration getElapsedTime();
 
-private:
-	Clock::duration getElapsedTime();
-	
+private:	
 	TimePoint previous;
 };

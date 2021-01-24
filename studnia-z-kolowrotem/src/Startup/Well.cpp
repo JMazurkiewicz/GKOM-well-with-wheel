@@ -8,10 +8,13 @@
 Well::Well(Window& window) {
 	create();
 	wheelControler.listenOn(window);
+	stopwatch.reset();
 }
 
 void Well::update() {
-	wheelControler.update();
+	const float elapsedTime = stopwatch.getElapsedTime().count();
+	
+	wheelControler.update(elapsedTime);
 
 	baseView.draw();
 	woodenStandView.draw();
@@ -44,9 +47,11 @@ void Well::createWoodenStand() {
 void Well::createWheel() {
 	WheelGenerator generator{basicModel, basicWheelModel};
 	auto [vertices, indices] = generator.generateModel();
-	spinningWheelModel = GlModel{std::move(vertices), std::move(indices)};
-	spinningWheelView.setModel(spinningWheelModel);
-	wheelControler.setModel(spinningWheelModel);
+	wheelModel = GlModel{std::move(vertices), std::move(indices)};
+	wheelView.setModel(wheelModel);
+
+	wheelControler.setModel(wheelModel);
+	wheelControler.setView(wheelView);
 }
 
 void Well::createRoof() {

@@ -14,6 +14,7 @@ public:
 	GlView& operator=(const GlView&) = delete;
 
 	void setModel(const GlModel& newModel);
+	void update();
 	void draw();
 
 protected:

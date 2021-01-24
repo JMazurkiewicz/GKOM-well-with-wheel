@@ -24,7 +24,7 @@ private:
 	void prepareTransformation();
 
 	const WellModel& basicWellModel;
-	const WheelModel& basicModel;
+	const WheelModel& basicWheelModel;
 	unsigned sampleRate;
 
 	ClosedCylinderGenerator middleElementGenerator;

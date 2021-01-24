@@ -3,7 +3,7 @@
 #include <glm/ext.hpp>
 
 WheelGenerator::WheelGenerator(const WellModel& basicWellModel, const WheelModel& basicModel)
-	: basicWellModel{basicWellModel}, basicModel{basicModel}, sampleRate{DEFAULT_SAMPLE_RATE} { }
+	: basicWellModel{basicWellModel}, basicWheelModel{basicModel}, sampleRate{DEFAULT_SAMPLE_RATE} { }
 
 void WheelGenerator::setSampleRate(unsigned newSampleRate) {
 	sampleRate = newSampleRate;
@@ -18,33 +18,33 @@ void WheelGenerator::prepareGenerators() {
 }
 
 void WheelGenerator::prepareMiddleElementGenerator() {
-	middleElementGenerator.setHeight(basicModel.getHeight());
+	middleElementGenerator.setHeight(basicWheelModel.getHeight());
 	middleElementGenerator.setSampleRate(sampleRate);
-	middleElementGenerator.setRadius(basicModel.getMiddleElementRadius());
+	middleElementGenerator.setRadius(basicWheelModel.getMiddleElementRadius());
 	addGenerator(&middleElementGenerator);
 }
 
 void WheelGenerator::prepareRingGenerator() {
-	ringGenerator.setHeight(basicModel.getHeight());
+	ringGenerator.setHeight(basicWheelModel.getHeight());
 	ringGenerator.setSampleRate(sampleRate);
-	ringGenerator.setInnerRadius(basicModel.getInnerRadius());
-	ringGenerator.setOuterRadius(basicModel.getOuterRadius());
+	ringGenerator.setInnerRadius(basicWheelModel.getInnerRadius());
+	ringGenerator.setOuterRadius(basicWheelModel.getOuterRadius());
 	addGenerator(&ringGenerator);
 }
 
 void WheelGenerator::prepareCuboidGenerators() {
-	cuboidGenerators.resize(basicModel.getConnectorCount());
-	const float connectorWidth = basicModel.getInnerRadius();
-	const float connectorLength = basicModel.getMiddleElementRadius();
+	cuboidGenerators.resize(basicWheelModel.getConnectorCount());
+	const float connectorWidth = basicWheelModel.getInnerRadius();
+	const float connectorLength = basicWheelModel.getMiddleElementRadius();
 
-	const float yTranslation = (basicModel.getHeight() - basicModel.getConnectorHeight()) / 2.0f;
-	const auto firstTranslation = glm::vec3{basicModel.getInnerRadius() / 2.0f, yTranslation, 0.0f};
+	const float yTranslation = (basicWheelModel.getHeight() - basicWheelModel.getConnectorHeight()) / 2.0f;
+	const auto firstTranslation = glm::vec3{basicWheelModel.getInnerRadius() / 2.0f, yTranslation, 0.0f};
 	
-	const float innerAngle = glm::radians(360.0f / basicModel.getConnectorCount());
+	const float innerAngle = glm::radians(360.0f / basicWheelModel.getConnectorCount());
 
 	float angle = 0.0f;
 	for(CuboidGenerator& generator : cuboidGenerators) {
-		generator.setHeight(basicModel.getConnectorHeight());
+		generator.setHeight(basicWheelModel.getConnectorHeight());
 		generator.setLength(connectorLength);
 		generator.setWidth(connectorWidth);
 			
@@ -63,7 +63,7 @@ void WheelGenerator::prepareHoldingCylinderGenerator() {
 
 	const float height = 2.0f * (basicWellModel.getInnerRadius() - basicWellModel.getBracketRadius());
 	holdingCylinderGenerator.setHeight(height);
-	holdingCylinderGenerator.setRadius(1.01f * basicModel.getMiddleElementRadius());
+	holdingCylinderGenerator.setRadius(1.01f * basicWheelModel.getMiddleElementRadius());
 	holdingCylinderGenerator.setTransformation(glm::translate(glm::vec3{0.0f, -height, 0.0f}));
 	addGenerator(&holdingCylinderGenerator);
 }

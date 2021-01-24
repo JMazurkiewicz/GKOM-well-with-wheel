@@ -1,9 +1,11 @@
 #pragma once
 
+#include "Controler/WheelControler.h"
 #include "GlModel/GlModel.h"
 #include "Model/RoofModel.h"
 #include "Model/WellModel.h"
 #include "Model/WheelModel.h"
+#include "System/Stopwatch.h"
 #include "System/Window.h"
 #include "View/GlView.h"
 
@@ -32,10 +34,12 @@ private:
 	GlModel baseModel;
 	GlView baseView;
 
-	GlModel spinningWheelModel;
-	GlView spinningWheelView;
+	GlModel wheelModel;
+	GlView wheelView;
 	WheelControler wheelControler;
 
 	GlModel roofModel;
 	GlView roofView;
+
+	Stopwatch stopwatch;
 };
