@@ -1,18 +1,27 @@
 #pragma once
 
+#include <stdexcept>
+
 class EnvironmentModel {
 public:
-	static constexpr float DEFAULT_SIZE = 100.0f;
+	static constexpr float DEFAULT_SIZE = 10.0f;
 
-	EnvironmentModel();
+	EnvironmentModel() = default;
 	EnvironmentModel(const EnvironmentModel&) = delete;
 	EnvironmentModel& operator=(const EnvironmentModel&) = delete;
 
-	float getSize() const noexcept;
-	void setSize(float newSize);
+	constexpr float getSize() const noexcept {
+		return size;
+	}
 
-	bool validateModel() const;
+	constexpr void setSize(float newSize) {
+		if(newSize <= 0.0f) {
+			throw std::invalid_argument{"EnvironmentModel: size must be greater than 0"};
+		} else {
+			size = newSize;
+		}
+	}
 
 private:
-	float size;
+	float size = DEFAULT_SIZE;
 };

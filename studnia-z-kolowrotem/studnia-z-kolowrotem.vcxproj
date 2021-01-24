@@ -175,7 +175,6 @@
     <ClCompile Include="src\ModelGeneration\WellGeneration\WellBaseGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGeneration\WoodenStandGenerator.cpp" />
-    <ClCompile Include="src\Model\EnvironmentModel.cpp" />
     <ClCompile Include="src\Startup\Environment.cpp" />
     <ClCompile Include="src\Startup\Scene.cpp" />
     <ClCompile Include="src\Startup\Main.cpp" />

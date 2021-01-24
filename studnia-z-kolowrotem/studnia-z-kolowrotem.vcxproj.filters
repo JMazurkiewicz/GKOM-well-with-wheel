@@ -79,9 +79,6 @@
     <ClCompile Include="src\Controler\Camera.cpp">
       <Filter>Sources\Controler</Filter>
     </ClCompile>
-    <ClCompile Include="src\Model\EnvironmentModel.cpp">
-      <Filter>Sources\Model</Filter>
-    </ClCompile>
     <ClCompile Include="src\ModelGeneration\EnvironmentGlModelGenerator.cpp">
       <Filter>Sources\ModelGeneration</Filter>
     </ClCompile>
