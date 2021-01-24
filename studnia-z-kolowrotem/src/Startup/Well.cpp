@@ -26,7 +26,7 @@ void Well::update() {
 
 
 	texture.loadTexture("texture.DDS");
-	spinningWheelView.draw();
+	wheelView.draw();
 	wheelView.draw();
 	roofView.draw();
 }
