@@ -5,6 +5,8 @@
 
 class WheelControler : public KeyboardListener {
 public:
+	static constexpr float SPEED = 0.5f;
+
 	void setModel(GlModel& wheelModel);
 	void update();
 

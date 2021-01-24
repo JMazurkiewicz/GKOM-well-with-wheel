@@ -154,6 +154,9 @@
     <ClCompile Include="src\Controler\WheelControler.cpp">
       <Filter>Sources\Controler</Filter>
     </ClCompile>
+    <ClCompile Include="src\System\Stopwatch.cpp">
+      <Filter>Sources\System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\System\Window.h">
@@ -269,6 +272,9 @@
     </ClInclude>
     <ClInclude Include="src\Controler\WheelControler.h">
       <Filter>Sources\Controler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Stopwatch.h">
+      <Filter>Sources\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

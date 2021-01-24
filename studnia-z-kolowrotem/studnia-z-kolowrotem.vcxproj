@@ -183,6 +183,7 @@
     <ClCompile Include="src\Startup\Main.cpp" />
     <ClCompile Include="src\Startup\MainWindow.cpp" />
     <ClCompile Include="src\Startup\Well.cpp" />
+    <ClCompile Include="src\System\Stopwatch.cpp" />
     <ClCompile Include="src\System\Window.cpp" />
     <ClCompile Include="src\View\GlView.cpp" />
   </ItemGroup>
@@ -223,6 +224,7 @@
     <ClInclude Include="src\Startup\Scene.h" />
     <ClInclude Include="src\Startup\MainWindow.h" />
     <ClInclude Include="src\Startup\Well.h" />
+    <ClInclude Include="src\System\Stopwatch.h" />
     <ClInclude Include="src\System\Window.h" />
     <ClInclude Include="src\View\GlView.h" />
   </ItemGroup>
