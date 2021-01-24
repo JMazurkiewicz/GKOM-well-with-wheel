@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Model/GlModel.h"
+#include "GlModel/GlModel.h"
 #include "Model/RoofModel.h"
 #include "Model/WellModel.h"
 #include "Model/WheelModel.h"
@@ -18,7 +18,7 @@ private:
 	void create();
 	void createBase();
 	void createWoodenStand();
-	void createSpinningWheel();
+	void createWheel();
 	void createRoof();
 
 	WellModel basicModel;
@@ -31,8 +31,8 @@ private:
 	GlModel baseModel;
 	GlView baseView;
 
-	GlModel spinningWheelModel;
-	GlView spinningWheelView;
+	GlModel wheelModel;
+	GlView wheelView;
 
 	GlModel roofModel;
 	GlView roofView;

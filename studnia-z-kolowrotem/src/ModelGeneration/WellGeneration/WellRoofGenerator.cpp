@@ -1,5 +1,6 @@
 #include "WellRoofGenerator.h"
 
+#include <cmath>
 #include <glm/ext.hpp>
 
 WellRoofGenerator::WellRoofGenerator(const WellModel& basicWellModel, const RoofModel& basicRoofModel)
@@ -63,8 +64,12 @@ void WellRoofGenerator::prepareRightTileGenerators() {
 }
 
 void WellRoofGenerator::prepareTransformations() {
-	const float yTranslation = basicWellModel.getHeight() + basicWellModel.getBracketHeight() + basicWellModel.getLogHeight();
-	const auto translation = glm::translate(glm::vec3{0.0f, yTranslation, 0.0f});
+	const float yTranslation =
+		basicWellModel.getHeight() +
+		basicWellModel.getBracketHeight() +
+		basicWellModel.getLogHeight() +
+		(std::tan(basicRoofModel.getAngle()) * basicWellModel.getBracketRadius());
 
+	const auto translation = glm::translate(glm::vec3{0.0f, yTranslation, 0.0f});
 	setTransformation(translation);
 }

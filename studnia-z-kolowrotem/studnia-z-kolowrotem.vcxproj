@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Controler\Camera.cpp" />
+    <ClCompile Include="src\GlModel\GlModel.cpp" />
     <ClCompile Include="src\Graphics\MipmapTexture.cpp" />
     <ClCompile Include="src\Graphics\Image.cpp" />
     <ClCompile Include="src\Graphics\Shader.cpp" />
@@ -166,14 +167,11 @@
     <ClCompile Include="src\ModelGeneration\BasicGenerators\PrimitiveGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\BasicGenerators\SmoothShapeGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\EnvironmentGlModelGenerator.cpp" />
-    <ClCompile Include="src\ModelGeneration\WellGeneration\SpinningWheelGenerator.cpp" />
+    <ClCompile Include="src\ModelGeneration\WellGeneration\WheelGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGeneration\WellBaseGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGeneration\WoodenStandGenerator.cpp" />
     <ClCompile Include="src\Model\EnvironmentModel.cpp" />
-    <ClCompile Include="src\Model\GlModel.cpp" />
-    <ClCompile Include="src\Model\WellModel.cpp" />
-    <ClCompile Include="src\Model\WheelModel.cpp" />
     <ClCompile Include="src\Startup\Environment.cpp" />
     <ClCompile Include="src\Startup\Scene.cpp" />
     <ClCompile Include="src\Startup\Main.cpp" />
@@ -184,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controler\Camera.h" />
+    <ClInclude Include="src\GlModel\GlModel.h" />
     <ClInclude Include="src\Graphics\Image.h" />
     <ClInclude Include="src\Graphics\MipmapTexture.h" />
     <ClInclude Include="src\Graphics\Shader.h" />
@@ -202,12 +201,11 @@
     <ClInclude Include="src\ModelGeneration\BasicGenerators\PrimitiveGenerator.h" />
     <ClInclude Include="src\ModelGeneration\BasicGenerators\SmoothShapeGenerator.h" />
     <ClInclude Include="src\ModelGeneration\EnvironmentGlModelGenerator.h" />
-    <ClInclude Include="src\ModelGeneration\WellGeneration\SpinningWheelGenerator.h" />
+    <ClInclude Include="src\ModelGeneration\WellGeneration\WheelGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGeneration\WellBaseGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGeneration\WoodenStandGenerator.h" />
     <ClInclude Include="src\Model\EnvironmentModel.h" />
-    <ClInclude Include="src\Model\GlModel.h" />
     <ClInclude Include="src\Model\RoofModel.h" />
     <ClInclude Include="src\Model\WellModel.h" />
     <ClInclude Include="src\Model\WheelModel.h" />

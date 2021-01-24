@@ -1,7 +1,7 @@
 #pragma once
 
+#include "GlModel/GlModel.h"
 #include "Model/EnvironmentModel.h"
-#include "Model/GlModel.h"
 #include "ModelGeneration/EnvironmentGlModelGenerator.h"
 #include "View/GlView.h"
 

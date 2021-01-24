@@ -1,15 +1,15 @@
-#include "SpinningWheelGenerator.h"
+#include "WheelGenerator.h"
 
 #include <glm/ext.hpp>
 
-SpinningWheelGenerator::SpinningWheelGenerator(const WellModel& basicWellModel, const WheelModel& basicModel)
+WheelGenerator::WheelGenerator(const WellModel& basicWellModel, const WheelModel& basicModel)
 	: basicWellModel{basicWellModel}, basicModel{basicModel}, sampleRate{DEFAULT_SAMPLE_RATE} { }
 
-void SpinningWheelGenerator::setSampleRate(unsigned newSampleRate) {
+void WheelGenerator::setSampleRate(unsigned newSampleRate) {
 	sampleRate = newSampleRate;
 }
 
-void SpinningWheelGenerator::prepareGenerators() {
+void WheelGenerator::prepareGenerators() {
 	prepareMiddleElementGenerator();
 	prepareRingGenerator();
 	prepareCuboidGenerators();
@@ -17,14 +17,14 @@ void SpinningWheelGenerator::prepareGenerators() {
 	prepareTransformation();
 }
 
-void SpinningWheelGenerator::prepareMiddleElementGenerator() {
+void WheelGenerator::prepareMiddleElementGenerator() {
 	middleElementGenerator.setHeight(basicModel.getHeight());
 	middleElementGenerator.setSampleRate(sampleRate);
 	middleElementGenerator.setRadius(basicModel.getMiddleElementRadius());
 	addGenerator(&middleElementGenerator);
 }
 
-void SpinningWheelGenerator::prepareRingGenerator() {
+void WheelGenerator::prepareRingGenerator() {
 	ringGenerator.setHeight(basicModel.getHeight());
 	ringGenerator.setSampleRate(sampleRate);
 	ringGenerator.setInnerRadius(basicModel.getInnerRadius());
@@ -32,7 +32,7 @@ void SpinningWheelGenerator::prepareRingGenerator() {
 	addGenerator(&ringGenerator);
 }
 
-void SpinningWheelGenerator::prepareCuboidGenerators() {
+void WheelGenerator::prepareCuboidGenerators() {
 	cuboidGenerators.resize(basicModel.getConnectorCount());
 	const float connectorWidth = basicModel.getInnerRadius();
 	const float connectorLength = basicModel.getMiddleElementRadius();
@@ -58,7 +58,7 @@ void SpinningWheelGenerator::prepareCuboidGenerators() {
 	}
 }
 
-void SpinningWheelGenerator::prepareHoldingCylinderGenerator() {
+void WheelGenerator::prepareHoldingCylinderGenerator() {
 	holdingCylinderGenerator.setSampleRate(sampleRate);
 
 	const float height = 2.0f * (basicWellModel.getInnerRadius() - basicWellModel.getBracketRadius());
@@ -68,7 +68,7 @@ void SpinningWheelGenerator::prepareHoldingCylinderGenerator() {
 	addGenerator(&holdingCylinderGenerator);
 }
 
-void SpinningWheelGenerator::prepareTransformation() {
+void WheelGenerator::prepareTransformation() {
 	const auto rotation = glm::rotate(-glm::half_pi<float>(), glm::vec3{0.0f, 0.0f, 1.0f});
 
 	const glm::vec3 translationVector{basicWellModel.getInnerRadius(), basicWellModel.getWheelHeight(), 0.0f};

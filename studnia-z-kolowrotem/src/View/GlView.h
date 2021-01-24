@@ -1,7 +1,7 @@
 #pragma once
 
 #include <GL/glew.h>
-#include "Model/GlModel.h"
+#include "GlModel/GlModel.h"
 #include "Graphics/Texture.h"
 
 class GlView {

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdexcept>
+#include <string_view>
 
 class RoofModel {
 public:
@@ -19,11 +20,8 @@ public:
 	}
 
 	constexpr void setAngle(float newAngle) {
-		if(newAngle <= 0.0f) {
-			throw std::invalid_argument{"RoofModel: angle must be greater than 0"};
-		} else {
-			angle = newAngle;
-		}
+		throwIfNegative(newAngle, "angle");
+		angle = newAngle;
 	}
 
 	constexpr float getMinTileLength() const noexcept {
@@ -31,11 +29,8 @@ public:
 	}
 
 	constexpr void setMinTileLength(float newMinTileLength) {
-		if(newMinTileLength <= 0.0f) {
-			throw std::invalid_argument{"RoofModel: min tile length must be greater than 0"};
-		} else {
-			minTileLength = newMinTileLength;
-		}
+		throwIfNegative(newMinTileLength, "min tile length");
+		minTileLength = newMinTileLength;
 	}
 
 	constexpr float getMaxTileLength() const noexcept {
@@ -43,11 +38,8 @@ public:
 	}
 
 	constexpr void setMaxTileLength(float newMaxTileLength) {
-		if(newMaxTileLength <= 0.0f) {
-			throw std::invalid_argument{"RoofModel: max tile length must be greater than 0"};
-		} else {
-			minTileLength = newMaxTileLength;
-		}
+		throwIfNegative(newMaxTileLength, "max tile length");
+		minTileLength = newMaxTileLength;
 	}
 
 	constexpr float getTileHeight() const noexcept {
@@ -55,11 +47,8 @@ public:
 	}
 
 	constexpr void setTileHeight(float newTileHeight) {
-		if(newTileHeight <= 0.0f) {
-			throw std::invalid_argument{"RoofModel: tile height must be greater than 0"};
-		} else {
-			tileHeight = newTileHeight;
-		}
+		throwIfNegative(newTileHeight, "tile height");
+		tileHeight = newTileHeight;
 	}
 
 	constexpr unsigned getTileCount() const noexcept {
@@ -67,14 +56,23 @@ public:
 	}
 
 	constexpr void setTileCount(unsigned newTileCount) {
-		if(newTileCount == 0) {
-			throw std::invalid_argument{"RoofModel: tile count must be greater than 0"};
-		} else {
-			tileCount = newTileCount;
-		}
+		throwIfEqualToZero(newTileCount, "tile count");
+		tileCount = newTileCount;
 	}
 
 private:
+	constexpr void throwIfEqualToZero(unsigned value, std::string_view var) {
+		if(value == 0U) {
+			throw std::invalid_argument{"RoofModel: " + std::string{var} + " cannot be equal to 0"};
+		}
+	}
+
+	constexpr void throwIfNegative(float value, std::string_view var) {
+		if(value <= 0.0f) {
+			throw std::invalid_argument{"RoofModel: " + std::string{var} + " must be greater than 0"};
+		}
+	}
+
 	float angle = DEFAULT_ANGLE;
 	float minTileLength = DEFAULT_MIN_TILE_LENGTH;
 	float maxTileLength = DEFAULT_MAX_TILE_LENGTH;

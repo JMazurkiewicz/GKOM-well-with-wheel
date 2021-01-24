@@ -8,11 +8,11 @@
 #include "Model/WheelModel.h"
 #include <vector>
 
-class SpinningWheelGenerator final : public CompoundModelGenerator {
+class WheelGenerator final : public CompoundModelGenerator {
 public:
 	static constexpr unsigned DEFAULT_SAMPLE_RATE = 24;
 
-	explicit SpinningWheelGenerator(const WellModel& basicWellModel, const WheelModel& basicModel);
+	explicit WheelGenerator(const WellModel& basicWellModel, const WheelModel& basicModel);
 	void setSampleRate(unsigned newSampleRate);
 
 private:

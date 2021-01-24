@@ -44,6 +44,9 @@
     <Filter Include="Sources\ModelGeneration\BasicGenerators">
       <UniqueIdentifier>{279e228f-c79c-4ce0-8efb-4b028f08dd71}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\GlModel">
+      <UniqueIdentifier>{5df0235e-945c-48ec-896b-01448fd23c08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp">
@@ -64,9 +67,6 @@
     <ClCompile Include="src\Graphics\MipmapTexture.cpp">
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="src\Model\WellModel.cpp">
-      <Filter>Sources\Model</Filter>
-    </ClCompile>
     <ClCompile Include="src\Startup\Main.cpp">
       <Filter>Sources\Startup</Filter>
     </ClCompile>
@@ -84,9 +84,6 @@
     </ClCompile>
     <ClCompile Include="src\ModelGeneration\EnvironmentGlModelGenerator.cpp">
       <Filter>Sources\ModelGeneration</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Model\GlModel.cpp">
-      <Filter>Sources\Model</Filter>
     </ClCompile>
     <ClCompile Include="src\View\GlView.cpp">
       <Filter>Sources\View</Filter>
@@ -130,16 +127,16 @@
     <ClCompile Include="src\ModelGeneration\BasicGenerators\ClosedCylinderGenerator.cpp">
       <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
     </ClCompile>
-    <ClCompile Include="src\ModelGeneration\WellGeneration\SpinningWheelGenerator.cpp">
-      <Filter>Sources\ModelGeneration\WellGeneration</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Model\WheelModel.cpp">
-      <Filter>Sources\Model</Filter>
-    </ClCompile>
     <ClCompile Include="src\Graphics\Texture.cpp">
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.cpp">
+      <Filter>Sources\ModelGeneration\WellGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GlModel\GlModel.cpp">
+      <Filter>Sources\GlModel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelGeneration\WellGeneration\WheelGenerator.cpp">
       <Filter>Sources\ModelGeneration\WellGeneration</Filter>
     </ClCompile>
   </ItemGroup>
@@ -186,9 +183,6 @@
     <ClInclude Include="src\View\GlView.h">
       <Filter>Sources\View</Filter>
     </ClInclude>
-    <ClInclude Include="src\Model\GlModel.h">
-      <Filter>Sources\Model</Filter>
-    </ClInclude>
     <ClInclude Include="src\Graphics\Vertex.h">
       <Filter>Sources\Graphics</Filter>
     </ClInclude>
@@ -234,9 +228,6 @@
     <ClInclude Include="src\ModelGeneration\BasicGenerators\ClosedCylinderGenerator.h">
       <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
     </ClInclude>
-    <ClInclude Include="src\ModelGeneration\WellGeneration\SpinningWheelGenerator.h">
-      <Filter>Sources\ModelGeneration\WellGeneration</Filter>
-    </ClInclude>
     <ClInclude Include="src\Model\WheelModel.h">
       <Filter>Sources\Model</Filter>
     </ClInclude>
@@ -245,6 +236,12 @@
     </ClInclude>
     <ClInclude Include="src\Model\RoofModel.h">
       <Filter>Sources\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GlModel\GlModel.h">
+      <Filter>Sources\GlModel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\WellGeneration\WheelGenerator.h">
+      <Filter>Sources\ModelGeneration\WellGeneration</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdexcept>
+#include <string_view>
 
 class WellModel {
 public:
@@ -17,39 +18,77 @@ public:
 	WellModel(const WellModel&) = delete;
 	WellModel& operator=(const WellModel&) = delete;
 
-	float getInnerRadius() const noexcept;
-	void setInnerRadius(float newInnerRadius);
+	constexpr float getInnerRadius() const noexcept {
+		return innerRadius;
+	}
 
-	float getOuterRadius() const noexcept;
-	void setOuterRadius(float newOuterRadius);
+	constexpr void setInnerRadius(float newInnerRadius) {
+		throwIfNegative(newInnerRadius, "inner radius");
+		innerRadius = newInnerRadius;
+	}
 
-	float getHeight() const noexcept;
-	void setHeight(float newHeight);
+	constexpr float getOuterRadius() const noexcept {
+		return outerRadius;
+	}
 
-	float getWheelHeight() const noexcept;
-	void setWheelHeight(float newWheelHeight);
+	constexpr void setOuterRadius(float newOuterRadius) {
+		throwIfNegative(newOuterRadius, "outer radius");
+		outerRadius = newOuterRadius;
+	}
 
-	float getBracketRadius() const noexcept;
-	void setBracketRadius(float newBracketRadius);
+	constexpr float getHeight() const noexcept {
+		return height;
+	}
 
-	float getBracketHeight() const noexcept;
-	void setBrackedHeight(float newBracketHeight);
+	constexpr void setHeight(float newHeight) {
+		throwIfNegative(newHeight, "height");
+		height = newHeight;
+	}
+
+	constexpr float getWheelHeight() const noexcept {
+		return wheelHeight;
+	}
+	
+	constexpr void setWheelHeight(float newWheelHeight) {
+		throwIfNegative(newWheelHeight, "wheel height");
+		wheelHeight = newWheelHeight;
+	}
+
+	constexpr float getBracketRadius() const noexcept {
+		return bracketRadius;
+	}
+
+	constexpr void setBracketRadius(float newBracketRadius) {
+		throwIfNegative(newBracketRadius, "bracket radius");
+		bracketRadius = newBracketRadius;
+	}
+
+	constexpr float getBracketHeight() const noexcept {
+		return bracketHeight;
+	}
+
+	constexpr void setBrackedHeight(float newBracketHeight) {
+		throwIfNegative(newBracketHeight, "bracket height");
+		bracketHeight = newBracketHeight;
+	}
 
 	constexpr float getLogHeight() const noexcept {
 		return logHeight;
 	}
 
 	constexpr void setLogHeight(float newLogHeight) {
-		if(newLogHeight <= 0.0f) {
-			throw std::invalid_argument{"Class: log height must be greater than 0"};
-		} else {
-			logHeight = newLogHeight;
+		throwIfNegative(newLogHeight, "log height");
+		logHeight = newLogHeight;
+	
+	}
+
+private:
+	constexpr void throwIfNegative(float value, std::string_view var) {
+		if(value <= 0.0f) {
+			throw std::invalid_argument{"WellModel: " + std::string{var} + " must be greater than 0"};
 		}
 	}
 
-	void validateModel() const;
-
-private:
 	float innerRadius = DEFAULT_INNER_RADIUS;
 	float outerRadius = DEFAULT_OUTER_RADIUS;
 	float height = DEFAULT_HEIGHT;

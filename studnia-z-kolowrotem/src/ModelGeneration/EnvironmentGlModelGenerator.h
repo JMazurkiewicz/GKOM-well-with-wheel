@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Model/GlModel.h"
+#include "GlModel/GlModel.h"
 
 class EnvironmentModel;
 
