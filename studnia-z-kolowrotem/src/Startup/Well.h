@@ -9,6 +9,8 @@
 #include "System/Window.h"
 #include "View/DynamicGlView.h"
 #include "View/StaticGlView.h"
+#include "View/GlView.h"
+#include "Graphics/Texture.h"
 
 class Well {
 public:

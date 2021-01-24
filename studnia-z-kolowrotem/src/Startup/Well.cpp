@@ -12,12 +12,21 @@ Well::Well(Window& window) {
 }
 
 void Well::update() {
+	Texture texture;
+
+	texture.loadTexture("abc.DDS");
 	const float elapsedTime = stopwatch.getElapsedTime().count();
 	
 	wheelControler.update(elapsedTime);
 
 	baseView.draw();
+
+	texture.loadTexture("yas.DDS");
 	woodenStandView.draw();
+
+
+	texture.loadTexture("texture.DDS");
+	spinningWheelView.draw();
 	wheelView.draw();
 	roofView.draw();
 }
@@ -39,6 +48,7 @@ void Well::createBase() {
 
 void Well::createWoodenStand() {
 	WoodenStandGenerator generator{basicModel};
+	generator.setSampleRate(64);
 	auto [verticies, indicies] = generator.generateModel();
 	woodenStandModel = GlModel{std::move(verticies), std::move(indicies)};
 	woodenStandView.setModel(woodenStandModel);

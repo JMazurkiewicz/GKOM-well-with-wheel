@@ -25,12 +25,15 @@ void CuboidGenerator::constructModel() {
 	connectVertices();
 }
 
+void CuboidGenerator::createTexCoords() {
+}
+
 void CuboidGenerator::constructVertices() {
 	const float halfX = width / 2.0f;
 	const float halfZ = length / 2.0f;
 
 	vertices = {
-		glm::vec3{halfX, 0.0f, -halfZ},
+		glm::vec3{halfX, 0.0f, -halfZ},//Vertex{{halfX, 0.0f, -halfZ},{},{},{1,0}},
 		glm::vec3{-halfX, 0.0f, -halfZ},
 		glm::vec3{-halfX, 0.0f, halfZ},
 		glm::vec3{halfX, 0.0f, halfZ},

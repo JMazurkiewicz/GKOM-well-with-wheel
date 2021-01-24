@@ -9,14 +9,18 @@ Vertex::Vertex(const glm::vec3& position)
 Vertex::Vertex(float x, float y, float z)
 	: position{x, y, z}, color{}, normal{}, texture{} { }
 
+std::ostream& operator<<(std::ostream& stream, const glm::vec2& vec) {
+	return stream << '[' << vec.x << ", " << vec.y << ']';
+}
+
 std::ostream& operator<<(std::ostream& stream, const glm::vec3& vec) {
-	return stream << "[" << vec.x << ", " << vec.y << ", " << vec.z << "]";
+	return stream << '[' << vec.x << ", " << vec.y << ", " << vec.z << ']';
 }
 
 std::ostream& operator<<(std::ostream& stream, const Vertex& vertex) {
 	return stream
 		<< "{\"position\": " << vertex.position << ", \"color\": "
 		<< vertex.color << ", \"normal\": "
-		<< vertex.normal << ", \"texture\": ["
-		<< vertex.texture.x << ", " << vertex.texture.y << "]}";
+		<< vertex.normal << ", \"texture\": "
+		<< vertex.texture << '}';
 }

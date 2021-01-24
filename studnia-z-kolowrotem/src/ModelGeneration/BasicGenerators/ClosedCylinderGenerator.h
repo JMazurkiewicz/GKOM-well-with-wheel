@@ -9,7 +9,6 @@ public:
 private:
 	void constructModel() override;
 	void createConnections();
-	void connectBottom();
 
 	unsigned nextIndex(unsigned index);
 };

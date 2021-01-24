@@ -19,9 +19,11 @@ private:
 	[[nodiscard]] unsigned getInnerCylinderOffset() const;
 
 	void constructModel() override;
-	void adjustInnerIndices();
+	void adjustInnerIndices(unsigned firstInnerIndex);
 	void connectTop();
 	unsigned nextIndex(unsigned index) const;
+
+	void createTexCoords() override;
 
 	float innerRadius;
 	float outerRadius;

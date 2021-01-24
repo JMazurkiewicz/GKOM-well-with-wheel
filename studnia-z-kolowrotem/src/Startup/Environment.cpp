@@ -5,6 +5,8 @@ Environment::Environment() {
 }
 
 void Environment::update() {
+	Texture texture;
+	texture.loadTexture("grass.DDS");
 	view.draw();
 }
 

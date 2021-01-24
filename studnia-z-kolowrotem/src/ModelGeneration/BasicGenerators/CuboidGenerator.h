@@ -15,6 +15,7 @@ public:
 
 private:
 	void constructModel() override;
+	void createTexCoords() override;
 
 	void constructVertices();
 	void connectVertices();

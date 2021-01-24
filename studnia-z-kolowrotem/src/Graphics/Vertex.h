@@ -15,6 +15,7 @@ struct alignas(float) Vertex {
 	glm::vec2 texture;
 };
 
+std::ostream& operator<<(std::ostream& stream, const glm::vec2& vec);
 std::ostream& operator<<(std::ostream& stream, const glm::vec3& vec);
 std::ostream& operator<<(std::ostream& stream, const Vertex& vertex);
 
