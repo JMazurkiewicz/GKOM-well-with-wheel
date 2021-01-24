@@ -18,6 +18,7 @@ private:
 
 	void constructVertices();
 	void connectVertices();
+	void updateTextureCoord();
 
 	float length;
 	float width;

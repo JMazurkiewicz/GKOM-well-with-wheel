@@ -223,7 +223,9 @@
     <Image Include="src\View\abc.DDS" />
     <Image Include="iipw.png" />
     <Image Include="src\View\texture.DDS" />
+    <Image Include="test.DDS" />
     <Image Include="weiti.png" />
+    <Image Include="wood.DDS" />
     <Image Include="yas.DDS" />
   </ItemGroup>
   <ItemGroup>

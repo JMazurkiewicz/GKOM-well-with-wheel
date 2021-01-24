@@ -30,7 +30,7 @@ void main()
 	
 	float cosTheta = clamp( dot(n,l), 0,1 );
 
-    color = //texture( TextureSampler, UV ).rgb;
+    color = texture( TextureSampler, UV ).rgb;
 	//MaterialDiffuseColor * LightColor * LightPower * cosTheta / (distance*distance)
-	+ MaterialAmbientColor;
+	//+ MaterialAmbientColor;
 }

@@ -15,12 +15,11 @@ void Well::update() {
 	texture.loadTexture("abc.DDS");
 	baseView.draw();
 
-	texture.loadTexture("yas.DDS");
+	texture.loadTexture("wood.DDS");
 	woodenStandView.draw();
-
-
-	texture.loadTexture("texture.DDS");
 	spinningWheelView.draw();
+
+	texture.loadTexture("test.DDS");
 	roofView.draw();
 }
 
