@@ -68,16 +68,14 @@ void CylinderGenerator::connectSides() {
 
 void CylinderGenerator::createTexCoords() {
     const float dx = 4.0f / getSampleRate();
-    float left = dx;
-    float right = 0.0f;
+    float xTex = 0.0f;
 
     for(unsigned index = 0; index < getSampleCount(); ++index) {
         const unsigned upperIndex = index + getUpperCircleOffset();
 
-        vertices[index].texture = glm::vec2(right, 0.0f);
-        vertices[upperIndex].texture = glm::vec2(right, 1.0f);
+        vertices[index].texture = glm::vec2(xTex, 0.0f);
+        vertices[upperIndex].texture = glm::vec2(xTex, 1.0f);
 
-        right += dx;
-        left += dx;
+        xTex += dx;
     }
 }

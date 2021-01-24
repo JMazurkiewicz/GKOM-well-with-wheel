@@ -9,7 +9,7 @@ public:
 	void setColor(const glm::vec3& newColor);
 
 protected:
-	virtual void createTexCoords() { }
+	virtual void createTexCoords() = 0;
 
 private:
 	void finishModel() override;

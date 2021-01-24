@@ -1,5 +1,7 @@
 #include "HollowCylinderGenerator.h"
 
+#include <array>
+
 HollowCylinderGenerator::HollowCylinderGenerator()
     : CylinderGenerator(), innerRadius{1.0f}, outerRadius{1.0f} { }
 
@@ -43,19 +45,13 @@ void HollowCylinderGenerator::adjustInnerIndices(unsigned firstInnerIndex) {
 
 void HollowCylinderGenerator::connectTop() {
     for(unsigned index = 0; index < getSampleRate(); ++index) {
-        const unsigned next = nextIndex(index);
+        const unsigned outerUpperIndex = index + getUpperCircleOffset() + getOuterCyilnderOffset();
+        const unsigned outerUpperNext = nextIndex(outerUpperIndex);
+        const unsigned innerUpperIndex = index + getUpperCircleOffset() + getInnerCylinderOffset();
+        const unsigned innerUpperNext = nextIndex(innerUpperIndex);
 
-        indices.push_back({
-            index + getOuterCyilnderOffset() + getUpperCircleOffset(),
-            index + getInnerCylinderOffset() + getUpperCircleOffset(),
-            next + getInnerCylinderOffset() + getUpperCircleOffset()
-        });
-
-        indices.push_back({
-            index + getOuterCyilnderOffset() + getUpperCircleOffset(),
-            next + getOuterCyilnderOffset() + getUpperCircleOffset(),
-            next + getInnerCylinderOffset() + getUpperCircleOffset()
-        });
+        indices.push_back({innerUpperIndex, outerUpperNext, innerUpperNext});
+        indices.push_back({innerUpperIndex, outerUpperIndex, outerUpperNext});
     }
 }
 
@@ -65,4 +61,25 @@ unsigned HollowCylinderGenerator::nextIndex(unsigned index) const {
         index = 0;
     }
     return index;
+}
+
+void HollowCylinderGenerator::createTexCoords() {
+    const float dx = 4.0f / getSampleRate();
+    constexpr std::array yTex = {0.0f, 1.0f, 0.5f, 1.0f};
+
+    float xTex = 0.0f;
+
+    for(unsigned index = 0; index < getSampleCount(); ++index) {
+        const unsigned outerLowerIndex = index + getLowerCircleOffset() + getOuterCyilnderOffset();
+        const unsigned outerUpperIndex = index + getUpperCircleOffset() + getOuterCyilnderOffset();
+        const unsigned innerUpperIndex = index + getUpperCircleOffset() + getInnerCylinderOffset();
+        const unsigned innerLowerIndex = index + getLowerCircleOffset() + getInnerCylinderOffset();
+
+        vertices[outerLowerIndex].texture = glm::vec2{xTex, yTex[0]};
+        vertices[outerUpperIndex].texture = glm::vec2{xTex, yTex[1]};
+        vertices[innerUpperIndex].texture = glm::vec2{xTex, yTex[2]};
+        vertices[innerLowerIndex].texture = glm::vec2{xTex, yTex[3]};
+
+        xTex += dx;
+    }
 }

@@ -44,9 +44,6 @@
     <Filter Include="Sources\ModelGeneration\BasicGenerators">
       <UniqueIdentifier>{279e228f-c79c-4ce0-8efb-4b028f08dd71}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\ModelGeneration\CompoundGenerators">
-      <UniqueIdentifier>{70abe15d-5389-4d9a-9d81-2b91076b2fde}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp">

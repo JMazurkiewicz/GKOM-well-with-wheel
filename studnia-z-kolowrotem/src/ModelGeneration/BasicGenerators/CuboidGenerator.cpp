@@ -25,6 +25,9 @@ void CuboidGenerator::constructModel() {
 	connectVertices();
 }
 
+void CuboidGenerator::createTexCoords() {
+}
+
 void CuboidGenerator::constructVertices() {
 	const float halfX = width / 2.0f;
 	const float halfZ = length / 2.0f;

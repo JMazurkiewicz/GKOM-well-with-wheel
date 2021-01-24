@@ -30,7 +30,7 @@ void Well::create() {
 
 void Well::createBase() {
 	WellBaseGenerator generator{basicModel};
-	generator.setSampleRate(4);
+	generator.setSampleRate(64);
 	auto [vertices, indices] = generator.generateModel();
 	baseModel = GlModel{std::move(vertices), std::move(indices)};
 	baseView.setModel(baseModel);
@@ -38,7 +38,7 @@ void Well::createBase() {
 
 void Well::createWoodenStand() {
 	WoodenStandGenerator generator{basicModel};
-	generator.setSampleRate(4);
+	generator.setSampleRate(64);
 	auto [verticies, indicies] = generator.generateModel();
 	woodenStandModel = GlModel{std::move(verticies), std::move(indicies)};
 	woodenStandView.setModel(woodenStandModel);

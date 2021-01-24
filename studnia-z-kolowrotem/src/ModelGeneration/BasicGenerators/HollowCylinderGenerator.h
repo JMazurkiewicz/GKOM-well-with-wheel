@@ -23,6 +23,8 @@ private:
 	void connectTop();
 	unsigned nextIndex(unsigned index) const;
 
+	void createTexCoords() override;
+
 	float innerRadius;
 	float outerRadius;
 };
