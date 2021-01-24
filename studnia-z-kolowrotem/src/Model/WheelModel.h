@@ -9,7 +9,7 @@ public:
 	static constexpr float DEFAULT_INNER_RADIUS = 0.17f;
 	static constexpr float DEFAULT_OUTER_RADIUS = 0.15f;
 	static constexpr float DEFAULT_HEIGHT = 0.05f;
-	static constexpr float DEFAULT_CONNECTOR_HEIGHT = 0.02;
+	static constexpr float DEFAULT_CONNECTOR_HEIGHT = 0.02f;
 
 	static constexpr unsigned DEFAULT_CONNECTOR_COUNT = 8;
 

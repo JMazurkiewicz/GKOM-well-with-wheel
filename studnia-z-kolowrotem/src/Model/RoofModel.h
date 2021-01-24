@@ -6,8 +6,8 @@
 class RoofModel {
 public:
 	static constexpr float DEFAULT_ANGLE = 0.7853981f;
-	static constexpr float DEFAULT_MIN_TILE_LENGTH = 0.5f;
-	static constexpr float DEFAULT_MAX_TILE_LENGTH = 0.7f;
+	static constexpr float DEFAULT_MIN_TILE_LENGTH = 0.7f;
+	static constexpr float DEFAULT_MAX_TILE_LENGTH = 1.0f;
 	static constexpr float DEFAULT_TILE_HEIGHT = 0.05f;
 	static constexpr unsigned DEFAULT_ROOF_TILE_COUNT = 20;
 	
