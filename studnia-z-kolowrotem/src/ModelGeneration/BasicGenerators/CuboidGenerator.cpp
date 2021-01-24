@@ -23,10 +23,21 @@ unsigned CuboidGenerator::getVertexCount() const {
 void CuboidGenerator::constructModel() {
 	constructVertices();
 	connectVertices();
-	updateTextureCoord();
 }
 
 void CuboidGenerator::createTexCoords() {
+	for(unsigned rect = 0; rect < 6; rect++) {
+		unsigned idx1 = 4 * rect;
+		unsigned idx2 = idx1 + 1;
+		unsigned idx3 = idx1 + 2;
+		unsigned idx4 = idx1 + 3;
+
+		vertices[idx1].texture = glm::vec2(1, 1);
+		vertices[idx2].texture = glm::vec2(0, 1);
+		vertices[idx3].texture = glm::vec2(0, 0);
+		vertices[idx4].texture = glm::vec2(1, 0);
+
+	}
 }
 
 void CuboidGenerator::constructVertices() {
@@ -76,22 +87,6 @@ void CuboidGenerator::connectVertices() {
 
 		indices.push_back({ idx1, idx2, idx3 });
 		indices.push_back({ idx1, idx4, idx3 });
-
-	}
-}
-
-void CuboidGenerator::updateTextureCoord() {
-
-	for (unsigned rect = 0; rect < 6; rect++) {
-		unsigned idx1 = 4 * rect;
-		unsigned idx2 = idx1 + 1;
-		unsigned idx3 = idx1 + 2;
-		unsigned idx4 = idx1 + 3;
-
-		vertices[idx1].texture = glm::vec2(1, 1);
-		vertices[idx2].texture = glm::vec2(0, 1);
-		vertices[idx3].texture = glm::vec2(0, 0);
-		vertices[idx4].texture = glm::vec2(1, 0);
 
 	}
 }

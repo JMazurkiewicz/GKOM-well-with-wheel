@@ -23,7 +23,7 @@ void Well::update() {
 
 	texture.loadTexture("wood.DDS");
 	woodenStandView.draw();
-	spinningWheelView.draw();
+	wheelView.draw();
 
 	texture.loadTexture("test.DDS");
 
