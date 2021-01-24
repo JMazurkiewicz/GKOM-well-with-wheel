@@ -9,11 +9,13 @@ namespace this_thread = std::this_thread;
 using namespace std::chrono_literals;
 
 Scene::Scene(MainWindow& window)
-: window{window}, vao{0}, mainShader{"assets/shaders/gl_05.vert", "assets/shaders/gl_05.frag"}
+: window{window}, vao{0}, camera{window},
+mainShader{"assets/shaders/gl_05.vert", "assets/shaders/gl_05.frag"},
+well{window}
 {	
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
-	Camera::init(window);
+	camera.listenOn(window);
 	glBindVertexArray(0);
 }
 
@@ -56,10 +58,10 @@ void Scene::updateCamera(
 	GLuint ModelMatrixID, 
 	GLuint ViewMatrixID
 ) {
-	glm::mat4 projectionMatrix = Camera::getProjectionMatrix();
-	glm::mat4 viewMatrix = Camera::getViewMatrix();
-	glm::mat4 modelMatrix = Camera::getModelMatrix();
-	glm::mat4 cameraMatrix = Camera::update();
+	glm::mat4 projectionMatrix = camera.getProjectionMatrix();
+	glm::mat4 viewMatrix = camera.getViewMatrix();
+	glm::mat4 modelMatrix = camera.getModelMatrix();
+	glm::mat4 cameraMatrix = camera.update();
 
 	//GLuint MatrixID = glGetUniformLocation(mainShader.getProgramId(), "MVP");
 	//glUniformMatrix4fv(MatrixID, 1, GL_FALSE, glm::value_ptr(cameraMatrix));

@@ -4,11 +4,12 @@
 #include "Model/RoofModel.h"
 #include "Model/WellModel.h"
 #include "Model/WheelModel.h"
+#include "System/Window.h"
 #include "View/GlView.h"
 
 class Well {
 public:
-	Well();
+	explicit Well(Window& window);
 	Well(const Well&) = delete;
 	Well& operator=(const Well&) = delete;
 
@@ -31,8 +32,9 @@ private:
 	GlModel baseModel;
 	GlView baseView;
 
-	GlModel wheelModel;
-	GlView wheelView;
+	GlModel spinningWheelModel;
+	GlView spinningWheelView;
+	WheelControler wheelControler;
 
 	GlModel roofModel;
 	GlView roofView;

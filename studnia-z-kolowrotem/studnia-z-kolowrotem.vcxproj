@@ -149,7 +149,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Controler\ActionListener.cpp" />
     <ClCompile Include="src\Controler\Camera.cpp" />
+    <ClCompile Include="src\Controler\KeyboardListener.cpp" />
+    <ClCompile Include="src\Controler\MouseListener.cpp" />
+    <ClCompile Include="src\Controler\WheelControler.cpp" />
     <ClCompile Include="src\GlModel\GlModel.cpp" />
     <ClCompile Include="src\Graphics\MipmapTexture.cpp" />
     <ClCompile Include="src\Graphics\Image.cpp" />
@@ -177,11 +181,16 @@
     <ClCompile Include="src\Startup\Main.cpp" />
     <ClCompile Include="src\Startup\MainWindow.cpp" />
     <ClCompile Include="src\Startup\Well.cpp" />
+    <ClCompile Include="src\System\Stopwatch.cpp" />
     <ClCompile Include="src\System\Window.cpp" />
     <ClCompile Include="src\View\GlView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Controler\ActionListener.h" />
     <ClInclude Include="src\Controler\Camera.h" />
+    <ClInclude Include="src\Controler\KeyboardListener.h" />
+    <ClInclude Include="src\Controler\MouseListener.h" />
+    <ClInclude Include="src\Controler\WheelControler.h" />
     <ClInclude Include="src\GlModel\GlModel.h" />
     <ClInclude Include="src\Graphics\Image.h" />
     <ClInclude Include="src\Graphics\MipmapTexture.h" />
@@ -213,6 +222,7 @@
     <ClInclude Include="src\Startup\Scene.h" />
     <ClInclude Include="src\Startup\MainWindow.h" />
     <ClInclude Include="src\Startup\Well.h" />
+    <ClInclude Include="src\System\Stopwatch.h" />
     <ClInclude Include="src\System\Window.h" />
     <ClInclude Include="src\View\GlView.h" />
   </ItemGroup>

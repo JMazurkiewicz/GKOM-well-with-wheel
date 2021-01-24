@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Controler/Camera.h"
 #include "Graphics/Shader.h"
 #include "MainWindow.h"
 #include "Environment.h"
@@ -29,6 +30,7 @@ private:
 
 	MainWindow& window;
 	GLuint vao;
+	Camera camera;
 
 	Shader mainShader;
 

@@ -1,5 +1,7 @@
 #include "Window.h"
 
+#include "Controler/KeyboardListener.h"
+#include "Controler/MouseListener.h"
 #include <stdexcept>
 
 #pragma warning(disable:26812)
@@ -17,6 +19,7 @@ Window::Window(int width, int height, const char* title, Style style) : width{wi
 		throw std::runtime_error{"Window: failed to open glfw window"};
 	}
 
+	registerCallbacks();
 	glfwMakeContextCurrent(handle);
 }
 
@@ -42,4 +45,10 @@ bool Window::shouldClose() const {
 
 void Window::swapBuffers() {
 	glfwSwapBuffers(handle);
+}
+
+void Window::registerCallbacks() {
+	glfwSetKeyCallback(getHandle(), KeyboardListener::callback);
+	glfwSetCursorPosCallback(getHandle(), MouseListener::callback);
+	glfwSetInputMode(getHandle(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }

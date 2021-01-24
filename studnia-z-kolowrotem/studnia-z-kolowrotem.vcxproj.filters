@@ -133,6 +133,21 @@
     <ClCompile Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.cpp">
       <Filter>Sources\ModelGeneration\WellGeneration</Filter>
     </ClCompile>
+    <ClCompile Include="src\Controler\ActionListener.cpp">
+      <Filter>Sources\Controler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Controler\KeyboardListener.cpp">
+      <Filter>Sources\Controler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Controler\MouseListener.cpp">
+      <Filter>Sources\Controler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Controler\WheelControler.cpp">
+      <Filter>Sources\Controler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Stopwatch.cpp">
+      <Filter>Sources\System</Filter>
+    </ClCompile>
     <ClCompile Include="src\GlModel\GlModel.cpp">
       <Filter>Sources\GlModel</Filter>
     </ClCompile>
@@ -242,6 +257,21 @@
     </ClInclude>
     <ClInclude Include="src\ModelGeneration\WellGeneration\WheelGenerator.h">
       <Filter>Sources\ModelGeneration\WellGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Controler\ActionListener.h">
+      <Filter>Sources\Controler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Controler\MouseListener.h">
+      <Filter>Sources\Controler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Controler\KeyboardListener.h">
+      <Filter>Sources\Controler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Controler\WheelControler.h">
+      <Filter>Sources\Controler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Stopwatch.h">
+      <Filter>Sources\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

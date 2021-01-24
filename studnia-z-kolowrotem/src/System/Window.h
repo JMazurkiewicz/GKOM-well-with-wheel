@@ -25,6 +25,8 @@ public:
 	void swapBuffers();
 
 private:
+	void registerCallbacks();
+
 	int width;
 	int height;
 	GLFWwindow* handle;

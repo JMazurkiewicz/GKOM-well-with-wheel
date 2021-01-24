@@ -1,10 +1,25 @@
 #include <iostream>
 #include "LibraryExceptions/ShaderException.h"
+#include <locale>
 #include "MainWindow.h"
 #include "Scene.h"
 #include <typeinfo>
 
 namespace {
+	void setupLocale() {
+		std::locale loc;
+		try {
+			loc = std::locale{"pl"};
+		} catch(std::exception& e) {
+			loc = std::locale{""};
+			std::cerr << "Application failed to use `pl` locale (" << e.what() << ").\n";
+		}
+
+		std::cerr << "Current locale: `" << loc.name() << "` locale.\n";
+		std::locale::global(loc);
+		std::cout.imbue(loc);
+	}
+
 	void handleUnexpectedException(const std::exception& e) {
 		std::cerr << "Unexpected exception:\n"
 			"  what(): \"" << e.what() << "\"\n";
@@ -31,6 +46,7 @@ namespace {
 int main() {
 	std::ios_base::sync_with_stdio(false);
 	std::cerr.tie(nullptr);
+	setupLocale();
 
 	if(!glfwInit()) {
 		std::cerr << "glfw initialization failed\n";
