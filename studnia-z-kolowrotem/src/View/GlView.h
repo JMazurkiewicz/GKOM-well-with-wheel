@@ -7,17 +7,17 @@
 class GlView {
 public:
 	GlView();
-	explicit GlView(const GlModel& model);
-	~GlView();
+	virtual ~GlView();
 
 	GlView(const GlView&) = delete;
 	GlView& operator=(const GlView&) = delete;
 
 	void setModel(const GlModel& newModel);
-	void update();
 	void draw();
 
 protected:
+	virtual void updateModel() = 0;
+
 	GLuint vbo;
 	GLuint ebo;
 

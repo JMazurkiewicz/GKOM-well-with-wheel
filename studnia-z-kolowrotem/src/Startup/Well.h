@@ -7,7 +7,8 @@
 #include "Model/WheelModel.h"
 #include "System/Stopwatch.h"
 #include "System/Window.h"
-#include "View/GlView.h"
+#include "View/DynamicGlView.h"
+#include "View/StaticGlView.h"
 
 class Well {
 public:
@@ -29,17 +30,17 @@ private:
 	RoofModel basicRoofModel;
 
 	GlModel woodenStandModel;
-	GlView woodenStandView;
+	StaticGlView woodenStandView;
 
 	GlModel baseModel;
-	GlView baseView;
+	StaticGlView baseView;
 
 	GlModel wheelModel;
-	GlView wheelView;
+	DynamicGlView wheelView;
 	WheelControler wheelControler;
 
 	GlModel roofModel;
-	GlView roofView;
+	StaticGlView roofView;
 
 	Stopwatch stopwatch;
 };

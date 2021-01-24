@@ -154,6 +154,12 @@
     <ClCompile Include="src\ModelGeneration\WellGeneration\WheelGenerator.cpp">
       <Filter>Sources\ModelGeneration\WellGeneration</Filter>
     </ClCompile>
+    <ClCompile Include="src\View\DynamicGlView.cpp">
+      <Filter>Sources\View</Filter>
+    </ClCompile>
+    <ClCompile Include="src\View\StaticGlView.cpp">
+      <Filter>Sources\View</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\System\Window.h">
@@ -272,6 +278,12 @@
     </ClInclude>
     <ClInclude Include="src\System\Stopwatch.h">
       <Filter>Sources\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\View\DynamicGlView.h">
+      <Filter>Sources\View</Filter>
+    </ClInclude>
+    <ClInclude Include="src\View\StaticGlView.h">
+      <Filter>Sources\View</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

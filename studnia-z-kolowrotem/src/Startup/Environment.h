@@ -3,7 +3,7 @@
 #include "GlModel/GlModel.h"
 #include "Model/EnvironmentModel.h"
 #include "ModelGeneration/EnvironmentGlModelGenerator.h"
-#include "View/GlView.h"
+#include "View/StaticGlView.h"
 
 class Environment {
 public:
@@ -18,5 +18,5 @@ private:
 
 	EnvironmentModel basicModel;
 	GlModel model;
-	GlView view;
+	StaticGlView view;
 };

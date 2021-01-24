@@ -18,7 +18,7 @@ void WheelControler::setModel(GlModel& wheelModel) {
 	model = &wheelModel;
 }
 
-void WheelControler::setView(GlView& wheelView) {
+void WheelControler::setView(DynamicGlView& wheelView) {
 	view = &wheelView;
 }
 
@@ -35,7 +35,7 @@ void WheelControler::update(float time) {
 		const auto translationBack = glm::translate(translationVector);
 
 		model->transform(translationBack * rotation * translation);
-		view->update();
+		view->updateView();
 	}
 }
 

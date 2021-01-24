@@ -2,14 +2,14 @@
 
 #include "KeyboardListener.h"
 #include "GlModel/GlModel.h"
-#include "View/GlView.h"
+#include "View/DynamicGlView.h"
 
 class WheelControler : public KeyboardListener {
 public:
 	static constexpr float DEFAULT_SPEED = 5.0f / 1000.0f;
 
 	void setModel(GlModel& wheelModel);
-	void setView(GlView& wheelView);
+	void setView(DynamicGlView& wheelView);
 	void setSpeed(float newSpeed);
 
 	void update(float time);
@@ -22,7 +22,7 @@ private:
 	bool canUpdate() const;
 
 	GlModel* model = nullptr;
-	GlView* view = nullptr;
+	DynamicGlView* view = nullptr;
 
 	float speed = DEFAULT_SPEED;
 
