@@ -3,9 +3,14 @@
 #include <locale>
 #include "MainWindow.h"
 #include "Scene.h"
+#include <string_view>
 #include <typeinfo>
 
 namespace {
+	inline constexpr std::string_view INTRO =
+		"Poruszanie: myszka + WASD\n"
+		"Obracanie ko³owrotem: lewa i prawa strza³ka";
+
 	void setupLocale() {
 		std::locale loc;
 		try {
@@ -63,6 +68,8 @@ int main() {
 			std::cerr << "glew initialization failed\n";
 			return EXIT_FAILURE;
 		}
+
+		std::cout << INTRO << std::endl;
 
 		Scene scene{window};
 		scene.start();
