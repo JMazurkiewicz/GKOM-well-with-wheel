@@ -17,12 +17,13 @@ void CuboidGenerator::setHeight(float newHeight) {
 }
 
 unsigned CuboidGenerator::getVertexCount() const {
-	return 8;
+	return 24;
 }
 
 void CuboidGenerator::constructModel() {
 	constructVertices();
 	connectVertices();
+	updateTextureCoord();
 }
 
 void CuboidGenerator::createTexCoords() {
@@ -33,28 +34,64 @@ void CuboidGenerator::constructVertices() {
 	const float halfZ = length / 2.0f;
 
 	vertices = {
-		glm::vec3{halfX, 0.0f, -halfZ},//Vertex{{halfX, 0.0f, -halfZ},{},{},{1,0}},
-		glm::vec3{-halfX, 0.0f, -halfZ},
-		glm::vec3{-halfX, 0.0f, halfZ},
-		glm::vec3{halfX, 0.0f, halfZ},
-		glm::vec3{halfX, height, -halfZ},
-		glm::vec3{-halfX, height, -halfZ},
-		glm::vec3{-halfX, height, halfZ},
-		glm::vec3{halfX, height, halfZ},
+		/*0*/glm::vec3{halfX, 0.0f, -halfZ},	/*0*/
+		/*1*/glm::vec3{-halfX, 0.0f, -halfZ},	/*1*/
+		/*2*/glm::vec3{-halfX, 0.0f, halfZ},	/*2*/
+		/*3*/glm::vec3{halfX, 0.0f, halfZ},		/*3*/
+												
+		/*4*/glm::vec3{halfX, height, -halfZ},	/*4*/
+		/*5*/glm::vec3{-halfX, height, -halfZ},	/*5*/
+		/*6*/glm::vec3{-halfX, height, halfZ},	/*6*/
+		/*7*/glm::vec3{halfX, height, halfZ},	/*7*/
+												
+		/*5*/glm::vec3{-halfX, height, -halfZ},	/*8*/
+		/*1*/glm::vec3{-halfX, 0.0f, -halfZ},	/*9*/
+		/*2*/glm::vec3{-halfX, 0.0f, halfZ},	/*10*/
+		/*6*/glm::vec3{-halfX, height, halfZ},	/*11*/
+												
+		/*0*/glm::vec3{halfX, 0.0f, -halfZ},	/*12*/
+		/*4*/glm::vec3{halfX, height, -halfZ},	/*13*/
+		/*7*/glm::vec3{halfX, height, halfZ},	/*14*/
+		/*3*/glm::vec3{halfX, 0.0f, halfZ},		/*15*/
+												
+		/*7*/glm::vec3{halfX, height, halfZ},	/*16*/
+		/*6*/glm::vec3{-halfX, height, halfZ},	/*17*/
+		/*2*/glm::vec3{-halfX, 0.0f, halfZ},	/*18*/
+		/*3*/glm::vec3{halfX, 0.0f, halfZ},		/*19*/
+												
+		/*5*/glm::vec3{-halfX, height, -halfZ},	/*20*/
+		/*4*/glm::vec3{halfX, height, -halfZ},	/*21*/
+		/*0*/glm::vec3{halfX, 0.0f, -halfZ},	/*22*/
+		/*1*/glm::vec3{-halfX, 0.0f, -halfZ}	/*23*/
 	};
 }
 
 void CuboidGenerator::connectVertices() {
-	indices.push_back({0, 1, 2});
-	indices.push_back({0, 3, 2});
-	indices.push_back({0, 1, 5});
-	indices.push_back({0, 4, 5});
-	indices.push_back({0, 3, 7});
-	indices.push_back({0, 4, 7});
-	indices.push_back({2, 3, 7});
-	indices.push_back({2, 6, 7});
-	indices.push_back({1, 2, 6});
-	indices.push_back({1, 5, 6});
-	indices.push_back({4, 5, 6});
-	indices.push_back({4, 7, 6});
+
+	for (unsigned rect = 0; rect < 6; rect++) {
+		unsigned idx1 = 4*rect;
+		unsigned idx2 = idx1 + 1;
+		unsigned idx3 = idx1 + 2;
+		unsigned idx4 = idx1 + 3;
+
+		indices.push_back({ idx1, idx2, idx3 });
+		indices.push_back({ idx1, idx4, idx3 });
+
+	}
+}
+
+void CuboidGenerator::updateTextureCoord() {
+
+	for (unsigned rect = 0; rect < 6; rect++) {
+		unsigned idx1 = 4 * rect;
+		unsigned idx2 = idx1 + 1;
+		unsigned idx3 = idx1 + 2;
+		unsigned idx4 = idx1 + 3;
+
+		vertices[idx1].texture = glm::vec2(1, 1);
+		vertices[idx2].texture = glm::vec2(0, 1);
+		vertices[idx3].texture = glm::vec2(0, 0);
+		vertices[idx4].texture = glm::vec2(1, 0);
+
+	}
 }

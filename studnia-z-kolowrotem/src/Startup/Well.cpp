@@ -21,9 +21,11 @@ void Well::update() {
 
 	baseView.draw();
 
-	texture.loadTexture("yas.DDS");
+	texture.loadTexture("wood.DDS");
 	woodenStandView.draw();
+	spinningWheelView.draw();
 
+	texture.loadTexture("test.DDS");
 
 	texture.loadTexture("texture.DDS");
 	wheelView.draw();
