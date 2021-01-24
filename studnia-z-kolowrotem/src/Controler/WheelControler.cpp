@@ -22,19 +22,14 @@ void WheelControler::setView(GlView& wheelView) {
 	view = &wheelView;
 }
 
+void WheelControler::setSpeed(float newSpeed) {
+	speed = newSpeed;
+}
+
 void WheelControler::update(float time) {
 	if(canUpdate()) {
-		
-		float angle = SPEED * time;
-
-		if(expandKeyPressed) {
-			// nothing??
-			std::cout << "EXPAND\n";
-		} else if(collapseKeyPressed) {
-			std::cout << "COLLAPSE\n";
-			angle = -angle;
-		}
-
+		const int sign = (expandKeyPressed ? 1 : -1);
+		const float angle = speed * time * sign;
 		const auto translation = glm::translate(-translationVector);
 		const auto rotation = glm::rotate(angle, glm::vec3{1.0f, 0.0f, 0.0f});
 		const auto translationBack = glm::translate(translationVector);

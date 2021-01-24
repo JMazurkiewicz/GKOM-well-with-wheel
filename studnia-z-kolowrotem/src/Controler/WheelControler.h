@@ -6,10 +6,11 @@
 
 class WheelControler : public KeyboardListener {
 public:
-	static constexpr float SPEED = 5.0f / 1000.0f;
+	static constexpr float DEFAULT_SPEED = 5.0f / 1000.0f;
 
 	void setModel(GlModel& wheelModel);
 	void setView(GlView& wheelView);
+	void setSpeed(float newSpeed);
 
 	void update(float time);
 
@@ -22,6 +23,8 @@ private:
 
 	GlModel* model = nullptr;
 	GlView* view = nullptr;
+
+	float speed = DEFAULT_SPEED;
 
 	bool expandKeyPressed = false;
 	bool collapseKeyPressed = false;
