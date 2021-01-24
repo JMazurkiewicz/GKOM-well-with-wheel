@@ -8,6 +8,9 @@ public:
 
 	void setColor(const glm::vec3& newColor);
 
+protected:
+	virtual void createTexCoords() { }
+
 private:
 	void finishModel() override;
 	virtual void createNormals();

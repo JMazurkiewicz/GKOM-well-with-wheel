@@ -7,6 +7,7 @@ void PrimitiveGenerator::setColor(const glm::vec3& newColor) {
 void PrimitiveGenerator::finishModel() {
 	applyTransformation();
 	createNormals();
+	createTexCoords();
 	adjustArrayOffset();
 }
 

@@ -27,15 +27,16 @@ void HollowCylinderGenerator::constructModel() {
     setRadius(outerRadius);
     CylinderGenerator::constructModel();
 
+    const unsigned firstInnerIndex = indices.size();
     setRadius(innerRadius);
     CylinderGenerator::constructModel();
-    adjustInnerIndices();
+    adjustInnerIndices(firstInnerIndex);
 
     connectTop();
 }
 
-void HollowCylinderGenerator::adjustInnerIndices() {
-    for(unsigned index = getInnerCylinderOffset(); index < indices.size(); ++index) {
+void HollowCylinderGenerator::adjustInnerIndices(unsigned firstInnerIndex) {
+    for(unsigned index = firstInnerIndex; index < indices.size(); ++index) {
         indices[index].advance(getInnerCylinderOffset());
     }
 }
@@ -44,19 +45,17 @@ void HollowCylinderGenerator::connectTop() {
     for(unsigned index = 0; index < getSampleRate(); ++index) {
         const unsigned next = nextIndex(index);
 
-        const IndexGroup firstTriangle{
+        indices.push_back({
             index + getOuterCyilnderOffset() + getUpperCircleOffset(),
             index + getInnerCylinderOffset() + getUpperCircleOffset(),
             next + getInnerCylinderOffset() + getUpperCircleOffset()
-        };
-        indices.push_back(firstTriangle);
+        });
 
-        const IndexGroup secondTriangle{
+        indices.push_back({
             index + getOuterCyilnderOffset() + getUpperCircleOffset(),
             next + getOuterCyilnderOffset() + getUpperCircleOffset(),
             next + getInnerCylinderOffset() + getUpperCircleOffset()
-        };
-        indices.push_back(secondTriangle);
+        });
     }
 }
 

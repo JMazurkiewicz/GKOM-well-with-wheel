@@ -14,7 +14,11 @@ void CylinderGenerator::setHeight(float newHeight) {
 }
 
 unsigned CylinderGenerator::getVertexCount() const {
-    return 2 * getSampleRate();
+    return 2 * getSampleCount();
+}
+
+unsigned CylinderGenerator::getSampleCount() const {
+    return getSampleRate() + 1U;
 }
 
 unsigned CylinderGenerator::getLowerCircleOffset() const {
@@ -22,14 +26,13 @@ unsigned CylinderGenerator::getLowerCircleOffset() const {
 }
 
 unsigned CylinderGenerator::getUpperCircleOffset() const {
-    return getSampleRate();
+    return getSampleCount();
 }
 
 void CylinderGenerator::constructModel() {
     createLowerCircle();
     createUpperCircle();
     connectSides();
-    createTexCoords();
 }
 
 void CylinderGenerator::createLowerCircle() {
@@ -44,9 +47,9 @@ void CylinderGenerator::createUpperCircle() {
 
 void CylinderGenerator::createCircle(const glm::vec3& start) {
     glm::vec3 pattern = start;
-    const float angle = glm::radians(360.0f / getSampleRate());
+    const float angle = glm::two_pi<float>() / getSampleRate();
 
-    for(unsigned index = 0; index < getSampleRate(); ++index) {
+    for(unsigned index = 0; index < getSampleCount(); ++index) {
         vertices.push_back(pattern);
         pattern = glm::rotateY(pattern, angle);
     }
@@ -54,45 +57,27 @@ void CylinderGenerator::createCircle(const glm::vec3& start) {
 
 void CylinderGenerator::connectSides() {
     for(unsigned index = 0; index < getSampleRate(); ++index) {
-        const unsigned next = nextIndex(index);
+        const unsigned next = index + 1;
+        const unsigned upperIndex = index + getUpperCircleOffset();
+        const unsigned upperNext = upperIndex + 1;
 
-        const IndexGroup firstTriangle{
-            index,
-            next,
-            next + getSampleRate()
-        };
-        indices.push_back(firstTriangle);
-
-        const IndexGroup secondTriangle{
-            index,
-            index + getSampleRate(),
-            next + getSampleRate()
-        };
-        indices.push_back(secondTriangle);
+        indices.push_back({index, next, upperNext});
+        indices.push_back({index, upperIndex, upperNext});
     }
 }
 
 void CylinderGenerator::createTexCoords() {
+    const float dx = 4.0f / getSampleRate();
+    float left = dx;
+    float right = 0.0f;
 
-    float left = 0;
-    float right = 2.0f/getSampleRate();
+    for(unsigned index = 0; index < getSampleCount(); ++index) {
+        const unsigned upperIndex = index + getUpperCircleOffset();
 
-    for (unsigned index = 0; index < getSampleRate(); ++index) {
-        const unsigned next = nextIndex(index);
-        vertices[index].texture = glm::vec2(right, 0);
-        vertices[index + getSampleRate()].texture = glm::vec2(right, 1);
-        vertices[next].texture = glm::vec2(left, 1);
-        vertices[next + getSampleRate()].texture = glm::vec2(left, 1);
+        vertices[index].texture = glm::vec2(right, 0.0f);
+        vertices[upperIndex].texture = glm::vec2(right, 1.0f);
 
-        right += 2.0f / getSampleRate();
-        left += 2.0f / getSampleRate();
+        right += dx;
+        left += dx;
     }
-}
-
-unsigned CylinderGenerator::nextIndex(unsigned index) const {
-    ++index;
-    if(index == getSampleRate()) {
-        index = 0;
-    }
-    return index;
 }

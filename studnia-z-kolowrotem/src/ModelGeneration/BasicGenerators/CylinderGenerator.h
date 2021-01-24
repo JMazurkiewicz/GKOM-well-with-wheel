@@ -13,6 +13,7 @@ public:
 	[[nodiscard]] unsigned getVertexCount() const override;
 
 protected:
+	[[nodiscard]] unsigned getSampleCount() const;
 	[[nodiscard]] unsigned getLowerCircleOffset() const;
 	[[nodiscard]] unsigned getUpperCircleOffset() const;
 
@@ -24,8 +25,7 @@ private:
 	void createCircle(const glm::vec3& start);
 
 	void connectSides();
-	void createTexCoords();
-	unsigned nextIndex(unsigned index) const;
+	void createTexCoords() override;
 
 	float radius;
 	float height;
