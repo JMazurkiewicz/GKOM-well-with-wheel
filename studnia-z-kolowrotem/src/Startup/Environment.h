@@ -2,7 +2,6 @@
 
 #include "GlModel/GlModel.h"
 #include "Model/EnvironmentModel.h"
-#include "ModelGeneration/EnvironmentGlModelGenerator.h"
 #include "View/StaticGlView.h"
 
 class Environment {

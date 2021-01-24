@@ -1,5 +1,7 @@
 #include "Environment.h"
 
+#include "ModelGeneration/EnvironmentGeneration/EnvironmentGenerator.h"
+
 Environment::Environment() {
 	create();
 }
@@ -11,7 +13,8 @@ void Environment::update() {
 }
 
 void Environment::create() {
-	EnvironmentGlModelGenerator generator{basicModel};
-	model = generator.generate();
+	EnvironmentGenerator generator{basicModel};
+	auto [vertices, indices] = generator.generateModel();
+	model = GlModel{std::move(vertices), std::move(indices)};
 	view.setModel(model);
 }

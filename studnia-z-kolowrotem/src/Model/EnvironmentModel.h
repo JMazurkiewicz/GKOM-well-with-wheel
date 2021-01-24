@@ -4,7 +4,8 @@
 
 class EnvironmentModel {
 public:
-	static constexpr float DEFAULT_SIZE = 10.0f;
+	static constexpr float DEFAULT_SIZE = 64.0f;
+	static constexpr float DEFAULT_HEIGHT = 10.0f;
 
 	EnvironmentModel() = default;
 	EnvironmentModel(const EnvironmentModel&) = delete;
@@ -15,13 +16,26 @@ public:
 	}
 
 	constexpr void setSize(float newSize) {
-		if(newSize <= 0.0f) {
-			throw std::invalid_argument{"EnvironmentModel: size must be greater than 0"};
-		} else {
-			size = newSize;
-		}
+		throwIfNegative(newSize, "size");
+		size = newSize;
+	}
+
+	constexpr float getHeight() const noexcept {
+		return height;
+	}
+
+	constexpr void setHeight(float newHeight) {
+		throwIfNegative(newHeight, "height");
+		height = newHeight;
 	}
 
 private:
+	constexpr void throwIfNegative(float value, std::string_view var) {
+		if(value <= 0.0f) {
+			throw std::invalid_argument{"EnvironmentModel: " + std::string{var} + " must be greater than 0"};
+		}
+	}
+
 	float size = DEFAULT_SIZE;
+	float height = DEFAULT_HEIGHT;
 };
