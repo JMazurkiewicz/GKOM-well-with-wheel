@@ -233,6 +233,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="grass.DDS" />
+    <Image Include="sky.DDS" />
     <Image Include="src\View\abc.DDS" />
     <Image Include="src\View\texture.DDS" />
     <Image Include="yas.DDS" />

@@ -305,6 +305,9 @@
     <Image Include="grass.DDS">
       <Filter>Assets\Textures</Filter>
     </Image>
+    <Image Include="sky.DDS">
+      <Filter>Assets\Textures</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\shaders\gl_05.frag">
