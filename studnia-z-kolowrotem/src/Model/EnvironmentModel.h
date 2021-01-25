@@ -5,7 +5,7 @@
 class EnvironmentModel {
 public:
 	static constexpr float DEFAULT_SIZE = 64.0f;
-	static constexpr float DEFAULT_HEIGHT = 10.0f;
+	static constexpr float DEFAULT_HEIGHT = 40.0f;
 
 	EnvironmentModel() = default;
 	EnvironmentModel(const EnvironmentModel&) = delete;

@@ -14,8 +14,14 @@ public:
 
 private:
 	void create();
+	void createGrass();
+	void createLandscape();
 
 	EnvironmentModel basicModel;
-	GlModel model;
-	StaticGlView view;
+
+	GlModel grassModel;
+	StaticGlView grassView;
+
+	GlModel landscapeModel;
+	StaticGlView landscapeView;
 };
