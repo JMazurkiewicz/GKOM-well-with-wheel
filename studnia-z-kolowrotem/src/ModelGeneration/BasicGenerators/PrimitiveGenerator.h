@@ -13,7 +13,6 @@ protected:
 
 private:
 	void finishModel() override;
-	virtual void createNormals();
 	void doColoring();
 
 	glm::vec3 color;

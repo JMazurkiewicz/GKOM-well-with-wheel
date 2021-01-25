@@ -24,24 +24,19 @@ Scene::~Scene() {
 }
 
 void Scene::start() {
-	programID = mainShader.getProgramId();
+	const GLuint programID = mainShader.getProgramId();
 	GLuint MatrixID = glGetUniformLocation(programID, "MVP");
 	GLuint ViewMatrixID = glGetUniformLocation(programID, "V");
 	GLuint ModelMatrixID = glGetUniformLocation(programID, "M");
 	GLuint TextureID = glGetUniformLocation(programID, "TextureSampler");
-	
-	glUseProgram(programID);
 	GLuint LightID = glGetUniformLocation(programID, "LightPosWorld");
 
 	do {
 		clear();
-
 		glUseProgram(programID);
-
 		updateCamera(MatrixID, ViewMatrixID, ModelMatrixID);
 
-		glm::vec3 lightPos = glm::vec3(0, 0.2, 0);
-		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
+		glUniform3f(LightID, 0.0f, 0.2f, 0.0f);
 
 		glBindVertexArray(0);
 		glBindVertexArray(vao);
@@ -61,20 +56,16 @@ void Scene::clear() {
 void Scene::setupCamera() {
 }
 
-void Scene::updateCamera(
-	GLuint &MatrixID, 
-	GLuint &ModelMatrixID, 
-	GLuint &ViewMatrixID
-) {
+void Scene::updateCamera(GLuint &MatrixID, GLuint &ModelMatrixID, GLuint &ViewMatrixID) {
 	camera.update();
 	glm::mat4 projectionMatrix = camera.getProjectionMatrix();
 	glm::mat4 viewMatrix = camera.getViewMatrix();
 	glm::mat4 modelMatrix = camera.getModelMatrix();
 	glm::mat4 cameraMatrix = camera.getMVP();
 
-	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &cameraMatrix[0][0]);
-	glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &modelMatrix[0][0]);
-	glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &viewMatrix[0][0]);
+	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, glm::value_ptr(cameraMatrix));
+	glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, glm::value_ptr(modelMatrix));
+	glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, glm::value_ptr(viewMatrix));
 }
 
 void Scene::update() {

@@ -1,9 +1,10 @@
 #include "Texture.h"
 
+#include <ios>
 
-constexpr auto FOURCC_DXT1 = 0x31545844; // Equivalent to "DXT1" in ASCII;
-constexpr auto FOURCC_DXT3 = 0x33545844; // Equivalent to "DXT3" in ASCII;
-constexpr auto FOURCC_DXT5 = 0x35545844; // Equivalent to "DXT5" in ASCII;
+constexpr auto FOURCC_DXT1 = 0x31545844; // DXT1
+constexpr auto FOURCC_DXT3 = 0x33545844; // DXT3
+constexpr auto FOURCC_DXT5 = 0x35545844; // DXT5
 
 void Texture::loadTexture(const char* imagepath) {
 
@@ -15,8 +16,7 @@ void Texture::loadTexture(const char* imagepath) {
 
 	fp = fopen(imagepath, "rb");
 	if (fp == NULL) {
-		printf("%s could not be opened. Are you in the right directory ? Don't forget to read the FAQ !\n", imagepath); getchar();
-		return;
+		throw std::ios_base::failure{"Texture: failed to open file"};
 	}
 
 	char filecode[4];
@@ -93,5 +93,6 @@ Texture::~Texture() {
 void Texture::destroy() {
 	if (texture != 0) {
 		glDeleteTextures(1, &texture);
+		texture = 0;
 	}
 }

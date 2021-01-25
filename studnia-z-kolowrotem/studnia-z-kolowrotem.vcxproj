@@ -171,7 +171,6 @@
     <ClCompile Include="src\ModelGeneration\BasicGenerators\PlaneGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\BasicGenerators\PrimitiveGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\BasicGenerators\SmoothShapeGenerator.cpp" />
-    <ClCompile Include="src\ModelGeneration\EnvironmentGeneration\EnvironmentGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGeneration\WheelGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGeneration\WellBaseGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.cpp" />
@@ -212,7 +211,6 @@
     <ClInclude Include="src\ModelGeneration\BasicGenerators\PlaneGenerator.h" />
     <ClInclude Include="src\ModelGeneration\BasicGenerators\PrimitiveGenerator.h" />
     <ClInclude Include="src\ModelGeneration\BasicGenerators\SmoothShapeGenerator.h" />
-    <ClInclude Include="src\ModelGeneration\EnvironmentGeneration\EnvironmentGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGeneration\WheelGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGeneration\WellBaseGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.h" />

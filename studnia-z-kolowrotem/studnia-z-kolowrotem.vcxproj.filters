@@ -154,6 +154,9 @@
     <ClCompile Include="src\View\StaticGlView.cpp">
       <Filter>Sources\View</Filter>
     </ClCompile>
+    <ClCompile Include="src\ModelGeneration\BasicGenerators\PlaneGenerator.cpp">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\System\Window.h">
@@ -276,9 +279,6 @@
     <ClInclude Include="src\View\StaticGlView.h">
       <Filter>Sources\View</Filter>
     </ClInclude>
-    <ClInclude Include="src\ModelGeneration\EnvironmentGeneration\EnvironmentGenerator.h">
-      <Filter>Sources\ModelGeneration\EnvironmentGeneration</Filter>
-    </ClInclude>
     <ClInclude Include="src\ModelGeneration\BasicGenerators\PlaneGenerator.h">
       <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
     </ClInclude>
@@ -299,9 +299,6 @@
     <Image Include="test.DDS">
       <Filter>Assets\Textures</Filter>
     </Image>
-    <Image Include="plank.DDS">
-      <Filter>Assets\Textures</Filter>
-    </Image>
     <Image Include="stone.DDS">
       <Filter>Assets\Textures</Filter>
     </Image>
@@ -313,6 +310,10 @@
     </Image>
     <Image Include="sky.DDS">
       <Filter>Assets\Textures</Filter>
+    </Image>
+    <Image Include="src\View\abc.DDS" />
+    <Image Include="weiti.png">
+      <Filter>Assets</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

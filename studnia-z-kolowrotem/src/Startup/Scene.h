@@ -19,11 +19,7 @@ public:
 private:
 	void clear();
 	void setupCamera();
-	void updateCamera(
-		GLuint &MatrixID, 
-		GLuint &ModelMatrixID, 
-		GLuint &ViewMatrixID
-	);
+	void updateCamera(GLuint &MatrixID, GLuint &ModelMatrixID, GLuint &ViewMatrixID);
 	void update();
 
 	bool shouldClose() const;
@@ -36,6 +32,4 @@ private:
 
 	Well well;
 	Environment environment;
-
-	GLuint programID;
 };
