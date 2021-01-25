@@ -8,7 +8,7 @@ public:
 	static constexpr float DEFAULT_INNER_RADIUS = 0.6f;
 	static constexpr float DEFAULT_OUTER_RADIUS = 0.8f;
 	static constexpr float DEFAULT_HEIGHT = 0.5f;
-	static constexpr float DEFAULT_WHEEL_HEIGHT = 1.0f;
+	static constexpr float DEFAULT_WHEEL_HEIGHT = 0.5f;
 
 	static constexpr float DEFAULT_BRACKET_RADIUS = 0.1f;
 	static constexpr float DEFAULT_BRACKET_HEIGHT = 0.8f;

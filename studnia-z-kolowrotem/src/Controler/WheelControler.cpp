@@ -26,7 +26,7 @@ void WheelControler::update(float time) {
 	if(canUpdate()) {
 		const int sign = (expandKeyPressed ? 1 : -1);
 		const float angle = speed * time * sign;
-		const glm::vec3 translationVector{basicModel.getInnerRadius(), basicModel.getWheelHeight(), 0.0f};
+		const glm::vec3 translationVector{basicModel.getInnerRadius(), basicModel.getHeight() + basicModel.getWheelHeight(), 0.0f};
 		const auto translation = glm::translate(-translationVector);
 		const auto rotation = glm::rotate(angle, glm::vec3{1.0f, 0.0f, 0.0f});
 		const auto translationBack = glm::translate(translationVector);

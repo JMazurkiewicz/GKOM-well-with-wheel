@@ -311,9 +311,11 @@
     <Image Include="sky.DDS">
       <Filter>Assets\Textures</Filter>
     </Image>
-    <Image Include="src\View\abc.DDS" />
+    <Image Include="src\View\abc.DDS">
+      <Filter>Assets\Textures</Filter>
+    </Image>
     <Image Include="weiti.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Textures</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

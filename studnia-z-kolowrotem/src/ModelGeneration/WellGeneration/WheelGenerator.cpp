@@ -71,7 +71,7 @@ void WheelGenerator::prepareHoldingCylinderGenerator() {
 void WheelGenerator::prepareTransformation() {
 	const auto rotation = glm::rotate(-glm::half_pi<float>(), glm::vec3{0.0f, 0.0f, 1.0f});
 
-	const glm::vec3 translationVector{basicWellModel.getInnerRadius(), basicWellModel.getWheelHeight(), 0.0f};
+	const glm::vec3 translationVector{basicWellModel.getInnerRadius(), basicWellModel.getHeight() + basicWellModel.getWheelHeight(), 0.0f};
 	const auto translation = glm::translate(translationVector);
 	
 	setTransformation(translation * rotation);

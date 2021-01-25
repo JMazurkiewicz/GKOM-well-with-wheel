@@ -43,7 +43,7 @@ void Scene::start() {
 		update();
 
 		window.swapBuffers();
-		this_thread::sleep_for(10ms);
+		//this_thread::sleep_for(10ms);
 		glfwPollEvents();
 	} while(!shouldClose());
 }
@@ -51,9 +51,6 @@ void Scene::start() {
 void Scene::clear() {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-}
-
-void Scene::setupCamera() {
 }
 
 void Scene::updateCamera(GLuint &MatrixID, GLuint &ModelMatrixID, GLuint &ViewMatrixID) {
