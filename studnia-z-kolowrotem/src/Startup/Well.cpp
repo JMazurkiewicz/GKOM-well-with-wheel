@@ -5,27 +5,22 @@
 #include "ModelGeneration/WellGeneration/WellRoofGenerator.h"
 #include "ModelGeneration/WellGeneration/WoodenStandGenerator.h"
 
-Well::Well(Window& window) {
+Well::Well(Window& window) : wheelControler{basicModel} {
 	create();
 	wheelControler.listenOn(window);
 	stopwatch.reset();
 }
 
 void Well::update() {
-	Texture texture;
-
-	texture.loadTexture("stone2.DDS");
 	const float elapsedTime = stopwatch.getElapsedTime().count();
-	
 	wheelControler.update(elapsedTime);
 
+	Texture texture;
+	texture.loadTexture("stone2.DDS");
 	baseView.draw();
 	texture.loadTexture("wood.DDS");
 	woodenStandView.draw();
 	wheelView.draw();
-	wheelView.draw();
-	wheelView.draw();
-
 	texture.loadTexture("plank.DDS");
 	roofView.draw();
 }

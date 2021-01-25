@@ -1,18 +1,14 @@
 #include "WheelControler.h"
 
 #include <glm/ext.hpp>
-#include "System/Stopwatch.h"
-
-#if 1 // @TODO ROZWI¥ZANIE TYMCZASOWE
-#include <iostream>
-#include "Model/WellModel.h"
-const glm::vec3 translationVector{WellModel::DEFAULT_INNER_RADIUS, WellModel::DEFAULT_WHEEL_HEIGHT, 0.0f};
-#endif // END
 
 namespace {
 	static constexpr int COLLAPSE_KEY = GLFW_KEY_RIGHT;
 	static constexpr int EXPAND_KEY = GLFW_KEY_LEFT;
 }
+
+WheelControler::WheelControler(const WellModel& basicModel)
+	: basicModel{basicModel} { }
 
 void WheelControler::setModel(GlModel& wheelModel) {
 	model = &wheelModel;
@@ -30,6 +26,7 @@ void WheelControler::update(float time) {
 	if(canUpdate()) {
 		const int sign = (expandKeyPressed ? 1 : -1);
 		const float angle = speed * time * sign;
+		const glm::vec3 translationVector{basicModel.getInnerRadius(), basicModel.getWheelHeight(), 0.0f};
 		const auto translation = glm::translate(-translationVector);
 		const auto rotation = glm::rotate(angle, glm::vec3{1.0f, 0.0f, 0.0f});
 		const auto translationBack = glm::translate(translationVector);
