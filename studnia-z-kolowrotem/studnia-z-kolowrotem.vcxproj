@@ -168,9 +168,10 @@
     <ClCompile Include="src\ModelGeneration\BasicGenerators\CylinderGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\BasicGenerators\HollowCylinderGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\BasicGenerators\ModelGenerator.cpp" />
+    <ClCompile Include="src\ModelGeneration\BasicGenerators\PlaneGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\BasicGenerators\PrimitiveGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\BasicGenerators\SmoothShapeGenerator.cpp" />
-    <ClCompile Include="src\ModelGeneration\EnvironmentGlModelGenerator.cpp" />
+    <ClCompile Include="src\ModelGeneration\EnvironmentGeneration\EnvironmentGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGeneration\WheelGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGeneration\WellBaseGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.cpp" />
@@ -208,9 +209,10 @@
     <ClInclude Include="src\ModelGeneration\BasicGenerators\CylinderGenerator.h" />
     <ClInclude Include="src\ModelGeneration\BasicGenerators\HollowCylinderGenerator.h" />
     <ClInclude Include="src\ModelGeneration\BasicGenerators\ModelGenerator.h" />
+    <ClInclude Include="src\ModelGeneration\BasicGenerators\PlaneGenerator.h" />
     <ClInclude Include="src\ModelGeneration\BasicGenerators\PrimitiveGenerator.h" />
     <ClInclude Include="src\ModelGeneration\BasicGenerators\SmoothShapeGenerator.h" />
-    <ClInclude Include="src\ModelGeneration\EnvironmentGlModelGenerator.h" />
+    <ClInclude Include="src\ModelGeneration\EnvironmentGeneration\EnvironmentGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGeneration\WheelGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGeneration\WellBaseGenerator.h" />
     <ClInclude Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.h" />
@@ -232,8 +234,8 @@
   <ItemGroup>
     <Image Include="background.DDS" />
     <Image Include="grass.DDS" />
-    <Image Include="plank.DDS" />
-    <Image Include="iipw.png" />
+    <Image Include="sky.DDS" />
+    <Image Include="src\View\abc.DDS" />
     <Image Include="src\View\texture.DDS" />
     <Image Include="stone.DDS" />
     <Image Include="stone2.DDS" />

@@ -79,9 +79,6 @@
     <ClCompile Include="src\Controler\Camera.cpp">
       <Filter>Sources\Controler</Filter>
     </ClCompile>
-    <ClCompile Include="src\ModelGeneration\EnvironmentGlModelGenerator.cpp">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClCompile>
     <ClCompile Include="src\View\GlView.cpp">
       <Filter>Sources\View</Filter>
     </ClCompile>
@@ -195,9 +192,6 @@
     <ClInclude Include="src\Model\EnvironmentModel.h">
       <Filter>Sources\Model</Filter>
     </ClInclude>
-    <ClInclude Include="src\ModelGeneration\EnvironmentGlModelGenerator.h">
-      <Filter>Sources\ModelGeneration</Filter>
-    </ClInclude>
     <ClInclude Include="src\View\GlView.h">
       <Filter>Sources\View</Filter>
     </ClInclude>
@@ -282,14 +276,14 @@
     <ClInclude Include="src\View\StaticGlView.h">
       <Filter>Sources\View</Filter>
     </ClInclude>
+    <ClInclude Include="src\ModelGeneration\EnvironmentGeneration\EnvironmentGenerator.h">
+      <Filter>Sources\ModelGeneration\EnvironmentGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelGeneration\BasicGenerators\PlaneGenerator.h">
+      <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="weiti.png">
-      <Filter>Assets\Textures</Filter>
-    </Image>
-    <Image Include="iipw.png">
-      <Filter>Assets\Textures</Filter>
-    </Image>
     <Image Include="src\View\texture.DDS">
       <Filter>Assets\Textures</Filter>
     </Image>
@@ -315,6 +309,9 @@
       <Filter>Assets\Textures</Filter>
     </Image>
     <Image Include="stone2.DDS">
+      <Filter>Assets\Textures</Filter>
+    </Image>
+    <Image Include="sky.DDS">
       <Filter>Assets\Textures</Filter>
     </Image>
   </ItemGroup>

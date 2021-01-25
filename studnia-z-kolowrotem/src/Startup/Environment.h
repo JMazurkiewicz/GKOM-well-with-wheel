@@ -2,7 +2,6 @@
 
 #include "GlModel/GlModel.h"
 #include "Model/EnvironmentModel.h"
-#include "ModelGeneration/EnvironmentGlModelGenerator.h"
 #include "View/StaticGlView.h"
 
 class Environment {
@@ -15,8 +14,14 @@ public:
 
 private:
 	void create();
+	void createGrass();
+	void createLandscape();
 
 	EnvironmentModel basicModel;
-	GlModel model;
-	StaticGlView view;
+
+	GlModel grassModel;
+	StaticGlView grassView;
+
+	GlModel landscapeModel;
+	StaticGlView landscapeView;
 };
