@@ -23,6 +23,7 @@ unsigned CuboidGenerator::getVertexCount() const {
 void CuboidGenerator::constructModel() {
 	constructVertices();
 	connectVertices();
+	createNormals();
 }
 
 void CuboidGenerator::createTexCoords() {
@@ -88,5 +89,44 @@ void CuboidGenerator::connectVertices() {
 		indices.push_back({ idx1, idx2, idx3 });
 		indices.push_back({ idx1, idx4, idx3 });
 
+	}
+}
+
+void CuboidGenerator::createNormals() {
+	for (unsigned rect = 0; rect < 6; rect++) {
+		unsigned idx1 = 4 * rect;
+		unsigned idx2 = idx1 + 1;
+		unsigned idx3 = idx1 + 2;
+		unsigned idx4 = idx1 + 3;
+
+		glm::vec3 normal;
+
+		switch (rect) {
+		case 0:
+			normal = glm::vec3(0, -1, 0);
+			break;
+		case 1:
+			normal = glm::vec3(0, 1, 0);
+			break;
+		case 2:
+			normal = glm::vec3(-1, 0, 0);
+			break;
+		case 3:
+			normal = glm::vec3(1, 0, 0);
+			break;
+		case 4:
+			normal = glm::vec3(1, 0, 0);
+			break;
+		case 5:
+			normal = glm::vec3(-1, 0, 0);
+			break;
+		default:
+			normal = glm::vec3(1, 1, 1);
+		}
+
+		vertices[idx1].normal = normal;
+		vertices[idx2].normal = normal;
+		vertices[idx3].normal = normal;
+		vertices[idx4].normal = normal;
 	}
 }

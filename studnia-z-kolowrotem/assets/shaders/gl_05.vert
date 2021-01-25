@@ -15,25 +15,22 @@ out vec2 UV;
 uniform mat4 MVP;
 uniform mat4 V;
 uniform mat4 M;
-//uniform vec3 LightPosWorld;
+uniform vec3 LightPosWorld;
 
 void main()
 {
-    vec3 LightPosWorld = vec3(2,2,2);
 
-    gl_Position = MVP * vec4(position , 1.0f);
+    gl_Position = MVP * vec4(position , 1);
 
     PositionWorld = (M * vec4(position,1)).xyz;
     
     vec3 PositionCamera = ( V * M * vec4(position,1)).xyz;
 	EyeDirCamera = vec3(0,0,0) - PositionCamera;
     
-    vec3 LightPosCamera = ( V * vec4(LightPosWorld,1)).xyz;
+    vec3 LightPosCamera = ( M * vec4(LightPosWorld,1)).xyz;
     LightDirCamera = LightPosCamera + EyeDirCamera;
 
-    NormalC = ( V * M * vec4(normal,0)).xyz;
-
-    VecColor = position;
+    NormalC = ( V * M * vec4(normal,1)).xyz;
 
     UV = texture;
 }

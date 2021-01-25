@@ -20,6 +20,10 @@ const glm::mat4& Camera::getModelMatrix() {
 	return modelMatrix;
 }
 
+const glm::mat4& Camera::getMVP() {
+	return mvp;
+}
+
 void Camera::onKeyPress(int key) {
 	switch(key) {
 	case GLFW_KEY_W:
@@ -106,7 +110,7 @@ void Camera::onCursorMove(double x, double y) {
 	cameraFront = glm::normalize(direction);
 }
 
-glm::mat4 Camera::update() {
+void Camera::update() {
 	if(keyPressedW)
 		cameraPos += cameraSpeed * cameraFront;
 
@@ -136,6 +140,5 @@ glm::mat4 Camera::update() {
 	projectionMatrix = glm::perspective(glm::radians(45.0f), ratio, 0.1f, 100.0f);
 	viewMatrix = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 	modelMatrix = glm::mat4(1.0f);
-
-	return projectionMatrix * viewMatrix * modelMatrix;
+	mvp = projectionMatrix * viewMatrix * modelMatrix;
 }

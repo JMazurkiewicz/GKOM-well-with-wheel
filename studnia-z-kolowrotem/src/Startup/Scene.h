@@ -20,9 +20,9 @@ private:
 	void clear();
 	void setupCamera();
 	void updateCamera(
-		GLuint MatrixID, 
-		GLuint ModelMatrixID, 
-		GLuint ViewMatrixID
+		GLuint &MatrixID, 
+		GLuint &ModelMatrixID, 
+		GLuint &ViewMatrixID
 	);
 	void update();
 
@@ -36,4 +36,6 @@ private:
 
 	Well well;
 	Environment environment;
+
+	GLuint programID;
 };

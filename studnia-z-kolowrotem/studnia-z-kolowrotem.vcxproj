@@ -230,10 +230,13 @@
     <ClInclude Include="src\View\StaticGlView.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="background.DDS" />
     <Image Include="grass.DDS" />
-    <Image Include="src\View\abc.DDS" />
+    <Image Include="plank.DDS" />
     <Image Include="iipw.png" />
     <Image Include="src\View\texture.DDS" />
+    <Image Include="stone.DDS" />
+    <Image Include="stone2.DDS" />
     <Image Include="test.DDS" />
     <Image Include="weiti.png" />
     <Image Include="wood.DDS" />

@@ -12,7 +12,8 @@ public:
     const glm::mat4& getProjectionMatrix();
     const glm::mat4& getViewMatrix();
     const glm::mat4& getModelMatrix();
-    glm::mat4 update();
+    const glm::mat4& getMVP();
+    void update();
 
 protected:
     void onCursorMove(double x, double y) override;
@@ -26,6 +27,7 @@ private:
     glm::mat4 projectionMatrix;
     glm::mat4 viewMatrix;
     glm::mat4 modelMatrix;
+    glm::mat4 mvp;
 
     float lastX = 800 / 2.0f;
     float lastY = 600 / 2.0f;

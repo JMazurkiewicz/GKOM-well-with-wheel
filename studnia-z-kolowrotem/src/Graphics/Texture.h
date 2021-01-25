@@ -13,13 +13,12 @@ class Texture {
 
 public:
 
-	GLuint loadTexture(const char* imagepath);
-
+	void loadTexture(const char* imagepath);
+	~Texture();
 
 private:
+	GLuint texture = 0;
 
-	GLuint texture;
-
-
+	void destroy();
 };
 

@@ -14,22 +14,19 @@ Well::Well(Window& window) {
 void Well::update() {
 	Texture texture;
 
-	texture.loadTexture("abc.DDS");
+	texture.loadTexture("stone2.DDS");
 	const float elapsedTime = stopwatch.getElapsedTime().count();
 	
 	wheelControler.update(elapsedTime);
 
 	baseView.draw();
-
 	texture.loadTexture("wood.DDS");
 	woodenStandView.draw();
 	wheelView.draw();
-
-	texture.loadTexture("test.DDS");
-
-	texture.loadTexture("texture.DDS");
 	wheelView.draw();
 	wheelView.draw();
+
+	texture.loadTexture("plank.DDS");
 	roofView.draw();
 }
 

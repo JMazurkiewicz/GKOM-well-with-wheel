@@ -45,4 +45,8 @@ private:
 	StaticGlView roofView;
 
 	Stopwatch stopwatch;
+
+	Texture stone;
+	Texture wood;
+	Texture plank;
 };

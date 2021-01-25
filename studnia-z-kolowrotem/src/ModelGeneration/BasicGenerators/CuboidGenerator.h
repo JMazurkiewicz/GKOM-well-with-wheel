@@ -19,6 +19,7 @@ private:
 
 	void constructVertices();
 	void connectVertices();
+	void createNormals();
 
 	float length;
 	float width;

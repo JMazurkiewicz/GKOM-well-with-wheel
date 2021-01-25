@@ -293,9 +293,6 @@
     <Image Include="src\View\texture.DDS">
       <Filter>Assets\Textures</Filter>
     </Image>
-    <Image Include="src\View\abc.DDS">
-      <Filter>Assets\Textures</Filter>
-    </Image>
     <Image Include="yas.DDS">
       <Filter>Assets\Textures</Filter>
     </Image>
@@ -306,6 +303,18 @@
       <Filter>Assets\Textures</Filter>
     </Image>
     <Image Include="test.DDS">
+      <Filter>Assets\Textures</Filter>
+    </Image>
+    <Image Include="plank.DDS">
+      <Filter>Assets\Textures</Filter>
+    </Image>
+    <Image Include="stone.DDS">
+      <Filter>Assets\Textures</Filter>
+    </Image>
+    <Image Include="background.DDS">
+      <Filter>Assets\Textures</Filter>
+    </Image>
+    <Image Include="stone2.DDS">
       <Filter>Assets\Textures</Filter>
     </Image>
   </ItemGroup>
