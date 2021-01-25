@@ -1,32 +1,26 @@
 # Studnia z kołowrotkiem
 
-## Algorytm generowania studni
+## Zdjęcie modelowanej studni
 
-[LINK](docs/model-generator.md)
+![img](docs/pics/studnia.png)
 
-## Zdjęcie planowanej studni
+## Zdjęcie gotowej studni
 
-![Studnia](docs/pics/studnia.png)
-
-## VS 19
-
-![vs-19](docs/pics/wlaczony-projekt.PNG)
+![img](docs/pics/well-done.png)
 
 ## Podział pracy
 
-* Jakub Mazurkiewicz - model studni
-* Damian Piotrowski - oświetlenie
-* Piotr Lewandowski - model studni
-* Jan Such - praca kamery / oświetlenie
-
+* Jakub Mazurkiewicz - generowanie modeli, architektura programu
+* Damian Piotrowski - oświetlenie, tekstury
+* Jan Such - praca kamery
+* Piotr Lewandowski - hmm
 
 ## Milestones
 
-* Uruchomienie wersji przykładowej
-* Stworzenie uproszczonych modeli testowych i oświetlenia
-* Praca kamery
-* Model studni
-* Dopracowanie oświetlenia / kamery
-* Interaktywność (kołowrót oraz intensywność światła)
-* Poprawki
+* Uruchomienie wersji przykładowej [DONE]
+* Stworzenie uproszczonych modeli testowych i oświetlenia [DONE]
+* Praca kamery [DONE]
+* Model studni [DONE]
+* Dopracowanie oświetlenia / kamery [DONE]
+* Interaktywność (kołowrót oraz intensywność światła) [DONE]
 * Zaprezentowanie skończonego projektu
