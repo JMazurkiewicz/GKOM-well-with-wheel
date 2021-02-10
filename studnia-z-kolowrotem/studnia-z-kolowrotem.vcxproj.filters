@@ -47,6 +47,9 @@
     <Filter Include="Sources\GlModel">
       <UniqueIdentifier>{5df0235e-945c-48ec-896b-01448fd23c08}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Graphics\Shader">
+      <UniqueIdentifier>{4e5d8d7b-b0fe-4b59-a696-ba7dd800752a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LibraryExceptions\SoilException.cpp">
@@ -59,9 +62,6 @@
       <Filter>Sources\System</Filter>
     </ClCompile>
     <ClCompile Include="src\Graphics\Image.cpp">
-      <Filter>Sources\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Graphics\Shader.cpp">
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Graphics\MipmapTexture.cpp">
@@ -157,6 +157,15 @@
     <ClCompile Include="src\Controler\ActionListener.cpp">
       <Filter>Sources\Controler</Filter>
     </ClCompile>
+    <ClCompile Include="src\Graphics\Shader\Shader.cpp">
+      <Filter>Sources\Graphics\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Shader\GlProgram.cpp">
+      <Filter>Sources\Graphics\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Shader\ShaderType.cpp">
+      <Filter>Sources\Graphics\Shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\System\Window.h">
@@ -181,9 +190,6 @@
       <Filter>Sources\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Graphics\MipmapTexture.h">
-      <Filter>Sources\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Graphics\Shader.h">
       <Filter>Sources\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Startup\Scene.h">
@@ -281,6 +287,15 @@
     </ClInclude>
     <ClInclude Include="src\ModelGeneration\BasicGenerators\PlaneGenerator.h">
       <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Shader\GlProgram.h">
+      <Filter>Sources\Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Shader\Shader.h">
+      <Filter>Sources\Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Shader\ShaderType.h">
+      <Filter>Sources\Graphics\Shader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

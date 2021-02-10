@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Controler/Camera.h"
-#include "Graphics/Shader.h"
+#include "Graphics/Shader/GlProgram.h"
 #include "MainWindow.h"
 #include "Environment.h"
 #include "Well.h"
@@ -17,9 +17,11 @@ public:
 	void start();
 
 private:
+	void prepareShader();
+
 	void clear();
-	void updateCamera(GLuint &MatrixID, GLuint &ModelMatrixID, GLuint &ViewMatrixID);
 	void update();
+	void updateCamera(GLint& MatrixID, GLint& ModelMatrixID, GLint& ViewMatrixID);
 
 	bool shouldClose() const;
 
@@ -27,7 +29,7 @@ private:
 	GLuint vao;
 	Camera camera;
 
-	Shader mainShader;
+	GlProgram mainProgram;
 
 	Well well;
 	Environment environment;

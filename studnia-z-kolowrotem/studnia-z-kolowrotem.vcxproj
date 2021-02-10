@@ -161,7 +161,9 @@
     <ClCompile Include="src\GlModel\GlModel.cpp" />
     <ClCompile Include="src\Graphics\MipmapTexture.cpp" />
     <ClCompile Include="src\Graphics\Image.cpp" />
-    <ClCompile Include="src\Graphics\Shader.cpp" />
+    <ClCompile Include="src\Graphics\Shader\GlProgram.cpp" />
+    <ClCompile Include="src\Graphics\Shader\Shader.cpp" />
+    <ClCompile Include="src\Graphics\Shader\ShaderType.cpp" />
     <ClCompile Include="src\Graphics\Texture.cpp" />
     <ClCompile Include="src\Graphics\Vertex.cpp" />
     <ClCompile Include="src\LibraryExceptions\ShaderException.cpp" />
@@ -199,8 +201,10 @@
     <ClInclude Include="src\GlModel\GlModel.h" />
     <ClInclude Include="src\Graphics\Image.h" />
     <ClInclude Include="src\Graphics\MipmapTexture.h" />
-    <ClInclude Include="src\Graphics\Shader.h" />
     <ClInclude Include="src\Graphics\IndexGroup.h" />
+    <ClInclude Include="src\Graphics\Shader\GlProgram.h" />
+    <ClInclude Include="src\Graphics\Shader\Shader.h" />
+    <ClInclude Include="src\Graphics\Shader\ShaderType.h" />
     <ClInclude Include="src\Graphics\Texture.h" />
     <ClInclude Include="src\Graphics\Vertex.h" />
     <ClInclude Include="src\LibraryExceptions\LibraryException.h" />

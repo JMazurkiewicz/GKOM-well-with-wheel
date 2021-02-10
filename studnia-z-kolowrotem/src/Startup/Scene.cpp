@@ -1,22 +1,16 @@
 #include "Scene.h"
 
-#include <glm/ext.hpp>
-#include <iostream>
-#include <thread>
+#include "Graphics/Shader/Shader.h"
 
-namespace this_thread = std::this_thread;
-using namespace std::chrono_literals;
+#include <glm/ext.hpp>
 
 Scene::Scene(MainWindow& window)
 	: window{window},
 	vao{0},
 	camera{window},
-	mainShader{"assets/shaders/main.vert", "assets/shaders/main.frag"},
 	well{window}
 {	
 	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
-	glBindVertexArray(0);
 }
 
 Scene::~Scene() {
@@ -24,28 +18,35 @@ Scene::~Scene() {
 }
 
 void Scene::start() {
-	const GLuint programID = mainShader.getProgramId();
-	GLuint MatrixID = glGetUniformLocation(programID, "MVP");
-	GLuint ViewMatrixID = glGetUniformLocation(programID, "V");
-	GLuint ModelMatrixID = glGetUniformLocation(programID, "M");
-	GLuint TextureID = glGetUniformLocation(programID, "TextureSampler");
-	GLuint LightID = glGetUniformLocation(programID, "LightPosWorld");
+	prepareShader();
+	GLint MatrixID = mainProgram.getUniformLocation("MVP");
+	GLint ViewMatrixID = mainProgram.getUniformLocation("V");
+	GLint ModelMatrixID = mainProgram.getUniformLocation("M");
+	GLint LightID = mainProgram.getUniformLocation("LightPosWorld");
 
 	do {
+		glfwPollEvents();
 		clear();
-		glUseProgram(programID);
-		updateCamera(MatrixID, ViewMatrixID, ModelMatrixID);
 
-		glUniform3f(LightID, 0.0f, 0.2f, 0.0f);
-
-		glBindVertexArray(0);
 		glBindVertexArray(vao);
+		mainProgram.use();
+		updateCamera(MatrixID, ViewMatrixID, ModelMatrixID);
+		glUniform3f(LightID, 0.0f, 0.2f, 0.0f);
 		update();
+		glBindVertexArray(0);
 
 		window.swapBuffers();
-		this_thread::sleep_for(10ms);
-		glfwPollEvents();
 	} while(!shouldClose());
+}
+
+void Scene::prepareShader() {
+	Shader vertexShader{"assets/shaders/main.vert"};
+	mainProgram.attachShader(vertexShader);
+
+	Shader fragmentShader{"assets/shaders/main.frag"};
+	mainProgram.attachShader(fragmentShader);
+
+	mainProgram.link();
 }
 
 void Scene::clear() {
@@ -53,21 +54,20 @@ void Scene::clear() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Scene::updateCamera(GLuint &MatrixID, GLuint &ModelMatrixID, GLuint &ViewMatrixID) {
+void Scene::update() {
+	environment.update();
+	well.update();
+}
+
+void Scene::updateCamera(GLint& MatrixID, GLint& ModelMatrixID, GLint& ViewMatrixID) {
 	camera.update();
-	glm::mat4 projectionMatrix = camera.getProjectionMatrix();
-	glm::mat4 viewMatrix = camera.getViewMatrix();
-	glm::mat4 modelMatrix = camera.getModelMatrix();
-	glm::mat4 cameraMatrix = camera.getMVP();
+	const glm::mat4 viewMatrix = camera.getViewMatrix();
+	const glm::mat4 modelMatrix = camera.getModelMatrix();
+	const glm::mat4 cameraMatrix = camera.getMVP();
 
 	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, glm::value_ptr(cameraMatrix));
 	glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, glm::value_ptr(modelMatrix));
 	glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, glm::value_ptr(viewMatrix));
-}
-
-void Scene::update() {
-	environment.update();
-	well.update();
 }
 
 bool Scene::shouldClose() const {
