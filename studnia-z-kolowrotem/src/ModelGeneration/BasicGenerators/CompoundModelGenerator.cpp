@@ -20,9 +20,9 @@ void CompoundModelGenerator::constructModel() {
 		generator->setArrayOffset(offset);
 		offset += generator->getVertexCount();
 		
-		auto [newVerticies, newIndicies] = generator->generateModel();
-		vertices.insert(vertices.end(), newVerticies.begin(), newVerticies.end());
-		indices.insert(indices.end(), newIndicies.begin(), newIndicies.end());
+		const auto model = generator->generateModel();
+		vertices.insert(vertices.end(), model.getVertices().begin(), model.getVertices().end());
+		indices.insert(indices.end(), model.getIndices().begin(), model.getIndices().end());
 	}
 }
 

@@ -34,24 +34,19 @@ void Well::create() {
 
 void Well::createBase() {
 	WellBaseGenerator generator{basicModel};
-	generator.setSampleRate(64);
-	auto [vertices, indices] = generator.generateModel();
-	baseModel = GlModel{std::move(vertices), std::move(indices)};
+	baseModel = generator.generateModel();
 	baseView.setModel(baseModel);
 }
 
 void Well::createWoodenStand() {
 	WoodenStandGenerator generator{basicModel};
-	generator.setSampleRate(64);
-	auto [verticies, indicies] = generator.generateModel();
-	woodenStandModel = GlModel{std::move(verticies), std::move(indicies)};
+	woodenStandModel = GlModel{generator.generateModel()};
 	woodenStandView.setModel(woodenStandModel);
 }
 
 void Well::createWheel() {
 	WheelGenerator generator{basicModel, basicWheelModel};
-	auto [vertices, indices] = generator.generateModel();
-	wheelModel = GlModel{std::move(vertices), std::move(indices)};
+	wheelModel = generator.generateModel();
 	wheelView.setModel(wheelModel);
 
 	wheelControler.setModel(wheelModel);
@@ -60,7 +55,6 @@ void Well::createWheel() {
 
 void Well::createRoof() {
 	WellRoofGenerator generator{basicModel, basicRoofModel};
-	auto [vertices, indices] = generator.generateModel();
-	roofModel = GlModel{std::move(vertices), std::move(indices)};
+	roofModel = generator.generateModel();
 	roofView.setModel(roofModel);
 }

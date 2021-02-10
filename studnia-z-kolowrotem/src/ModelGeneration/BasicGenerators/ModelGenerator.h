@@ -2,13 +2,14 @@
 
 #include "Graphics/IndexGroup.h"
 #include "Graphics/Vertex.h"
+#include "GlModel/GlModel.h"
+
 #include <vector>
 
 class ModelGenerator {
 public:
 	using Vertices = std::vector<Vertex>;
 	using Indices = std::vector<IndexGroup>;
-	using Model = std::pair<Vertices, Indices>;
 
 	ModelGenerator();
 	ModelGenerator(const ModelGenerator&) = delete;
@@ -22,7 +23,7 @@ public:
 	void setTransformation(const glm::mat4& newTransformation);
 
 	[[nodiscard]] virtual unsigned getVertexCount() const = 0;
-	[[nodiscard]] Model generateModel();
+	[[nodiscard]] GlModel generateModel();
 
 protected:
 	virtual void finishModel() = 0;

@@ -10,10 +10,10 @@ void ModelGenerator::setTransformation(const glm::mat4& newTransformation) {
 	transformation = newTransformation;
 }
 
-ModelGenerator::Model ModelGenerator::generateModel() {
+GlModel ModelGenerator::generateModel() {
 	constructModel();
 	finishModel();
-	return Model{std::move(vertices), std::move(indices)};
+	return GlModel{std::move(vertices), std::move(indices)};
 }
 
 void ModelGenerator::applyTransformation() {

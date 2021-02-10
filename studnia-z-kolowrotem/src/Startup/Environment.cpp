@@ -24,8 +24,7 @@ void Environment::createGrass() {
 	PlaneGenerator grassGenerator;
 	grassGenerator.setLength(basicModel.getSize());
 	grassGenerator.setWidth(basicModel.getSize());
-	auto [vertices, indices] = grassGenerator.generateModel();
-	grassModel = GlModel{std::move(vertices), std::move(indices)};
+	grassModel = grassGenerator.generateModel();
 	grassView.setModel(grassModel);
 }
 
@@ -33,7 +32,6 @@ void Environment::createLandscape() {
 	CylinderGenerator landscapeGenerator;
 	landscapeGenerator.setHeight(basicModel.getHeight());
 	landscapeGenerator.setRadius(basicModel.getSize() / 2.0f);
-	auto [vertices, indices] = landscapeGenerator.generateModel();
-	landscapeModel = GlModel{std::move(vertices), std::move(indices)};
+	landscapeModel = landscapeGenerator.generateModel();
 	landscapeView.setModel(landscapeModel);
 }
