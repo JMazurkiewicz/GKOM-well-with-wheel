@@ -1,62 +1,34 @@
-# Studnia z kołowrotkiem
+# Well with wheel
 
-## Zrzuty ekranów
+## Overview
 
-### Zdjęcie modelowanej studni
+### Reference photo
 
-![img](docs/pics/studnia.png)
+![img](pics/ref.png)
 
-### Zdjęcie gotowej studni
+### Finished Model
 
-![img](docs/pics/well-done.png)
+![img](pics/finished.png)
 
-## Poruszanie
+### Building
 
-Kontrola kamery:
+Use Visual Studio 19 to build program.
 
-* WASD - zmiana pozycji
-* Mysz - poruszanie widokiem
-* Ctrl/Spacja - ruch dół/góra
+## Movement
 
-Kontrola koła:
+Camera:
 
-* Strzałka w lewo - rozwijanie
-* Strzałka w prawo - zwijanie
+* WASD - change position
+* Mouse - change view angle
+* Space/Ctrl - up/down
 
-## Opis modułów
+Wheel:
 
-1. `Controler` - moduł zawierający obsługę zdarzeń i kontrolery obiektów na scenie
+* Left arrow - rotate left
+* Right arrow - rotate right
 
-2. `GlModel` - moduł zawierający model obiektu, który może być wyświetlony na scenie
+## Team
 
-3. `Graphics` - moduł zawierający podstawowe klasy do obsługi grafiki (np. `Shader`, `Vertex`)
-
-4. `LibraryExceptions` - moduł zawierający klasy wyjątków rzucanych przez biblioteki graficzne
-
-5. `Model` - moduł zawierający parametryczne modele obiektów znajdujących się na scenie
-
-6. `ModelGeneration.BasicGenerators` - moduł zawierający generatory podstawowych kształtów (np. walców, prostopadłościanów)
-
-7. `ModelGeneration.WellGeneration` - moduł zawierający generatory elementów, z których składa się studnia
-
-8. `Startup` - moduł zawierający klasy/metody odpowiedzialne za prawidłowe załadowanie i wykonanie programu
-
-9. `System` - moduł zawierający klasy charakterystyczne dla platformy
-
-10. `View` - moduł zawierający klasy odpowiedzialne za wyświetlanie obiektów na scenie
-
-## Podział pracy
-
-* Jakub Mazurkiewicz - generowanie modeli, architektura programu
-* Damian Piotrowski - oświetlenie, tekstury
-* Jan Such - praca kamery
-
-## Milestones (wszystkie ukończone)
-
-* Uruchomienie wersji przykładowej
-* Stworzenie uproszczonych modeli testowych i oświetlenia
-* Praca kamery (`Controler.Camera`)
-* Model studni (`ModelGeneration.WellGeneration`)
-* Dopracowanie oświetlenia / kamery
-* Interaktywność - kołowrót (`Controler.WheelControler`)
-* Zaprezentowanie skończonego projektu (25/30)
+* Jakub Mazurkiewicz ([@JMazurkiewicz](https://github.com/JMazurkiewicz)) - model generation, program architecture, refactorization, introduction of C++20 features
+* Damian Piotrowski ([@dam1508](https://github.com/dam1508)) - light, textures
+* Jan Such ([@JeffHathford](https://github.com/JeffHathford)) - camera and movement
