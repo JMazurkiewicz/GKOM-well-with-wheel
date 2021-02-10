@@ -5,13 +5,7 @@
 
 class Window {
 public:
-	enum Style : unsigned int {
-		NONE = 0,
-		RESIZABLE = 1 << 0,
-		FULLSCREEN = 1 << 1
-	};
-
-	explicit Window(int width, int height, const char* title, Style style = NONE);
+	explicit Window(int width, int height, const char* title);
 	~Window();
 	
 	Window(const Window&) = delete;

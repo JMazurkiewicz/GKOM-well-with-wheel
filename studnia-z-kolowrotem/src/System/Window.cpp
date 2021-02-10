@@ -5,13 +5,12 @@
 
 #include <stdexcept>
 
-Window::Window(int width, int height, const char* title, Style style) : width{width}, height{height}, handle{nullptr} {
+Window::Window(int width, int height, const char* title) : width{width}, height{height}, handle{nullptr} {
 	glfwWindowHint(GLFW_SAMPLES, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-	glfwWindowHint(GLFW_RESIZABLE, static_cast<bool>(style & RESIZABLE));
+	glfwWindowHint(GLFW_RESIZABLE, 0);
 
 	handle = glfwCreateWindow(width, height, title, nullptr, nullptr);
 	if(handle == nullptr) {

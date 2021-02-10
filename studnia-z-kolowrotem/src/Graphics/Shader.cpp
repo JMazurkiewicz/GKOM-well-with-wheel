@@ -1,7 +1,9 @@
+#include "Shader.h"
+
+#include "LibraryExceptions/ShaderException.h"
+
 #include <fstream>
 #include <iterator>
-#include "Shader.h"
-#include "LibraryExceptions/ShaderException.h"
 
 Shader::Shader(const std::filesystem::path& vertexPath, const std::filesystem::path& fragmentPath) {
 	const std::string vertexShaderCode = loadShaderCode(vertexPath);
