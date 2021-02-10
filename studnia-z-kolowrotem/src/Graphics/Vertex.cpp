@@ -1,26 +1,10 @@
 #include "Vertex.h"
 
 Vertex::Vertex()
-	: position{}, color{}, normal{}, texture{} { }
+	: position{}, color{}, texture{} { }
 
 Vertex::Vertex(const glm::vec3& position)
-	: position{position}, color{}, normal{}, texture{} { }
+	: position{position}, color{}, texture{} { }
 
 Vertex::Vertex(float x, float y, float z)
-	: position{x, y, z}, color{}, normal{}, texture{} { }
-
-std::ostream& operator<<(std::ostream& stream, const glm::vec2& vec) {
-	return stream << '[' << vec.x << ", " << vec.y << ']';
-}
-
-std::ostream& operator<<(std::ostream& stream, const glm::vec3& vec) {
-	return stream << '[' << vec.x << ", " << vec.y << ", " << vec.z << ']';
-}
-
-std::ostream& operator<<(std::ostream& stream, const Vertex& vertex) {
-	return stream
-		<< "{\"position\": " << vertex.position << ", \"color\": "
-		<< vertex.color << ", \"normal\": "
-		<< vertex.normal << ", \"texture\": "
-		<< vertex.texture << '}';
-}
+	: position{x, y, z}, color{}, texture{} { }

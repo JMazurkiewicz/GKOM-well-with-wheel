@@ -1,4 +1,3 @@
-
 #include "CuboidGenerator.h"
 
 CuboidGenerator::CuboidGenerator()
@@ -93,7 +92,7 @@ void CuboidGenerator::connectVertices() {
 }
 
 void CuboidGenerator::createNormals() {
-	for (unsigned rect = 0; rect < 6; rect++) {
+	/*for (unsigned rect = 0; rect < 6; rect++) {
 		unsigned idx1 = 4 * rect;
 		unsigned idx2 = idx1 + 1;
 		unsigned idx3 = idx1 + 2;
@@ -128,5 +127,5 @@ void CuboidGenerator::createNormals() {
 		vertices[idx2].normal = normal;
 		vertices[idx3].normal = normal;
 		vertices[idx4].normal = normal;
-	}
+	}*/
 }

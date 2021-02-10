@@ -1,8 +1,9 @@
 #pragma once
 
-#include <GL/glew.h>
 #include "GlModel/GlModel.h"
 #include "Graphics/Texture.h"
+
+#include <GL/glew.h>
 
 class GlView {
 public:

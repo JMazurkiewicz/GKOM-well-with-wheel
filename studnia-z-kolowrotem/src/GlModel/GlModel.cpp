@@ -1,5 +1,7 @@
 #include "GlModel.h"
 
+#include <algorithm>
+
 GlModel::GlModel(Vertices&& vertices, Indices&& indices)
     : vertices{std::move(vertices)}, indices{std::move(indices)} { }
 
@@ -12,12 +14,9 @@ const GlModel::Indices& GlModel::getIndices() const noexcept {
 }
 
 void GlModel::transform(const glm::mat4& transformation) {
-    auto doTransform = [transformation](glm::vec3& vector) {
-        vector = glm::vec3{transformation * glm::vec4{vector, 1.0f}};
+    const auto transformPosition = [transformation](glm::vec3& pos) {
+        pos = glm::vec3{transformation * glm::vec4{pos, 1.0f}};
     };
 
-    for(Vertex& vertex : vertices) {
-        doTransform(vertex.position);
-        doTransform(vertex.normal);
-    }
+    std::ranges::for_each(vertices, transformPosition, &Vertex::position);
 }

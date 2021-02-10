@@ -1,4 +1,5 @@
 #pragma once
+
 #include "MouseListener.h"
 #include "KeyboardListener.h"
 
@@ -21,8 +22,8 @@ public:
     void update();
 
 private:
-    static constexpr float MAX_HEIGHT = 5.0f;
-    static constexpr float MIN_HEIGHT = 0.2f;
+    static constexpr float MAX_HEIGHT = 10.0f;
+    static constexpr float MIN_HEIGHT = 0.5f;
     static constexpr float CAMERA_SPEED = 0.1f;
     static constexpr float SENSITIVITY = 0.008f;
     static constexpr float MAX_PITCH = (std::numbers::pi_v<float> / 2.0f) - 0.02f;
