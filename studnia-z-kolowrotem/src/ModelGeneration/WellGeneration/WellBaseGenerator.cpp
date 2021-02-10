@@ -12,5 +12,5 @@ void WellBaseGenerator::prepareGenerators() {
 	baseGenerator.setOuterRadius(basicModel.getOuterRadius());
 	baseGenerator.setHeight(basicModel.getHeight());
 	baseGenerator.setSampleRate(sampleRate);
-	addGenerator(&baseGenerator);
+	addGenerator(baseGenerator);
 }

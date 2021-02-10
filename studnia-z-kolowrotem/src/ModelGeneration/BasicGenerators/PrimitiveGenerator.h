@@ -6,14 +6,11 @@ class PrimitiveGenerator : public ModelGenerator {
 public:
 	using ModelGenerator::ModelGenerator;
 
-	void setColor(const glm::vec3& newColor);
-
 protected:
+	virtual void createVertices() = 0;
+	virtual void createIndices() = 0;
 	virtual void createTexCoords() = 0;
 
 private:
-	void finishModel() override;
-	void doColoring();
-
-	glm::vec3 color;
+	void constructModel() override final;
 };

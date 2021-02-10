@@ -4,16 +4,16 @@
 
 class SmoothShapeGenerator : public PrimitiveGenerator {
 public:
-	static constexpr unsigned DEFAULT_SAMPLE_RATE = 64;
+	static constexpr unsigned DEFAULT_SAMPLE_RATE = 32;
 
-	SmoothShapeGenerator();
+	SmoothShapeGenerator() = default;
 	using PrimitiveGenerator::PrimitiveGenerator;
 
 	void setSampleRate(unsigned newSampleRate);
 
 protected:
-	unsigned getSampleRate() const;
+	[[nodiscard]] unsigned getSampleRate() const noexcept;
 
 private:
-	unsigned sampleRate;
+	unsigned sampleRate = DEFAULT_SAMPLE_RATE;
 };

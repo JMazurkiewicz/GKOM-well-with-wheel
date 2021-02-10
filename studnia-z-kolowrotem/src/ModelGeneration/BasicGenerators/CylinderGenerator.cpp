@@ -1,9 +1,9 @@
 #include "CylinderGenerator.h"
 
 #include <glm/ext.hpp>
+#include <numbers>
 
-CylinderGenerator::CylinderGenerator()
-    : radius{1.0f}, height{1.0f} { }
+using namespace std::numbers;
 
 void CylinderGenerator::setRadius(float newRadius) {
     radius = newRadius;
@@ -18,7 +18,7 @@ unsigned CylinderGenerator::getVertexCount() const {
 }
 
 unsigned CylinderGenerator::getSampleCount() const {
-    return getSampleRate() + 1U;
+    return getSampleRate() + 1u;
 }
 
 unsigned CylinderGenerator::getLowerCircleOffset() const {
@@ -29,10 +29,9 @@ unsigned CylinderGenerator::getUpperCircleOffset() const {
     return getSampleCount();
 }
 
-void CylinderGenerator::constructModel() {
+void CylinderGenerator::createVertices() {
     createLowerCircle();
     createUpperCircle();
-    connectSides();
 }
 
 void CylinderGenerator::createLowerCircle() {
@@ -46,16 +45,16 @@ void CylinderGenerator::createUpperCircle() {
 }
 
 void CylinderGenerator::createCircle(const glm::vec3& start) {
-    glm::vec3 pattern = start;
-    const float angle = glm::two_pi<float>() / getSampleRate();
+    const float angle = 2.0f * pi_v<float> / getSampleRate();
 
+    glm::vec3 pattern = start;
     for(unsigned index = 0; index < getSampleCount(); ++index) {
         vertices.push_back(pattern);
         pattern = glm::rotateY(pattern, angle);
     }
 }
 
-void CylinderGenerator::connectSides() {
+void CylinderGenerator::createIndices() {
     for(unsigned index = 0; index < getSampleRate(); ++index) {
         const unsigned next = index + 1;
         const unsigned upperIndex = index + getUpperCircleOffset();
@@ -73,8 +72,8 @@ void CylinderGenerator::createTexCoords() {
     for(unsigned index = 0; index < getSampleCount(); ++index) {
         const unsigned upperIndex = index + getUpperCircleOffset();
 
-        vertices[index].texture = glm::vec2(xTex, 0.0f);
-        vertices[upperIndex].texture = glm::vec2(xTex, 1.0f);
+        vertices[index].texture = {xTex, 0.0f};
+        vertices[upperIndex].texture = {xTex, 1.0f};
 
         xTex += dx;
     }

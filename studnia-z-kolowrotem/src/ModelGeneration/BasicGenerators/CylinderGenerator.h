@@ -4,7 +4,7 @@
 
 class CylinderGenerator : public SmoothShapeGenerator {
 public:
-	CylinderGenerator();
+	CylinderGenerator() = default;
 	using SmoothShapeGenerator::SmoothShapeGenerator;
 
 	void setRadius(float newRadius);
@@ -16,17 +16,16 @@ protected:
 	[[nodiscard]] unsigned getSampleCount() const;
 	[[nodiscard]] unsigned getLowerCircleOffset() const;
 	[[nodiscard]] unsigned getUpperCircleOffset() const;
-
-	void constructModel() override;
+	
+	void createVertices() override;
+	void createIndices() override;
+	void createTexCoords() override;
 
 private:
 	void createLowerCircle();
 	void createUpperCircle();
 	void createCircle(const glm::vec3& start);
 
-	void connectSides();
-	void createTexCoords() override;
-
-	float radius;
-	float height;
+	float radius = 1.0f;
+	float height = 1.0f;
 };

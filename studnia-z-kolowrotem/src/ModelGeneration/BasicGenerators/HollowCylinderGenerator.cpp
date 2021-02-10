@@ -2,9 +2,6 @@
 
 #include <array>
 
-HollowCylinderGenerator::HollowCylinderGenerator()
-    : CylinderGenerator(), innerRadius{1.0f}, outerRadius{1.0f} { }
-
 void HollowCylinderGenerator::setInnerRadius(float newInnerRadius) {
     innerRadius = newInnerRadius;
 }
@@ -25,15 +22,19 @@ unsigned HollowCylinderGenerator::getInnerCylinderOffset() const {
     return CylinderGenerator::getVertexCount();
 }
 
-void HollowCylinderGenerator::constructModel() {
+void HollowCylinderGenerator::createVertices() {
     setRadius(outerRadius);
-    CylinderGenerator::constructModel();
-
-    const unsigned firstInnerIndex = indices.size();
+    CylinderGenerator::createVertices();
+    CylinderGenerator::createIndices();
+    
     setRadius(innerRadius);
-    CylinderGenerator::constructModel();
-    adjustInnerIndices(firstInnerIndex);
+    CylinderGenerator::createVertices();
+    CylinderGenerator::createIndices();
+}
 
+void HollowCylinderGenerator::createIndices() {
+    const unsigned firstInnerIndex = CylinderGenerator::getVertexCount();
+    adjustInnerIndices(firstInnerIndex);
     connectTop();
 }
 
@@ -44,6 +45,10 @@ void HollowCylinderGenerator::adjustInnerIndices(unsigned firstInnerIndex) {
 }
 
 void HollowCylinderGenerator::connectTop() {
+    const auto nextIndex = [this](unsigned index) {
+        return (++index == getSampleRate() ? 0u : index);
+    };
+
     for(unsigned index = 0; index < getSampleRate(); ++index) {
         const unsigned outerUpperIndex = index + getUpperCircleOffset() + getOuterCyilnderOffset();
         const unsigned outerUpperNext = nextIndex(outerUpperIndex);
@@ -55,29 +60,23 @@ void HollowCylinderGenerator::connectTop() {
     }
 }
 
-unsigned HollowCylinderGenerator::nextIndex(unsigned index) const {
-    ++index;
-    if(index == getSampleRate()) {
-        index = 0;
-    }
-    return index;
-}
-
 void HollowCylinderGenerator::createTexCoords() {
-    const float dx = 4.0f / getSampleRate();
     constexpr std::array yTex = {0.0f, 1.0f, 0.5f, 1.0f};
+    const float dx = 4.0f / getSampleRate();
 
     float xTex = 0.0f;
 
     for(unsigned index = 0; index < getSampleCount(); ++index) {
         const unsigned outerLowerIndex = index + getLowerCircleOffset() + getOuterCyilnderOffset();
-        const unsigned outerUpperIndex = index + getUpperCircleOffset() + getOuterCyilnderOffset();
-        const unsigned innerUpperIndex = index + getUpperCircleOffset() + getInnerCylinderOffset();
-        const unsigned innerLowerIndex = index + getLowerCircleOffset() + getInnerCylinderOffset();
-
         vertices[outerLowerIndex].texture = glm::vec2{xTex, yTex[0]};
+
+        const unsigned outerUpperIndex = index + getUpperCircleOffset() + getOuterCyilnderOffset();
         vertices[outerUpperIndex].texture = glm::vec2{xTex, yTex[1]};
+        
+        const unsigned innerUpperIndex = index + getUpperCircleOffset() + getInnerCylinderOffset();
         vertices[innerUpperIndex].texture = glm::vec2{xTex, yTex[2]};
+        
+        const unsigned innerLowerIndex = index + getLowerCircleOffset() + getInnerCylinderOffset();
         vertices[innerLowerIndex].texture = glm::vec2{xTex, yTex[3]};
 
         xTex += dx;

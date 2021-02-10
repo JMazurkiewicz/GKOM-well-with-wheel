@@ -1,9 +1,7 @@
 #include "ModelGenerator.h"
 
-ModelGenerator::ModelGenerator() : arrayOffset{0}, transformation{1.0f} { }
-
 void ModelGenerator::setArrayOffset(unsigned newArrayOffset) {
-	arrayOffset += newArrayOffset;
+	arrayOffset = newArrayOffset;
 }
 
 void ModelGenerator::setTransformation(const glm::mat4& newTransformation) {
@@ -12,7 +10,8 @@ void ModelGenerator::setTransformation(const glm::mat4& newTransformation) {
 
 GlModel ModelGenerator::generateModel() {
 	constructModel();
-	finishModel();
+	applyTransformation();
+	adjustArrayOffset();
 	return GlModel{std::move(vertices), std::move(indices)};
 }
 

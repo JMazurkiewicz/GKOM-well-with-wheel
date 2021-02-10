@@ -37,7 +37,7 @@ void WellRoofGenerator::prepareLeftTileGenerators() {
 		const auto translation = glm::translate(glm::vec3{xTranslation, 0.0f, tileLength / 2.0f});
 		generator.setTransformation(rotation * translation);
 
-		addGenerator(&generator);
+		addGenerator(generator);
 		xTranslation -= tileWidth;
 	}
 }
@@ -58,7 +58,7 @@ void WellRoofGenerator::prepareRightTileGenerators() {
 		const auto translation = glm::translate(glm::vec3{xTranslation, 0.0f, -(tileLength / 2.0f)});
 		generator.setTransformation(rotation * translation);
 
-		addGenerator(&generator);
+		addGenerator(generator);
 		xTranslation -= tileWidth;
 	}
 }

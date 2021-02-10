@@ -21,7 +21,7 @@ void WheelGenerator::prepareMiddleElementGenerator() {
 	middleElementGenerator.setHeight(basicWheelModel.getHeight());
 	middleElementGenerator.setSampleRate(sampleRate);
 	middleElementGenerator.setRadius(basicWheelModel.getMiddleElementRadius());
-	addGenerator(&middleElementGenerator);
+	addGenerator(middleElementGenerator);
 }
 
 void WheelGenerator::prepareRingGenerator() {
@@ -29,7 +29,7 @@ void WheelGenerator::prepareRingGenerator() {
 	ringGenerator.setSampleRate(sampleRate);
 	ringGenerator.setInnerRadius(basicWheelModel.getInnerRadius());
 	ringGenerator.setOuterRadius(basicWheelModel.getOuterRadius());
-	addGenerator(&ringGenerator);
+	addGenerator(ringGenerator);
 }
 
 void WheelGenerator::prepareCuboidGenerators() {
@@ -52,7 +52,7 @@ void WheelGenerator::prepareCuboidGenerators() {
 		const auto rotation = glm::rotate(-angle, glm::vec3{0.0f, 1.0f, 0.0f});
 
 		generator.setTransformation(translation * rotation);
-		addGenerator(&generator);
+		addGenerator(generator);
 
 		angle += innerAngle;
 	}
@@ -65,7 +65,7 @@ void WheelGenerator::prepareHoldingCylinderGenerator() {
 	holdingCylinderGenerator.setHeight(height);
 	holdingCylinderGenerator.setRadius(1.01f * basicWheelModel.getMiddleElementRadius());
 	holdingCylinderGenerator.setTransformation(glm::translate(glm::vec3{0.0f, -height, 0.0f}));
-	addGenerator(&holdingCylinderGenerator);
+	addGenerator(holdingCylinderGenerator);
 }
 
 void WheelGenerator::prepareTransformation() {

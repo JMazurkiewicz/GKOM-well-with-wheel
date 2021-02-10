@@ -25,7 +25,7 @@ void WoodenStandGenerator::prepareLeftBracketGenerator() {
 		0.0f, 0.0
 	};
 	leftBracketGenerator.setTransformation(glm::translate(translation));
-	addGenerator(&leftBracketGenerator);
+	addGenerator(leftBracketGenerator);
 }
 
 void WoodenStandGenerator::prepareRightBracketGenerator() {
@@ -38,7 +38,7 @@ void WoodenStandGenerator::prepareRightBracketGenerator() {
 		0.0f, 0.0
 	};
 	rightBracketGenerator.setTransformation(glm::translate(translation));
-	addGenerator(&rightBracketGenerator);
+	addGenerator(rightBracketGenerator);
 }
 
 void WoodenStandGenerator::prepareLogGenerator() {
@@ -46,5 +46,5 @@ void WoodenStandGenerator::prepareLogGenerator() {
 	logGenerator.setHeight(0.2f);
 	logGenerator.setLength(basicModel.getBracketRadius() * 2.0f);
 	logGenerator.setTransformation(glm::translate(glm::vec3{0.0f, basicModel.getBracketHeight() + basicModel.getHeight(), 0.0f}));
-	addGenerator(&logGenerator);
+	addGenerator(logGenerator);
 }

@@ -7,8 +7,6 @@ public:
 	using CylinderGenerator::CylinderGenerator;
 
 private:
-	void constructModel() override;
+	void createIndices() override;
 	void createConnections();
-
-	unsigned nextIndex(unsigned index);
 };

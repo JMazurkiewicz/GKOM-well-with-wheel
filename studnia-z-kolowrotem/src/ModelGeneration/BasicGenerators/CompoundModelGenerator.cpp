@@ -1,15 +1,15 @@
 #include "CompoundModelGenerator.h"
 
-void CompoundModelGenerator::addGenerator(ModelGenerator* generator) {
-	generators.push_back(generator);
+#include <numeric>
+#include <ranges>
+
+void CompoundModelGenerator::addGenerator(ModelGenerator& generator) {
+	generators.push_back(&generator);
 }
 
 unsigned CompoundModelGenerator::getVertexCount() const {
-	unsigned count = 0;
-	for(ModelGenerator* generator : generators) {
-		count += generator->getVertexCount();
-	}
-	return count;
+	const auto counts = generators | std::views::transform(&ModelGenerator::getVertexCount);
+	return std::reduce(counts.begin(), counts.end());
 }
 
 void CompoundModelGenerator::constructModel() {
@@ -24,9 +24,4 @@ void CompoundModelGenerator::constructModel() {
 		vertices.insert(vertices.end(), model.getVertices().begin(), model.getVertices().end());
 		indices.insert(indices.end(), model.getIndices().begin(), model.getIndices().end());
 	}
-}
-
-void CompoundModelGenerator::finishModel() {
-	applyTransformation();
-	adjustArrayOffset();
 }

@@ -4,7 +4,7 @@
 
 class PlaneGenerator : public PrimitiveGenerator {
 public:
-	PlaneGenerator();
+	PlaneGenerator() = default;
 
 	void setWidth(float newWidth);
 	void setLength(float newLength);
@@ -12,9 +12,10 @@ public:
 	[[nodiscard]] unsigned getVertexCount() const override;
 
 private:
-	void constructModel() override;
+	void createVertices() override;
+	void createIndices() override;
 	void createTexCoords() override;
 
-	float width;
-	float length;
+	float width = 1.0f;
+	float length = 1.0f;
 };
