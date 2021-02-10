@@ -2,6 +2,7 @@
 
 #include "Controler/WheelControler.h"
 #include "GlModel/GlModel.h"
+#include "Graphics/Texture.h"
 #include "Model/RoofModel.h"
 #include "Model/WellModel.h"
 #include "Model/WheelModel.h"
@@ -10,7 +11,6 @@
 #include "View/DynamicGlView.h"
 #include "View/StaticGlView.h"
 #include "View/GlView.h"
-#include "Graphics/Texture.h"
 
 class Well {
 public:

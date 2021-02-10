@@ -23,7 +23,7 @@ private:
 
 	bool shouldClose() const;
 
-	MainWindow& window;
+	MainWindow& windowHandle;
 	GLuint vao;
 	Camera camera;
 

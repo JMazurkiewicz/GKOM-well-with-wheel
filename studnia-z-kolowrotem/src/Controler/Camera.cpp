@@ -1,9 +1,24 @@
 #include "Camera.h"
 
+#include <algorithm>
+#include <cmath>
 #include <glm/gtc/matrix_transform.hpp>
 
+using namespace std::numbers;
+
+namespace {
+	constexpr int MOVE_FORWARD_KEY = GLFW_KEY_W;
+	constexpr int MOVE_BACKWARD_KEY = GLFW_KEY_S;
+	constexpr int MOVE_LEFT_KEY = GLFW_KEY_A;
+	constexpr int MOVE_RIGHT_KEY = GLFW_KEY_D;
+	constexpr int MOVE_UP_KEY = GLFW_KEY_SPACE;
+	constexpr int MOVE_DOWN_KEY = GLFW_KEY_LEFT_CONTROL;
+}
+
 Camera::Camera(Window& window)
-	: width{window.getWidth()}, height{window.getHeight()}
+	: projectionMatrix{glm::perspective(pi_v<float> / 4.0f, window.getAspectRatio(), 0.1f, 100.0f)},
+	lastX{window.getWidth() / 2.0f},
+	lastY(window.getHeight() / 2.0f)
 {
 	listenOn(window);
 }
@@ -24,121 +39,95 @@ const glm::mat4& Camera::getMVP() {
 	return mvp;
 }
 
+void Camera::update() {
+	if(moveForwardKeyPressed != moveBackwardKeyPressed) {
+		const int direction = (moveForwardKeyPressed ? 1 : -1);
+		cameraPos += direction * CAMERA_SPEED * cameraFront;
+	}
+
+	if(moveLeftKeyPressed != moveRightKeyPressed) {
+		const int direction = (moveRightKeyPressed ? 1 : -1);
+		const auto cameraSide = glm::normalize(glm::cross(cameraFront, cameraUp));
+		cameraPos += direction * CAMERA_SPEED * cameraSide;
+	}
+
+	if(moveUpKeyPressed != moveDownKeyPressed) {
+		const int direction = (moveUpKeyPressed ? 1 : -1);
+		cameraPos += direction * CAMERA_SPEED * cameraUp;
+	}
+
+	cameraPos.y = std::ranges::clamp(cameraPos.y, MIN_HEIGHT, MAX_HEIGHT);
+	viewMatrix = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+	mvp = projectionMatrix * viewMatrix * modelMatrix;
+}
+
+void Camera::onCursorMove(double x, double y) {
+	const float xPos = static_cast<float>(x);
+	const float yPos = static_cast<float>(y);
+
+	if(firstMove) [[unlikely]] {
+		lastX = xPos;
+		lastY = yPos;
+		firstMove = false;
+	}
+
+	const float xOffset = (xPos - lastX) * SENSITIVITY;
+	const float yOffset = (lastY - yPos) * SENSITIVITY;
+	lastX = xPos;
+	lastY = yPos;
+
+	yaw += xOffset;
+	pitch = std::ranges::clamp(pitch + yOffset, MIN_PITCH, MAX_PITCH);
+
+	cameraFront = glm::normalize(glm::vec3{
+		std::cos(yaw) * std::cos(pitch),
+		std::sin(pitch),
+		std::sin(yaw) * std::cos(pitch)
+	});
+}
+
 void Camera::onKeyPress(int key) {
 	switch(key) {
-	case GLFW_KEY_W:
-		keyPressedW = true;
+	case MOVE_FORWARD_KEY:
+		moveForwardKeyPressed = true;
 		break;
-
-	case GLFW_KEY_S:
-		keyPressedS = true;
+	case MOVE_BACKWARD_KEY:
+		moveBackwardKeyPressed = true;
 		break;
-
-	case GLFW_KEY_A:
-		keyPressedA = true;
+	case MOVE_LEFT_KEY:
+		moveLeftKeyPressed = true;
 		break;
-
-	case GLFW_KEY_D:
-		keyPressedD = true;
+	case MOVE_RIGHT_KEY:
+		moveRightKeyPressed = true;
 		break;
-
-	case GLFW_KEY_SPACE:
-		keyPressedSpace = true;
+	case MOVE_UP_KEY:
+		moveUpKeyPressed = true;
 		break;
-
-	case GLFW_KEY_LEFT_CONTROL:
-		keyPressedCtrl = true;
+	case MOVE_DOWN_KEY:
+		moveDownKeyPressed = true;
 		break;
 	}
 }
 
 void Camera::onKeyRelease(int key) {
 	switch(key) {
-	case GLFW_KEY_W:
-		keyPressedW = false;
+	case MOVE_FORWARD_KEY:
+		moveForwardKeyPressed = false;
 		break;
-
-	case GLFW_KEY_S:
-		keyPressedS = false;
+	case MOVE_BACKWARD_KEY:
+		moveBackwardKeyPressed = false;
 		break;
-
-	case GLFW_KEY_A:
-		keyPressedA = false;
+	case MOVE_LEFT_KEY:
+		moveLeftKeyPressed = false;
 		break;
-
-	case GLFW_KEY_D:
-		keyPressedD = false;
+	case MOVE_RIGHT_KEY:
+		moveRightKeyPressed = false;
 		break;
-
-	case GLFW_KEY_SPACE:
-		keyPressedSpace = false;
+	case MOVE_UP_KEY:
+		moveUpKeyPressed = false;
 		break;
-
-	case GLFW_KEY_LEFT_CONTROL:
-		keyPressedCtrl = false;
+	case MOVE_DOWN_KEY:
+		moveDownKeyPressed = false;
 		break;
 	}
-}
-
-void Camera::onCursorMove(double x, double y) {
-	if(firstMove) {
-		lastX = static_cast<float>(x);
-		lastY = static_cast<float>(y);
-		firstMove = false;
-	}
-
-	float xoffset = static_cast<float>(x) - lastX;
-	float yoffset = lastY - static_cast<float>(y);
-	lastX = static_cast<float>(x);
-	lastY = static_cast<float>(y);
-
-	xoffset *= sensitivity;
-	yoffset *= sensitivity;
-
-	yaw += xoffset;
-	pitch += yoffset;
-
-	if(pitch > 89.0f)
-		pitch = 89.0f;
-	if(pitch < -89.0f)
-		pitch = -89.0f;
-
-	glm::vec3 direction;
-	direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-	direction.y = sin(glm::radians(pitch));
-	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-	cameraFront = glm::normalize(direction);
-}
-
-void Camera::update() {
-	if(keyPressedW)
-		cameraPos += cameraSpeed * cameraFront;
-
-	if(keyPressedS)
-		cameraPos -= cameraSpeed * cameraFront;
-
-	if(keyPressedA)
-		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-
-	if(keyPressedD)
-		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-
-	if(keyPressedSpace)
-		cameraPos += cameraUp * cameraSpeed;
-
-	if(keyPressedCtrl)
-		cameraPos -= cameraUp * cameraSpeed;
-
-
-	if(cameraPos.y > maxHeight)
-		cameraPos.y = maxHeight;
-
-	else if(cameraPos.y < minHeight)
-		cameraPos.y = minHeight;
-
-	const float ratio = static_cast<float>(width) / static_cast<float>(height);
-	projectionMatrix = glm::perspective(glm::radians(45.0f), ratio, 0.1f, 100.0f);
-	viewMatrix = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-	modelMatrix = glm::mat4(1.0f);
-	mvp = projectionMatrix * viewMatrix * modelMatrix;
 }

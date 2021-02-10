@@ -6,13 +6,11 @@
 
 class Shader {
 public:
-	explicit Shader(const std::filesystem::path& vertexPath,
-		            const std::filesystem::path& fragmentPath);
+	explicit Shader(const std::filesystem::path& vertexPath, const std::filesystem::path& fragmentPath);
+	~Shader();
 
 	Shader(const Shader&) = delete;
 	Shader& operator=(const Shader&) = delete;
-
-	~Shader();
 
 	void useProgram() const;
 	GLuint getProgramId() const noexcept;

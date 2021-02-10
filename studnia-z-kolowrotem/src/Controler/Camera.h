@@ -1,54 +1,58 @@
 #pragma once
-
-#include <GL/glew.h>
-#include <glm/glm.hpp>
 #include "MouseListener.h"
 #include "KeyboardListener.h"
 
-class Camera : public MouseListener, public KeyboardListener {
+#include <GL/glew.h>
+#include <glm/glm.hpp>
+#include <numbers>
+
+class Camera final : public MouseListener, public KeyboardListener {
 public:
     explicit Camera(Window& window);
+
+    Camera(const Camera&) = delete;
+    Camera& operator=(const Camera&) = delete;
 
     const glm::mat4& getProjectionMatrix();
     const glm::mat4& getViewMatrix();
     const glm::mat4& getModelMatrix();
     const glm::mat4& getMVP();
+
     void update();
 
-protected:
+private:
+    static constexpr float MAX_HEIGHT = 5.0f;
+    static constexpr float MIN_HEIGHT = 0.2f;
+    static constexpr float CAMERA_SPEED = 0.1f;
+    static constexpr float SENSITIVITY = 0.008f;
+    static constexpr float MAX_PITCH = (std::numbers::pi_v<float> / 2.0f) - 0.02f;
+    static constexpr float MIN_PITCH = -MAX_PITCH;
+
     void onCursorMove(double x, double y) override;
     void onKeyPress(int key) override;
     void onKeyRelease(int key) override;
 
-private:
-    int width;
-    int height;
+    void adjustHeight();
 
-    glm::mat4 projectionMatrix;
+    const glm::mat4 projectionMatrix;
     glm::mat4 viewMatrix;
-    glm::mat4 modelMatrix;
-    glm::mat4 mvp;
+    const glm::mat4 modelMatrix;
+    glm::mat4 mvp = glm::mat4{1.0f};
 
-    float lastX = 800 / 2.0f;
-    float lastY = 600 / 2.0f;
-    float yaw = -90.0f;
+    float lastX;
+    float lastY;
+    float yaw = -std::numbers::pi_v<float> / 2.0f;
     float pitch = 0.0f;
     bool firstMove = true;
 
-    const float cameraSpeed = 0.1f;
-    const float sensitivity = 0.3f;
-
-    const float minHeight = 0.2f;
-    const float maxHeight = 5.0f;
-
-    glm::vec3 cameraPos = glm::vec3(0.0f, minHeight, 3.0f);
+    glm::vec3 cameraPos = glm::vec3(0.0f, MIN_HEIGHT, 3.0f);
     glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
     glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
-    bool keyPressedW = false;
-    bool keyPressedA = false;
-    bool keyPressedS = false;
-    bool keyPressedD = false;
-    bool keyPressedSpace = false;
-    bool keyPressedCtrl = false;
+    bool moveForwardKeyPressed = false;
+    bool moveBackwardKeyPressed = false;
+    bool moveLeftKeyPressed = false;
+    bool moveRightKeyPressed = false;
+    bool moveUpKeyPressed = false;
+    bool moveDownKeyPressed = false;
 };

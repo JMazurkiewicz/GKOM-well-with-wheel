@@ -7,7 +7,7 @@
 
 class WheelControler : public KeyboardListener {
 public:
-	static constexpr float DEFAULT_SPEED = 5.0f / 1000.0f;
+	static constexpr float DEFAULT_SPEED = 5.0f;
 
 	explicit WheelControler(const WellModel& basicModel);
 

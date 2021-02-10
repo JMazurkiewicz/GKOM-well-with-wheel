@@ -3,8 +3,8 @@
 #include <glm/ext.hpp>
 
 namespace {
-	static constexpr int COLLAPSE_KEY = GLFW_KEY_RIGHT;
-	static constexpr int EXPAND_KEY = GLFW_KEY_LEFT;
+	constexpr int COLLAPSE_KEY = GLFW_KEY_RIGHT;
+	constexpr int EXPAND_KEY = GLFW_KEY_LEFT;
 }
 
 WheelControler::WheelControler(const WellModel& basicModel)

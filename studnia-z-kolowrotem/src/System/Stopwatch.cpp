@@ -1,7 +1,5 @@
 #include "Stopwatch.h"
 
-namespace chrono = std::chrono;
-
 Stopwatch::Stopwatch() {
     reset();
 }

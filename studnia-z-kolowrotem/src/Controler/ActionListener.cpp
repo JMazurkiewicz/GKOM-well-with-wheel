@@ -10,10 +10,6 @@ void ActionListener::stopListeningOn(Window& window) {
 	windows.erase(&window);
 }
 
-bool ActionListener::isListeningOn(GLFWwindow* window) {
-	const auto compare = [window](Window* windowPtr) {
-		return window == windowPtr->getHandle();
-	};
-
-	return std::find_if(windows.begin(), windows.end(), compare) != windows.end();
+bool ActionListener::isListeningOn(GLFWwindow* windowHandle) {
+	return std::ranges::find(windows, windowHandle, &Window::getHandle) != windows.end();
 }

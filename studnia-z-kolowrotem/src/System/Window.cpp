@@ -2,9 +2,8 @@
 
 #include "Controler/KeyboardListener.h"
 #include "Controler/MouseListener.h"
-#include <stdexcept>
 
-#pragma warning(disable:26812)
+#include <stdexcept>
 
 Window::Window(int width, int height, const char* title, Style style) : width{width}, height{height}, handle{nullptr} {
 	glfwWindowHint(GLFW_SAMPLES, 4);
@@ -20,7 +19,6 @@ Window::Window(int width, int height, const char* title, Style style) : width{wi
 	}
 
 	registerCallbacks();
-	glfwMakeContextCurrent(handle);
 }
 
 Window::~Window() {
@@ -39,12 +37,20 @@ GLFWwindow* Window::getHandle() const {
 	return handle;
 }
 
-bool Window::shouldClose() const {
-	return glfwWindowShouldClose(handle);
+float Window::getAspectRatio() const {
+	return static_cast<float>(getWidth()) / static_cast<float>(getHeight());
+}
+
+void Window::makeContextCurrent() {
+	glfwMakeContextCurrent(getHandle());
 }
 
 void Window::swapBuffers() {
-	glfwSwapBuffers(handle);
+	glfwSwapBuffers(getHandle());
+}
+
+bool Window::shouldClose() const {
+	return glfwWindowShouldClose(getHandle());
 }
 
 void Window::registerCallbacks() {

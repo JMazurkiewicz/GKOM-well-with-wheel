@@ -6,7 +6,7 @@ namespace {
 	constexpr char TITLE[] = "Studnia z kolowrotkiem";
 }
 
-MainWindow::MainWindow() : Window(WIDTH, HEIGHT, TITLE) {
+MainWindow::MainWindow() : Window(WIDTH, HEIGHT, TITLE, Window::FULLSCREEN) {
 	glViewport(0, 0, getWidth(), getHeight());
 	glfwSetInputMode(getHandle(), GLFW_STICKY_KEYS, GL_TRUE);
 }

@@ -127,9 +127,6 @@
     <ClCompile Include="src\ModelGeneration\WellGeneration\WellRoofGenerator.cpp">
       <Filter>Sources\ModelGeneration\WellGeneration</Filter>
     </ClCompile>
-    <ClCompile Include="src\Controler\ActionListener.cpp">
-      <Filter>Sources\Controler</Filter>
-    </ClCompile>
     <ClCompile Include="src\Controler\KeyboardListener.cpp">
       <Filter>Sources\Controler</Filter>
     </ClCompile>
@@ -156,6 +153,9 @@
     </ClCompile>
     <ClCompile Include="src\ModelGeneration\BasicGenerators\PlaneGenerator.cpp">
       <Filter>Sources\ModelGeneration\BasicGenerators</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Controler\ActionListener.cpp">
+      <Filter>Sources\Controler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

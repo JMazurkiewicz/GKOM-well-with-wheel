@@ -3,8 +3,7 @@
 #include "Shader.h"
 #include "LibraryExceptions/ShaderException.h"
 
-Shader::Shader(const std::filesystem::path& vertexPath,
-	           const std::filesystem::path& fragmentPath) {
+Shader::Shader(const std::filesystem::path& vertexPath, const std::filesystem::path& fragmentPath) {
 	const std::string vertexShaderCode = loadShaderCode(vertexPath);
 	const std::string fragmentShaderCode = loadShaderCode(fragmentPath);
 
@@ -46,17 +45,16 @@ std::string Shader::loadShaderCode(const std::filesystem::path& shaderPath) {
 		file.exceptions(std::ios::failbit | std::ios::badbit);
 	}
 
+	const auto fileSize = static_cast<std::string::size_type>(std::filesystem::file_size(shaderPath));
 	std::string content;
-	const std::uintmax_t fileSize = std::filesystem::file_size(shaderPath);
-	content.reserve(static_cast<std::string::size_type>(fileSize));
-	content.assign(std::istreambuf_iterator<char>{file},
-		           std::istreambuf_iterator<char>{});
+	content.reserve(fileSize);
+	content.assign(std::istreambuf_iterator<char>{file}, std::istreambuf_iterator<char>{});
 	return content;
 }
 
-GLuint Shader::compileShader(const std::string & shaderCode, GLenum shaderType) {
+GLuint Shader::compileShader(const std::string& shaderCode, GLenum shaderType) {
 	const GLuint shaderId = glCreateShader(shaderType);
-	const GLchar* rawShaderCode = shaderCode.c_str();
+	const GLchar* const rawShaderCode = shaderCode.c_str();
 
 	glShaderSource(shaderId, 1, &rawShaderCode, nullptr);
 	glCompileShader(shaderId);

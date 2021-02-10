@@ -1,7 +1,8 @@
 #pragma once
 
-#include <Graphics/Vertex.h>
-#include <Graphics/IndexGroup.h>
+#include "Graphics/Vertex.h"
+#include "Graphics/IndexGroup.h"
+
 #include <vector>
 
 class GlModel {

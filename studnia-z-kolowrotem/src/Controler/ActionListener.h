@@ -1,21 +1,23 @@
 #pragma once
 
-#include <set>
 #include "System/Window.h"
+
+#include <unordered_set>
 
 class ActionListener {
 public:
 	ActionListener() = default;
+	virtual ~ActionListener() = default;
+
 	ActionListener(const ActionListener&) = delete;
 	ActionListener& operator=(const ActionListener&) = delete;
-	virtual ~ActionListener() = default;
 
 	void listenOn(Window& window);
 	void stopListeningOn(Window& window);
 
 protected:
-	bool isListeningOn(GLFWwindow* window);
+	bool isListeningOn(GLFWwindow* windowHandle);
 
 private:
-	std::set<Window*> windows;
+	std::unordered_set<Window*> windows;
 };

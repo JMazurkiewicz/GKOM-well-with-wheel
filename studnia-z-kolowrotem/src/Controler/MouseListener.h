@@ -1,8 +1,8 @@
 #pragma once
 
 #include "ActionListener.h"
-#include <mutex>
-#include <set>
+
+#include <unordered_set>
 
 class MouseListener : public virtual ActionListener {
 public:
@@ -14,6 +14,5 @@ public:
 protected:
 	virtual void onCursorMove(double x, double y) = 0;
 
-	static std::set<MouseListener*> listeners;
-	static std::mutex mutex;
+	static std::unordered_set<MouseListener*> listeners;
 };
