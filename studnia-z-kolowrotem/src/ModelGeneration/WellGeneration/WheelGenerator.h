@@ -6,6 +6,7 @@
 #include "../BasicGenerators/HollowCylinderGenerator.h"
 #include "Model/WellModel.h"
 #include "Model/WheelModel.h"
+
 #include <vector>
 
 class WheelGenerator final : public CompoundModelGenerator {
@@ -17,10 +18,11 @@ public:
 
 private:
 	void prepareGenerators() override;
+
 	void prepareMiddleElementGenerator();
 	void prepareRingGenerator();
-	void prepareCuboidGenerators();
 	void prepareHoldingCylinderGenerator();
+	void prepareCuboidGenerators();
 	void prepareTransformation();
 
 	const WellModel& basicWellModel;

@@ -1,6 +1,9 @@
 #include "WheelGenerator.h"
 
 #include <glm/ext.hpp>
+#include <numbers>
+
+using namespace std::numbers;
 
 WheelGenerator::WheelGenerator(const WellModel& basicWellModel, const WheelModel& basicModel)
 	: basicWellModel{basicWellModel}, basicWheelModel{basicModel}, sampleRate{DEFAULT_SAMPLE_RATE} { }
@@ -18,61 +21,65 @@ void WheelGenerator::prepareGenerators() {
 }
 
 void WheelGenerator::prepareMiddleElementGenerator() {
-	middleElementGenerator.setHeight(basicWheelModel.getHeight());
 	middleElementGenerator.setSampleRate(sampleRate);
+	middleElementGenerator.setHeight(basicWheelModel.getHeight());
 	middleElementGenerator.setRadius(basicWheelModel.getMiddleElementRadius());
 	addGenerator(middleElementGenerator);
 }
 
 void WheelGenerator::prepareRingGenerator() {
-	ringGenerator.setHeight(basicWheelModel.getHeight());
 	ringGenerator.setSampleRate(sampleRate);
+	ringGenerator.setHeight(basicWheelModel.getHeight());
 	ringGenerator.setInnerRadius(basicWheelModel.getInnerRadius());
 	ringGenerator.setOuterRadius(basicWheelModel.getOuterRadius());
 	addGenerator(ringGenerator);
 }
 
-void WheelGenerator::prepareCuboidGenerators() {
-	cuboidGenerators.resize(basicWheelModel.getConnectorCount());
-	const float connectorWidth = basicWheelModel.getInnerRadius();
-	const float connectorLength = basicWheelModel.getMiddleElementRadius();
-
-	const float yTranslation = (basicWheelModel.getHeight() - basicWheelModel.getConnectorHeight()) / 2.0f;
-	const auto firstTranslation = glm::vec3{basicWheelModel.getInnerRadius() / 2.0f, yTranslation, 0.0f};
-	
-	const float innerAngle = glm::radians(360.0f / basicWheelModel.getConnectorCount());
-
-	float angle = 0.0f;
-	for(CuboidGenerator& generator : cuboidGenerators) {
-		generator.setHeight(basicWheelModel.getConnectorHeight());
-		generator.setLength(connectorLength);
-		generator.setWidth(connectorWidth);
-			
-		const auto translation = glm::translate(glm::rotateY(firstTranslation, -angle));
-		const auto rotation = glm::rotate(-angle, glm::vec3{0.0f, 1.0f, 0.0f});
-
-		generator.setTransformation(translation * rotation);
-		addGenerator(generator);
-
-		angle += innerAngle;
-	}
-}
-
 void WheelGenerator::prepareHoldingCylinderGenerator() {
 	holdingCylinderGenerator.setSampleRate(sampleRate);
+	holdingCylinderGenerator.setRadius(basicWheelModel.getMiddleElementRadius());
 
 	const float height = 2.0f * (basicWellModel.getInnerRadius() - basicWellModel.getBracketRadius());
 	holdingCylinderGenerator.setHeight(height);
-	holdingCylinderGenerator.setRadius(1.01f * basicWheelModel.getMiddleElementRadius());
-	holdingCylinderGenerator.setTransformation(glm::translate(glm::vec3{0.0f, -height, 0.0f}));
+
+	const glm::vec3 yTranslation = {0.0f, -height, 0.0f};
+	holdingCylinderGenerator.setTransformation(glm::translate(yTranslation));
+
 	addGenerator(holdingCylinderGenerator);
 }
 
-void WheelGenerator::prepareTransformation() {
-	const auto rotation = glm::rotate(-glm::half_pi<float>(), glm::vec3{0.0f, 0.0f, 1.0f});
+void WheelGenerator::prepareCuboidGenerators() {
+	cuboidGenerators.resize(basicWheelModel.getConnectorCount());
 
-	const glm::vec3 translationVector{basicWellModel.getInnerRadius(), basicWellModel.getHeight() + basicWellModel.getWheelHeight(), 0.0f};
-	const auto translation = glm::translate(translationVector);
-	
-	setTransformation(translation * rotation);
+	const glm::vec3 commonTranslation = {
+		basicWheelModel.getInnerRadius() / 2.0f,
+		(basicWheelModel.getHeight() - basicWheelModel.getConnectorHeight()) / 2.0f,
+		0.0f
+	};
+
+	const float angleChange = 2.0f * pi_v<float> / basicWheelModel.getConnectorCount();
+
+	for(float angle = 0.0f; CuboidGenerator& generator : cuboidGenerators) {
+		generator.setHeight(basicWheelModel.getConnectorHeight());
+		generator.setLength(basicWheelModel.getMiddleElementRadius());
+		generator.setWidth(basicWheelModel.getInnerRadius());
+
+		const auto translation = glm::translate(glm::rotateY(commonTranslation, -angle));
+		const auto rotation = glm::rotate(-angle, glm::vec3{0.0f, 1.0f, 0.0f});
+		generator.setTransformation(translation * rotation);
+
+		addGenerator(generator);
+		angle += angleChange;
+	}
+}
+
+void WheelGenerator::prepareTransformation() {
+	const auto rotation = glm::rotate(-pi_v<float> / 2.0f, glm::vec3{0.0f, 0.0f, 1.0f});
+
+	const glm::vec3 translation{
+		basicWellModel.getInnerRadius(),
+		basicWellModel.getHeight() + basicWellModel.getWheelHeight(),
+		0.0f
+	};
+	setTransformation(glm::translate(translation) * rotation);
 }

@@ -55,6 +55,7 @@ void Well::createWheel() {
 
 void Well::createRoof() {
 	WellRoofGenerator generator{basicModel, basicRoofModel};
+	generator.setSeed(std::random_device{}());
 	roofModel = generator.generateModel();
 	roofView.setModel(roofModel);
 }

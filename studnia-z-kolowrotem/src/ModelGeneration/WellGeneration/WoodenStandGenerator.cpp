@@ -20,11 +20,13 @@ void WoodenStandGenerator::prepareLeftBracketGenerator() {
 	leftBracketGenerator.setHeight(basicModel.getHeight() + basicModel.getBracketHeight());
 	leftBracketGenerator.setSampleRate(sampleRate);
 
-	const glm::vec3 translation = {
+	const glm::vec3 xTranslation = {
 		-(basicModel.getInnerRadius() - basicModel.getBracketRadius()),
-		0.0f, 0.0
+		0.0f,
+		0.0f
 	};
-	leftBracketGenerator.setTransformation(glm::translate(translation));
+	leftBracketGenerator.setTransformation(glm::translate(xTranslation));
+
 	addGenerator(leftBracketGenerator);
 }
 
@@ -33,18 +35,27 @@ void WoodenStandGenerator::prepareRightBracketGenerator() {
 	rightBracketGenerator.setHeight(basicModel.getHeight() + basicModel.getBracketHeight());
 	rightBracketGenerator.setSampleRate(sampleRate);
 
-	const glm::vec3 translation = {
+	const glm::vec3 xTranslation = {
 		basicModel.getInnerRadius() - basicModel.getBracketRadius(),
-		0.0f, 0.0
+		0.0f,
+		0.0f
 	};
-	rightBracketGenerator.setTransformation(glm::translate(translation));
+	rightBracketGenerator.setTransformation(glm::translate(xTranslation));
+
 	addGenerator(rightBracketGenerator);
 }
 
 void WoodenStandGenerator::prepareLogGenerator() {
 	logGenerator.setWidth(basicModel.getInnerRadius() * 2.0f);
-	logGenerator.setHeight(0.2f);
+	logGenerator.setHeight(basicModel.getLogHeight());
 	logGenerator.setLength(basicModel.getBracketRadius() * 2.0f);
-	logGenerator.setTransformation(glm::translate(glm::vec3{0.0f, basicModel.getBracketHeight() + basicModel.getHeight(), 0.0f}));
+
+	const glm::vec3 yTranslation = glm::vec3{
+		0.0f,
+		basicModel.getBracketHeight() + basicModel.getHeight(),
+		0.0f
+	};
+	logGenerator.setTransformation(glm::translate(yTranslation));
+	
 	addGenerator(logGenerator);
 }

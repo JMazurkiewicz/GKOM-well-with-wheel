@@ -4,8 +4,14 @@
 #include <glm/ext.hpp>
 
 WellRoofGenerator::WellRoofGenerator(const WellModel& basicWellModel, const RoofModel& basicRoofModel)
-	: basicWellModel{basicWellModel}, basicRoofModel{basicRoofModel}, randomNumberGenerator{std::random_device{}()},
-	roofWidth{2.0f * basicWellModel.getInnerRadius()}, tileWidth{roofWidth / basicRoofModel.getTileCount()} { }
+	: basicWellModel{basicWellModel},
+	basicRoofModel{basicRoofModel},
+	roofWidth{2.0f * basicWellModel.getInnerRadius()},
+	tileWidth{roofWidth / basicRoofModel.getTileCount()} { }
+
+void WellRoofGenerator::setSeed(unsigned newSeed) {
+	randomGenerator.seed(newSeed);
+}
 
 void WellRoofGenerator::prepareGenerators() {
 	prepareDistribution();
@@ -15,47 +21,37 @@ void WellRoofGenerator::prepareGenerators() {
 }
 
 void WellRoofGenerator::prepareDistribution() {
-	using Param = decltype(distribution)::param_type;
 	const float minTileLength = basicRoofModel.getMinTileLength();
 	const float maxTileLength = basicRoofModel.getMaxTileLength();
+
+	using Param = decltype(distribution)::param_type;
 	distribution.param(Param{minTileLength, maxTileLength});
 }
 
 void WellRoofGenerator::prepareLeftTileGenerators() {
-	leftTilesGenerators.resize(basicRoofModel.getTileCount());
-
-	const auto rotation = glm::rotate(basicRoofModel.getAngle(), glm::vec3{1.0f, 0.0f, 0.0f});
-	float xTranslation = (roofWidth - tileWidth) / 2.0f;
-	
-	for(CuboidGenerator& generator : leftTilesGenerators) {
-		const float tileLength = distribution(randomNumberGenerator);
-
-		generator.setHeight(basicRoofModel.getTileHeight());
-		generator.setLength(tileLength);
-		generator.setWidth(tileWidth);
-		
-		const auto translation = glm::translate(glm::vec3{xTranslation, 0.0f, tileLength / 2.0f});
-		generator.setTransformation(rotation * translation);
-
-		addGenerator(generator);
-		xTranslation -= tileWidth;
-	}
+	prepareTileGenerators(leftTilesGenerators, 1);
 }
 
 void WellRoofGenerator::prepareRightTileGenerators() {
-	rightTilesGenerators.resize(basicRoofModel.getTileCount());
+	prepareTileGenerators(rightTilesGenerators, -1);
+}
 
-	const auto rotation = glm::rotate(-basicRoofModel.getAngle(), glm::vec3{1.0f, 0.0f, 0.0f});
+void WellRoofGenerator::prepareTileGenerators(std::vector<CuboidGenerator>& tilesGenerators, int sign) {
+	tilesGenerators.resize(basicRoofModel.getTileCount());
+
+	const auto rotation = glm::rotate(sign * basicRoofModel.getAngle(), glm::vec3{1.0f, 0.0f, 0.0f});
 	float xTranslation = (roofWidth - tileWidth) / 2.0f;
 
-	for(CuboidGenerator& generator : rightTilesGenerators) {
-		const float tileLength = distribution(randomNumberGenerator);
+	for(CuboidGenerator& generator : tilesGenerators) {
+		const float tileLength = distribution(randomGenerator);
 
-		generator.setHeight(basicRoofModel.getTileHeight());
 		generator.setLength(tileLength);
+		generator.setHeight(basicRoofModel.getTileHeight());
 		generator.setWidth(tileWidth);
 
-		const auto translation = glm::translate(glm::vec3{xTranslation, 0.0f, -(tileLength / 2.0f)});
+		const float zTranslation = sign * (tileLength / 2.0f);
+		const auto translation = glm::translate(glm::vec3{xTranslation, 0.0f, zTranslation});
+		
 		generator.setTransformation(rotation * translation);
 
 		addGenerator(generator);

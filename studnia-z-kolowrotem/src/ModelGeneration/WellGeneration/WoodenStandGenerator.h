@@ -9,7 +9,8 @@ class WoodenStandGenerator final : public CompoundModelGenerator {
 public:
 	static constexpr unsigned DEFAULT_SAMPLE_RATE = 32;
 	
-	WoodenStandGenerator(const WellModel& basicModel);
+	explicit WoodenStandGenerator(const WellModel& basicModel);
+	
 	void setSampleRate(unsigned newSampleRate);
 
 private:
