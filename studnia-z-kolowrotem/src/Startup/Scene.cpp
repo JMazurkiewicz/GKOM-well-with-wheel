@@ -1,6 +1,5 @@
 #include "Scene.h"
 
-#include "Controler/Camera.h"
 #include <glm/ext.hpp>
 #include <iostream>
 #include <thread>
@@ -9,13 +8,14 @@ namespace this_thread = std::this_thread;
 using namespace std::chrono_literals;
 
 Scene::Scene(MainWindow& window)
-: windowHandle{window}, vao{0}, camera{window},
-mainShader{"assets/shaders/gl_05.vert", "assets/shaders/gl_05.frag"},
-well{window}
+	: window{window},
+	vao{0},
+	camera{window},
+	mainShader{"assets/shaders/main.vert", "assets/shaders/main.frag"},
+	well{window}
 {	
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
-	camera.listenOn(window);
 	glBindVertexArray(0);
 }
 
@@ -42,8 +42,8 @@ void Scene::start() {
 		glBindVertexArray(vao);
 		update();
 
-		windowHandle.swapBuffers();
-		//this_thread::sleep_for(10ms);
+		window.swapBuffers();
+		this_thread::sleep_for(10ms);
 		glfwPollEvents();
 	} while(!shouldClose());
 }
@@ -71,6 +71,7 @@ void Scene::update() {
 }
 
 bool Scene::shouldClose() const {
-	return glfwGetKey(windowHandle.getHandle(), GLFW_KEY_ESCAPE) == GLFW_PRESS ||
-		   windowHandle.shouldClose();
+	return
+		glfwGetKey(window.getHandle(), GLFW_KEY_ESCAPE) == GLFW_PRESS ||
+		window.shouldClose();
 }

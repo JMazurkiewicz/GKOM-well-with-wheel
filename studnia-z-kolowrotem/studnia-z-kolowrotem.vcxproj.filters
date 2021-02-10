@@ -284,45 +284,27 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="src\View\texture.DDS">
+    <Image Include="assets\textures\grass.dds">
       <Filter>Assets\Textures</Filter>
     </Image>
-    <Image Include="yas.DDS">
+    <Image Include="assets\textures\plank.dds">
       <Filter>Assets\Textures</Filter>
     </Image>
-    <Image Include="grass.DDS">
+    <Image Include="assets\textures\sky.dds">
       <Filter>Assets\Textures</Filter>
     </Image>
-    <Image Include="wood.DDS">
+    <Image Include="assets\textures\stone.dds">
       <Filter>Assets\Textures</Filter>
     </Image>
-    <Image Include="test.DDS">
-      <Filter>Assets\Textures</Filter>
-    </Image>
-    <Image Include="stone.DDS">
-      <Filter>Assets\Textures</Filter>
-    </Image>
-    <Image Include="background.DDS">
-      <Filter>Assets\Textures</Filter>
-    </Image>
-    <Image Include="stone2.DDS">
-      <Filter>Assets\Textures</Filter>
-    </Image>
-    <Image Include="sky.DDS">
-      <Filter>Assets\Textures</Filter>
-    </Image>
-    <Image Include="src\View\abc.DDS">
-      <Filter>Assets\Textures</Filter>
-    </Image>
-    <Image Include="weiti.png">
+    <Image Include="assets\textures\wood.dds">
       <Filter>Assets\Textures</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\shaders\gl_05.frag">
+    <None Include="assets\shaders\main.frag">
       <Filter>Assets\Shaders</Filter>
     </None>
-    <None Include="assets\shaders\gl_05.vert">
+    <None Include="assets\shaders\main.vert">
       <Filter>Assets\Shaders</Filter>
     </None>
   </ItemGroup>

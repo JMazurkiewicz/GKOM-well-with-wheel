@@ -8,18 +8,13 @@
 
 namespace {
 	void setupLocale() {
-		std::locale loc;
-
 		try {
-			loc = std::locale{"pl"};
-		} catch(const std::exception& e) {
-			loc = std::locale{""};
-			std::cerr << "Application failed to use `pl` locale (" << e.what() << ").\n";
+			std::locale loc{""};
+			std::locale::global(loc);
+			std::cout.imbue(loc);
+		} catch(const std::runtime_error& e) {
+			std::cerr << "Program failed to use custom locale: `" << e.what() << "`\n";
 		}
-
-		std::cerr << "Current locale: `" << loc.name() << "` locale.\n";
-		std::locale::global(loc);
-		std::cout.imbue(loc);
 	}
 
 	void handleUnexpectedException(const std::exception& e) {

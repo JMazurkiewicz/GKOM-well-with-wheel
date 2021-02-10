@@ -234,21 +234,15 @@
     <ClInclude Include="src\View\StaticGlView.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="background.DDS" />
-    <Image Include="grass.DDS" />
-    <Image Include="sky.DDS" />
-    <Image Include="src\View\abc.DDS" />
-    <Image Include="src\View\texture.DDS" />
-    <Image Include="stone.DDS" />
-    <Image Include="stone2.DDS" />
-    <Image Include="test.DDS" />
-    <Image Include="weiti.png" />
-    <Image Include="wood.DDS" />
-    <Image Include="yas.DDS" />
+    <Image Include="assets\textures\grass.dds" />
+    <Image Include="assets\textures\plank.dds" />
+    <Image Include="assets\textures\sky.dds" />
+    <Image Include="assets\textures\stone.dds" />
+    <Image Include="assets\textures\wood.dds" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\shaders\gl_05.frag" />
-    <None Include="assets\shaders\gl_05.vert" />
+    <None Include="assets\shaders\main.frag" />
+    <None Include="assets\shaders\main.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

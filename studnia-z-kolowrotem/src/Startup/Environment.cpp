@@ -9,9 +9,9 @@ Environment::Environment() {
 
 void Environment::update() {
 	Texture texture;
-	texture.loadTexture("grass.DDS");
+	texture.loadTexture("assets/textures/grass.dds");
 	grassView.draw();
-	texture.loadTexture("sky.DDS");
+	texture.loadTexture("assets/textures/sky.dds");
 	landscapeView.draw();
 }
 
