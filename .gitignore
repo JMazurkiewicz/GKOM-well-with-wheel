@@ -1,10 +1,12 @@
-.vs*
+# Binary files
 *.o
 *.exe
 *.obj
 *.dll
-*.pdf
-*.log
 
+# Configuration files
+.vs*
+
+# Output files
 Debug/
 Release/
