@@ -21,7 +21,7 @@ private:
 	void createVertices() override;
 
 	void createIndices() override;
-	void adjustInnerIndices(unsigned firstInnerIndex);
+	void adjustInnerIndices();
 	void connectTop();
 
 	void createTexCoords() override;

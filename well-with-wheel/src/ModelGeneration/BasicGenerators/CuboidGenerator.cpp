@@ -69,9 +69,9 @@ void CuboidGenerator::createTexCoords() {
 	for(unsigned sideIndex = 0; sideIndex < 6; ++sideIndex) {
 		const unsigned baseIndex = 4 * sideIndex;
 
-		vertices[baseIndex + 0].texture = glm::vec2{1, 1};
-		vertices[baseIndex + 1].texture = glm::vec2{0, 1};
-		vertices[baseIndex + 2].texture = glm::vec2{0, 0};
-		vertices[baseIndex + 3].texture = glm::vec2{1, 0};
+		vertices[baseIndex + 0].texture = {1, 1};
+		vertices[baseIndex + 1].texture = {0, 1};
+		vertices[baseIndex + 2].texture = {0, 0};
+		vertices[baseIndex + 3].texture = {1, 0};
 	}
 }

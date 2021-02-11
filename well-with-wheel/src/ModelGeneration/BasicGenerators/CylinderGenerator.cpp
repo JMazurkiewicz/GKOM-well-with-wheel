@@ -45,12 +45,12 @@ void CylinderGenerator::createUpperCircle() {
 }
 
 void CylinderGenerator::createCircle(const glm::vec3& start) {
-    const float angle = 2.0f * pi_v<float> / getSampleRate();
+    const float angleChange = 2.0f * pi_v<float> / getSampleRate();
 
     glm::vec3 pattern = start;
     for(unsigned index = 0; index < getSampleCount(); ++index) {
         vertices.push_back(pattern);
-        pattern = glm::rotateY(pattern, angle);
+        pattern = glm::rotateY(pattern, angleChange);
     }
 }
 

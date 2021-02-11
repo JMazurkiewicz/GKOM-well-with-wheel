@@ -1,6 +1,9 @@
 #include "HollowCylinderGenerator.h"
 
 #include <array>
+#include <ranges>
+
+namespace views = std::views;
 
 void HollowCylinderGenerator::setInnerRadius(float newInnerRadius) {
     innerRadius = newInnerRadius;
@@ -25,35 +28,31 @@ unsigned HollowCylinderGenerator::getInnerCylinderOffset() const {
 void HollowCylinderGenerator::createVertices() {
     setRadius(outerRadius);
     CylinderGenerator::createVertices();
-    CylinderGenerator::createIndices();
     
     setRadius(innerRadius);
     CylinderGenerator::createVertices();
-    CylinderGenerator::createIndices();
 }
 
 void HollowCylinderGenerator::createIndices() {
-    const unsigned firstInnerIndex = CylinderGenerator::getVertexCount();
-    adjustInnerIndices(firstInnerIndex);
+    CylinderGenerator::createIndices();
+    CylinderGenerator::createIndices();
+    adjustInnerIndices();
     connectTop();
 }
 
-void HollowCylinderGenerator::adjustInnerIndices(unsigned firstInnerIndex) {
-    for(unsigned index = firstInnerIndex; index < indices.size(); ++index) {
-        indices[index].advance(getInnerCylinderOffset());
+void HollowCylinderGenerator::adjustInnerIndices() {
+    const unsigned innerCylinderOffset = getInnerCylinderOffset();
+    for(IndexGroup& indexGroup : indices | views::drop(innerCylinderOffset - 2)) {
+        indexGroup.advance(innerCylinderOffset);
     }
 }
 
 void HollowCylinderGenerator::connectTop() {
-    const auto nextIndex = [this](unsigned index) {
-        return (++index == getSampleRate() ? 0u : index);
-    };
-
     for(unsigned index = 0; index < getSampleRate(); ++index) {
         const unsigned outerUpperIndex = index + getUpperCircleOffset() + getOuterCyilnderOffset();
-        const unsigned outerUpperNext = nextIndex(outerUpperIndex);
+        const unsigned outerUpperNext = outerUpperIndex + 1;
         const unsigned innerUpperIndex = index + getUpperCircleOffset() + getInnerCylinderOffset();
-        const unsigned innerUpperNext = nextIndex(innerUpperIndex);
+        const unsigned innerUpperNext = innerUpperIndex + 1;
 
         indices.push_back({innerUpperIndex, outerUpperNext, innerUpperNext});
         indices.push_back({innerUpperIndex, outerUpperIndex, outerUpperNext});
@@ -68,16 +67,16 @@ void HollowCylinderGenerator::createTexCoords() {
 
     for(unsigned index = 0; index < getSampleCount(); ++index) {
         const unsigned outerLowerIndex = index + getLowerCircleOffset() + getOuterCyilnderOffset();
-        vertices[outerLowerIndex].texture = glm::vec2{xTex, yTex[0]};
+        vertices[outerLowerIndex].texture = {xTex, yTex[0]};
 
         const unsigned outerUpperIndex = index + getUpperCircleOffset() + getOuterCyilnderOffset();
-        vertices[outerUpperIndex].texture = glm::vec2{xTex, yTex[1]};
+        vertices[outerUpperIndex].texture = {xTex, yTex[1]};
         
         const unsigned innerUpperIndex = index + getUpperCircleOffset() + getInnerCylinderOffset();
-        vertices[innerUpperIndex].texture = glm::vec2{xTex, yTex[2]};
+        vertices[innerUpperIndex].texture = {xTex, yTex[2]};
         
         const unsigned innerLowerIndex = index + getLowerCircleOffset() + getInnerCylinderOffset();
-        vertices[innerLowerIndex].texture = glm::vec2{xTex, yTex[3]};
+        vertices[innerLowerIndex].texture = {xTex, yTex[3]};
 
         xTex += dx;
     }
