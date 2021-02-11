@@ -1,24 +1,19 @@
 #pragma once
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include <GL/glew.h>
 
-#include <GLFW/glfw3.h>
-
-
 class Texture {
-
 public:
-
-	void loadTexture(const char* imagepath);
+	Texture() = default;
 	~Texture();
 
+	Texture(const Texture&) = delete;
+	Texture& operator=(const Texture&) = delete;
+
+	void loadTexture(const char* path);
+
 private:
-	GLuint texture = 0;
-
 	void destroy();
-};
 
+	GLuint texture = 0;
+};

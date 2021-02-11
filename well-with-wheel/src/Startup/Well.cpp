@@ -18,9 +18,11 @@ void Well::update() {
 	Texture texture;
 	texture.loadTexture("assets/textures/stone.dds");
 	baseView.draw();
+
 	texture.loadTexture("assets/textures/wood.dds");
 	woodenStandView.draw();
 	wheelView.draw();
+	
 	texture.loadTexture("assets/textures/plank.dds");
 	roofView.draw();
 }
