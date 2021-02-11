@@ -1,14 +1,14 @@
 #pragma once
 
 #include <GL/glew.h>
-#include "LibraryException.h"
+#include <stdexcept>
 
 enum class ShaderErrc {
 	SHADER_COMPILATION,
 	SHADER_PROGRAM_LINKING
 };
 
-class ShaderException : public LibraryException {
+class ShaderException : public std::runtime_error {
 public:
 	explicit ShaderException(ShaderErrc code, GLuint associatedId);
 

@@ -1,6 +1,6 @@
 #include "GlProgram.h"
 
-#include "LibraryExceptions/ShaderException.h"
+#include "ShaderException.h"
 
 GlProgram::GlProgram() : id{glCreateProgram()} { }
 

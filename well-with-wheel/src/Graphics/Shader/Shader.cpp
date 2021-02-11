@@ -1,6 +1,6 @@
 #include "Shader.h"
 
-#include "LibraryExceptions/ShaderException.h"
+#include "ShaderException.h"
 
 #include <fstream>
 #include <iterator>

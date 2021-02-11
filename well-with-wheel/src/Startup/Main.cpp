@@ -1,4 +1,4 @@
-#include "LibraryExceptions/ShaderException.h"
+#include "Graphics/Shader/ShaderException.h"
 #include "MainWindow.h"
 #include "Scene.h"
 
@@ -30,9 +30,16 @@ namespace {
 
 	void handleShaderException(const ShaderException& e) {
 		std::cerr << "Unexpected shader exception:\n"
-			"  what(): \"" << e.what() << "\"\n"
-			"  id: " << e.getAssociatedId() << "\n"
-			"  situation: " << e.getSituation() << '\n';
+			"  shader id: " << e.getAssociatedId() << "\n"
+			"  situation: " << e.getSituation() << "\n"
+			"  what():\n    ";
+
+		for(char symbol : std::string_view{e.what()}) {
+			std::cerr << symbol;
+			if(symbol == '\n') {
+				std::cerr << "    ";
+			}
+		}
 	}
 
 	void glfwErrorCallback(int errorCode, const char* description) {

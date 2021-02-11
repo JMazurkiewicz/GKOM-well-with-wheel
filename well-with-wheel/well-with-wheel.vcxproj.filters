@@ -20,9 +20,6 @@
     <Filter Include="Sources\Model">
       <UniqueIdentifier>{103af79b-975a-4360-a806-afface47646f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\LibraryExceptions">
-      <UniqueIdentifier>{27ce10f0-4539-4762-8481-8285a6b631d6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sources\Startup">
       <UniqueIdentifier>{8b417cb7-c684-4037-ae5f-455f7307ffd2}</UniqueIdentifier>
     </Filter>
@@ -52,9 +49,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\LibraryExceptions\ShaderException.cpp">
-      <Filter>Sources\LibraryExceptions</Filter>
-    </ClCompile>
     <ClCompile Include="src\System\Window.cpp">
       <Filter>Sources\System</Filter>
     </ClCompile>
@@ -157,6 +151,9 @@
     <ClCompile Include="src\Graphics\Shader\ShaderType.cpp">
       <Filter>Sources\Graphics\Shader</Filter>
     </ClCompile>
+    <ClCompile Include="src\Graphics\Shader\ShaderException.cpp">
+      <Filter>Sources\Graphics\Shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\System\Window.h">
@@ -167,12 +164,6 @@
     </ClInclude>
     <ClInclude Include="src\Model\WellModel.h">
       <Filter>Sources\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="src\LibraryExceptions\LibraryException.h">
-      <Filter>Sources\LibraryExceptions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\LibraryExceptions\ShaderException.h">
-      <Filter>Sources\LibraryExceptions</Filter>
     </ClInclude>
     <ClInclude Include="src\Startup\Scene.h">
       <Filter>Sources\Startup</Filter>
@@ -277,6 +268,9 @@
       <Filter>Sources\Graphics\Shader</Filter>
     </ClInclude>
     <ClInclude Include="src\Graphics\Shader\ShaderType.h">
+      <Filter>Sources\Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Shader\ShaderException.h">
       <Filter>Sources\Graphics\Shader</Filter>
     </ClInclude>
   </ItemGroup>

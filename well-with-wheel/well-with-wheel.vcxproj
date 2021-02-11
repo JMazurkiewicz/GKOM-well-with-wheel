@@ -91,10 +91,10 @@
     <ClCompile Include="src\GlModel\GlModel.cpp" />
     <ClCompile Include="src\Graphics\Shader\GlProgram.cpp" />
     <ClCompile Include="src\Graphics\Shader\Shader.cpp" />
+    <ClCompile Include="src\Graphics\Shader\ShaderException.cpp" />
     <ClCompile Include="src\Graphics\Shader\ShaderType.cpp" />
     <ClCompile Include="src\Graphics\Texture.cpp" />
     <ClCompile Include="src\Graphics\Vertex.cpp" />
-    <ClCompile Include="src\LibraryExceptions\ShaderException.cpp" />
     <ClCompile Include="src\ModelGeneration\BasicGenerators\ClosedCylinderGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\BasicGenerators\CompoundModelGenerator.cpp" />
     <ClCompile Include="src\ModelGeneration\BasicGenerators\CuboidGenerator.cpp" />
@@ -129,11 +129,10 @@
     <ClInclude Include="src\Graphics\IndexGroup.h" />
     <ClInclude Include="src\Graphics\Shader\GlProgram.h" />
     <ClInclude Include="src\Graphics\Shader\Shader.h" />
+    <ClInclude Include="src\Graphics\Shader\ShaderException.h" />
     <ClInclude Include="src\Graphics\Shader\ShaderType.h" />
     <ClInclude Include="src\Graphics\Texture.h" />
     <ClInclude Include="src\Graphics\Vertex.h" />
-    <ClInclude Include="src\LibraryExceptions\LibraryException.h" />
-    <ClInclude Include="src\LibraryExceptions\ShaderException.h" />
     <ClInclude Include="src\ModelGeneration\BasicGenerators\ClosedCylinderGenerator.h" />
     <ClInclude Include="src\ModelGeneration\BasicGenerators\CompoundModelGenerator.h" />
     <ClInclude Include="src\ModelGeneration\BasicGenerators\CuboidGenerator.h" />
