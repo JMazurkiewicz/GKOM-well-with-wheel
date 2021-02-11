@@ -52,20 +52,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\LibraryExceptions\SoilException.cpp">
-      <Filter>Sources\LibraryExceptions</Filter>
-    </ClCompile>
     <ClCompile Include="src\LibraryExceptions\ShaderException.cpp">
       <Filter>Sources\LibraryExceptions</Filter>
     </ClCompile>
     <ClCompile Include="src\System\Window.cpp">
       <Filter>Sources\System</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Graphics\Image.cpp">
-      <Filter>Sources\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Graphics\MipmapTexture.cpp">
-      <Filter>Sources\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Startup\Main.cpp">
       <Filter>Sources\Startup</Filter>
@@ -182,15 +173,6 @@
     </ClInclude>
     <ClInclude Include="src\LibraryExceptions\ShaderException.h">
       <Filter>Sources\LibraryExceptions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\LibraryExceptions\SoilException.h">
-      <Filter>Sources\LibraryExceptions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Graphics\Image.h">
-      <Filter>Sources\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Graphics\MipmapTexture.h">
-      <Filter>Sources\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Startup\Scene.h">
       <Filter>Sources\Startup</Filter>
