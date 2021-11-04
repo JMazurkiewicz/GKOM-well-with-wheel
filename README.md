@@ -47,11 +47,11 @@ cd well-with-wheel
 
 ### Reference photo
 
-![ref](docs/img/ref.png)
+<img src="docs/img/ref.png" alt="ref" width="600" />
 
 ### Finished Model
 
-![finished](docs/img/finished.png)
+<img src="docs/img/finished.png" alt="finished" width="600" />
 
 ## Movement
 
@@ -66,11 +66,15 @@ Wheel:
 * Left arrow - rotate left
 * Right arrow - rotate right
 
+Other:
+
+* ESC - exit
+
 ## Branches
 
 * `main` - the main branch with updated project
 * `dev` - obsolete branch with minor fixes done after handing in assignment
-* `original` - old branch with original, handed in, project
+* `original` - old branch with original, handed in, project (with docs and most of commit messages written in Polish)
 
 ## Team
 
@@ -79,3 +83,9 @@ Team working on `original` branch:
 * Jakub Mazurkiewicz ([@JMazurkiewicz](https://github.com/JMazurkiewicz)) - model generation, program architecture, refactorization, introduction of C++20 features
 * Damian Piotrowski ([@dam1508](https://github.com/dam1508)) - light, textures
 * Jan Such ([@JeffHathford](https://github.com/JeffHathford)) - camera and movement
+
+## Score
+
+This was originally project for "Computer graphics (winter 2020)" course at Warsaw University of Technology.
+
+Score: **25/30** (83.3%)
