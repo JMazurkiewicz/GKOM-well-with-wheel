@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Controler/WheelControler.h"
+#include "Controller/WheelController.h"
 #include "GlModel/GlModel.h"
 #include "Graphics/Texture.h"
 #include "Model/RoofModel.h"
@@ -39,7 +39,7 @@ private:
 
     GlModel wheelModel;
     DynamicGlView wheelView;
-    WheelControler wheelControler;
+    WheelController wheelController;
 
     GlModel roofModel;
     StaticGlView roofView;

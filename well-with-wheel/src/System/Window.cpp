@@ -1,7 +1,7 @@
 #include "Window.h"
 
-#include "Controler/KeyboardListener.h"
-#include "Controler/MouseListener.h"
+#include "Controller/KeyboardListener.h"
+#include "Controller/MouseListener.h"
 
 #include <stdexcept>
 

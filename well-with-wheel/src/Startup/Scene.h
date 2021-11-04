@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Controler/Camera.h"
+#include "Controller/Camera.h"
 #include "Environment.h"
 #include "Graphics/Shader/GlProgram.h"
 #include "MainWindow.h"

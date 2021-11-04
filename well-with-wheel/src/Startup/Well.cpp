@@ -6,15 +6,15 @@
 #include "ModelGeneration/WellGeneration/WoodenStandGenerator.h"
 
 Well::Well(Window& window)
-    : wheelControler{basicModel} {
+    : wheelController{basicModel} {
     create();
-    wheelControler.listenOn(window);
+    wheelController.listenOn(window);
     stopwatch.reset();
 }
 
 void Well::update() {
     const float elapsedTime = stopwatch.getElapsedTime().count();
-    wheelControler.update(elapsedTime);
+    wheelController.update(elapsedTime);
 
     Texture texture;
     texture.loadTexture("assets/textures/stone.dds");
@@ -52,8 +52,8 @@ void Well::createWheel() {
     wheelModel = generator.generateModel();
     wheelView.setModel(wheelModel);
 
-    wheelControler.setModel(wheelModel);
-    wheelControler.setView(wheelView);
+    wheelController.setModel(wheelModel);
+    wheelController.setView(wheelView);
 }
 
 void Well::createRoof() {

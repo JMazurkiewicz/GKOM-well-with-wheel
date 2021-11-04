@@ -9,12 +9,12 @@ set(WWW_DIRECTORY well-with-wheel/src)
 
 set(SOURCES
 
-    ${WWW_DIRECTORY}/Controler/ActionListener.cpp
-    ${WWW_DIRECTORY}/Controler/ActionListener.cpp
-    ${WWW_DIRECTORY}/Controler/Camera.cpp
-    ${WWW_DIRECTORY}/Controler/KeyboardListener.cpp
-    ${WWW_DIRECTORY}/Controler/MouseListener.cpp
-    ${WWW_DIRECTORY}/Controler/WheelControler.cpp
+    ${WWW_DIRECTORY}/Controller/ActionListener.cpp
+    ${WWW_DIRECTORY}/Controller/ActionListener.cpp
+    ${WWW_DIRECTORY}/Controller/Camera.cpp
+    ${WWW_DIRECTORY}/Controller/KeyboardListener.cpp
+    ${WWW_DIRECTORY}/Controller/MouseListener.cpp
+    ${WWW_DIRECTORY}/Controller/WheelController.cpp
 
     ${WWW_DIRECTORY}/GlModel/GlModel.cpp
 
