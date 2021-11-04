@@ -10,3 +10,5 @@
 # Output files
 Debug/
 Release/
+[Bb]uild/
+[Bb]uild[A-Za-z]/
