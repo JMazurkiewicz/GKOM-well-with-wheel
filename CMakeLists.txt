@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 project("GKOM-well-with-wheel")
 
@@ -64,14 +64,10 @@ target_include_directories(well-with-wheel PUBLIC ${PROJECT_SOURCE_DIR}/well-wit
 
 add_subdirectory(external/glfw EXCLUDE_FROM_ALL)
 target_link_libraries(well-with-wheel PRIVATE glfw)
-#target_include_directories(well-with-wheel PRIVATE external/glew/include)
-#target_link_libraries(well-with-wheel PRIVATE ../lib/glfw3)
 
 add_definitions(-DGLEW_STATIC)
 add_subdirectory(external/glew EXCLUDE_FROM_ALL)
 target_link_libraries(well-with-wheel PRIVATE libglew_static)
-#target_include_directories(well-with-wheel PRIVATE external/glfw/include)
-#target_link_libraries(well-with-wheel PRIVATE ../lib/glew32s)
 
 add_subdirectory(external/glm EXCLUDE_FROM_ALL)
 target_link_libraries(well-with-wheel PRIVATE glm)
