@@ -64,6 +64,11 @@ endif()
 add_executable(well-with-wheel ${SOURCES})
 target_include_directories(well-with-wheel PUBLIC ${WWW_DIRECTORY})
 
+if(UNIX)
+    # Suppress 'compound assignment with ‘volatile’-qualified left operand is deprecated' warning from glm library
+    target_compile_options(well-with-wheel PRIVATE "-Wno-volatile")
+endif()
+
 add_subdirectory(external/glfw EXCLUDE_FROM_ALL)
 target_link_libraries(well-with-wheel PRIVATE glfw)
 
