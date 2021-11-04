@@ -4,10 +4,10 @@
 
 class DynamicGlView : public GlView {
 public:
-	using GlView::GlView;
+    using GlView::GlView;
 
-	void updateView();
+    void updateView();
 
 protected:
-	void updateModel() override;
+    void updateModel() override;
 };

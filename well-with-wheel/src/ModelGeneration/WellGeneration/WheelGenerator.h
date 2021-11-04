@@ -11,26 +11,26 @@
 
 class WheelGenerator final : public CompoundModelGenerator {
 public:
-	static constexpr unsigned DEFAULT_SAMPLE_RATE = 24;
+    static constexpr unsigned DEFAULT_SAMPLE_RATE = 24;
 
-	explicit WheelGenerator(const WellModel& basicWellModel, const WheelModel& basicModel);
-	void setSampleRate(unsigned newSampleRate);
+    explicit WheelGenerator(const WellModel& basicWellModel, const WheelModel& basicModel);
+    void setSampleRate(unsigned newSampleRate);
 
 private:
-	void prepareGenerators() override;
+    void prepareGenerators() override;
 
-	void prepareMiddleElementGenerator();
-	void prepareRingGenerator();
-	void prepareHoldingCylinderGenerator();
-	void prepareCuboidGenerators();
-	void prepareTransformation();
+    void prepareMiddleElementGenerator();
+    void prepareRingGenerator();
+    void prepareHoldingCylinderGenerator();
+    void prepareCuboidGenerators();
+    void prepareTransformation();
 
-	const WellModel& basicWellModel;
-	const WheelModel& basicWheelModel;
-	unsigned sampleRate;
+    const WellModel& basicWellModel;
+    const WheelModel& basicWheelModel;
+    unsigned sampleRate;
 
-	ClosedCylinderGenerator middleElementGenerator;
-	HollowCylinderGenerator ringGenerator;
-	std::vector<CuboidGenerator> cuboidGenerators;
-	CylinderGenerator holdingCylinderGenerator;
+    ClosedCylinderGenerator middleElementGenerator;
+    HollowCylinderGenerator ringGenerator;
+    std::vector<CuboidGenerator> cuboidGenerators;
+    CylinderGenerator holdingCylinderGenerator;
 };

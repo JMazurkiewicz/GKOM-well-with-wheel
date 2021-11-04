@@ -4,16 +4,16 @@
 
 class Texture {
 public:
-	Texture() = default;
-	~Texture();
+    Texture() = default;
+    ~Texture();
 
-	Texture(const Texture&) = delete;
-	Texture& operator=(const Texture&) = delete;
+    Texture(const Texture&) = delete;
+    Texture& operator=(const Texture&) = delete;
 
-	void loadTexture(const char* path);
+    void loadTexture(const char* path);
 
 private:
-	void destroy();
+    void destroy();
 
-	GLuint texture = 0;
+    GLuint texture = 0;
 };

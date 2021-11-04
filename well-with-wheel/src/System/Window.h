@@ -1,30 +1,31 @@
 #pragma once
 
 #include <GL/glew.h>
+
 #include <GLFW/glfw3.h>
 
 class Window {
 public:
-	explicit Window(int width, int height, const char* title);
-	~Window();
-	
-	Window(const Window&) = delete;
-	Window& operator=(const Window&) = delete;
+    explicit Window(int width, int height, const char* title);
+    ~Window();
 
-	int getWidth() const noexcept;
-	int getHeight() const noexcept;
-	GLFWwindow* getHandle() const;
+    Window(const Window&) = delete;
+    Window& operator=(const Window&) = delete;
 
-	float getAspectRatio() const;
+    int getWidth() const noexcept;
+    int getHeight() const noexcept;
+    GLFWwindow* getHandle() const;
 
-	void makeContextCurrent();
-	void swapBuffers();
-	bool shouldClose() const;
+    float getAspectRatio() const;
+
+    void makeContextCurrent();
+    void swapBuffers();
+    bool shouldClose() const;
 
 private:
-	void registerCallbacks();
+    void registerCallbacks();
 
-	int width;
-	int height;
-	GLFWwindow* handle;
+    int width;
+    int height;
+    GLFWwindow* handle;
 };

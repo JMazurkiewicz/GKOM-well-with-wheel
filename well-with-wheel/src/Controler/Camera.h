@@ -1,11 +1,12 @@
 #pragma once
 
-#include "MouseListener.h"
 #include "KeyboardListener.h"
+#include "MouseListener.h"
+
+#include <numbers>
 
 #include <GL/glew.h>
 #include <glm/glm.hpp>
-#include <numbers>
 
 class Camera final : public MouseListener, public KeyboardListener {
 public:

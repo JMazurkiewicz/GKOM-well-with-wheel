@@ -1,7 +1,8 @@
 #include "CylinderGenerator.h"
 
-#include <glm/ext.hpp>
 #include <numbers>
+
+#include <glm/ext.hpp>
 
 using namespace std::numbers;
 

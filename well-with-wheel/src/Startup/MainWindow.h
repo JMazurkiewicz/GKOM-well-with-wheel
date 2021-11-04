@@ -4,5 +4,5 @@
 
 class MainWindow : public Window {
 public:
-	MainWindow();
+    MainWindow();
 };

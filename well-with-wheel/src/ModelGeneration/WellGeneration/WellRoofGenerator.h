@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../BasicGenerators/CuboidGenerator.h"
 #include "../BasicGenerators/CompoundModelGenerator.h"
+#include "../BasicGenerators/CuboidGenerator.h"
 #include "Model/RoofModel.h"
 #include "Model/WellModel.h"
 
@@ -9,29 +9,29 @@
 
 class WellRoofGenerator final : public CompoundModelGenerator {
 public:
-	explicit WellRoofGenerator(const WellModel& basicWellModel, const RoofModel& basicRoofModel);
+    explicit WellRoofGenerator(const WellModel& basicWellModel, const RoofModel& basicRoofModel);
 
-	void setSeed(unsigned newSeed);
+    void setSeed(unsigned newSeed);
 
 private:
-	void prepareGenerators() override;
-	void prepareDistribution();
-	
-	void prepareLeftTileGenerators();
-	void prepareRightTileGenerators();
-	void prepareTileGenerators(std::vector<CuboidGenerator>& tilesGenerators, int sign);
+    void prepareGenerators() override;
+    void prepareDistribution();
 
-	void prepareTransformations();
+    void prepareLeftTileGenerators();
+    void prepareRightTileGenerators();
+    void prepareTileGenerators(std::vector<CuboidGenerator>& tilesGenerators, int sign);
 
-	const WellModel& basicWellModel;
-	const RoofModel& basicRoofModel;
+    void prepareTransformations();
 
-	const float roofWidth;
-	const float tileWidth;
+    const WellModel& basicWellModel;
+    const RoofModel& basicRoofModel;
 
-	std::mt19937 randomGenerator;
-	std::uniform_real_distribution<float> distribution;
+    const float roofWidth;
+    const float tileWidth;
 
-	std::vector<CuboidGenerator> leftTilesGenerators;
-	std::vector<CuboidGenerator> rightTilesGenerators;
+    std::mt19937 randomGenerator;
+    std::uniform_real_distribution<float> distribution;
+
+    std::vector<CuboidGenerator> leftTilesGenerators;
+    std::vector<CuboidGenerator> rightTilesGenerators;
 };

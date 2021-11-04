@@ -4,9 +4,9 @@
 
 class ClosedCylinderGenerator : public CylinderGenerator {
 public:
-	using CylinderGenerator::CylinderGenerator;
+    using CylinderGenerator::CylinderGenerator;
 
 private:
-	void createIndices() override;
-	void createConnections();
+    void createIndices() override;
+    void createConnections();
 };

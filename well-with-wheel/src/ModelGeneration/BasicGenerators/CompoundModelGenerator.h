@@ -6,17 +6,17 @@
 
 class CompoundModelGenerator : public ModelGenerator {
 public:
-	using ModelGenerator::ModelGenerator;
+    using ModelGenerator::ModelGenerator;
 
-	void addGenerator(ModelGenerator& generator);
+    void addGenerator(ModelGenerator& generator);
 
-	[[nodiscard]] unsigned getVertexCount() const override final;
+    [[nodiscard]] unsigned getVertexCount() const override final;
 
 protected:
-	virtual void prepareGenerators() = 0;
+    virtual void prepareGenerators() = 0;
 
 private:
-	void constructModel() override final;
+    void constructModel() override final;
 
-	std::vector<ModelGenerator*> generators;
+    std::vector<ModelGenerator*> generators;
 };

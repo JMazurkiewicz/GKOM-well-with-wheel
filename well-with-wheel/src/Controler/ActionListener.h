@@ -6,18 +6,18 @@
 
 class ActionListener {
 public:
-	ActionListener() = default;
-	virtual ~ActionListener() = default;
+    ActionListener() = default;
+    virtual ~ActionListener() = default;
 
-	ActionListener(const ActionListener&) = delete;
-	ActionListener& operator=(const ActionListener&) = delete;
+    ActionListener(const ActionListener&) = delete;
+    ActionListener& operator=(const ActionListener&) = delete;
 
-	void listenOn(Window& window);
-	void stopListeningOn(Window& window);
+    void listenOn(Window& window);
+    void stopListeningOn(Window& window);
 
 protected:
-	bool isListeningOn(GLFWwindow* windowHandle);
+    bool isListeningOn(GLFWwindow* windowHandle);
 
 private:
-	std::unordered_set<Window*> windows;
+    std::unordered_set<Window*> windows;
 };

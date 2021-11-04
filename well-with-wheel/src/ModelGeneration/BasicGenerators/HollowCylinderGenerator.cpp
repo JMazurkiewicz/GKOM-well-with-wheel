@@ -28,7 +28,7 @@ unsigned HollowCylinderGenerator::getInnerCylinderOffset() const {
 void HollowCylinderGenerator::createVertices() {
     setRadius(outerRadius);
     CylinderGenerator::createVertices();
-    
+
     setRadius(innerRadius);
     CylinderGenerator::createVertices();
 }
@@ -71,10 +71,10 @@ void HollowCylinderGenerator::createTexCoords() {
 
         const unsigned outerUpperIndex = index + getUpperCircleOffset() + getOuterCyilnderOffset();
         vertices[outerUpperIndex].texture = {xTex, yTex[1]};
-        
+
         const unsigned innerUpperIndex = index + getUpperCircleOffset() + getInnerCylinderOffset();
         vertices[innerUpperIndex].texture = {xTex, yTex[2]};
-        
+
         const unsigned innerLowerIndex = index + getLowerCircleOffset() + getInnerCylinderOffset();
         vertices[innerLowerIndex].texture = {xTex, yTex[3]};
 

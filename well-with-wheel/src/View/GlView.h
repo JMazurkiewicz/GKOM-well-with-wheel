@@ -7,20 +7,20 @@
 
 class GlView {
 public:
-	GlView();
-	virtual ~GlView();
+    GlView();
+    virtual ~GlView();
 
-	GlView(const GlView&) = delete;
-	GlView& operator=(const GlView&) = delete;
+    GlView(const GlView&) = delete;
+    GlView& operator=(const GlView&) = delete;
 
-	void setModel(const GlModel& newModel);
-	void draw();
+    void setModel(const GlModel& newModel);
+    void draw();
 
 protected:
-	virtual void updateModel() = 0;
+    virtual void updateModel() = 0;
 
-	GLuint vbo;
-	GLuint ebo;
+    GLuint vbo;
+    GLuint ebo;
 
-	const GlModel* model;
+    const GlModel* model;
 };

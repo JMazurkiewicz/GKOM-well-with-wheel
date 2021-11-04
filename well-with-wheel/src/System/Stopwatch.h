@@ -4,17 +4,17 @@
 
 class Stopwatch {
 public:
-	using Clock = std::chrono::steady_clock;
-	using TimePoint = Clock::time_point;
-	using Duration = std::chrono::duration<float>;
+    using Clock = std::chrono::steady_clock;
+    using TimePoint = Clock::time_point;
+    using Duration = std::chrono::duration<float>;
 
-	Stopwatch();
-	Stopwatch(const Stopwatch&) = delete;
-	Stopwatch& operator=(const Stopwatch&) = delete;
+    Stopwatch();
+    Stopwatch(const Stopwatch&) = delete;
+    Stopwatch& operator=(const Stopwatch&) = delete;
 
-	void reset();
-	Duration getElapsedTime();
+    void reset();
+    Duration getElapsedTime();
 
-private:	
-	TimePoint previous;
+private:
+    TimePoint previous;
 };

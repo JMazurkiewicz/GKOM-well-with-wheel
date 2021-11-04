@@ -2,7 +2,8 @@
 
 #include "ShaderException.h"
 
-GlProgram::GlProgram() : id{glCreateProgram()} { }
+GlProgram::GlProgram()
+    : id{glCreateProgram()} { }
 
 GlProgram::~GlProgram() {
     glDeleteProgram(id);

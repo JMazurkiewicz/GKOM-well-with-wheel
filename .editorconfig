@@ -9,3 +9,7 @@ trim_trailing_whitespace = true
 [*.{h,cpp}]
 indent_style = space
 indent_size = 4
+
+[*{.yaml,.clang-format}]
+indent_style = space
+indent_size = 2

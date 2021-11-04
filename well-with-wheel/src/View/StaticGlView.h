@@ -4,8 +4,8 @@
 
 class StaticGlView : public GlView {
 public:
-	using GlView::GlView;
+    using GlView::GlView;
 
 protected:
-	void updateModel() override;
+    void updateModel() override;
 };

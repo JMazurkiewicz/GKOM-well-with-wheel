@@ -6,16 +6,16 @@
 
 class WellBaseGenerator final : public CompoundModelGenerator {
 public:
-	static constexpr unsigned DEFAULT_SAMPLE_RATE = 32;
+    static constexpr unsigned DEFAULT_SAMPLE_RATE = 32;
 
-	WellBaseGenerator(const WellModel& basicModel);
-	void setSampleRate(unsigned newSampleRate);
+    WellBaseGenerator(const WellModel& basicModel);
+    void setSampleRate(unsigned newSampleRate);
 
 private:
-	void prepareGenerators() override;
+    void prepareGenerators() override;
 
-	const WellModel& basicModel;
-	unsigned sampleRate;
+    const WellModel& basicModel;
+    unsigned sampleRate;
 
-	HollowCylinderGenerator baseGenerator;
+    HollowCylinderGenerator baseGenerator;
 };

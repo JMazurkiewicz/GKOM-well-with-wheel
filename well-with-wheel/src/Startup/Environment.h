@@ -6,22 +6,22 @@
 
 class Environment {
 public:
-	Environment();
-	Environment(const Environment&) = delete;
-	Environment& operator=(const Environment&) = delete;
+    Environment();
+    Environment(const Environment&) = delete;
+    Environment& operator=(const Environment&) = delete;
 
-	void update();
+    void update();
 
 private:
-	void create();
-	void createGrass();
-	void createLandscape();
+    void create();
+    void createGrass();
+    void createLandscape();
 
-	EnvironmentModel basicModel;
+    EnvironmentModel basicModel;
 
-	GlModel grassModel;
-	StaticGlView grassView;
+    GlModel grassModel;
+    StaticGlView grassView;
 
-	GlModel landscapeModel;
-	StaticGlView landscapeView;
+    GlModel landscapeModel;
+    StaticGlView landscapeView;
 };
