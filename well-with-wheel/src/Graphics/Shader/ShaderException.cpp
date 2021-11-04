@@ -45,7 +45,7 @@ std::string ShaderException::getShaderInfoLog(GLuint shaderId) {
     }
 
     std::vector<char> log(logLength);
-    glGetShaderInfoLog(shaderId, log.size(), nullptr, log.data());
+    glGetShaderInfoLog(shaderId, static_cast<GLsizei>(log.size()), nullptr, log.data());
     return log.data();
 }
 
@@ -57,6 +57,6 @@ std::string ShaderException::getProgramInfoLog(GLuint programId) {
     }
 
     std::vector<char> log(logLength);
-    glGetShaderInfoLog(programId, log.size(), nullptr, log.data());
+    glGetShaderInfoLog(programId, static_cast<GLsizei>(log.size()), nullptr, log.data());
     return {log.data(), log.size()};
 }

@@ -32,7 +32,8 @@ void GlView::draw() {
     glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, texture)));
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-    glDrawElements(GL_TRIANGLES, 3 * model->getIndices().size(), GL_UNSIGNED_INT, static_cast<void*>(0));
+    glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(3 * model->getIndices().size()), GL_UNSIGNED_INT,
+                   static_cast<void*>(0));
 
     glDisableVertexAttribArray(3);
     glDisableVertexAttribArray(2);
