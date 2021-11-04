@@ -1,9 +1,10 @@
-[submodule "external/glew"]
-	path = external/glew
-	url = https://github.com/Perlmint/glew-cmake/tree/glew-cmake-2.1.0.git
 [submodule "external/glfw"]
 	path = external/glfw
-	url = https://github.com/glfw/glfw/tree/3.3
+	url = https://github.com/glfw/glfw
+[submodule "external/glew"]
+	path = external/glew
+	url = https://github.com/omniavinco/glew-cmake
 [submodule "external/glm"]
 	path = external/glm
-	url = https://github.com/g-truc/glm/tree/0.9.7.0
+	url = https://github.com/g-truc/glm
+	branch = 0.9.7
