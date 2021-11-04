@@ -4,11 +4,11 @@
 
 ### Reference photo
 
-![img](pics/ref.png)
+![ref](docs/img/ref.png)
 
 ### Finished Model
 
-![img](pics/finished.png)
+![finished](docs/img/finished.png)
 
 ### Building
 
