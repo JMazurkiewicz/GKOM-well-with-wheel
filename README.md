@@ -17,11 +17,12 @@ git submodule update
 Windows build requires at least Visual Studio 2019 (16.10).
 
 ```bat
+rem Build with CMake
 cmake -B build
 cmake --build build --config Release
-copy build\Release\well-with-wheel.exe well-with-wheel
 
-rem And run
+rem Show scene
+copy build\Release\well-with-wheel.exe well-with-wheel
 cd well-with-wheel
 well-with-wheel.exe
 ```
@@ -31,14 +32,15 @@ well-with-wheel.exe
 Linux build requires at least GCC 10.
 
 ```bash
-# Some of those dependencies may be needed (e.g. on Ubuntu)
+# Some of these dependencies may be needed (e.g. on Ubuntu)
 sudo apt install libxrandr-dev libxinerama-dev libxi-dev libxcursor-dev libglu1-mesa-dev
 
+# Build with CMake
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build
-cp build/well-with-wheel well-with-wheel
 
-# And run
+# Show scene
+cp build/well-with-wheel well-with-wheel
 cd well-with-wheel
 ./well-with-wheel
 ```
@@ -52,6 +54,12 @@ cd well-with-wheel
 ### Finished Model
 
 <img src="docs/img/finished.png" alt="finished" width="600" />
+
+### Features
+
+* Nothing on the scene is hard coded (everything is generated).
+* The roof is randomly generated upon the start.
+* The scene is customizable - parameters can be changed in `Startup/Well.cpp` file in `create*()` functions by modifying `basic*Model` objects (recompilation is required).
 
 ## Movement
 
