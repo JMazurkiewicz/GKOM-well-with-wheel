@@ -1,15 +1,27 @@
 # Binary files
 *.o
-*.exe
+*.so
+*.out
 *.obj
+*.lib
 *.dll
+*.exe
 
-# Configuration files
-.vs*
+# Build directories
+/[Bb]uild*/
 
-# Output files
-Debug/
-Release/
-[Bb]uild/
-[Bb]uild[A-Za-z]/
+# Visual Studio [Code] files
+.vs*/
 /out/
+*.sln
+*.vcxproj*
+
+# CLion directories
+.idea/
+cmake-build-*/
+
+# Code::Blocks files
+*.layout
+*.depend
+/bin/
+/obj/

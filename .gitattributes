@@ -1,3 +1,6 @@
-# Help GitHub with detecting C++ sources
+# Help GitHub with detecting C++ and GLSL sources
 *.h linguist-language=C++
 *.cpp linguist-language=C++
+
+*.frag linguist-language=GLSL
+*.vert linguist-language=GLSL
