@@ -55,12 +55,6 @@ set(SOURCES
     ${WWW_DIRECTORY}/View/StaticGlView.cpp
 )
 
-# Temporary solution - enable C++20 feature in MSVC
-if(MSVC)
-    add_definitions(/D__cpp_lib_ranges)
-    add_definitions(/D__cpp_lib_format)
-endif()
-
 add_executable(well-with-wheel ${SOURCES})
 target_include_directories(well-with-wheel PUBLIC ${WWW_DIRECTORY})
 
