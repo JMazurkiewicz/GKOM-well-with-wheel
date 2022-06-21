@@ -8,6 +8,8 @@ project(
     DESCRIPTION "Well with wheel"
 )
 
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+
 add_executable(well-with-wheel
 
     well-with-wheel/src/Controller/ActionListener.cpp
@@ -66,10 +68,5 @@ add_subdirectory(external/glew EXCLUDE_FROM_ALL)
 add_compile_definitions(libglew_static PRIVATE GLEW_STATIC)
 target_link_libraries(well-with-wheel PRIVATE libglew_static)
 
-add_subdirectory(external/glm EXCLUDE_FROM_ALL)
-if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    # Suppress 'compound assignment with ‘volatile’-qualified left operand is deprecated' warning from glm library
-    target_compile_options(well-with-wheel PRIVATE "-Wno-volatile")
-endif()
-
+include(FetchGLM)
 target_link_libraries(well-with-wheel PRIVATE glm)
