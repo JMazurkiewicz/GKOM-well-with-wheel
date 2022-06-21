@@ -61,13 +61,13 @@ add_executable(well-with-wheel
 target_include_directories(well-with-wheel PUBLIC well-with-wheel/src)
 target_compile_features(well-with-wheel PUBLIC cxx_std_20)
 
-find_package(glfw REQUIRED)
+find_package(GLFW REQUIRED)
 target_link_libraries(well-with-wheel PRIVATE glfw)
 
-find_package(glew REQUIRED)
+find_package(GLEW REQUIRED)
 target_link_libraries(well-with-wheel PRIVATE libglew_static)
 
-find_package(glm REQUIRED)
+find_package(GLM REQUIRED)
 target_link_libraries(well-with-wheel PRIVATE glm)
 
 # Workaround: use clang with libc++ (libstdc++'s ranges are broken on clang)
