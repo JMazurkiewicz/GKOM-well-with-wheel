@@ -10,8 +10,25 @@ project(
 
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
-add_executable(well-with-wheel
+set(ASSETS
+    well-with-wheel/assets/shaders/main.frag
+    well-with-wheel/assets/shaders/main.vert
 
+    well-with-wheel/assets/textures/grass.dds
+    well-with-wheel/assets/textures/plank.dds
+    well-with-wheel/assets/textures/sky.dds
+    well-with-wheel/assets/textures/stone.dds
+    well-with-wheel/assets/textures/wood.dds
+)
+
+foreach(ASSET ${ASSETS})
+    cmake_path(RELATIVE_PATH ASSET BASE_DIRECTORY well-with-wheel OUTPUT_VARIABLE ASSET_OUT)
+    configure_file(${ASSET} ${CMAKE_BINARY_DIR}/${ASSET_OUT} COPYONLY)
+    cmake_path(GET ASSET_OUT PARENT_PATH ASSET_INSTALL_PATH)
+    install(FILES ${CMAKE_BINARY_DIR}/${ASSET_OUT} DESTINATION bin/${ASSET_INSTALL_PATH})
+endforeach()
+
+add_executable(well-with-wheel
     well-with-wheel/src/Controller/ActionListener.cpp
     well-with-wheel/src/Controller/ActionListener.cpp
     well-with-wheel/src/Controller/Camera.cpp
@@ -74,3 +91,5 @@ target_link_libraries(well-with-wheel PRIVATE glm)
 if(UNIX AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     target_compile_options(well-with-wheel PUBLIC "-stdlib=libc++")
 endif()
+
+install(TARGETS well-with-wheel DESTINATION bin)

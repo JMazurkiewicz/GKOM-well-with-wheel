@@ -34,3 +34,6 @@ jobs:
 
     - name: Build
       run: cmake --build ${{github.workspace}}/build
+
+    - name: Install
+      run: sudo cmake --install ${{github.workspace}}/build

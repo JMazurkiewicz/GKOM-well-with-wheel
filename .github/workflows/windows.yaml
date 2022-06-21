@@ -24,3 +24,6 @@ jobs:
 
     - name: Build
       run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}}
+
+    - name: Install
+      run: sudo cmake --install ${{github.workspace}}/build --config ${{matrix.build_type}}
