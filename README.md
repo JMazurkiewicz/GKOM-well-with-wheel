@@ -8,8 +8,6 @@
 ```bash
 git clone https://github.com/JMazurkiewicz/GKOM-well-with-wheel.git
 cd GKOM-well-with-wheel
-git submodule init
-git submodule update
 ```
 
 ### On Windows
