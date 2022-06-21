@@ -1,7 +1,7 @@
 include(FetchContent)
 
 message(STATUS "Looking for GLFW")
-find_package(glfw 3.3 QUIET CONFIG)
+find_package(glfw 3.3.7 QUIET CONFIG)
 
 if(glfw_FOUND)
     message(STATUS "Found GLFW: ${glfw_DIR} (found version \"${glfw_VERSION}\")")
@@ -10,7 +10,7 @@ else()
     FetchContent_Declare(
         glfw
         GIT_REPOSITORY https://github.com/glfw/glfw
-        GIT_TAG 3.3
+        GIT_TAG 3.3.7
     )
 
     if(NOT glfw)
