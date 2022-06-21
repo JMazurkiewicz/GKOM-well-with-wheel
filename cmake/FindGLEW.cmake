@@ -1,7 +1,7 @@
 include(FetchContent)
 
 message(STATUS "Looking for GLEW")
-find_package(libglew_static 2.1.0 QUIET CONFIG)
+find_package(libglew_static 2.2.0 QUIET CONFIG)
 
 if(libglew_static_FOUND)
     message(STATUS "Found GLEW: ${libglew_static_DIR} (found version \"${libglew_static_VERSION}\")")
@@ -10,7 +10,7 @@ else()
     FetchContent_Declare(
         libglew_static
         GIT_REPOSITORY https://github.com/omniavinco/glew-cmake
-        GIT_TAG glew-cmake-2.1.0
+        GIT_TAG glew-cmake-2.2.0
     )
 
     if(NOT libglew_static_POPULATED)
