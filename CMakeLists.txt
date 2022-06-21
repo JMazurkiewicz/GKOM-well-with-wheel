@@ -61,11 +61,16 @@ add_executable(well-with-wheel
 target_include_directories(well-with-wheel PUBLIC well-with-wheel/src)
 target_compile_features(well-with-wheel PUBLIC cxx_std_20)
 
-include(FindGLFW)
+find_package(glfw REQUIRED)
 target_link_libraries(well-with-wheel PRIVATE glfw)
 
-include(FindGLEW)
+find_package(glew REQUIRED)
 target_link_libraries(well-with-wheel PRIVATE libglew_static)
 
-include(FindGLM)
+find_package(glm REQUIRED)
 target_link_libraries(well-with-wheel PRIVATE glm)
+
+# Workaround: use clang with libc++ (libstdc++'s ranges are broken on clang)
+if(UNIX AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    target_compile_options(well-with-wheel PUBLIC "-stdlib=libc++")
+endif()
