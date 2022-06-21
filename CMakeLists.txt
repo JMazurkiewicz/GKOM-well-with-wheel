@@ -77,7 +77,7 @@ add_executable(well-with-wheel
 
 target_include_directories(well-with-wheel PUBLIC well-with-wheel/src)
 target_compile_features(well-with-wheel PUBLIC cxx_std_20)
-#set_target_properties(well-with-wheel PROPERTIES CXX_EXTENSIONS OFF)
+set_target_properties(well-with-wheel PROPERTIES CXX_EXTENSIONS OFF)
 
 find_package(GLFW REQUIRED)
 target_link_libraries(well-with-wheel PRIVATE glfw)
