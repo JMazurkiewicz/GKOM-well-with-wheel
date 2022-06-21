@@ -19,4 +19,4 @@ else()
     endif()
 endif()
 
-add_compile_definitions(libglew_static PRIVATE GLEW_STATIC)
+target_compile_definitions(libglew_static PRIVATE GLEW_STATIC)
