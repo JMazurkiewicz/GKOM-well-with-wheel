@@ -1,80 +1,91 @@
-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.11 FATAL_ERROR)
 
-project("GKOM-well-with-wheel")
-
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
-
-set(WWW_DIRECTORY well-with-wheel/src)
-
-set(SOURCES
-
-    ${WWW_DIRECTORY}/Controller/ActionListener.cpp
-    ${WWW_DIRECTORY}/Controller/ActionListener.cpp
-    ${WWW_DIRECTORY}/Controller/Camera.cpp
-    ${WWW_DIRECTORY}/Controller/KeyboardListener.cpp
-    ${WWW_DIRECTORY}/Controller/MouseListener.cpp
-    ${WWW_DIRECTORY}/Controller/WheelController.cpp
-
-    ${WWW_DIRECTORY}/GlModel/GlModel.cpp
-
-    ${WWW_DIRECTORY}/Graphics/Texture.cpp
-    ${WWW_DIRECTORY}/Graphics/Vertex.cpp
-
-    ${WWW_DIRECTORY}/Graphics/Shader/GlProgram.cpp
-    ${WWW_DIRECTORY}/Graphics/Shader/Shader.cpp
-    ${WWW_DIRECTORY}/Graphics/Shader/ShaderException.cpp
-    ${WWW_DIRECTORY}/Graphics/Shader/ShaderType.cpp
-
-    ${WWW_DIRECTORY}/ModelGeneration/BasicGenerators/ClosedCylinderGenerator.cpp
-    ${WWW_DIRECTORY}/ModelGeneration/BasicGenerators/CompoundModelGenerator.cpp
-    ${WWW_DIRECTORY}/ModelGeneration/BasicGenerators/CuboidGenerator.cpp
-    ${WWW_DIRECTORY}/ModelGeneration/BasicGenerators/CylinderGenerator.cpp
-    ${WWW_DIRECTORY}/ModelGeneration/BasicGenerators/HollowCylinderGenerator.cpp
-    ${WWW_DIRECTORY}/ModelGeneration/BasicGenerators/ModelGenerator.cpp
-    ${WWW_DIRECTORY}/ModelGeneration/BasicGenerators/PlaneGenerator.cpp
-    ${WWW_DIRECTORY}/ModelGeneration/BasicGenerators/PrimitiveGenerator.cpp
-    ${WWW_DIRECTORY}/ModelGeneration/BasicGenerators/SmoothShapeGenerator.cpp
-
-    ${WWW_DIRECTORY}/ModelGeneration/WellGeneration/WellBaseGenerator.cpp
-    ${WWW_DIRECTORY}/ModelGeneration/WellGeneration/WellRoofGenerator.cpp
-    ${WWW_DIRECTORY}/ModelGeneration/WellGeneration/WheelGenerator.cpp
-    ${WWW_DIRECTORY}/ModelGeneration/WellGeneration/WoodenStandGenerator.cpp
-
-    ${WWW_DIRECTORY}/Startup/Environment.cpp
-    ${WWW_DIRECTORY}/Startup/Main.cpp
-    ${WWW_DIRECTORY}/Startup/MainWindow.cpp
-    ${WWW_DIRECTORY}/Startup/Scene.cpp
-    ${WWW_DIRECTORY}/Startup/Well.cpp
-
-    ${WWW_DIRECTORY}/System/Stopwatch.cpp
-    ${WWW_DIRECTORY}/System/Window.cpp
-
-    ${WWW_DIRECTORY}/View/DynamicGlView.cpp
-    ${WWW_DIRECTORY}/View/GlView.cpp
-    ${WWW_DIRECTORY}/View/StaticGlView.cpp
+project(
+    "GKOM-well-with-wheel"
+    LANGUAGES CXX
+    VERSION 0.2.0
+    HOMEPAGE_URL https://github.com/JMazurkiewicz/GKOM-well-with-wheel
+    DESCRIPTION "Well with wheel"
 )
 
-# Temporary solution - enable C++20 feature in MSVC
-if(MSVC)
-    add_definitions(/D__cpp_lib_ranges)
-    add_definitions(/D__cpp_lib_format)
-endif()
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
-add_executable(well-with-wheel ${SOURCES})
-target_include_directories(well-with-wheel PUBLIC ${WWW_DIRECTORY})
+set(ASSETS
+    well-with-wheel/assets/shaders/main.frag
+    well-with-wheel/assets/shaders/main.vert
 
-if(UNIX)
-    # Suppress 'compound assignment with ‘volatile’-qualified left operand is deprecated' warning from glm library
-    target_compile_options(well-with-wheel PRIVATE "-Wno-volatile")
-endif()
+    well-with-wheel/assets/textures/grass.dds
+    well-with-wheel/assets/textures/plank.dds
+    well-with-wheel/assets/textures/sky.dds
+    well-with-wheel/assets/textures/stone.dds
+    well-with-wheel/assets/textures/wood.dds
+)
 
-add_subdirectory(external/glfw EXCLUDE_FROM_ALL)
+foreach(ASSET ${ASSETS})
+    cmake_path(RELATIVE_PATH ASSET BASE_DIRECTORY well-with-wheel OUTPUT_VARIABLE ASSET_OUT)
+    configure_file(${ASSET} ${CMAKE_BINARY_DIR}/${ASSET_OUT} COPYONLY)
+    cmake_path(GET ASSET_OUT PARENT_PATH ASSET_INSTALL_PATH)
+    install(FILES ${CMAKE_BINARY_DIR}/${ASSET_OUT} DESTINATION bin/${ASSET_INSTALL_PATH})
+endforeach()
+
+add_executable(well-with-wheel
+    well-with-wheel/src/Controller/ActionListener.cpp
+    well-with-wheel/src/Controller/ActionListener.cpp
+    well-with-wheel/src/Controller/Camera.cpp
+    well-with-wheel/src/Controller/KeyboardListener.cpp
+    well-with-wheel/src/Controller/MouseListener.cpp
+    well-with-wheel/src/Controller/WheelController.cpp
+
+    well-with-wheel/src/GlModel/GlModel.cpp
+
+    well-with-wheel/src/Graphics/Texture.cpp
+    well-with-wheel/src/Graphics/Vertex.cpp
+
+    well-with-wheel/src/Graphics/Shader/GlProgram.cpp
+    well-with-wheel/src/Graphics/Shader/Shader.cpp
+    well-with-wheel/src/Graphics/Shader/ShaderException.cpp
+    well-with-wheel/src/Graphics/Shader/ShaderType.cpp
+
+    well-with-wheel/src/ModelGeneration/BasicGenerators/ClosedCylinderGenerator.cpp
+    well-with-wheel/src/ModelGeneration/BasicGenerators/CompoundModelGenerator.cpp
+    well-with-wheel/src/ModelGeneration/BasicGenerators/CuboidGenerator.cpp
+    well-with-wheel/src/ModelGeneration/BasicGenerators/CylinderGenerator.cpp
+    well-with-wheel/src/ModelGeneration/BasicGenerators/HollowCylinderGenerator.cpp
+    well-with-wheel/src/ModelGeneration/BasicGenerators/ModelGenerator.cpp
+    well-with-wheel/src/ModelGeneration/BasicGenerators/PlaneGenerator.cpp
+    well-with-wheel/src/ModelGeneration/BasicGenerators/PrimitiveGenerator.cpp
+    well-with-wheel/src/ModelGeneration/BasicGenerators/SmoothShapeGenerator.cpp
+
+    well-with-wheel/src/ModelGeneration/WellGeneration/WellBaseGenerator.cpp
+    well-with-wheel/src/ModelGeneration/WellGeneration/WellRoofGenerator.cpp
+    well-with-wheel/src/ModelGeneration/WellGeneration/WheelGenerator.cpp
+    well-with-wheel/src/ModelGeneration/WellGeneration/WoodenStandGenerator.cpp
+
+    well-with-wheel/src/Startup/Environment.cpp
+    well-with-wheel/src/Startup/Main.cpp
+    well-with-wheel/src/Startup/MainWindow.cpp
+    well-with-wheel/src/Startup/Scene.cpp
+    well-with-wheel/src/Startup/Well.cpp
+
+    well-with-wheel/src/System/Stopwatch.cpp
+    well-with-wheel/src/System/Window.cpp
+
+    well-with-wheel/src/View/DynamicGlView.cpp
+    well-with-wheel/src/View/GlView.cpp
+    well-with-wheel/src/View/StaticGlView.cpp
+)
+
+target_include_directories(well-with-wheel PUBLIC well-with-wheel/src)
+target_compile_features(well-with-wheel PUBLIC cxx_std_20)
+set_target_properties(well-with-wheel PROPERTIES CXX_EXTENSIONS OFF)
+
+find_package(GLFW REQUIRED)
 target_link_libraries(well-with-wheel PRIVATE glfw)
 
-add_definitions(-DGLEW_STATIC)
-add_subdirectory(external/glew EXCLUDE_FROM_ALL)
+find_package(GLEW REQUIRED)
 target_link_libraries(well-with-wheel PRIVATE libglew_static)
 
-add_subdirectory(external/glm EXCLUDE_FROM_ALL)
+find_package(GLM REQUIRED)
 target_link_libraries(well-with-wheel PRIVATE glm)
+
+install(TARGETS well-with-wheel DESTINATION bin)

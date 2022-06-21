@@ -8,8 +8,6 @@
 ```bash
 git clone https://github.com/JMazurkiewicz/GKOM-well-with-wheel.git
 cd GKOM-well-with-wheel
-git submodule init
-git submodule update
 ```
 
 ### On Windows
@@ -40,8 +38,7 @@ cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 
 # Show scene
-cp build/well-with-wheel well-with-wheel
-cd well-with-wheel
+cd build
 ./well-with-wheel
 ```
 

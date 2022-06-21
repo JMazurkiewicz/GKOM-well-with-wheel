@@ -12,30 +12,20 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-20.04]
-        c_compiler: [gcc-11]
-        cxx_compiler: [g++-11]
+        os: [ubuntu-22.04]
         build_type: [Debug, Release]
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install compilers
-      run: sudo apt install ${{matrix.c_compiler}} ${{matrix.cxx_compiler}}
-
     - name: Install dependencies
       run: sudo apt install libxrandr-dev libxinerama-dev libxi-dev libxcursor-dev libglu1-mesa-dev
 
-    - name: Prepare submodules
-      run: |
-        git submodule init
-        git submodule update
-
     - name: Configure CMake
-      env:
-        CC: ${{matrix.c_compiler}}
-        CXX: ${{matrix.cxx_compiler}}
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
 
     - name: Build
       run: cmake --build ${{github.workspace}}/build
+
+    - name: Install
+      run: sudo cmake --install ${{github.workspace}}/build
