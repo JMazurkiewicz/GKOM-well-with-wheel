@@ -40,8 +40,7 @@ cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 
 # Show scene
-cp build/well-with-wheel well-with-wheel
-cd well-with-wheel
+cd build
 ./well-with-wheel
 ```
 
