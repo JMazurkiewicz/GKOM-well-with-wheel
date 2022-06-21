@@ -1,7 +1,8 @@
 include(FetchContent)
 
 message(STATUS "Looking for GLM")
-find_package(glm 0.9.7 QUIET)
+find_package(glm 0.9.7 QUIET CONFIG)
+
 if(glm_FOUND)
     message(STATUS "Found GLM: ${glm_DIR} (found version \"${glm_VERSION}\")")
 else()

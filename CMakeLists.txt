@@ -61,12 +61,11 @@ add_executable(well-with-wheel
 target_include_directories(well-with-wheel PUBLIC well-with-wheel/src)
 target_compile_features(well-with-wheel PUBLIC cxx_std_20)
 
-add_subdirectory(external/glfw EXCLUDE_FROM_ALL)
+include(FindGLFW)
 target_link_libraries(well-with-wheel PRIVATE glfw)
 
-add_subdirectory(external/glew EXCLUDE_FROM_ALL)
-add_compile_definitions(libglew_static PRIVATE GLEW_STATIC)
+include(FindGLEW)
 target_link_libraries(well-with-wheel PRIVATE libglew_static)
 
-include(FetchGLM)
+include(FindGLM)
 target_link_libraries(well-with-wheel PRIVATE glm)
