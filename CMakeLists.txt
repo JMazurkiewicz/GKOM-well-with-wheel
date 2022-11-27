@@ -94,7 +94,8 @@ else()
     )
     # FIXME clangd is unable to use sysroot directory
     # target_compile_options(well-with-wheel PUBLIC "--sysroot=${EMSCRIPTEN_SYSROOT}")
-    target_compile_options(well-with-wheel PRIVATE "-fwasm-exceptions")
+    # FIXME libc++ requires "-fexperimental-library" flag even in LLVM 15
+    target_compile_options(well-with-wheel PRIVATE "-fwasm-exceptions" "-fexperimental-library")
     target_link_options(well-with-wheel PRIVATE ${WWW_LINK_OPTIONS})
     set_target_properties(well-with-wheel PROPERTIES SUFFIX ".html")
 endif()
