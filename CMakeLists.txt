@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.11 FATAL_ERROR)
 project(
     "GKOM-well-with-wheel"
     LANGUAGES CXX
-    VERSION 0.2.0
+    VERSION 0.3.0
     HOMEPAGE_URL https://github.com/JMazurkiewicz/GKOM-well-with-wheel
     DESCRIPTION "Well with wheel"
 )
@@ -79,11 +79,26 @@ target_include_directories(well-with-wheel PUBLIC well-with-wheel/src)
 target_compile_features(well-with-wheel PUBLIC cxx_std_20)
 set_target_properties(well-with-wheel PROPERTIES CXX_EXTENSIONS OFF)
 
-find_package(GLFW REQUIRED)
-target_link_libraries(well-with-wheel PRIVATE glfw)
-
-find_package(GLEW REQUIRED)
-target_link_libraries(well-with-wheel PRIVATE libglew_static)
+if(NOT EMSCRIPTEN)
+    find_package(GLFW REQUIRED)
+    find_package(GLEW REQUIRED)
+    target_link_libraries(well-with-wheel PRIVATE glfw)
+    target_link_libraries(well-with-wheel PRIVATE libglew_static)
+else()
+    set(WWW_LINK_OPTIONS
+        "-sUSE_GLFW=3"
+        "-sFETCH"
+        "-fwasm-exceptions"
+        "--preload-file" "assets"
+        "-sFULL_ES3"
+    )
+    # FIXME clangd is unable to use sysroot directory
+    # target_compile_options(well-with-wheel PUBLIC "--sysroot=${EMSCRIPTEN_SYSROOT}")
+    # FIXME libc++ requires "-fexperimental-library" flag even in LLVM 15
+    target_compile_options(well-with-wheel PRIVATE "-fwasm-exceptions" "-fexperimental-library")
+    target_link_options(well-with-wheel PRIVATE ${WWW_LINK_OPTIONS})
+    set_target_properties(well-with-wheel PROPERTIES SUFFIX ".html")
+endif()
 
 find_package(GLM REQUIRED)
 target_link_libraries(well-with-wheel PRIVATE glm)

@@ -37,12 +37,20 @@ namespace {
                      "  situation: "
                   << e.getSituation()
                   << "\n"
-                     "  what():\n    ";
+                     "  what():\n";
 
-        for(char symbol : std::string_view{e.what()}) {
+        // FIXME use std::views::split('\n')
+        // FIXME use std::views::join_with("    "sv)
+        // FIXME use std::format(range) instead of for loop
+        for(bool is_new_line = true; char symbol : std::string_view{e.what()}) {
+            if(is_new_line) {
+                std::cerr << "    ";
+                is_new_line = false;
+            }
+
             std::cerr << symbol;
             if(symbol == '\n') {
-                std::cerr << "    ";
+                is_new_line = true;
             }
         }
     }

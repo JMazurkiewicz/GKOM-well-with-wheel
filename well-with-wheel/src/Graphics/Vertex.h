@@ -1,6 +1,5 @@
 #pragma once
 
-#include <ostream>
 #include <type_traits>
 
 #include <glm/glm.hpp>
@@ -15,4 +14,4 @@ struct alignas(float) Vertex {
     glm::vec2 texture;
 };
 
-static_assert(std::is_standard_layout_v<Vertex>, "Vertex must be standard layout time");
+static_assert(std::is_standard_layout_v<Vertex>, "Vertex must be standard layout type");

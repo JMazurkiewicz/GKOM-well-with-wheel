@@ -42,6 +42,21 @@ cd build
 ./well-with-wheel
 ```
 
+### For web
+
+```bash
+# Get Emscripten: https://emscripten.org/docs/getting_started/downloads.html
+
+# Build with CMake
+emcmake cmake -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build
+
+# Show scene
+cd build
+py -m http.server
+# Open "http://localhost:8000/well-with-wheel.html" in your browser
+```
+
 ## Overview
 
 ### Reference photo
